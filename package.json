@@ -1,0 +1,57 @@
+{
+  "name": "apps-app",
+  "version": "0.0.1",
+  "description": "Applications management app for DHIS2",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dhis2/apps-app.git"
+  },
+  "keywords": [
+    "DHIS2",
+    "HISP",
+    "apps",
+    "applications",
+    "administration",
+    "management"
+  ],
+  "author": "Nicolay Ramm",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/dhis2/apps-app/issues"
+  },
+  "homepage": "https://github.com/dhis2/apps-app#readme",
+  "dependencies": {
+    "babel": "5.8.34",
+    "babel-core": "5.8.34",
+    "babel-loader": "5.4.0",
+    "babel-polyfill": "6.3.14",
+    "d2": "0.0.21",
+    "d2-flux": "0.4.0",
+    "d2-ui": "0.0.7",
+    "exports-loader": "0.6.2",
+    "jquery": "2.1.4",
+    "loglevel": "1.4.0",
+    "material-design-lite": "1.0.6",
+    "material-ui": "0.14.0-rc2",
+    "react": "0.14.3",
+    "react-dom": "0.14.3",
+    "react-tap-event-plugin": "0.2.1"
+  },
+  "devDependencies": {
+    "babel": "5.x.x",
+    "babel-core": "5.x.x",
+    "babel-loader": "5.x.x",
+    "babel-eslint": "4.1.6",
+    "css-loader": "0.23.0",
+    "node-sass": "3.4.2",
+    "sass-loader": "3.1.2",
+    "style-loader": "0.13.0",
+    "susy": "2.2.6",
+    "webpack": "1.12.9",
+    "webpack-dev-server": "1.14.0"
+  }
+}
