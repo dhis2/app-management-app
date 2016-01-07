@@ -23,6 +23,7 @@ import App from './components/App.component';
 
 require('../scss/style.scss');
 
+log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.WARN : log.levels.TRACE);
 
 D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' : 'dev_manifest.webapp')
     .then(manifest => {
