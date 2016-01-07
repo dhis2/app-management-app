@@ -47,21 +47,16 @@ export default React.createClass({
             cardTitle: {
                 background: AppTheme.baseTheme.palette.primary2Color,
             },
-            cardDev: {
-                color: '#808080',
-                marginTop: -24,
-            },
             cardText: {
                 borderTop: '1px solid #c3c3c3',
                 borderBottom: '1px solid #c3c3c3',
-                height: 125,
-                overflowY: 'scroll',
+                height: 145,
+                overflowY: 'hidden',
             },
             actions: {
                 textAlign: 'right',
             },
             button: {
-                color: '#276696',
                 marginRight: 0,
                 marginLeft: 8,
             },
@@ -71,7 +66,8 @@ export default React.createClass({
             <div>{this.props.appStore.apps.map(app => {
                 return (
                     <Card style={styles.card} key={app.name}>
-                        <CardHeader title={app.name} subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
+                        <CardHeader title={app.name}
+                                    subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
                                     style={styles.cardTitle}/>
                         <CardText style={styles.cardText}>{app.description}</CardText>
                         <CardActions style={styles.actions}>
