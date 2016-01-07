@@ -6,7 +6,6 @@ import Sidebar from './Sidebar.component';
 import CircularProgress from 'material-ui/lib/circular-progress';
 import LinearProgress from 'material-ui/lib/linear-progress';
 
-import AppCard from './AppCard.component';
 import AppList from './AppList.component';
 import AppStore from './AppStore.component';
 import AppTheme from '../theme';
@@ -38,9 +37,7 @@ export default React.createClass({
             installedApps: [],
             installing: false,
             uploading: false,
-            appStore: {
-                name: this.props.d2.i18n.getTranslation('dhis2_app_store'),
-            },
+            appStore: {},
         };
     },
 
@@ -125,7 +122,7 @@ export default React.createClass({
         const d2 = this.props.d2;
         const categories = [
             {key: 'installed', label: d2.i18n.getTranslation('installed_apps')},
-            {key: 'store', label: d2.i18n.getTranslation('dhis2_app_store')},
+            {key: 'store', label: d2.i18n.getTranslation('app_store')},
         ];
 
         return (
