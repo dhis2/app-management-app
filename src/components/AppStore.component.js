@@ -90,14 +90,14 @@ export default React.createClass({
 
     render() {
         const d2 = this.context.d2;
+        const storeDescription = ((this.props.appStore.description || '') + '').trim();
         const styles = {
             apps: {
                 paddingTop: '1rem',
             },
             description: {
-                padding: '1rem',
-                margin: '3rem 3rem 3rem 0',
-                border: '1px solid #c3c3c3',
+                padding: '1rem 0',
+                color: 'gray',
                 borderRadius: 3,
                 clear: 'both',
             },
@@ -105,8 +105,10 @@ export default React.createClass({
 
         return this.props.appStore.apps ? (
             <div>
+                {storeDescription.length > 0 ? (
+                    <div style={styles.description}>{storeDescription}</div>
+                ) : undefined}
                 <div style={styles.apps}>{this.renderApps()}</div>
-                <div style={styles.description}>{this.props.appStore.description}</div>
             </div>
         ) : (
             <div>
