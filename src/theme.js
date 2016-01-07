@@ -11,7 +11,7 @@ const theme = {
         primary1Color: '#276696',
         primary2Color: '#86C5F9',
         primary3Color: Colors.lightBlack,
-        accent1Color: Colors.orangeA700,
+        accent1Color: Colors.green700,
         accent2Color: Colors.grey100,
         accent3Color: Colors.grey500,
         textColor: Colors.darkBlack,
