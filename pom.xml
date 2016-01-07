@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>org.hisp.dhis</groupId>
-  <artifactId>dhis-app-management</artifactId>
+  <artifactId>dhis-app-app-management</artifactId>
   <version>2.22-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>App management app</name>	
-  <description>DHIS 2 app management app</description>  
+  <description>DHIS 2 apps management app</description>  
   <url>https://github.com/dhis2/app-management-app</url>
   
   <organization>
