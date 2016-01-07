@@ -1,5 +1,5 @@
-var webpack = require('webpack');
-var webpackBaseConfig = require('./webpack-base-config');
+// const webpack = require('webpack');
+const webpackBaseConfig = require('./webpack-base-config');
 
 webpackBaseConfig.devServer = {
     progress: true,
@@ -10,8 +10,8 @@ webpackBaseConfig.devServer = {
         '/api/*': { target: 'http://localhost:8080' },
         '/dhis-web-commons/*': { target: 'http://localhost:8080' },
         '/icons/*': { target: 'http://localhost:8080' },
-        '/polyfill.min.js': {
-            target: 'http://localhost:8081/node_modules/babel-polyfill/dist/',
+        '/browser-polyfill.min.js': {
+            target: 'http://localhost:8081/node_modules/babel-core/',
         },
         '/jquery.min.js': {
             target: 'http://localhost:8081/node_modules/jquery/dist/',

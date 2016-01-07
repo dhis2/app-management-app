@@ -1,5 +1,5 @@
-//var webpack = require('webpack');
-var webpackBaseConfig = require('./webpack-base-config');
+const webpack = require('webpack');
+const webpackBaseConfig = require('./webpack-base-config');
 
 webpackBaseConfig.plugins = [
     // Replace any occurance of process.env.NODE_ENV with the string 'production'

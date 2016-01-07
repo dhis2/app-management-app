@@ -1,57 +1,36 @@
+@import "~susy";
 @import "../node_modules/d2-ui/scss/HeaderBar";
 @import "../node_modules/d2-ui/scss/DataTable";
 
-$left-bar-width: 220px;
-
-$animation-duration: 250ms;
-
-$perspective-distance: 2000px;
+$left-bar-width: 256px;
 
 html {
-  background: rgb(250, 250, 250);
+  background: #ffffff;
   font-family: 'Roboto', sans-serif;
 }
 
-.content-area {
-  position: absolute;
-  top: 44px;
-  width: 100%;
-  margin: auto;
+h1 {
+  font-size: 1.75rem;
 }
 
-.mdl-card {
-  backface-visibility: hidden;
-  z-index: 2;
-  transform: translate3d(0,0,0);
+.app {
+  padding-top: 3rem;
 }
 
-.app-card-container {
-  margin: 32px;
+.left-bar {
+  width: $left-bar-width;
   float: left;
-  position: relative;
-  perspective: $perspective-distance;
-}
-
-.app-card {
-  transition: transform $animation-duration;
-}
-
-.mdl-card__title {
-  min-height: 180px;
-}
-
-.mdl-tabs {
-}
-
-.app-card-back {
-  transition: transform $animation-duration;
-  position: absolute;
+  position: fixed;
+  margin-top: 16px;
+  bottom: 0;
   top: 0;
-  z-index: 0;
-  transform: translate3d(0,0,0);
-  backface-visibility: hidden;
+  left: 0;
+  padding-top: 2rem;
 }
 
-.mdl-card__supporting-text.mdl-card--border {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.content-area {
+  padding-left: 3rem;
+  margin-left: $left-bar-width;
+  max-width: 900px;
+  min-width: 400px;
 }
