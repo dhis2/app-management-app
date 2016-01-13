@@ -7,6 +7,7 @@ import actions from '../actions';
 export default React.createClass({
     propTypes: {
         installedApps: React.PropTypes.array.isRequired,
+        uploadProgress: React.PropTypes.func,
     },
 
     contextTypes: {
@@ -87,6 +88,6 @@ export default React.createClass({
     },
 
     upload(e) {
-        actions.installApp(e.target.files[0]);
+        actions.installApp(e.target.files[0], this.props.uploadProgress);
     },
 });

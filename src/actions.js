@@ -22,10 +22,10 @@ const actions = {
  * Install app from zip file
  */
 actions.installApp.subscribe(params => {
-    const zipFile = params.data;
+    const [zipFile, progressCallback] = (Array.isArray(params.data) ? params.data : [params.data, undefined]);
 
     getD2().then(d2 => {
-        d2.system.uploadApp(zipFile)
+        d2.system.uploadApp(zipFile, progressCallback)
             .then(() => {
                 actions.refreshApps();
             }).catch(err => {

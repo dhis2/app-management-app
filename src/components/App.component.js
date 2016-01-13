@@ -37,6 +37,7 @@ export default React.createClass({
             installedApps: [],
             installing: false,
             uploading: false,
+            progress: undefined,
             appStore: {},
         };
     },
@@ -44,7 +45,7 @@ export default React.createClass({
     componentDidMount() {
         this.subscriptions = [];
         this.subscriptions.push(this.props.installedApps.subscribe(installedApps => {
-            this.setState({installedApps: installedApps, installing: false, uploading: false});
+            this.setState({installedApps: installedApps, installing: false, uploading: false, progress: undefined});
         }));
 
         this.subscriptions.push(this.props.appStore.subscribe(appStore => {
@@ -95,7 +96,7 @@ export default React.createClass({
         return (
             <div className="content-area">
                 <h1>{d2.i18n.getTranslation('installed_applications')}</h1>
-                <AppList installedApps={this.state.installedApps}/>
+                <AppList installedApps={this.state.installedApps} uploadProgress={p => {this.setState({progress: p * 100});}}/>
                 {this.state.installing ? (
                     <div style={styles.progress}>
                         {d2.i18n.getTranslation('installing')}
@@ -105,7 +106,7 @@ export default React.createClass({
                 {this.state.uploading ? (
                     <div style={styles.progress}>
                         {d2.i18n.getTranslation('uploading')}
-                        <LinearProgress mode="indeterminate"/>
+                        <LinearProgress mode={this.state.progress ? 'determinate' : 'indeterminate'} value={this.state.progress} />
                     </div>
                 ) : undefined}
             </div>
