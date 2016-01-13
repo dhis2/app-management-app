@@ -89,7 +89,6 @@ export default React.createClass({
     },
 
     render() {
-        const d2 = this.context.d2;
         const storeDescription = ((this.props.appStore.description || '') + '').trim();
         const styles = {
             apps: {

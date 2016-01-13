@@ -1,7 +1,6 @@
 import React from 'react';
 
 import FlatButton from 'material-ui/lib/flat-button';
-import RaisedButton from 'material-ui/lib/raised-button';
 
 import actions from '../actions';
 

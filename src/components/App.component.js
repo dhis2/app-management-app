@@ -72,12 +72,6 @@ export default React.createClass({
         });
     },
 
-    renderAppCards() {
-        return this.state.installedApps.map(app => {
-            return <AppCard key={app.folderName}/>;
-        });
-    },
-
     renderSection(key) {
         const d2 = this.props.d2;
         const styles = {
