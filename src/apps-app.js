@@ -49,6 +49,9 @@ D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' 
         log.info('D2 initialised:', d2);
 
         actions.refreshApps();
+    })
+    .catch(error => {
+        ReactDOM.render((<div>Failed to initialise D2: {error}</div>), document.getElementById('app'));
     });
 
 ReactDOM.render(<LoadingMask />, document.getElementById('app'));

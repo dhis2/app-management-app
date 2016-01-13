@@ -9,8 +9,8 @@ const theme = {
     fontFamily: 'Roboto, sans-serif',
     palette: {
         primary1Color: '#276696',
-        primary2Color: '#86C5F9',
-        primary3Color: Colors.lightBlack,
+        primary2Color: '#88BBDC',
+        primary3Color: Colors.grey300,
         accent1Color: Colors.green700,
         accent2Color: Colors.grey100,
         accent3Color: Colors.grey500,

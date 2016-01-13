@@ -39,7 +39,7 @@ export default React.createClass({
         const d2 = this.context.d2;
         const styles = {
             card: {
-                width: 320,
+                width: 284,
                 float: 'left',
                 marginRight: '1rem',
                 marginBottom: '1rem',
@@ -50,7 +50,7 @@ export default React.createClass({
             cardText: {
                 borderTop: '1px solid #c3c3c3',
                 borderBottom: '1px solid #c3c3c3',
-                height: 145,
+                height: 165,
                 overflowY: 'hidden',
             },
             actions: {

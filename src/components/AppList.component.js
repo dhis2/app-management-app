@@ -62,7 +62,7 @@ export default React.createClass({
                                     <div style={styles.appName}>
                                         <a href={app.launchUrl} target="_blank" style={styles.appLink}>{app.name} v{app.version}</a>
                                         <div style={styles.appActions}>
-                                            <RaisedButton style={styles.appButtons} label={d2.i18n.getTranslation('open')} secondary onClick={this.open.bind(this, app.launchUrl)}/>
+                                            <FlatButton style={styles.appButtons} label={d2.i18n.getTranslation('open')} secondary onClick={this.open.bind(this, app.launchUrl)}/>
                                             <FlatButton style={styles.appButtons} label={d2.i18n.getTranslation('uninstall')} onClick={this.uninstall.bind(this, app.folderName)}/>
                                         </div>
                                     </div>
