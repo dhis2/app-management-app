@@ -48,7 +48,12 @@ export default React.createClass({
                 marginBottom: '1rem',
             },
             cardTitle: {
-                background: AppTheme.baseTheme.palette.primary2Color,
+                background: AppTheme.baseTheme.palette.primary1Color,
+            },
+            cardTitleSubtitle: {
+                color: '#CCDDEE',
+                fontWeight: 100,
+                fontSize: 13,
             },
             cardText: {
                 borderTop: '1px solid #c3c3c3',
@@ -72,7 +77,9 @@ export default React.createClass({
                         <Card style={styles.card} key={app.name}>
                             <CardHeader title={app.name}
                                         subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
-                                        style={styles.cardTitle}/>
+                                        style={styles.cardTitle}
+                                        titleColor="white"
+                                        subtitleStyle={styles.cardTitleSubtitle} />
                             <CardText style={styles.cardText}>{app.description}</CardText>
                             <CardActions style={styles.actions}>
                                 {app.versions.map(version => {
