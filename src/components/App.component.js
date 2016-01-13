@@ -58,11 +58,11 @@ export default React.createClass({
         // Automagically switch to the installed apps section when installing an app from the app store
         this.subscriptions.push(actions.installAppVersion.subscribe(() => {
             this.setState({installing: true});
-            this.setCategory('installed');
+            this.setSection('installed');
         }));
 
         this.subscriptions.push(actions.openAppStore.subscribe(() => {
-            this.setCategory('store');
+            this.setSection('store');
         }));
     },
 
@@ -114,7 +114,7 @@ export default React.createClass({
 
     render() {
         const d2 = this.props.d2;
-        const categories = [
+        const sections = [
             {key: 'installed', label: d2.i18n.getTranslation('installed_apps')},
             {key: 'store', label: d2.i18n.getTranslation('app_store')},
         ];
@@ -122,7 +122,7 @@ export default React.createClass({
         return (
             <div className="app">
                 <HeaderBar />
-                <Sidebar categories={categories} currentCategory={this.state.section} onSetCategory={this.setCategory}/>
+                <Sidebar sections={sections} onChangeSection={this.setSection}/>
                 {this.renderSection(this.state.section)}
             </div>
         );
@@ -132,7 +132,7 @@ export default React.createClass({
         actions.refreshApps();
     },
 
-    setCategory(key) {
+    setSection(key) {
         this.setState({section: key});
     },
 });

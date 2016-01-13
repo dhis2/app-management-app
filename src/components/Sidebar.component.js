@@ -8,12 +8,12 @@ import FontIcon from 'material-ui/lib/font-icon';
 const Sidebar = React.createClass({
     propTypes: {
         showSearchField: React.PropTypes.bool,
-        categories: React.PropTypes.arrayOf(React.PropTypes.shape({
+        sections: React.PropTypes.arrayOf(React.PropTypes.shape({
             key: React.PropTypes.string,
             label: React.PropTypes.string,
         })).isRequired,
-        currentCategory: React.PropTypes.string,
-        onSetCategory: React.PropTypes.func.isRequired,
+        currentSection: React.PropTypes.string,
+        onChangeSection: React.PropTypes.func.isRequired,
     },
 
     contextTypes: {
@@ -28,14 +28,14 @@ const Sidebar = React.createClass({
     },
 
     componentWillReceiveProps(props) {
-        if (props.currentCategory) {
-            this.setState({currentCategory: props.currentCategory});
+        if (props.currentSection) {
+            this.setState({currentSection: props.currentSection});
         }
     },
 
     getInitialState() {
         return {
-            currentCategory: this.props.currentCategory || this.props.categories[0].key,
+            currentSection: this.props.currentSection || this.props.sections[0].key,
         };
     },
 
@@ -52,7 +52,7 @@ const Sidebar = React.createClass({
         }
     },
 
-    renderCategories() {
+    renderSections() {
         const style = {
             item: {
                 fontSize: 14,
@@ -68,13 +68,13 @@ const Sidebar = React.createClass({
 
         return (
             <List style={{backgroundColor: 'transparent'}}>
-                {this.props.categories.map(category => {
+                {this.props.sections.map(section => {
                     return (
                         <ListItem
-                            key={category.key}
-                            primaryText={category.label}
-                            onClick={this.setCategory.bind(this, category.key)}
-                            style={category.key === this.state.currentCategory ? style.activeItem : style.item} />
+                            key={section.key}
+                            primaryText={section.label}
+                            onClick={this.setSection.bind(this, section.key)}
+                            style={section.key === this.state.currentSection ? style.activeItem : style.item} />
                     );
                 })}
             </List>
@@ -94,15 +94,15 @@ const Sidebar = React.createClass({
         return (
             <div style={style.sidebar} className="left-bar">
                 {this.renderSearchField()}
-                {this.renderCategories()}
+                {this.renderSections()}
             </div>
         );
     },
 
-    setCategory(key) {
-        if (key !== this.state.currentCategory) {
-            this.setState({currentCategory: key});
-            this.props.onSetCategory(key);
+    setSection(key) {
+        if (key !== this.state.currentSection) {
+            this.setState({currentSection: key});
+            this.props.onChangeSection(key);
         }
     },
 });
