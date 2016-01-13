@@ -123,7 +123,7 @@ export default React.createClass({
         return (
             <div className="app">
                 <HeaderBar />
-                <Sidebar sections={sections} onChangeSection={this.setSection}/>
+                <Sidebar sections={sections} currentSection={this.state.section} onChangeSection={this.setSection}/>
                 {this.renderSection(this.state.section)}
             </div>
         );
