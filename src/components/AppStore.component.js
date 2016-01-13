@@ -5,7 +5,8 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import RaisedButton from 'material-ui/lib/raised-button';
 import CardText from 'material-ui/lib/card/card-text';
-import CircularProgress from 'material-ui/lib/circular-progress';
+
+import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
 import AppTheme from '../theme';
 import actions from '../actions';
@@ -32,7 +33,9 @@ export default React.createClass({
     },
 
     componentWillMount() {
-        actions.loadAppStore();
+        if (!this.props.appStore.apps) {
+            actions.loadAppStore();
+        }
     },
 
     renderApps() {
@@ -62,35 +65,46 @@ export default React.createClass({
             },
         };
 
-        return this.props.appStore.apps ? (
-            <div>{this.props.appStore.apps.map(app => {
-                return (
-                    <Card style={styles.card} key={app.name}>
-                        <CardHeader title={app.name}
-                                    subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
-                                    style={styles.cardTitle}/>
-                        <CardText style={styles.cardText}>{app.description}</CardText>
-                        <CardActions style={styles.actions}>
-                            {app.versions.map(version => {
-                                return (
-                                    <RaisedButton
-                                        key={version.id}
-                                        style={styles.button}
-                                        primary
-                                        onClick={this.install.bind(this, [app.name, version.id])}
-                                        label={d2.i18n.getTranslation('install') + ' v' + version.version}/>
-                                );
-                            })}
-                        </CardActions>
-                    </Card>
-                );
-            })}</div>
-        ) : (<CircularProgress mode="indeterminate"/>);
+        return (
+            <div>
+                {this.props.appStore.apps.map(app => {
+                    return (
+                        <Card style={styles.card} key={app.name}>
+                            <CardHeader title={app.name}
+                                        subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
+                                        style={styles.cardTitle}/>
+                            <CardText style={styles.cardText}>{app.description}</CardText>
+                            <CardActions style={styles.actions}>
+                                {app.versions.map(version => {
+                                    return (
+                                        <RaisedButton
+                                            key={version.id}
+                                            style={styles.button}
+                                            primary
+                                            onClick={this.install.bind(this, [app.name, version.id])}
+                                            label={d2.i18n.getTranslation('install') + ' v' + version.version}/>
+                                    );
+                                })}
+                            </CardActions>
+                        </Card>
+                    );
+                })}
+            </div>
+        );
     },
 
     render() {
         const storeDescription = ((this.props.appStore.description || '') + '').trim();
         const styles = {
+            loadingMaskContainer: {
+                position: 'fixed',
+                left: 256,
+                top: '3rem',
+                right: 0,
+                bottom: 0,
+                zIndex: 1000,
+                backgroundColor: 'rgba(255,255,255,0.4)',
+            },
             apps: {
                 paddingTop: '1rem',
             },
@@ -110,10 +124,10 @@ export default React.createClass({
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (
-            <div>
-                <CircularProgress mode="indeterminate"/>
-                <p>{d2.i18n.getTranslation('loading_app_store')}</p>
-            </div>);
+            <div style={styles.loadingMaskContainer}>
+                <LoadingMask />
+            </div>
+        );
     },
 
     install(uid) {
