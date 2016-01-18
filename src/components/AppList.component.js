@@ -33,7 +33,9 @@ export default React.createClass({
 
     componentDidMount() {
         actions.installApp.subscribe(() => {
-            this.refs.fileForm.reset();
+            if (this.form) {
+                this.form.reset();
+            }
         });
     },
 
@@ -131,7 +133,9 @@ export default React.createClass({
                             <FontIcon className="material-icons">file_upload</FontIcon>
                         </FloatingActionButton>
                     </div>
-                    <form ref="fileForm" style={{visibility: 'hidden'}}><input type="file" ref="fileInput" onChange={this.upload}/></form>
+                    <form ref={(ref) => { this.form = ref; }} style={{visibility: 'hidden'}}>
+                        <input type="file" ref="fileInput" onChange={this.upload}/>
+                    </form>
                 </div>
             </div>
         );
