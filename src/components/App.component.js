@@ -45,6 +45,7 @@ export default React.createClass({
             uploading: false,
             progress: undefined,
             appStore: {},
+            lastUpdate: null,
         };
     },
 
@@ -52,6 +53,7 @@ export default React.createClass({
         this.subscriptions = [];
         this.subscriptions.push(this.props.installedApps.subscribe(installedApps => {
             this.setState({installedApps: installedApps, installing: false});
+            this.setState({lastUpdate: new Date()});
         }));
 
         this.subscriptions.push(this.props.appStore.subscribe(appStore => {
@@ -142,7 +144,7 @@ export default React.createClass({
 
         return (
             <div className="app">
-                <HeaderBar />
+                <HeaderBar lastUpdate={this.state.lastUpdate}/>
                 <Sidebar sections={sections} currentSection={this.state.section} onChangeSection={this.setSection}/>
                 {this.renderSection(this.state.section)}
             </div>
