@@ -8,6 +8,11 @@ import ListItem from 'material-ui/lib/lists/list-item';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import CardHeader from 'material-ui/lib/card/card-header';
+import CardText from 'material-ui/lib/card/card-text';
+
 import FlatButton from 'material-ui/lib/flat-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 
@@ -36,7 +41,7 @@ export default React.createClass({
         const d2 = this.context.d2;
         const styles = {
             container: {
-                borderBottom: '1px solid #c1c1c1',
+                borderBottom: '1px solid #dddddd',
                 paddingBottom: 0,
             },
             fab: {
@@ -48,10 +53,13 @@ export default React.createClass({
                 textAlign: 'right',
             },
             noApps: {
-                padding: '1rem 0',
+                marginTop: 16,
+                textAlign: 'center',
+                fontWeight: 100,
+                fontSize: 15,
             },
             app: {
-                borderTop: '1px solid #c1c1c1',
+                borderTop: '1px solid #dddddd',
             },
             appName: {
                 padding: 16,
@@ -70,53 +78,52 @@ export default React.createClass({
                 marginLeft: '1rem',
             },
             upload: {
-                padding: '1rem 0',
-                margin: '1rem 0 1rem 0',
-                //border: '1px solid #c3c3c3',
-                borderRadius: 3,
-                clear: 'both',
+            },
+            card: {
+                marginTop: 8,
+                marginRight: '1rem',
+            },
+            cardTitle: {
+                background: '#276696',
+            },
+            cardTitleText: {
+                fontSize: 28,
             },
         };
+        const baseUrl = d2.Api.getApi().baseUrl;
 
         return (
             <div>
                 {this.props.installedApps.length === 0 ? (
-                    <div style={styles.noApps}>
-                        <p>{d2.i18n.getTranslation('no_apps_installed')}</p>
+                    <div style={{marginTop: 64}}>
+                        <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
                     </div>
                 ) : (
-                    <List style={styles.container}>
-                        {this.props.installedApps.map(app => {
-                            return (
-                                <ListItem key={app.folderName}
-                                          primaryText={app.name} secondaryText={'v' + app.version}
-                                          style={styles.app}
-                                          onTouchTap={this.open.bind(this, app.launchUrl)}
-                                          leftAvatar={<Avatar src={[app.baseUrl, app.folderName, app.icons['48']].join('/')} />}
-                                          rightIconButton={
-                                          <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
-                                          <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
-                                          </IconMenu>
-                                          }/>
-                            );
-
-                            return (
-                                <div key={app.folderName} style={styles.app}>
-                                    <div style={styles.appName}>
-                                        <a href={app.launchUrl} target="_blank" style={styles.appLink}>{app.name}
-                                            v{app.version}</a>
-                                        <div style={styles.appActions}>
-                                            <FlatButton style={styles.appButtons} label={d2.i18n.getTranslation('open')}
-                                                        secondary onClick={this.open.bind(this, app.launchUrl)}/>
-                                            <FlatButton style={styles.appButtons}
-                                                        label={d2.i18n.getTranslation('uninstall')}
-                                                        onClick={this.uninstall.bind(this, app.folderName)}/>
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </List>
+                        <Card style={styles.card}>
+                            <CardHeader title={d2.i18n.getTranslation('installed_applications')}
+                                        style={styles.cardTitle}
+                                        titleStyle={styles.cardTitleText}
+                                        titleColor="white" />
+                            <CardText>
+                        <List style={styles.container}>{
+                            this.props.installedApps.map(app => {
+                                return (
+                                    <ListItem
+                                        key={app.folderName}
+                                        primaryText={app.name} secondaryText={'v' + app.version}
+                                        style={styles.app}
+                                        onTouchTap={this.open.bind(this, app.launchUrl)}
+                                        leftAvatar={<Avatar src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
+                                        rightIconButton={
+                                            <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
+                                                <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
+                                            </IconMenu>
+                                        }/>
+                                );
+                            })
+                        }</List>
+                    </CardText>
+                </Card>
                 )}
                 <div style={styles.upload}>
                     <div style={styles.fab}>

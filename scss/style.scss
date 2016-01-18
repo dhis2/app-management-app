@@ -5,7 +5,7 @@
 $left-bar-width: 256px;
 
 html {
-  background: #ffffff;
+  background: #f3f3f3;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -29,8 +29,7 @@ h1 {
 }
 
 .content-area {
-  padding-left: 3rem;
   margin-left: $left-bar-width;
-  max-width: 900px;
+  max-width: 939px;
   min-width: 400px;
 }

@@ -56,12 +56,16 @@ const Sidebar = React.createClass({
         const style = {
             item: {
                 fontSize: 14,
+                borderRadius: 5,
+                margin: 8,
             },
             activeItem: {
                 fontSize: 14,
                 fontWeight: 700,
                 color: '#2196f3',
-                backgroundColor: '#e9e9e9',
+                backgroundColor: '#e0e0e0',
+                borderRadius: 5,
+                margin: 8,
             },
 
         };
@@ -85,7 +89,7 @@ const Sidebar = React.createClass({
         const style = {
             sidebar: {
                 backgroundColor: '#f3f3f3',
-                borderRight: '1px solid #e1e1e1',
+                //borderRight: '1px solid #e1e1e1',
                 overflowY: 'auto',
                 width: 256,
             },

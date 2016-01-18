@@ -6,6 +6,12 @@ import Sidebar from './Sidebar.component';
 import CircularProgress from 'material-ui/lib/circular-progress';
 import LinearProgress from 'material-ui/lib/linear-progress';
 
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import CardHeader from 'material-ui/lib/card/card-header';
+import FlatButton from 'material-ui/lib/flat-button';
+import CardText from 'material-ui/lib/card/card-text';
+
 import AppList from './AppList.component';
 import AppStore from './AppStore.component';
 import AppTheme from '../theme';
@@ -45,7 +51,7 @@ export default React.createClass({
     componentDidMount() {
         this.subscriptions = [];
         this.subscriptions.push(this.props.installedApps.subscribe(installedApps => {
-            this.setState({installedApps: installedApps, installing: false, uploading: false, progress: undefined});
+            this.setState({installedApps: installedApps, installing: false});
         }));
 
         this.subscriptions.push(this.props.appStore.subscribe(appStore => {
@@ -77,17 +83,20 @@ export default React.createClass({
         const d2 = this.props.d2;
         const styles = {
             progress: {
-                marginTop: '1rem',
-                padding: '1rem',
-                border: '1px solid #c1c1c1',
-                borderRadius: 3,
+                margin: '16px 1rem 16px 0',
+                padding: 16,
+            },
+            installing: {
+                marginRight: '1rem',
+                marginTop: 16,
+                padding: 16,
+                float: 'left',
             },
         };
 
         if (key === 'store') {
             return (
                 <div className="content-area">
-                    <h1>{this.state.appStore.name}</h1>
                     <AppStore appStore={this.state.appStore}/>
                 </div>
             );
@@ -95,19 +104,30 @@ export default React.createClass({
 
         return (
             <div className="content-area">
-                <h1>{d2.i18n.getTranslation('installed_applications')}</h1>
-                <AppList installedApps={this.state.installedApps} uploadProgress={p => {this.setState({progress: p * 100});}}/>
+                <AppList installedApps={this.state.installedApps} uploadProgress={this.progress}/>
                 {this.state.installing ? (
-                    <div style={styles.progress}>
-                        {d2.i18n.getTranslation('installing')}
-                        <CircularProgress mode="indeterminate"/>
-                    </div>
+                    <Card style={styles.installing}>
+                        <CardText>
+                            <CircularProgress
+                                mode="indeterminate"
+                                color="#6688AA"
+                                value={this.state.progress}/>
+                            <br/>
+                            <br/>
+                            {d2.i18n.getTranslation('installing')}
+                        </CardText>
+                    </Card>
                 ) : undefined}
                 {this.state.uploading ? (
-                    <div style={styles.progress}>
-                        {d2.i18n.getTranslation('uploading')}
-                        <LinearProgress mode={this.state.progress ? 'determinate' : 'indeterminate'} value={this.state.progress} />
-                    </div>
+                    <Card style={styles.progress}>
+                        <CardText>
+                            {d2.i18n.getTranslation('uploading')}
+                            <LinearProgress
+                                mode={this.state.progress ? 'determinate' : 'indeterminate'}
+                                color="#6688AA"
+                                value={this.state.progress}/>
+                        </CardText>
+                    </Card>
                 ) : undefined}
             </div>
         );
@@ -127,6 +147,19 @@ export default React.createClass({
                 {this.renderSection(this.state.section)}
             </div>
         );
+    },
+
+    progress(p) {
+        console.warn('Progress:', p);
+        if (p) {
+            if (p === 1) {
+                this.setState({uploading: false, progress: undefined});
+            } else {
+                this.setState({progress: p * 100});
+            }
+        } else {
+            this.setState({progress: undefined});
+        }
     },
 
     reloadInstalledApps() {
