@@ -14,6 +14,7 @@ import actions from '../actions';
 export default React.createClass({
     propTypes: {
         appStore: React.PropTypes.object.isRequired,
+        transitionUnmount: React.PropTypes.bool,
     },
 
     contextTypes: {
@@ -29,6 +30,7 @@ export default React.createClass({
     getInitialState() {
         return {
             installing: undefined,
+            componentDidMount: false,
         };
     },
 
@@ -36,6 +38,12 @@ export default React.createClass({
         if (!this.props.appStore.apps) {
             actions.loadAppStore();
         }
+    },
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({componentDidMount: true});
+        }, 0);
     },
 
     renderApps() {
@@ -70,11 +78,15 @@ export default React.createClass({
             },
         };
 
+        const className = 'transition-mount transition-unmount' +
+            (this.state.componentDidMount ? '' : ' transition-mount-active') +
+            (this.props.transitionUnmount ? ' transition-unmount-active' : '');
+
         return (
             <div>
                 {this.props.appStore.apps.map(app => {
                     return (
-                        <Card style={styles.card} key={app.name}>
+                        <Card style={styles.card} key={app.name} className={'card card-up ' + className}>
                             <CardHeader title={app.name}
                                         subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
                                         style={styles.cardTitle}
@@ -134,13 +146,16 @@ export default React.createClass({
             },
         };
 
+        const className = 'transition-mount transition-unmount' +
+            (this.state.componentDidMount ? '' : ' transition-mount-active') +
+            (this.props.transitionUnmount ? ' transition-unmount-active' : '');
+
         return this.props.appStore.apps ? (
             <div>
-                <Card style={styles.card}>
+                <Card style={styles.card} className={'card card-up ' + className}>
                     <CardHeader title={this.props.appStore.name}
                                 style={styles.cardTitle}
-                                titleStyle={styles.cardTitleText}
-                                titleColor="white"/>
+                                titleStyle={styles.cardTitleText}/>
                     {storeDescription.length > 0 ? (
                         <CardText style={styles.description}>{storeDescription}</CardText>
                     ) : undefined}

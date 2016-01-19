@@ -7,9 +7,6 @@ import CircularProgress from 'material-ui/lib/circular-progress';
 import LinearProgress from 'material-ui/lib/linear-progress';
 
 import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 
 import AppList from './AppList.component';
@@ -46,6 +43,8 @@ export default React.createClass({
             progress: undefined,
             appStore: {},
             lastUpdate: null,
+            mountSection: true,
+            unmountSection: false,
         };
     },
 
@@ -73,6 +72,10 @@ export default React.createClass({
         this.subscriptions.push(actions.openAppStore.subscribe(() => {
             this.setSection('store');
         }));
+
+        setTimeout(() => {
+            this.setState({mountSection: false});
+        }, 150);
     },
 
     componentWillUnmount() {
@@ -95,20 +98,23 @@ export default React.createClass({
                 float: 'left',
             },
         };
+        const className = 'transition-mount transition-unmount' +
+            (this.state.mountSection ? ' transition-mount-active' : '') +
+            (this.state.unmountSection ? ' transition-unmount-active' : '');
 
         if (key === 'store') {
             return (
                 <div className="content-area">
-                    <AppStore appStore={this.state.appStore}/>
+                    <AppStore appStore={this.state.appStore} transitionUnmount={this.state.unmountSection}/>
                 </div>
             );
         }
 
         return (
             <div className="content-area">
-                <AppList installedApps={this.state.installedApps} uploadProgress={this.progress}/>
+                <AppList installedApps={this.state.installedApps} uploadProgress={this.progress} transitionUnmount={this.state.unmountSection}/>
                 {this.state.installing ? (
-                    <Card style={styles.installing}>
+                    <Card style={styles.installing} className={'card card-up ' + className}>
                         <CardText>
                             <CircularProgress
                                 mode="indeterminate"
@@ -121,7 +127,7 @@ export default React.createClass({
                     </Card>
                 ) : undefined}
                 {this.state.uploading ? (
-                    <Card style={styles.progress}>
+                    <Card style={styles.progress} className={'card card-up ' + className}>
                         <CardText>
                             {d2.i18n.getTranslation('uploading')}
                             <LinearProgress
@@ -152,7 +158,6 @@ export default React.createClass({
     },
 
     progress(p) {
-        console.warn('Progress:', p);
         if (p) {
             if (p === 1) {
                 this.setState({uploading: false, progress: undefined});
@@ -169,6 +174,12 @@ export default React.createClass({
     },
 
     setSection(key) {
-        this.setState({section: key});
+        this.setState({unmountSection: true});
+        setTimeout(() => {
+            this.setState({unmountSection: false, mountSection: true, section: key});
+            setTimeout(() => {
+                this.setState({mountSection: false});
+            }, 150);
+        }, 150);
     },
 });

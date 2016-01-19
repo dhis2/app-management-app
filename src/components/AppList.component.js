@@ -9,12 +9,8 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 
 import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
-
-import FlatButton from 'material-ui/lib/flat-button';
-import RaisedButton from 'material-ui/lib/raised-button';
 
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import FontIcon from 'material-ui/lib/font-icon';
@@ -25,6 +21,7 @@ export default React.createClass({
     propTypes: {
         installedApps: React.PropTypes.array.isRequired,
         uploadProgress: React.PropTypes.func,
+        transitionUnmount: React.PropTypes.bool,
     },
 
     contextTypes: {
@@ -32,11 +29,21 @@ export default React.createClass({
     },
 
     componentDidMount() {
+        setTimeout(() => {
+            this.setState({componentDidMount: true});
+        }, 0);
+
         actions.installApp.subscribe(() => {
             if (this.form) {
                 this.form.reset();
             }
         });
+    },
+
+    getInitialState() {
+        return {
+            componentDidMount: false,
+        };
     },
 
     render() {
@@ -53,6 +60,9 @@ export default React.createClass({
                 right: 16,
                 maxWidth: 1200,
                 textAlign: 'right',
+            },
+            fabAnim: {
+                float: 'right',
             },
             noApps: {
                 marginTop: 16,
@@ -94,6 +104,10 @@ export default React.createClass({
         };
         const baseUrl = d2.Api.getApi().baseUrl;
 
+        const className = 'transition-mount transition-unmount' +
+            (this.state.componentDidMount ? '' : ' transition-mount-active') +
+            (this.props.transitionUnmount ? ' transition-unmount-active' : '');
+
         return (
             <div>
                 {this.props.installedApps.length === 0 ? (
@@ -101,37 +115,41 @@ export default React.createClass({
                         <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
                     </div>
                 ) : (
-                        <Card style={styles.card}>
-                            <CardHeader title={d2.i18n.getTranslation('installed_applications')}
-                                        style={styles.cardTitle}
-                                        titleStyle={styles.cardTitleText}
-                                        titleColor="white" />
-                            <CardText>
-                        <List style={styles.container}>{
-                            this.props.installedApps.map(app => {
-                                return (
-                                    <ListItem
-                                        key={app.folderName}
-                                        primaryText={app.name} secondaryText={'v' + app.version}
-                                        style={styles.app}
-                                        onTouchTap={this.open.bind(this, app.launchUrl)}
-                                        leftAvatar={<Avatar src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
-                                        rightIconButton={
-                                            <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
-                                                <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
-                                            </IconMenu>
-                                        }/>
-                                );
-                            })
-                        }</List>
-                    </CardText>
-                </Card>
+                    <Card style={styles.card} className={'card card-up ' + className}>
+                        <CardHeader title={d2.i18n.getTranslation('installed_applications')}
+                                    style={styles.cardTitle}
+                                    titleStyle={styles.cardTitleText}
+                                    titleColor="white" />
+                        <CardText>
+                            <List style={styles.container}>{
+                                this.props.installedApps.map(app => {
+                                    return (
+                                        <ListItem
+                                            key={app.folderName}
+                                            primaryText={app.name} secondaryText={'v' + app.version}
+                                            style={styles.app}
+                                            onTouchTap={this.open.bind(this, app.launchUrl)}
+                                            leftAvatar={<Avatar src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
+                                            rightIconButton={
+                                                <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
+                                                    <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
+                                                </IconMenu>
+                                            }/>
+                                    );
+                                })
+                            }</List>
+                        </CardText>
+                    </Card>
                 )}
                 <div style={styles.upload}>
                     <div style={styles.fab}>
-                        <FloatingActionButton onClick={this.newAction} onClick={(e) => { this.refs.fileInput.click(e); }}>
-                            <FontIcon className="material-icons">file_upload</FontIcon>
-                        </FloatingActionButton>
+                        <div style={styles.fabAnim} className={'fab ' + className}>
+                            <FloatingActionButton
+                                onClick={this.newAction}
+                                onClick={(e) => { this.refs.fileInput.click(e); }}>
+                                <FontIcon className="material-icons">file_upload</FontIcon>
+                            </FloatingActionButton>
+                        </div>
                     </div>
                     <form ref={(ref) => { this.form = ref; }} style={{visibility: 'hidden'}}>
                         <input type="file" ref="fileInput" onChange={this.upload}/>

@@ -33,3 +33,33 @@ h1 {
   max-width: 939px;
   min-width: 400px;
 }
+
+.transition-mount,
+.transition-unmount {
+  transition: 150ms ease-out;
+  transform: scale(1) translate(0,0) rotateZ(0deg);
+  opacity: 1;
+
+  &.card {
+    transition-duration: 75ms;
+  }
+
+  &-active {
+    &.card-up {
+      transform: translate(0,-500px);
+      opacity: 0;
+    }
+    &.card-right {
+      transform: translate(500px);
+      opacity: 0;
+    }
+    &.card-down {
+      transform: translate(0,500px);
+      opacity: 0;
+    }
+    &.fab {
+      transform: scale(0.0) translate(0, 0) rotateZ(-90deg);
+      opacity: 0.5;
+    }
+  }
+}
