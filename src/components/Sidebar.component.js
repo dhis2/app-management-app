@@ -89,7 +89,6 @@ const Sidebar = React.createClass({
         const style = {
             sidebar: {
                 backgroundColor: '#f3f3f3',
-                //borderRight: '1px solid #e1e1e1',
                 overflowY: 'auto',
                 width: 256,
             },

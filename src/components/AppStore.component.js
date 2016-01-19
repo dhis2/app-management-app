@@ -56,7 +56,8 @@ export default React.createClass({
                 marginBottom: '1rem',
             },
             cardTitle: {
-                background: AppTheme.baseTheme.palette.primary1Color,
+                background: '#5892BE',
+                fontWeight: 400,
             },
             cardTitleSubtitle: {
                 color: '#CCDDEE',
@@ -127,13 +128,14 @@ export default React.createClass({
             card: {
                 marginTop: 8,
                 marginRight: '1rem',
-                //marginBottom: 8,
             },
             cardTitle: {
-                background: AppTheme.baseTheme.palette.primary1Color,
+                background: '#5892BE',
             },
             cardTitleText: {
+                color: 'white',
                 fontSize: 28,
+                fontWeight: 100,
             },
             apps: {
                 paddingTop: '1rem',

@@ -52,6 +52,7 @@ export default React.createClass({
             container: {
                 borderBottom: '1px solid #dddddd',
                 paddingBottom: 0,
+                marginBottom: 8,
             },
             fab: {
                 position: 'fixed',
@@ -96,10 +97,11 @@ export default React.createClass({
                 marginRight: '1rem',
             },
             cardTitle: {
-                background: '#276696',
+                background: '#5892BE',
             },
             cardTitleText: {
                 fontSize: 28,
+                fontWeight: 100,
             },
         };
         const baseUrl = d2.Api.getApi().baseUrl;
