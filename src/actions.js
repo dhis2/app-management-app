@@ -14,7 +14,9 @@ const actions = {
     // App store actions
     loadAppStore: Action.create('Load DHIS2 App Store'),
     installAppVersion: Action.create('Install App Version from DHIS2 App Store'),
-    openAppStore: Action.create('Open the DHIS2 App Store'),
+
+    // Snackbar
+    showSnackbarMessage: Action.create('Show Snackbar message'),
 };
 
 
@@ -27,8 +29,10 @@ actions.installApp.subscribe(params => {
     getD2().then(d2 => {
         d2.system.uploadApp(zipFile, progressCallback)
             .then(() => {
+                actions.showSnackbarMessage(d2.i18n.getTranslation('app_installed'));
                 actions.refreshApps();
             }).catch(err => {
+                actions.showSnackbarMessage(d2.i18n.getTranslation('failed_to_install_app') + ': ' + err.message);
                 log.error('Failed to install app:', err.message);
                 actions.refreshApps();
             });
@@ -43,6 +47,7 @@ actions.uninstallApp.subscribe(params => {
     const appKey = params.data;
     getD2().then(d2 => {
         d2.system.uninstallApp(appKey).then(() => {
+            actions.showSnackbarMessage(d2.i18n.getTranslation('app_removed'));
             actions.refreshApps();
         });
     });
@@ -78,13 +83,25 @@ actions.loadAppStore.subscribe(() => {
  */
 actions.installAppVersion.subscribe(params => {
     const versionId = params.data[1];
+    const appStoreState = appStoreStore.getState();
+    appStoreStore.setState(Object.assign(appStoreState, {installing: appStoreState.installing ? appStoreState.installing + 1 : 1}));
 
     getD2().then(d2 => {
-        d2.system.installAppVersion(versionId).then(() => {
-            return d2.system.reloadApps();
-        }).then(apps => {
-            installedAppStore.setState(apps);
-        });
+        actions.showSnackbarMessage(d2.i18n.getTranslation('installing_app_from_app_store'));
+        d2.system.installAppVersion(versionId)
+            .then(() => d2.system.reloadApps())
+            .then(apps => {
+                actions.showSnackbarMessage(d2.i18n.getTranslation('app_installed'));
+                const appStoreState2 = appStoreStore.getState();
+                appStoreStore.setState(Object.assign(appStoreState2, {installing: appStoreState2.installing - 1}));
+                installedAppStore.setState(apps);
+                params.complete(apps);
+            })
+            .catch(err => {
+                actions.showSnackbarMessage(d2.i18n.getTranslation('failed_to_install_app_from_app_store') + ': ' + err);
+                log.error(err);
+                params.error(err);
+            });
     });
 });
 

@@ -37,7 +37,7 @@ h1 {
 .transition-mount,
 .transition-unmount {
   transition: 150ms ease-out;
-  transform: scale(1) translate(0,0) rotateZ(0deg);
+  transform: translate(0,0) scale(1) rotateZ(0deg);
   opacity: 1;
 
   &.card {
@@ -58,7 +58,7 @@ h1 {
       opacity: 0;
     }
     &.fab {
-      transform: scale(0.0) translate(0, 0) rotateZ(-90deg);
+      transform: translate(0,0) scale(0.0) rotateZ(-90deg);
       opacity: 0.5;
     }
   }

@@ -90,6 +90,9 @@ export default React.createClass({
             appButtons: {
                 marginLeft: '1rem',
             },
+            appIcon: {
+                borderRadius: 3,
+            },
             upload: {
             },
             card: {
@@ -117,7 +120,7 @@ export default React.createClass({
                         <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
                     </div>
                 ) : (
-                    <Card style={styles.card} className={'card card-up ' + className}>
+                    <Card style={styles.card}>
                         <CardHeader title={d2.i18n.getTranslation('installed_applications')}
                                     style={styles.cardTitle}
                                     titleStyle={styles.cardTitleText}
@@ -131,7 +134,7 @@ export default React.createClass({
                                             primaryText={app.name} secondaryText={'v' + app.version}
                                             style={styles.app}
                                             onTouchTap={this.open.bind(this, app.launchUrl)}
-                                            leftAvatar={<Avatar src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
+                                            leftAvatar={<Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
                                             rightIconButton={
                                                 <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
                                                     <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>

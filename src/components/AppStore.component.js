@@ -8,7 +8,6 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
-import AppTheme from '../theme';
 import actions from '../actions';
 
 export default React.createClass({
@@ -79,15 +78,11 @@ export default React.createClass({
             },
         };
 
-        const className = 'transition-mount transition-unmount' +
-            (this.state.componentDidMount ? '' : ' transition-mount-active') +
-            (this.props.transitionUnmount ? ' transition-unmount-active' : '');
-
         return (
             <div>
                 {this.props.appStore.apps.map(app => {
                     return (
-                        <Card style={styles.card} key={app.name} className={'card card-up ' + className}>
+                        <Card style={styles.card} key={app.name}>
                             <CardHeader title={app.name}
                                         subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
                                         style={styles.cardTitle}
@@ -123,7 +118,6 @@ export default React.createClass({
                 right: 0,
                 bottom: 0,
                 zIndex: 1000,
-                backgroundColor: 'rgba(255,255,255,0.4)',
             },
             card: {
                 marginTop: 8,
@@ -148,13 +142,9 @@ export default React.createClass({
             },
         };
 
-        const className = 'transition-mount transition-unmount' +
-            (this.state.componentDidMount ? '' : ' transition-mount-active') +
-            (this.props.transitionUnmount ? ' transition-unmount-active' : '');
-
         return this.props.appStore.apps ? (
             <div>
-                <Card style={styles.card} className={'card card-up ' + className}>
+                <Card style={styles.card}>
                     <CardHeader title={this.props.appStore.name}
                                 style={styles.cardTitle}
                                 titleStyle={styles.cardTitleText}/>

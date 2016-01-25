@@ -8,6 +8,7 @@ import LinearProgress from 'material-ui/lib/linear-progress';
 
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
+import Snackbar from 'material-ui/lib/snackbar';
 
 import AppList from './AppList.component';
 import AppStore from './AppStore.component';
@@ -51,31 +52,38 @@ export default React.createClass({
     componentDidMount() {
         this.subscriptions = [];
         this.subscriptions.push(this.props.installedApps.subscribe(installedApps => {
-            this.setState({installedApps: installedApps, installing: false});
-            this.setState({lastUpdate: new Date()});
+            this.setState({installedApps: installedApps, lastUpdate: new Date()});
         }));
 
         this.subscriptions.push(this.props.appStore.subscribe(appStore => {
-            this.setState({appStore: appStore});
+            this.setState({appStore: appStore, installing: appStore.installing !== undefined && appStore.installing > 0});
         }));
 
         this.subscriptions.push(actions.installApp.subscribe(() => {
             this.setState({uploading: true});
         }));
 
+        this.subscriptions.push(actions.showSnackbarMessage.subscribe(params => {
+            if (!!this.state.snackbar) {
+                this.setState({snackbar: undefined});
+                setTimeout(() => {
+                    this.setState({snackbar: params.data});
+                }, 150);
+            } else {
+                this.setState({snackbar: params.data});
+            }
+        }));
+
         // Automagically switch to the installed apps section when installing an app from the app store
         this.subscriptions.push(actions.installAppVersion.subscribe(() => {
-            this.setState({installing: true});
             this.setSection('installed');
         }));
 
-        this.subscriptions.push(actions.openAppStore.subscribe(() => {
-            this.setSection('store');
-        }));
+        actions.loadAppStore();
 
         setTimeout(() => {
             this.setState({mountSection: false});
-        }, 150);
+        }, 0);
     },
 
     componentWillUnmount() {
@@ -93,41 +101,29 @@ export default React.createClass({
             },
             installing: {
                 marginRight: '1rem',
+                paddingRight: '1rem',
                 marginTop: 16,
                 padding: 16,
-                float: 'left',
+                textAlign: 'center',
+                fontSize: 14,
+                fontWeight: 100,
             },
         };
-        const className = 'transition-mount transition-unmount' +
-            (this.state.mountSection ? ' transition-mount-active' : '') +
-            (this.state.unmountSection ? ' transition-unmount-active' : '');
 
         if (key === 'store') {
             return (
                 <div className="content-area">
-                    <AppStore appStore={this.state.appStore} transitionUnmount={this.state.unmountSection}/>
+                    <AppStore appStore={this.state.appStore}/>
                 </div>
             );
         }
 
         return (
             <div className="content-area">
-                <AppList installedApps={this.state.installedApps} uploadProgress={this.progress} transitionUnmount={this.state.unmountSection}/>
-                {this.state.installing ? (
-                    <Card style={styles.installing} className={'card card-up ' + className}>
-                        <CardText>
-                            <CircularProgress
-                                mode="indeterminate"
-                                color="#6688AA"
-                                value={this.state.progress}/>
-                            <br/>
-                            <br/>
-                            {d2.i18n.getTranslation('installing')}
-                        </CardText>
-                    </Card>
-                ) : undefined}
+                <AppList installedApps={this.state.installedApps} uploadProgress={this.progress}
+                         transitionUnmount={this.state.unmountSection}/>
                 {this.state.uploading ? (
-                    <Card style={styles.progress} className={'card card-up ' + className}>
+                    <Card style={styles.progress}>
                         <CardText>
                             {d2.i18n.getTranslation('uploading')}
                             <LinearProgress
@@ -136,6 +132,17 @@ export default React.createClass({
                                 value={this.state.progress}/>
                         </CardText>
                     </Card>
+                ) : undefined}
+                {this.state.installing ? (
+                    <div style={styles.installing}>
+                        <CircularProgress
+                            mode="indeterminate"
+                            color="#6688AA"
+                            size={0.75}
+                            value={this.state.progress}/>
+                        <br/><br/>
+                        {d2.i18n.getTranslation('installing')}
+                    </div>
                 ) : undefined}
             </div>
         );
@@ -147,11 +154,18 @@ export default React.createClass({
             {key: 'installed', label: d2.i18n.getTranslation('installed_apps')},
             {key: 'store', label: d2.i18n.getTranslation('app_store')},
         ];
+        const styles = {
+            snackbar: {
+                left: '2rem',
+                right: 'initial',
+            },
+        };
 
         return (
             <div className="app">
                 <HeaderBar lastUpdate={this.state.lastUpdate}/>
                 <Sidebar sections={sections} currentSection={this.state.section} onChangeSection={this.setSection}/>
+                <Snackbar message={this.state.snackbar || ''} autoHideDuration={1250} onRequestClose={this.closeSnackbar} open={!!this.state.snackbar} style={styles.snackbar} />
                 {this.renderSection(this.state.section)}
             </div>
         );
@@ -181,5 +195,13 @@ export default React.createClass({
                 this.setState({mountSection: false});
             }, 150);
         }, 150);
+    },
+
+    closeSnackbar() {
+        this.setState({snackbar: undefined});
+    },
+
+    showSnackbar(message) {
+        this.setState({snackbar: message});
     },
 });
