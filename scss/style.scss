@@ -5,7 +5,7 @@
 $left-bar-width: 256px;
 
 html {
-  background: #ffffff;
+  background: #f3f3f3;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -29,8 +29,37 @@ h1 {
 }
 
 .content-area {
-  padding-left: 3rem;
   margin-left: $left-bar-width;
-  max-width: 900px;
+  max-width: 939px;
   min-width: 400px;
+}
+
+.transition-mount,
+.transition-unmount {
+  transition: 150ms ease-out;
+  transform: translate(0,0) scale(1) rotateZ(0deg);
+  opacity: 1;
+
+  &.card {
+    transition-duration: 75ms;
+  }
+
+  &-active {
+    &.card-up {
+      transform: translate(0,-500px);
+      opacity: 0;
+    }
+    &.card-right {
+      transform: translate(500px);
+      opacity: 0;
+    }
+    &.card-down {
+      transform: translate(0,500px);
+      opacity: 0;
+    }
+    &.fab {
+      transform: translate(0,0) scale(0.0) rotateZ(-90deg);
+      opacity: 0.5;
+    }
+  }
 }

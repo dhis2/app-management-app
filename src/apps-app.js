@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import log from 'loglevel';
 
 import appStoreStore from './stores/appStore.store';
-import installedAppStore from './stores/installedApps.store';
+import installedAppStore from './stores/installedApp.store';
 
 import actions from './actions';
 
@@ -38,6 +38,8 @@ D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' 
     })
     .then(D2Library.init)
     .then(d2 => {
+        log.info('D2 initialised:', d2);
+        installedAppStore.setState(d2.system.installedApps);
         ReactDOM.render(
             <App
                 d2={d2}
@@ -46,7 +48,6 @@ D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' 
             />,
             document.getElementById('app')
         );
-        log.info('D2 initialised:', d2);
 
         actions.refreshApps();
     })

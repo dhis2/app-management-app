@@ -3,17 +3,17 @@ import React from 'react';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
-import RaisedButton from 'material-ui/lib/raised-button';
 import CardText from 'material-ui/lib/card/card-text';
+import FlatButton from 'material-ui/lib/flat-button';
 
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
-import AppTheme from '../theme';
 import actions from '../actions';
 
 export default React.createClass({
     propTypes: {
         appStore: React.PropTypes.object.isRequired,
+        transitionUnmount: React.PropTypes.bool,
     },
 
     contextTypes: {
@@ -29,6 +29,7 @@ export default React.createClass({
     getInitialState() {
         return {
             installing: undefined,
+            componentDidMount: false,
         };
     },
 
@@ -38,17 +39,24 @@ export default React.createClass({
         }
     },
 
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({componentDidMount: true});
+        }, 0);
+    },
+
     renderApps() {
         const d2 = this.context.d2;
         const styles = {
             card: {
-                width: 284,
+                width: 297,
                 float: 'left',
                 marginRight: '1rem',
                 marginBottom: '1rem',
             },
             cardTitle: {
-                background: AppTheme.baseTheme.palette.primary1Color,
+                background: '#5892BE',
+                fontWeight: 400,
             },
             cardTitleSubtitle: {
                 color: '#CCDDEE',
@@ -79,12 +87,12 @@ export default React.createClass({
                                         subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
                                         style={styles.cardTitle}
                                         titleColor="white"
-                                        subtitleStyle={styles.cardTitleSubtitle} />
+                                        subtitleStyle={styles.cardTitleSubtitle}/>
                             <CardText style={styles.cardText}>{app.description}</CardText>
                             <CardActions style={styles.actions}>
                                 {app.versions.map(version => {
                                     return (
-                                        <RaisedButton
+                                        <FlatButton
                                             key={version.id}
                                             style={styles.button}
                                             primary
@@ -110,13 +118,24 @@ export default React.createClass({
                 right: 0,
                 bottom: 0,
                 zIndex: 1000,
-                backgroundColor: 'rgba(255,255,255,0.4)',
+            },
+            card: {
+                marginTop: 8,
+                marginRight: '1rem',
+            },
+            cardTitle: {
+                background: '#5892BE',
+            },
+            cardTitleText: {
+                color: 'white',
+                fontSize: 28,
+                fontWeight: 100,
             },
             apps: {
                 paddingTop: '1rem',
             },
             description: {
-                padding: '1rem 0',
+                padding: '1rem',
                 color: 'gray',
                 borderRadius: 3,
                 clear: 'both',
@@ -125,9 +144,14 @@ export default React.createClass({
 
         return this.props.appStore.apps ? (
             <div>
-                {storeDescription.length > 0 ? (
-                    <div style={styles.description}>{storeDescription}</div>
-                ) : undefined}
+                <Card style={styles.card}>
+                    <CardHeader title={this.props.appStore.name}
+                                style={styles.cardTitle}
+                                titleStyle={styles.cardTitleText}/>
+                    {storeDescription.length > 0 ? (
+                        <CardText style={styles.description}>{storeDescription}</CardText>
+                    ) : undefined}
+                </Card>
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (
