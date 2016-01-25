@@ -121,7 +121,7 @@ export default React.createClass({
         return (
             <div className="content-area">
                 <AppList installedApps={this.state.installedApps} uploadProgress={this.progress}
-                         transitionUnmount={this.state.unmountSection}/>
+                         transitionUnmount={this.state.unmountSection} showUpload={!this.state.uploading} />
                 {this.state.uploading ? (
                     <Card style={styles.progress}>
                         <CardText>

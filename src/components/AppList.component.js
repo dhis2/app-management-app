@@ -20,8 +20,9 @@ import actions from '../actions';
 export default React.createClass({
     propTypes: {
         installedApps: React.PropTypes.array.isRequired,
-        uploadProgress: React.PropTypes.func,
-        transitionUnmount: React.PropTypes.bool,
+        uploadProgress: React.PropTypes.func.isRequired,
+        transitionUnmount: React.PropTypes.bool.isRequired,
+        showUpload: React.PropTypes.bool.isRequired,
     },
 
     contextTypes: {
@@ -43,6 +44,7 @@ export default React.createClass({
     getInitialState() {
         return {
             componentDidMount: false,
+            uploading: false,
         };
     },
 
@@ -111,7 +113,7 @@ export default React.createClass({
 
         const className = 'transition-mount transition-unmount' +
             (this.state.componentDidMount ? '' : ' transition-mount-active') +
-            (this.props.transitionUnmount ? ' transition-unmount-active' : '');
+            (this.props.transitionUnmount || !this.props.showUpload ? ' transition-unmount-active' : '');
 
         return (
             <div>
