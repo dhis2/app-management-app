@@ -2,8 +2,8 @@ import {Action} from 'd2-flux';
 import {getInstance as getD2} from 'd2/lib/d2';
 import log from 'loglevel';
 
-import installedAppStore from './stores/installedApps.store';
 import appStoreStore from './stores/appStore.store';
+import installedAppStore from './stores/installedApp.store';
 
 const actions = {
     // App management actions
