@@ -1,6 +1,6 @@
 {
   "name": "app-management-app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Applications management app for DHIS2",
   "main": "index.html",
   "scripts": {
