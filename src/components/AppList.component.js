@@ -107,6 +107,7 @@ export default React.createClass({
             cardTitleText: {
                 fontSize: 28,
                 fontWeight: 100,
+                color: 'white',
             },
         };
         const baseUrl = d2.Api.getApi().baseUrl;
@@ -125,8 +126,7 @@ export default React.createClass({
                     <Card style={styles.card}>
                         <CardHeader title={d2.i18n.getTranslation('installed_applications')}
                                     style={styles.cardTitle}
-                                    titleStyle={styles.cardTitleText}
-                                    titleColor="white" />
+                                    titleStyle={styles.cardTitleText} />
                         <CardText>
                             <List style={styles.container}>{
                                 this.props.installedApps.map(app => {

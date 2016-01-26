@@ -1,7 +1,6 @@
 import React from 'react';
 import HeaderBar from 'd2-ui/lib/header-bar/HeaderBar.component';
-
-import Sidebar from './Sidebar.component';
+import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
 
 import CircularProgress from 'material-ui/lib/circular-progress';
 import LinearProgress from 'material-ui/lib/linear-progress';
@@ -56,7 +55,10 @@ export default React.createClass({
         }));
 
         this.subscriptions.push(this.props.appStore.subscribe(appStore => {
-            this.setState({appStore: appStore, installing: appStore.installing !== undefined && appStore.installing > 0});
+            this.setState({
+                appStore: appStore,
+                installing: appStore.installing !== undefined && appStore.installing > 0,
+            });
         }));
 
         this.subscriptions.push(actions.installApp.subscribe(() => {
@@ -121,7 +123,7 @@ export default React.createClass({
         return (
             <div className="content-area">
                 <AppList installedApps={this.state.installedApps} uploadProgress={this.progress}
-                         transitionUnmount={this.state.unmountSection} showUpload={!this.state.uploading} />
+                         transitionUnmount={this.state.unmountSection} showUpload={!this.state.uploading}/>
                 {this.state.uploading ? (
                     <Card style={styles.progress}>
                         <CardText>
@@ -165,7 +167,8 @@ export default React.createClass({
             <div className="app">
                 <HeaderBar lastUpdate={this.state.lastUpdate}/>
                 <Sidebar sections={sections} currentSection={this.state.section} onChangeSection={this.setSection}/>
-                <Snackbar message={this.state.snackbar || ''} autoHideDuration={1250} onRequestClose={this.closeSnackbar} open={!!this.state.snackbar} style={styles.snackbar} />
+                <Snackbar message={this.state.snackbar || ''} autoHideDuration={1250}
+                          onRequestClose={this.closeSnackbar} open={!!this.state.snackbar} style={styles.snackbar}/>
                 {this.renderSection(this.state.section)}
             </div>
         );
