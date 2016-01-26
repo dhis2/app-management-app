@@ -26,18 +26,18 @@
   },
   "homepage": "https://github.com/dhis2/app-management-app#readme",
   "dependencies": {
-    "jquery": "2.1.4"
+    "jquery": "2.2.0"
   },
   "devDependencies": {
     "babel": "5.8.34",
     "babel-core": "5.8.33",
     "babel-eslint": "4.1.6",
     "babel-loader": "5.4.0",
-    "css-loader": "0.23.0",
-    "d2": "0.0.22",
-    "d2-flux": "0.4.0",
-    "d2-ui": "0.0.9",
-    "eslint": "",
+    "css-loader": "0.23.1",
+    "d2": "0.0.23",
+    "d2-flux": "0.5.0",
+    "d2-ui": "0.0.10",
+    "eslint": "1.10.3",
     "exports-loader": "0.6.2",
     "loglevel": "1.4.0",
     "material-ui": "0.14.2",
@@ -48,9 +48,9 @@
     "react-tap-event-plugin": "0.2.1",
     "sass-loader": "3.1.2",
     "style-loader": "0.13.0",
-    "susy": "2.2.10",
-    "webpack": "1.12.9",
-    "webpack-dev-server": "1.14.0"
+    "susy": "2.2.12",
+    "webpack": "1.12.12",
+    "webpack-dev-server": "1.14.1"
   },
   "pre-commit": [
     "lint",

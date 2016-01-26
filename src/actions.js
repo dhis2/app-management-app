@@ -84,7 +84,9 @@ actions.loadAppStore.subscribe(() => {
 actions.installAppVersion.subscribe(params => {
     const versionId = params.data[1];
     const appStoreState = appStoreStore.getState();
-    appStoreStore.setState(Object.assign(appStoreState, {installing: appStoreState.installing ? appStoreState.installing + 1 : 1}));
+    appStoreStore.setState(Object.assign(appStoreState, {
+        installing: appStoreState.installing ? appStoreState.installing + 1 : 1,
+    }));
 
     getD2().then(d2 => {
         actions.showSnackbarMessage(d2.i18n.getTranslation('installing_app_from_app_store'));
