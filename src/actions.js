@@ -17,6 +17,9 @@ const actions = {
 
     // Snackbar
     showSnackbarMessage: Action.create('Show Snackbar message'),
+
+    // Navigation
+    navigateToSection: Action.create('Navigate to section'),
 };
 
 

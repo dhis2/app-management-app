@@ -32,6 +32,9 @@ h1 {
   margin-left: $left-bar-width;
   max-width: 939px;
   min-width: 400px;
+  a {
+    color: #5892BE;
+  }
 }
 
 .transition-mount,

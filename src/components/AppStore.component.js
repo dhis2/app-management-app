@@ -8,6 +8,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
+import AppTheme from '../theme';
 import actions from '../actions';
 
 export default React.createClass({
@@ -119,6 +120,12 @@ export default React.createClass({
                 bottom: 0,
                 zIndex: 1000,
             },
+            header: {
+                fontSize: 24,
+                fontWeight: 100,
+                color: AppTheme.rawTheme.palette.textColor,
+                padding: '16px 0 5px 16px',
+            },
             card: {
                 marginTop: 8,
                 marginRight: '1rem',
@@ -139,19 +146,14 @@ export default React.createClass({
                 color: 'gray',
                 borderRadius: 3,
                 clear: 'both',
+                fontWeight: 100,
             },
         };
 
         return this.props.appStore.apps ? (
             <div>
-                <Card style={styles.card}>
-                    <CardHeader title={this.props.appStore.name}
-                                style={styles.cardTitle}
-                                titleStyle={styles.cardTitleText}/>
-                    {storeDescription.length > 0 ? (
-                        <CardText style={styles.description}>{storeDescription}</CardText>
-                    ) : undefined}
-                </Card>
+                <div style={styles.header}>{this.props.appStore.name}</div>
+                <div style={styles.description} dangerouslySetInnerHTML={this.parseDescription(storeDescription)}></div>
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (
@@ -159,6 +161,18 @@ export default React.createClass({
                 <LoadingMask />
             </div>
         );
+    },
+
+    parseDescription(description) {
+        return {
+            __html: description
+                // Linkify email addresses
+                .replace(/([\w\.]*\w@[\w\.]*\w\.[a-zA-Z]{2,})/g, '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>')
+                // Linkify http:// and https:// links
+                .replace(/(https?:\/\/[\w\.\/]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
+                // Convert newlines to HTML line breaks
+                .replace(/\n/g, '\n<br/>'),
+        };
     },
 
     install(uid) {

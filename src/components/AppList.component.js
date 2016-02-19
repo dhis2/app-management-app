@@ -9,12 +9,12 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 
 import Card from 'material-ui/lib/card/card';
-import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
 
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import FontIcon from 'material-ui/lib/font-icon';
 
+import AppTheme from '../theme';
 import actions from '../actions';
 
 export default React.createClass({
@@ -23,6 +23,7 @@ export default React.createClass({
         uploadProgress: React.PropTypes.func.isRequired,
         transitionUnmount: React.PropTypes.bool.isRequired,
         showUpload: React.PropTypes.bool.isRequired,
+        appStore: React.PropTypes.object.isRequired,
     },
 
     contextTypes: {
@@ -51,6 +52,12 @@ export default React.createClass({
     render() {
         const d2 = this.context.d2;
         const styles = {
+            header: {
+                fontSize: 24,
+                fontWeight: 100,
+                color: AppTheme.rawTheme.palette.textColor,
+                padding: '16px 0 5px 16px',
+            },
             container: {
                 borderBottom: '1px solid #dddddd',
                 paddingBottom: 0,
@@ -95,19 +102,10 @@ export default React.createClass({
             appIcon: {
                 borderRadius: 3,
             },
-            upload: {
-            },
+            upload: {},
             card: {
                 marginTop: 8,
                 marginRight: '1rem',
-            },
-            cardTitle: {
-                background: '#5892BE',
-            },
-            cardTitleText: {
-                fontSize: 28,
-                fontWeight: 100,
-                color: 'white',
             },
         };
         const baseUrl = d2.Api.getApi().baseUrl;
@@ -121,32 +119,33 @@ export default React.createClass({
                 {this.props.installedApps.length === 0 ? (
                     <div style={{marginTop: 64}}>
                         <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
+                        <div style={styles.noApps}><a href="#" onClick={() => { actions.navigateToSection('store'); }}>{this.props.appStore.name}</a></div>
                     </div>
                 ) : (
-                    <Card style={styles.card}>
-                        <CardHeader title={d2.i18n.getTranslation('installed_applications')}
-                                    style={styles.cardTitle}
-                                    titleStyle={styles.cardTitleText} />
-                        <CardText>
-                            <List style={styles.container}>{
-                                this.props.installedApps.map(app => {
-                                    return (
-                                        <ListItem
-                                            key={app.folderName}
-                                            primaryText={app.name} secondaryText={'v' + app.version}
-                                            style={styles.app}
-                                            onTouchTap={this.open.bind(this, app.launchUrl)}
-                                            leftAvatar={<Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
-                                            rightIconButton={
-                                                <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
-                                                    <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
-                                                </IconMenu>
-                                            }/>
-                                    );
-                                })
-                            }</List>
-                        </CardText>
-                    </Card>
+                    <div>
+                        <div style={styles.header}>{d2.i18n.getTranslation('installed_applications')}</div>
+                        <Card style={styles.card}>
+                            <CardText>
+                                <List style={styles.container}>{
+                                    this.props.installedApps.map(app => {
+                                        return (
+                                            <ListItem
+                                                key={app.folderName}
+                                                primaryText={app.name} secondaryText={'v' + app.version}
+                                                style={styles.app}
+                                                onTouchTap={this.open.bind(this, app.launchUrl)}
+                                                leftAvatar={<Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
+                                                rightIconButton={
+                                                    <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
+                                                        <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
+                                                    </IconMenu>
+                                                }/>
+                                        );
+                                    })
+                                }</List>
+                            </CardText>
+                        </Card>
+                    </div>
                 )}
                 <div style={styles.upload}>
                     <div style={styles.fab}>

@@ -81,6 +81,10 @@ export default React.createClass({
             this.setSection('installed');
         }));
 
+        this.subscriptions.push(actions.navigateToSection.subscribe(params => {
+            this.setSection(params.data);
+        }));
+
         actions.loadAppStore();
 
         setTimeout(() => {
@@ -122,8 +126,11 @@ export default React.createClass({
 
         return (
             <div className="content-area">
-                <AppList installedApps={this.state.installedApps} uploadProgress={this.progress}
-                         transitionUnmount={this.state.unmountSection} showUpload={!this.state.uploading}/>
+                <AppList installedApps={this.state.installedApps}
+                         uploadProgress={this.progress}
+                         transitionUnmount={this.state.unmountSection}
+                         showUpload={!this.state.uploading}
+                         appStore={this.state.appStore} />
                 {this.state.uploading ? (
                     <Card style={styles.progress}>
                         <CardText>
@@ -167,7 +174,7 @@ export default React.createClass({
             <div className="app">
                 <HeaderBar lastUpdate={this.state.lastUpdate}/>
                 <Sidebar sections={sections} currentSection={this.state.section} onChangeSection={this.setSection}/>
-                <Snackbar message={this.state.snackbar || ''} autoHideDuration={1250}
+                <Snackbar message={this.state.snackbar || ''} autoHideDuration={2500}
                           onRequestClose={this.closeSnackbar} open={!!this.state.snackbar} style={styles.snackbar}/>
                 {this.renderSection(this.state.section)}
             </div>
