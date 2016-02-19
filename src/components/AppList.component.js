@@ -134,13 +134,18 @@ export default React.createClass({
                             <CardText>
                                 <List style={styles.container}>{
                                     this.props.installedApps.map(app => {
+                                        const avatar = app.icons && app.icons['48'] ? (
+                                            <Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />
+                                        ) : (
+                                            <Avatar backgroundColor={AppTheme.rawTheme.palette.primary1Color} icon={<FontIcon className="material-icons">folder</FontIcon>}/>
+                                        );
                                         return (
                                             <ListItem
                                                 key={app.folderName}
                                                 primaryText={app.name} secondaryText={'v' + app.version}
                                                 style={styles.app}
                                                 onTouchTap={this.open.bind(this, app.launchUrl)}
-                                                leftAvatar={<Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />}
+                                                leftAvatar={avatar}
                                                 rightIconButton={
                                                     <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
                                                         <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
