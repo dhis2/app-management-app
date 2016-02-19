@@ -77,7 +77,7 @@ export default React.createClass({
             noApps: {
                 marginTop: 16,
                 textAlign: 'center',
-                fontWeight: 100,
+                fontWeight: 300,
                 fontSize: 15,
             },
             app: {
@@ -119,7 +119,13 @@ export default React.createClass({
                 {this.props.installedApps.length === 0 ? (
                     <div style={{marginTop: 64}}>
                         <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
-                        <div style={styles.noApps}><a href="#" onClick={() => { actions.navigateToSection('store'); }}>{this.props.appStore.name}</a></div>
+                        {this.props.appStore.name ? (
+                            <div style={styles.noApps}>
+                                <a href="#" onClick={() => { actions.navigateToSection('store'); }}>
+                                    <i className="material-icons" style={{verticalAlign: 'bottom'}}>store</i> {this.props.appStore.name}
+                                </a>
+                            </div>
+                        ) : undefined}
                     </div>
                 ) : (
                     <div>

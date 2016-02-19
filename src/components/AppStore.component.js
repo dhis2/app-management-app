@@ -61,7 +61,7 @@ export default React.createClass({
             },
             cardTitleSubtitle: {
                 color: '#CCDDEE',
-                fontWeight: 100,
+                fontWeight: 300,
                 fontSize: 13,
             },
             cardText: {
@@ -122,7 +122,7 @@ export default React.createClass({
             },
             header: {
                 fontSize: 24,
-                fontWeight: 100,
+                fontWeight: 300,
                 color: AppTheme.rawTheme.palette.textColor,
                 padding: '16px 0 5px 16px',
             },
@@ -136,7 +136,7 @@ export default React.createClass({
             cardTitleText: {
                 color: 'white',
                 fontSize: 28,
-                fontWeight: 100,
+                fontWeight: 300,
             },
             apps: {
                 paddingTop: '1rem',
@@ -146,7 +146,7 @@ export default React.createClass({
                 color: 'gray',
                 borderRadius: 3,
                 clear: 'both',
-                fontWeight: 100,
+                fontWeight: 300,
             },
         };
 
