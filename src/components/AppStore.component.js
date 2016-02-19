@@ -5,6 +5,8 @@ import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardText from 'material-ui/lib/card/card-text';
 import FlatButton from 'material-ui/lib/flat-button';
+import FontIcon from 'material-ui/lib/font-icon';
+import Avatar from 'material-ui/lib/avatar';
 
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
@@ -78,6 +80,11 @@ export default React.createClass({
                 marginLeft: 8,
             },
         };
+        const avatar = (
+            <Avatar
+                backgroundColor={AppTheme.rawTheme.palette.primary1Color}
+                icon={<FontIcon className="material-icons">folder</FontIcon>} />
+        );
 
         return (
             <div>
@@ -86,6 +93,7 @@ export default React.createClass({
                         <Card style={styles.card} key={app.name}>
                             <CardHeader title={app.name}
                                         subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
+                                        avatar={avatar}
                                         style={styles.cardTitle}
                                         titleColor="white"
                                         subtitleStyle={styles.cardTitleSubtitle}/>
