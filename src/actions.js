@@ -35,8 +35,8 @@ actions.installApp.subscribe(params => {
                 actions.showSnackbarMessage(d2.i18n.getTranslation('app_installed'));
                 actions.refreshApps();
             }).catch(err => {
-                actions.showSnackbarMessage(d2.i18n.getTranslation('failed_to_install_app') + ': ' + err.message);
-                log.error('Failed to install app:', err.message);
+                actions.showSnackbarMessage(d2.i18n.getTranslation('failed_to_install_app') + (err.message ? ': ' + err.message : ''));
+                log.error('Failed to install app:', err.message || err);
                 actions.refreshApps();
             });
     });
