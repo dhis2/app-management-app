@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Third party
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import log from 'loglevel';
