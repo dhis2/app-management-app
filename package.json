@@ -8,7 +8,9 @@
     "validate": "npm ls --depth 0",
     "start": "webpack-dev-server",
     "prebuild": "rm -rf build",
-    "build": "webpack --config webpack.config.prod.js && cp ./index.html build && cp -r i18n build/ && cp ./node_modules/babel-core/browser-polyfill.min.js build && cp ./node_modules/jquery/dist/jquery.min.js build && cp ./manifest.webapp build"
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "cp -r index.html *.png i18n/ node_modules/babel-core/browser-polyfill.min.js node_modules/jquery/dist/jquery.min.js build/ && npm run manifest",
+    "manifest": "d2-manifest package.json build/manifest.webapp"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,7 @@
     "HISP",
     "apps"
   ],
-  "author": "Nicolay Ramm <nicolayr@ifi.uio.no>",
+  "author": "Nicolay Ramm <nicolay@dhis2.org> (https://www.dhis2.org)",
   "license": "BSD-3-Clause",
   "bugs": {
     "url": "https://github.com/dhis2/app-management-app/issues"
@@ -36,7 +38,8 @@
     "css-loader": "0.23.1",
     "d2": "0.0.24",
     "d2-flux": "0.5.0",
-    "d2-ui": "0.0.14",
+    "d2-manifest": "^1.0.0-1",
+    "d2-ui": "0.0.16-0",
     "eslint": "1.10.3",
     "exports-loader": "0.6.3",
     "loglevel": "1.4.0",
@@ -55,5 +58,17 @@
   "pre-commit": [
     "lint",
     "validate"
-  ]
+  ],
+  "manifest.webapp": {
+    "name": "DHIS 2 Application Management",
+    "icons": {
+      "48": "dhis-web-app-management.png"
+    },
+    "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
+    "activities": {
+      "dhis": {
+        "href": ".."
+      }
+    }
+  }
 }
