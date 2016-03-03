@@ -42,7 +42,7 @@
     "d2": "0.0.24",
     "d2-flux": "0.5.0",
     "d2-manifest": "^1.0.0-1",
-    "d2-ui": "0.0.16-0",
+    "d2-ui": "0.0.16-1",
     "eslint": "^2.2.0",
     "eslint-config-dhis2": "^2.0.1",
     "eslint-plugin-react": "^4.1.0",
