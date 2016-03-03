@@ -1,5 +1,5 @@
-import {Action} from 'd2-flux';
-import {getInstance as getD2} from 'd2/lib/d2';
+import { Action } from 'd2-flux';
+import { getInstance as getD2 } from 'd2/lib/d2';
 import log from 'loglevel';
 
 import appStoreStore from './stores/appStore.store';
@@ -98,7 +98,7 @@ actions.installAppVersion.subscribe(params => {
             .then(apps => {
                 actions.showSnackbarMessage(d2.i18n.getTranslation('app_installed'));
                 const appStoreState2 = appStoreStore.getState();
-                appStoreStore.setState(Object.assign(appStoreState2, {installing: appStoreState2.installing - 1}));
+                appStoreStore.setState(Object.assign(appStoreState2, { installing: appStoreState2.installing - 1 }));
                 installedAppStore.setState(apps);
                 params.complete(apps);
             })

@@ -4,7 +4,7 @@
   "description": "Applications management app for DHIS2",
   "main": "index.html",
   "scripts": {
-    "lint": "eslint src `git diff --cached --name-only | grep \\.js$`",
+    "lint": "eslint --fix src `git diff --cached --name-only | grep \\.js$`",
     "validate": "npm ls --depth 0",
     "start": "webpack-dev-server",
     "prebuild": "rm -rf build",

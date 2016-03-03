@@ -44,7 +44,7 @@ export default React.createClass({
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({componentDidMount: true});
+            this.setState({ componentDidMount: true });
         }, 0);
     },
 
@@ -96,7 +96,7 @@ export default React.createClass({
                                         avatar={avatar}
                                         style={styles.cardTitle}
                                         titleColor="white"
-                                        subtitleStyle={styles.cardTitleSubtitle}/>
+                                        subtitleStyle={styles.cardTitleSubtitle} />
                             <CardText style={styles.cardText}>{app.description}</CardText>
                             <CardActions style={styles.actions}>
                                 {app.versions.map(version => {
@@ -106,7 +106,7 @@ export default React.createClass({
                                             style={styles.button}
                                             primary
                                             onClick={this.install.bind(this, [app.name, version.id])}
-                                            label={d2.i18n.getTranslation('install') + ' v' + version.version}/>
+                                            label={d2.i18n.getTranslation('install') + ' v' + version.version} />
                                     );
                                 })}
                             </CardActions>

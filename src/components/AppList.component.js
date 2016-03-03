@@ -32,7 +32,7 @@ export default React.createClass({
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({componentDidMount: true});
+            this.setState({ componentDidMount: true });
         }, 0);
 
         actions.installApp.subscribe(() => {
@@ -117,12 +117,12 @@ export default React.createClass({
         return (
             <div>
                 {this.props.installedApps.length === 0 ? (
-                    <div style={{marginTop: 64}}>
+                    <div style={{ marginTop: 64 }}>
                         <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
                         {this.props.appStore.name ? (
                             <div style={styles.noApps}>
                                 <a href="#" onClick={() => { actions.navigateToSection('store'); }}>
-                                    <i className="material-icons" style={{verticalAlign: 'bottom'}}>store</i> {this.props.appStore.name}
+                                    <i className="material-icons" style={{ verticalAlign: 'bottom' }}>store</i> {this.props.appStore.name}
                                 </a>
                             </div>
                         ) : undefined}
@@ -137,7 +137,7 @@ export default React.createClass({
                                         const avatar = app.icons && app.icons['48'] ? (
                                             <Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />
                                         ) : (
-                                            <Avatar backgroundColor={AppTheme.rawTheme.palette.primary1Color} icon={<FontIcon className="material-icons">folder</FontIcon>}/>
+                                            <Avatar backgroundColor={AppTheme.rawTheme.palette.primary1Color} icon={<FontIcon className="material-icons">folder</FontIcon>} />
                                         );
                                         return (
                                             <ListItem
@@ -147,10 +147,10 @@ export default React.createClass({
                                                 onTouchTap={this.open.bind(this, app.launchUrl)}
                                                 leftAvatar={avatar}
                                                 rightIconButton={
-                                                    <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080"/></IconButton>}>
+                                                    <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080" /></IconButton>}>
                                                         <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
                                                     </IconMenu>
-                                                }/>
+                                                } />
                                         );
                                     })
                                 }</List>
@@ -168,8 +168,8 @@ export default React.createClass({
                             </FloatingActionButton>
                         </div>
                     </div>
-                    <form ref={(ref) => { this.form = ref; }} style={{visibility: 'hidden'}}>
-                        <input type="file" ref="fileInput" onChange={this.upload}/>
+                    <form ref={(ref) => { this.form = ref; }} style={{ visibility: 'hidden' }}>
+                        <input type="file" ref="fileInput" onChange={this.upload} />
                     </form>
                 </div>
             </div>
