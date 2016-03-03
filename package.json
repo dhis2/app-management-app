@@ -9,7 +9,7 @@
     "start": "webpack-dev-server",
     "prebuild": "rm -rf build",
     "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "cp -r index.html *.png i18n/ node_modules/babel-core/browser-polyfill.min.js node_modules/jquery/dist/jquery.min.js build/ && npm run manifest",
+    "postbuild": "cp -r index.html *.png i18n node_modules/jquery/dist/jquery.min.js build/ && npm run manifest",
     "manifest": "d2-manifest package.json build/manifest.webapp"
   },
   "repository": {
