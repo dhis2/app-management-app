@@ -28,12 +28,12 @@ log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.WARN : log.level
 
 D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' : 'dev_manifest.webapp')
     .then(manifest => {
-        D2Library.config.baseUrl = manifest.getBaseUrl() + '/api';
+        D2Library.config.baseUrl = `${manifest.getBaseUrl()}/api`;
     })
     .then(D2Library.getUserSettings)
     .then(userSettings => {
         if (userSettings.uiLocale !== 'en') {
-            D2Library.config.i18n.sources.add('i18n/i18n_module_' + userSettings.uiLocale + '.properties');
+            D2Library.config.i18n.sources.add(`i18n/i18n_module_${userSettings.uiLocale}.properties`);
         }
         D2Library.config.i18n.sources.add('i18n/i18n_module_en.properties');
     })

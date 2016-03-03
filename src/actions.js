@@ -34,8 +34,13 @@ actions.installApp.subscribe(params => {
             .then(() => {
                 actions.showSnackbarMessage(d2.i18n.getTranslation('app_installed'));
                 actions.refreshApps();
-            }).catch(err => {
-                actions.showSnackbarMessage(d2.i18n.getTranslation('failed_to_install_app') + (err.message ? ': ' + err.message : ''));
+            })
+            .catch(err => {
+                let message = d2.i18n.getTranslation('failed_to_install_app');
+                if (err.message) {
+                    message += `: ${err.message}`;
+                }
+                actions.showSnackbarMessage(message);
                 log.error('Failed to install app:', err.message || err);
                 actions.refreshApps();
             });
@@ -47,7 +52,7 @@ actions.installApp.subscribe(params => {
  * Uninstall app
  */
 actions.uninstallApp.subscribe(params => {
-    const appKey = params.data;
+    const appKey = params.data[0];
     getD2().then(d2 => {
         d2.system.uninstallApp(appKey).then(() => {
             actions.showSnackbarMessage(d2.i18n.getTranslation('app_removed'));
@@ -85,7 +90,7 @@ actions.loadAppStore.subscribe(() => {
  * Install app version from the app store
  */
 actions.installAppVersion.subscribe(params => {
-    const versionId = params.data[1];
+    const versionId = params.data[0];
     const appStoreState = appStoreStore.getState();
     appStoreStore.setState(Object.assign(appStoreState, {
         installing: appStoreState.installing ? appStoreState.installing + 1 : 1,
@@ -103,7 +108,9 @@ actions.installAppVersion.subscribe(params => {
                 params.complete(apps);
             })
             .catch(err => {
-                actions.showSnackbarMessage(d2.i18n.getTranslation('failed_to_install_app_from_app_store') + ': ' + err);
+                actions.showSnackbarMessage(
+                    `${d2.i18n.getTranslation('failed_to_install_app_from_app_store')}: ${err}`
+                );
                 log.error(err);
                 params.error(err);
             });

@@ -13,6 +13,9 @@ import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 import AppTheme from '../theme';
 import actions from '../actions';
 
+
+// TODO: Rewrite as ES6 class
+/* eslint-disable react/prefer-es6-class */
 export default React.createClass({
     propTypes: {
         appStore: React.PropTypes.object.isRequired,
@@ -46,6 +49,21 @@ export default React.createClass({
         setTimeout(() => {
             this.setState({ componentDidMount: true });
         }, 0);
+    },
+
+    parseDescription(description) {
+        return {
+            __html: description
+                // Linkify email addresses
+                .replace(
+                    /([\w\.]*\w@[\w\.]*\w\.[a-zA-Z]{2,})/g,
+                    '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>'
+                )
+                // Linkify http:// and https:// links
+                .replace(/(https?:\/\/[\w\.\/]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
+                // Convert newlines to HTML line breaks
+                .replace(/\n/g, '\n<br/>'),
+        };
     },
 
     renderApps() {
@@ -83,42 +101,45 @@ export default React.createClass({
         const avatar = (
             <Avatar
                 backgroundColor={AppTheme.rawTheme.palette.primary1Color}
-                icon={<FontIcon className="material-icons">folder</FontIcon>} />
+                icon={<FontIcon className="material-icons">folder</FontIcon>}
+            />
         );
 
         return (
             <div>
-                {this.props.appStore.apps.map(app => {
-                    return (
-                        <Card style={styles.card} key={app.name}>
-                            <CardHeader title={app.name}
-                                        subtitle={d2.i18n.getTranslation('by') + ' ' + app.developer}
-                                        avatar={avatar}
-                                        style={styles.cardTitle}
-                                        titleColor="white"
-                                        subtitleStyle={styles.cardTitleSubtitle} />
-                            <CardText style={styles.cardText}>{app.description}</CardText>
-                            <CardActions style={styles.actions}>
-                                {app.versions.map(version => {
-                                    return (
-                                        <FlatButton
-                                            key={version.id}
-                                            style={styles.button}
-                                            primary
-                                            onClick={this.install.bind(this, [app.name, version.id])}
-                                            label={d2.i18n.getTranslation('install') + ' v' + version.version} />
-                                    );
-                                })}
-                            </CardActions>
-                        </Card>
-                    );
-                })}
+                {this.props.appStore.apps.map(app => (
+                    <Card style={styles.card} key={app.name}>
+                        <CardHeader
+                            title={app.name}
+                            subtitle={`${d2.i18n.getTranslation('by')} ${app.developer}`}
+                            avatar={avatar}
+                            style={styles.cardTitle}
+                            titleColor="white"
+                            subtitleStyle={styles.cardTitleSubtitle}
+                        />
+                        <CardText style={styles.cardText}>{app.description}</CardText>
+                        <CardActions style={styles.actions}>
+                            {app.versions.map(version => {
+                                const install = actions.installAppVersion.bind(null, version.id);
+                                return (
+                                    <FlatButton
+                                        key={version.id}
+                                        style={styles.button}
+                                        primary
+                                        onClick={install}
+                                        label={`${d2.i18n.getTranslation('install')} v${version.version}`}
+                                    />
+                                );
+                            })}
+                        </CardActions>
+                    </Card>
+                ))}
             </div>
         );
     },
 
     render() {
-        const storeDescription = ((this.props.appStore.description || '') + '').trim();
+        const storeDescription = this.props.appStore.description || '';
         const styles = {
             loadingMaskContainer: {
                 position: 'fixed',
@@ -169,21 +190,5 @@ export default React.createClass({
                 <LoadingMask />
             </div>
         );
-    },
-
-    parseDescription(description) {
-        return {
-            __html: description
-                // Linkify email addresses
-                .replace(/([\w\.]*\w@[\w\.]*\w\.[a-zA-Z]{2,})/g, '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>')
-                // Linkify http:// and https:// links
-                .replace(/(https?:\/\/[\w\.\/]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
-                // Convert newlines to HTML line breaks
-                .replace(/\n/g, '\n<br/>'),
-        };
-    },
-
-    install(uid) {
-        actions.installAppVersion(uid);
     },
 });

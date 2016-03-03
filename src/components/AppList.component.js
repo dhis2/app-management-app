@@ -17,6 +17,9 @@ import FontIcon from 'material-ui/lib/font-icon';
 import AppTheme from '../theme';
 import actions from '../actions';
 
+
+// TODO: Rewrite as ES6 class
+/* eslint-disable react/prefer-es6-class */
 export default React.createClass({
     propTypes: {
         installedApps: React.PropTypes.array.isRequired,
@@ -28,6 +31,13 @@ export default React.createClass({
 
     contextTypes: {
         d2: React.PropTypes.object,
+    },
+
+    getInitialState() {
+        return {
+            componentDidMount: false,
+            uploading: false,
+        };
     },
 
     componentDidMount() {
@@ -42,13 +52,22 @@ export default React.createClass({
         });
     },
 
-    getInitialState() {
-        return {
-            componentDidMount: false,
-            uploading: false,
-        };
+    uploadAction(e) {
+        this.refs.fileInput.click(e);
     },
 
+    upload(e) {
+        actions.installApp(e.target.files[0], this.props.uploadProgress);
+    },
+
+    openStore() {
+        actions.navigateToSection('store');
+    },
+
+    // What's wrong with a little complexity?
+    // No seriously this function is a mess..
+    // TODO: Separate out renderInstalledApps()
+    /* eslint-disable complexity */
     render() {
         const d2 = this.context.d2;
         const styles = {
@@ -109,10 +128,11 @@ export default React.createClass({
             },
         };
         const baseUrl = d2.Api.getApi().baseUrl;
+        const setFormRef = (ref) => { this.form = ref; };
 
-        const className = 'transition-mount transition-unmount' +
-            (this.state.componentDidMount ? '' : ' transition-mount-active') +
-            (this.props.transitionUnmount || !this.props.showUpload ? ' transition-unmount-active' : '');
+        const className = `transition-mount transition-unmount
+            ${(this.state.componentDidMount ? '' : ' transition-mount-active')}
+            ${(this.props.transitionUnmount || !this.props.showUpload ? ' transition-unmount-active' : '')}`;
 
         return (
             <div>
@@ -121,8 +141,9 @@ export default React.createClass({
                         <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
                         {this.props.appStore.name ? (
                             <div style={styles.noApps}>
-                                <a href="#" onClick={() => { actions.navigateToSection('store'); }}>
-                                    <i className="material-icons" style={{ verticalAlign: 'bottom' }}>store</i> {this.props.appStore.name}
+                                <a href="#" onClick={this.openStore}>
+                                    <i className="material-icons" style={{ verticalAlign: 'bottom' }}>store</i>
+                                    {this.props.appStore.name}
                                 </a>
                             </div>
                         ) : undefined}
@@ -134,23 +155,36 @@ export default React.createClass({
                             <CardText>
                                 <List style={styles.container}>{
                                     this.props.installedApps.map(app => {
+                                        const uninstall = actions.uninstallApp.bind(null, app.folderName);
+                                        const moreIcon = <IconButton><MoreVertIcon color="#808080" /></IconButton>;
+                                        const open = window.open.bind(null, app.launchUrl);
+                                        const rightIconButton = (
+                                            <IconMenu iconButtonElement={moreIcon}>
+                                                <MenuItem onClick={uninstall}>
+                                                    Uninstall
+                                                </MenuItem>
+                                            </IconMenu>
+                                        );
                                         const avatar = app.icons && app.icons['48'] ? (
-                                            <Avatar style={styles.appIcon} src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')} />
+                                            <Avatar
+                                                style={styles.appIcon}
+                                                src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')}
+                                            />
                                         ) : (
-                                            <Avatar backgroundColor={AppTheme.rawTheme.palette.primary1Color} icon={<FontIcon className="material-icons">folder</FontIcon>} />
+                                            <Avatar
+                                                backgroundColor={AppTheme.rawTheme.palette.primary1Color}
+                                                icon={<FontIcon className="material-icons">folder</FontIcon>}
+                                            />
                                         );
                                         return (
                                             <ListItem
                                                 key={app.folderName}
-                                                primaryText={app.name} secondaryText={'v' + app.version}
+                                                primaryText={app.name} secondaryText={`v${app.version}`}
                                                 style={styles.app}
-                                                onTouchTap={this.open.bind(this, app.launchUrl)}
+                                                onTouchTap={open}
                                                 leftAvatar={avatar}
-                                                rightIconButton={
-                                                    <IconMenu iconButtonElement={<IconButton><MoreVertIcon color="#808080" /></IconButton>}>
-                                                        <MenuItem onClick={this.uninstall.bind(this, app.folderName)}>Uninstall</MenuItem>
-                                                    </IconMenu>
-                                                } />
+                                                rightIconButton={rightIconButton}
+                                            />
                                         );
                                     })
                                 }</List>
@@ -160,35 +194,17 @@ export default React.createClass({
                 )}
                 <div style={styles.upload}>
                     <div style={styles.fab}>
-                        <div style={styles.fabAnim} className={'fab ' + className}>
-                            <FloatingActionButton
-                                onClick={this.newAction}
-                                onClick={(e) => { this.refs.fileInput.click(e); }}>
+                        <div style={styles.fabAnim} className={`fab ${className}`}>
+                            <FloatingActionButton onClick={this.uploadAction}>
                                 <FontIcon className="material-icons">file_upload</FontIcon>
                             </FloatingActionButton>
                         </div>
                     </div>
-                    <form ref={(ref) => { this.form = ref; }} style={{ visibility: 'hidden' }}>
+                    <form ref={setFormRef} style={{ visibility: 'hidden' }}>
                         <input type="file" ref="fileInput" onChange={this.upload} />
                     </form>
                 </div>
             </div>
         );
-    },
-
-    open(url) {
-        window.open(url);
-    },
-
-    uninstall(appKey) {
-        actions.uninstallApp(appKey);
-    },
-
-    reloadApps() {
-        actions.refreshApps();
-    },
-
-    upload(e) {
-        actions.installApp(e.target.files[0], this.props.uploadProgress);
     },
 });

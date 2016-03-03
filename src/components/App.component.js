@@ -16,6 +16,8 @@ import AppTheme from '../theme';
 import actions from '../actions';
 
 
+// TODO: Rewrite as ES6 class
+/* eslint-disable react/prefer-es6-class */
 export default React.createClass({
     propTypes: {
         d2: React.PropTypes.object.isRequired,
@@ -26,13 +28,6 @@ export default React.createClass({
     childContextTypes: {
         d2: React.PropTypes.object,
         muiTheme: React.PropTypes.object,
-    },
-
-    getChildContext() {
-        return {
-            d2: this.props.d2,
-            muiTheme: AppTheme,
-        };
     },
 
     getInitialState() {
@@ -48,15 +43,22 @@ export default React.createClass({
         };
     },
 
+    getChildContext() {
+        return {
+            d2: this.props.d2,
+            muiTheme: AppTheme,
+        };
+    },
+
     componentDidMount() {
         this.subscriptions = [];
         this.subscriptions.push(this.props.installedApps.subscribe(installedApps => {
-            this.setState({ installedApps: installedApps, lastUpdate: new Date() });
+            this.setState({ installedApps, lastUpdate: new Date() });
         }));
 
         this.subscriptions.push(this.props.appStore.subscribe(appStore => {
             this.setState({
-                appStore: appStore,
+                appStore,
                 installing: appStore.installing !== undefined && appStore.installing > 0,
             });
         }));
@@ -98,6 +100,40 @@ export default React.createClass({
         });
     },
 
+    setSection(key) {
+        this.setState({ unmountSection: true });
+        setTimeout(() => {
+            this.setState({ unmountSection: false, mountSection: true, section: key });
+            setTimeout(() => {
+                this.setState({ mountSection: false });
+            }, 150);
+        }, 150);
+    },
+
+    reloadInstalledApps() {
+        actions.refreshApps();
+    },
+
+    progress(p) {
+        if (p) {
+            if (p === 1) {
+                this.setState({ uploading: false, progress: undefined });
+            } else {
+                this.setState({ progress: p * 100 });
+            }
+        } else {
+            this.setState({ progress: undefined });
+        }
+    },
+
+    closeSnackbar() {
+        this.setState({ snackbar: undefined });
+    },
+
+    showSnackbar(message) {
+        this.setState({ snackbar: message });
+    },
+
     renderSection(key) {
         const d2 = this.props.d2;
         const styles = {
@@ -126,11 +162,13 @@ export default React.createClass({
 
         return (
             <div className="content-area">
-                <AppList installedApps={this.state.installedApps}
-                         uploadProgress={this.progress}
-                         transitionUnmount={this.state.unmountSection}
-                         showUpload={!this.state.uploading}
-                         appStore={this.state.appStore} />
+                <AppList
+                    installedApps={this.state.installedApps}
+                    uploadProgress={this.progress}
+                    transitionUnmount={this.state.unmountSection}
+                    showUpload={!this.state.uploading}
+                    appStore={this.state.appStore}
+                />
                 {this.state.uploading ? (
                     <Card style={styles.progress}>
                         <CardText>
@@ -138,7 +176,8 @@ export default React.createClass({
                             <LinearProgress
                                 mode={this.state.progress ? 'determinate' : 'indeterminate'}
                                 color="#6688AA"
-                                value={this.state.progress} />
+                                value={this.state.progress}
+                            />
                         </CardText>
                     </Card>
                 ) : undefined}
@@ -148,7 +187,8 @@ export default React.createClass({
                             mode="indeterminate"
                             color="#6688AA"
                             size={0.75}
-                            value={this.state.progress} />
+                            value={this.state.progress}
+                        />
                         <br /><br />
                         {d2.i18n.getTranslation('installing')}
                     </div>
@@ -174,44 +214,15 @@ export default React.createClass({
             <div className="app">
                 <HeaderBar lastUpdate={this.state.lastUpdate} />
                 <Sidebar sections={sections} currentSection={this.state.section} onChangeSection={this.setSection} />
-                <Snackbar message={this.state.snackbar || ''} autoHideDuration={2500}
-                          onRequestClose={this.closeSnackbar} open={!!this.state.snackbar} style={styles.snackbar} />
+                <Snackbar
+                    message={this.state.snackbar || ''}
+                    autoHideDuration={2500}
+                    onRequestClose={this.closeSnackbar}
+                    open={!!this.state.snackbar}
+                    style={styles.snackbar}
+                />
                 {this.renderSection(this.state.section)}
             </div>
         );
-    },
-
-    progress(p) {
-        if (p) {
-            if (p === 1) {
-                this.setState({ uploading: false, progress: undefined });
-            } else {
-                this.setState({ progress: p * 100 });
-            }
-        } else {
-            this.setState({ progress: undefined });
-        }
-    },
-
-    reloadInstalledApps() {
-        actions.refreshApps();
-    },
-
-    setSection(key) {
-        this.setState({ unmountSection: true });
-        setTimeout(() => {
-            this.setState({ unmountSection: false, mountSection: true, section: key });
-            setTimeout(() => {
-                this.setState({ mountSection: false });
-            }, 150);
-        }, 150);
-    },
-
-    closeSnackbar() {
-        this.setState({ snackbar: undefined });
-    },
-
-    showSnackbar(message) {
-        this.setState({ snackbar: message });
     },
 });
