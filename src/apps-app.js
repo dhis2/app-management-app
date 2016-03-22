@@ -24,11 +24,13 @@ import App from './components/App.component';
 
 require('../scss/style.scss');
 
-log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.WARN : log.levels.TRACE);
+log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.INFO : log.levels.TRACE);
 
 D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' : 'dev_manifest.webapp')
     .then(manifest => {
         D2Library.config.baseUrl = `${manifest.getBaseUrl()}/api`;
+        log.info(`Loading: ${manifest.name} v${manifest.version}`);
+        log.info(`Built ${manifest.manifest_generated_at}`);
     })
     .then(D2Library.getUserSettings)
     .then(userSettings => {
@@ -39,7 +41,7 @@ D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' 
     })
     .then(D2Library.init)
     .then(d2 => {
-        log.info('D2 initialised:', d2);
+        log.debug('D2 initialized', d2);
         installedAppStore.setState(d2.system.installedApps);
         ReactDOM.render(
             <App
