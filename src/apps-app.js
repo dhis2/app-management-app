@@ -11,8 +11,6 @@ import log from 'loglevel';
 import appStoreStore from './stores/appStore.store';
 import installedAppStore from './stores/installedApp.store';
 
-import actions from './actions';
-
 import injectTapEventPlugin from 'react-tap-event-plugin'; injectTapEventPlugin();
 
 // D2 / D2-UI
@@ -51,8 +49,6 @@ D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' 
             />,
             document.getElementById('app')
         );
-
-        actions.refreshApps();
     })
     .catch(error => {
         ReactDOM.render((<div>Failed to initialise D2: {error}</div>), document.getElementById('app'));
