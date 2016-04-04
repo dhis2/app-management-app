@@ -8,7 +8,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import log from 'loglevel';
 
-import appStoreStore from './stores/appStore.store';
 import installedAppStore from './stores/installedApp.store';
 
 import injectTapEventPlugin from 'react-tap-event-plugin'; injectTapEventPlugin();
@@ -42,11 +41,7 @@ D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' 
         log.debug('D2 initialized', d2);
         installedAppStore.setState(d2.system.installedApps);
         ReactDOM.render(
-            <App
-                d2={d2}
-                installedApps={installedAppStore}
-                appStore={appStoreStore}
-            />,
+            <App d2={d2} />,
             document.getElementById('app')
         );
     })

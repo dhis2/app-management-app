@@ -18,15 +18,74 @@ import AppTheme from '../theme';
 import actions from '../actions';
 
 
+const styles = {
+    header: {
+        fontSize: 24,
+        fontWeight: 300,
+        color: AppTheme.rawTheme.palette.textColor,
+        padding: '16px 0 5px 16px',
+    },
+    container: {
+        borderBottom: '1px solid #dddddd',
+        paddingBottom: 0,
+        marginBottom: 8,
+    },
+    fab: {
+        position: 'fixed',
+        left: 0,
+        bottom: 16,
+        right: 16,
+        maxWidth: 1200,
+        textAlign: 'right',
+    },
+    fabAnim: {
+        float: 'right',
+    },
+    noApps: {
+        marginTop: 16,
+        // textAlign: 'center',
+        padding: '16px 0 5px 16px',
+        fontWeight: 300,
+        fontSize: 15,
+    },
+    app: {
+        borderTop: '1px solid #dddddd',
+    },
+    appName: {
+        padding: 16,
+        clear: 'both',
+    },
+    appLink: {
+        textDecoration: 'none',
+    },
+    appActions: {
+        display: 'inline-block',
+        float: 'right',
+        marginTop: -8,
+        marginRight: -16,
+    },
+    appButtons: {
+        marginLeft: '1rem',
+    },
+    appIcon: {
+        borderRadius: 3,
+    },
+    upload: {},
+    card: {
+        marginTop: 8,
+        marginRight: '1rem',
+    },
+};
+
 // TODO: Rewrite as ES6 class
 /* eslint-disable react/prefer-es6-class */
 export default React.createClass({
     propTypes: {
         installedApps: React.PropTypes.array.isRequired,
         uploadProgress: React.PropTypes.func.isRequired,
-        transitionUnmount: React.PropTypes.bool.isRequired,
         showUpload: React.PropTypes.bool.isRequired,
         appStore: React.PropTypes.object.isRequired,
+        appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
     },
 
     contextTypes: {
@@ -34,17 +93,10 @@ export default React.createClass({
     },
 
     getInitialState() {
-        return {
-            componentDidMount: false,
-            uploading: false,
-        };
+        return { uploading: false };
     },
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({ componentDidMount: true });
-        }, 0);
-
         actions.installApp.subscribe(() => {
             if (this.form) {
                 this.form.reset();
@@ -60,141 +112,93 @@ export default React.createClass({
         actions.installApp(e.target.files[0], this.props.uploadProgress);
     },
 
-    openStore() {
-        actions.navigateToSection('store');
+    renderInstalledApps() {
+        const d2 = this.context.d2;
+        const baseUrl = d2.Api.getApi().baseUrl;
+        const label = (this.props.appTypeFilter
+            ? `${this.props.appTypeFilter}_apps`
+            : 'app_apps').toLocaleLowerCase();
+        const appList = this.props.installedApps
+            .filter(app => !this.props.appTypeFilter || app.appType === this.props.appTypeFilter);
+
+        if (appList.length > 0) {
+            return (
+                <div>
+                    <div style={styles.header}>{d2.i18n.getTranslation(label)}</div>
+                    <Card style={styles.card}>
+                        <CardText>
+                            <List style={styles.container}>{
+                                appList.map(app => {
+                                    const uninstall = actions.uninstallApp.bind(null, app.folderName);
+                                    const moreIcon = <IconButton><MoreVertIcon color="#808080" /></IconButton>;
+                                    const open = window.open.bind(null, app.launchUrl);
+                                    const rightIconButton = (
+                                        <IconMenu iconButtonElement={moreIcon}>
+                                            <MenuItem onClick={uninstall}>
+                                                Uninstall
+                                            </MenuItem>
+                                        </IconMenu>
+                                    );
+                                    const avatar = app.icons && app.icons['48'] ? (
+                                        <Avatar
+                                            style={styles.appIcon}
+                                            src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')}
+                                        />
+                                    ) : (
+                                        <Avatar
+                                            backgroundColor={AppTheme.rawTheme.palette.primary1Color}
+                                            icon={<FontIcon className="material-icons">folder</FontIcon>}
+                                        />
+                                    );
+                                    return (
+                                        <ListItem
+                                            key={app.folderName}
+                                            primaryText={app.name} secondaryText={`v${app.version}`}
+                                            style={styles.app}
+                                            onTouchTap={open}
+                                            leftAvatar={avatar}
+                                            rightIconButton={rightIconButton}
+                                        />
+                                    );
+                                })
+                            }</List>
+                        </CardText>
+                    </Card>
+                </div>
+            );
+        }
+
+        return this.renderEmptyList();
     },
 
-    // What's wrong with a little complexity?
-    // No seriously this function is a mess..
-    // TODO: Separate out renderInstalledApps()
-    /* eslint-disable complexity */
-    render() {
+    renderEmptyList() {
         const d2 = this.context.d2;
-        const styles = {
-            header: {
-                fontSize: 24,
-                fontWeight: 100,
-                color: AppTheme.rawTheme.palette.textColor,
-                padding: '16px 0 5px 16px',
-            },
-            container: {
-                borderBottom: '1px solid #dddddd',
-                paddingBottom: 0,
-                marginBottom: 8,
-            },
-            fab: {
-                position: 'fixed',
-                left: 0,
-                bottom: 16,
-                right: 16,
-                maxWidth: 1200,
-                textAlign: 'right',
-            },
-            fabAnim: {
-                float: 'right',
-            },
-            noApps: {
-                marginTop: 16,
-                textAlign: 'center',
-                fontWeight: 300,
-                fontSize: 15,
-            },
-            app: {
-                borderTop: '1px solid #dddddd',
-            },
-            appName: {
-                padding: 16,
-                clear: 'both',
-            },
-            appLink: {
-                textDecoration: 'none',
-            },
-            appActions: {
-                display: 'inline-block',
-                float: 'right',
-                marginTop: -8,
-                marginRight: -16,
-            },
-            appButtons: {
-                marginLeft: '1rem',
-            },
-            appIcon: {
-                borderRadius: 3,
-            },
-            upload: {},
-            card: {
-                marginTop: 8,
-                marginRight: '1rem',
-            },
-        };
-        const baseUrl = d2.Api.getApi().baseUrl;
-        const setFormRef = (ref) => { this.form = ref; };
-
-        const className = `transition-mount transition-unmount
-            ${(this.state.componentDidMount ? '' : ' transition-mount-active')}
-            ${(this.props.transitionUnmount || !this.props.showUpload ? ' transition-unmount-active' : '')}`;
+        const labelHeader = (this.props.appTypeFilter
+            ? `${this.props.appTypeFilter}_apps`
+            : 'app_apps').toLocaleLowerCase();
+        const labelNoApps = (this.props.appTypeFilter
+            ? `no_${this.props.appTypeFilter}_apps_installed`
+            : 'no_apps_installed').toLowerCase();
 
         return (
             <div>
-                {this.props.installedApps.length === 0 ? (
-                    <div style={{ marginTop: 64 }}>
-                        <div style={styles.noApps}>{d2.i18n.getTranslation('no_apps_installed')}</div>
-                        {this.props.appStore.name ? (
-                            <div style={styles.noApps}>
-                                <a href="#" onClick={this.openStore}>
-                                    <i className="material-icons" style={{ verticalAlign: 'bottom' }}>store</i>
-                                    {this.props.appStore.name}
-                                </a>
-                            </div>
-                        ) : undefined}
-                    </div>
-                ) : (
-                    <div>
-                        <div style={styles.header}>{d2.i18n.getTranslation('installed_applications')}</div>
-                        <Card style={styles.card}>
-                            <CardText>
-                                <List style={styles.container}>{
-                                    this.props.installedApps.map(app => {
-                                        const uninstall = actions.uninstallApp.bind(null, app.folderName);
-                                        const moreIcon = <IconButton><MoreVertIcon color="#808080" /></IconButton>;
-                                        const open = window.open.bind(null, app.launchUrl);
-                                        const rightIconButton = (
-                                            <IconMenu iconButtonElement={moreIcon}>
-                                                <MenuItem onClick={uninstall}>
-                                                    Uninstall
-                                                </MenuItem>
-                                            </IconMenu>
-                                        );
-                                        const avatar = app.icons && app.icons['48'] ? (
-                                            <Avatar
-                                                style={styles.appIcon}
-                                                src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')}
-                                            />
-                                        ) : (
-                                            <Avatar
-                                                backgroundColor={AppTheme.rawTheme.palette.primary1Color}
-                                                icon={<FontIcon className="material-icons">folder</FontIcon>}
-                                            />
-                                        );
-                                        return (
-                                            <ListItem
-                                                key={app.folderName}
-                                                primaryText={app.name} secondaryText={`v${app.version}`}
-                                                style={styles.app}
-                                                onTouchTap={open}
-                                                leftAvatar={avatar}
-                                                rightIconButton={rightIconButton}
-                                            />
-                                        );
-                                    })
-                                }</List>
-                            </CardText>
-                        </Card>
-                    </div>
-                )}
+                <div style={styles.header}>{d2.i18n.getTranslation(labelHeader)}</div>
+                <div style={styles.noApps}>{d2.i18n.getTranslation(labelNoApps)}</div>
+            </div>
+        );
+    },
+
+    render() {
+        const setFormRef = (ref) => {
+            this.form = ref;
+        };
+
+        return (
+            <div>
+                { this.renderInstalledApps() }
                 <div style={styles.upload}>
                     <div style={styles.fab}>
-                        <div style={styles.fabAnim} className={`fab ${className}`}>
+                        <div style={styles.fabAnim} className="fab">
                             <FloatingActionButton onClick={this.uploadAction}>
                                 <FontIcon className="material-icons">file_upload</FontIcon>
                             </FloatingActionButton>

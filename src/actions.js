@@ -10,6 +10,7 @@ const actions = {
     installApp: Action.create('Install App'),
     uninstallApp: Action.create('Uninstall App'),
     refreshApps: Action.create('Refresh Apps'),
+    appInstalled: Action.create('An app was installed'),
 
     // App store actions
     loadAppStore: Action.create('Load DHIS2 App Store'),
@@ -17,9 +18,6 @@ const actions = {
 
     // Snackbar
     showSnackbarMessage: Action.create('Show Snackbar message'),
-
-    // Navigation
-    navigateToSection: Action.create('Navigate to section'),
 };
 
 
@@ -31,9 +29,14 @@ actions.installApp.subscribe(params => {
 
     getD2().then(d2 => {
         d2.system.uploadApp(zipFile, progressCallback)
-            .then(() => {
+            .then(() => d2.system.reloadApps())
+            .then(apps => {
+                installedAppStore.setState(apps);
+
                 actions.showSnackbarMessage(d2.i18n.getTranslation('app_installed'));
+                actions.appInstalled(zipFile.name.substring(0, zipFile.name.lastIndexOf('.')));
                 actions.refreshApps();
+                params.complete();
             })
             .catch(err => {
                 let message = d2.i18n.getTranslation('failed_to_install_app');
@@ -105,7 +108,11 @@ actions.installAppVersion.subscribe(params => {
                 const appStoreState2 = appStoreStore.getState();
                 appStoreStore.setState(Object.assign(appStoreState2, { installing: appStoreState2.installing - 1 }));
                 installedAppStore.setState(apps);
+
+                const appUrl = appStoreStore.getAppFromVersionId(versionId).version.download_url;
+                const appKey = appUrl.substring(appUrl.lastIndexOf('/') + 1, appUrl.lastIndexOf('.'));
                 params.complete(apps);
+                actions.appInstalled(appKey);
             })
             .catch(err => {
                 actions.showSnackbarMessage(
