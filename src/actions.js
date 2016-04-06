@@ -108,11 +108,7 @@ actions.installAppVersion.subscribe(params => {
                 const appStoreState2 = appStoreStore.getState();
                 appStoreStore.setState(Object.assign(appStoreState2, { installing: appStoreState2.installing - 1 }));
                 installedAppStore.setState(apps);
-
-                const appUrl = appStoreStore.getAppFromVersionId(versionId).version.download_url;
-                const appKey = appUrl.substring(appUrl.lastIndexOf('/') + 1, appUrl.lastIndexOf('.'));
                 params.complete(apps);
-                actions.appInstalled(appKey);
             })
             .catch(err => {
                 actions.showSnackbarMessage(
