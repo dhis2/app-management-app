@@ -27,7 +27,6 @@ const styles = {
     },
     noApps: {
         marginTop: 16,
-        // textAlign: 'center',
         padding: '16px 0 5px 16px',
         fontWeight: 300,
         fontSize: 15,
