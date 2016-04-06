@@ -34,6 +34,7 @@ const styles = {
     progress: {
         margin: '16px 1rem 16px 0',
         padding: 16,
+        maxWidth: 734,
     },
     installing: {
         marginRight: '1rem',
@@ -42,7 +43,8 @@ const styles = {
         padding: 16,
         textAlign: 'center',
         fontSize: 14,
-        fontWeight: 100,
+        fontWeight: 300,
+        maxWidth: 734,
     },
     snackbar: {
         left: '2rem',
@@ -118,13 +120,8 @@ export default React.createClass({
     },
 
     setSection(key) {
-        this.setState({ unmountSection: true });
-        setTimeout(() => {
-            this.setState({ unmountSection: false, mountSection: true, section: key });
-            setTimeout(() => {
-                this.setState({ mountSection: false });
-            }, 150);
-        }, 150);
+        this.refs.sidebar.clearSearchBox();
+        this.setState({ section: key, appSearch: undefined });
     },
 
     reloadInstalledApps() {
@@ -204,7 +201,7 @@ export default React.createClass({
         return null;
     },
 
-    renderSection(key, apps) {
+    renderSection(key, apps, showUpload) {
         if (key === 'store') {
             return <AppStore appStore={this.state.appStore} />;
         }
@@ -216,7 +213,7 @@ export default React.createClass({
                 installedApps={apps}
                 uploadProgress={this.progress}
                 transitionUnmount={this.state.unmountSection}
-                showUpload={!this.state.uploading}
+                showUpload={showUpload && !this.state.uploading}
                 appStore={this.state.appStore}
                 appTypeFilter={filter}
             />
@@ -236,9 +233,9 @@ export default React.createClass({
         }, {});
 
         if (Object.keys(appsByType).length) {
-            return Object.keys(appsByType).map(type => (
+            return Object.keys(appsByType).map((type, i) => (
                 <div key={type}>{
-                    this.renderSection(type, appsByType[type])
+                    this.renderSection(type, appsByType[type], i === 0)
                 }</div>
             ));
         }
@@ -272,6 +269,7 @@ export default React.createClass({
                     onChangeSection={this.setSection}
                     showSearchField
                     onChangeSearchText={this.search}
+                    ref="sidebar"
                 />
                 <Snackbar
                     message={this.state.snackbar || ''}
@@ -280,13 +278,14 @@ export default React.createClass({
                     open={!!this.state.snackbar}
                     style={styles.snackbar}
                 />
-                <div className="content-area">{
-                    this.state.appSearch
+                <div className="content-area">
+                    {this.state.appSearch
                         ? this.renderSearchResults()
-                        : this.renderSection(this.state.section, this.state.installedApps)
-                }</div>
-                {this.renderUploadProgress()}
-                {this.renderInstallProgress()}
+                        : this.renderSection(this.state.section, this.state.installedApps, true)
+                    }
+                    {this.renderUploadProgress()}
+                    {this.renderInstallProgress()}
+                </div>
             </div>
         );
     },

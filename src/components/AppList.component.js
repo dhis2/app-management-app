@@ -19,6 +19,10 @@ import actions from '../actions';
 
 
 const styles = {
+    wrapper: {
+        maxWidth: 750,
+        position: 'relative',
+    },
     header: {
         fontSize: 24,
         fontWeight: 300,
@@ -31,19 +35,15 @@ const styles = {
         marginBottom: 8,
     },
     fab: {
-        position: 'fixed',
-        left: 0,
-        bottom: 16,
-        right: 16,
-        maxWidth: 1200,
-        textAlign: 'right',
+        position: 'absolute',
+        top: 28,
+        right: 28,
     },
     fabAnim: {
         float: 'right',
     },
     noApps: {
         marginTop: 16,
-        // textAlign: 'center',
         padding: '16px 0 5px 16px',
         fontWeight: 300,
         fontSize: 15,
@@ -70,7 +70,6 @@ const styles = {
     appIcon: {
         borderRadius: 3,
     },
-    upload: {},
     card: {
         marginTop: 8,
         marginRight: '1rem',
@@ -164,6 +163,7 @@ export default React.createClass({
                             }</List>
                         </CardText>
                     </Card>
+                    { this.renderUploadButton() }
                 </div>
             );
         }
@@ -184,30 +184,40 @@ export default React.createClass({
             <div>
                 <div style={styles.header}>{d2.i18n.getTranslation(labelHeader)}</div>
                 <div style={styles.noApps}>{d2.i18n.getTranslation(labelNoApps)}</div>
+                { this.renderUploadButton() }
             </div>
         );
     },
 
-    render() {
+    renderUploadButton() {
+        if (!this.props.showUpload) {
+            return null;
+        }
+
         const setFormRef = (ref) => {
             this.form = ref;
         };
 
         return (
             <div>
-                { this.renderInstalledApps() }
-                <div style={styles.upload}>
-                    <div style={styles.fab}>
-                        <div style={styles.fabAnim} className="fab">
-                            <FloatingActionButton onClick={this.uploadAction}>
-                                <FontIcon className="material-icons">file_upload</FontIcon>
-                            </FloatingActionButton>
-                        </div>
+                <div style={styles.fab}>
+                    <div style={styles.fabAnim} className="fab">
+                        <FloatingActionButton onClick={this.uploadAction}>
+                            <FontIcon className="material-icons">file_upload</FontIcon>
+                        </FloatingActionButton>
                     </div>
-                    <form ref={setFormRef} style={{ visibility: 'hidden' }}>
-                        <input type="file" ref="fileInput" onChange={this.upload} />
-                    </form>
                 </div>
+                <form ref={setFormRef} style={{ visibility: 'hidden' }}>
+                    <input type="file" ref="fileInput" onChange={this.upload} />
+                </form>
+            </div>
+        );
+    },
+
+    render() {
+        return (
+            <div style={styles.wrapper}>
+                { this.renderInstalledApps() }
             </div>
         );
     },
