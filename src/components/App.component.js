@@ -264,10 +264,10 @@ export default React.createClass({
         const d2 = this.props.d2;
         const sections = [
             {
-                key: 'app', icon: 'wallpaper',
+                key: 'app', icon: 'desktop_windows',
                 label: d2.i18n.getTranslation('app_apps'),
             }, {
-                key: 'dashboard_widget', icon: 'dashboard',
+                key: 'dashboard_widget', icon: 'wallpaper',
                 label: d2.i18n.getTranslation('dashboard_widget_apps'),
             }, {
                 key: 'tracker_dashboard_widget', icon: 'supervisor_account',
@@ -281,12 +281,8 @@ export default React.createClass({
             },
         ].map(section => ({
             key: section.key,
-            label: (
-                <span>
-                    <FontIcon className="material-icons">{section.icon}</FontIcon>
-                    <span style={styles.menuLabel}>{section.label}</span>
-                </span>
-            ),
+            label: section.label,
+            icon: <FontIcon className="material-icons">{section.icon}</FontIcon>,
         }));
 
         return (
