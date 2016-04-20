@@ -8,6 +8,7 @@ import LinearProgress from 'material-ui/lib/linear-progress';
 import Card from 'material-ui/lib/card/card';
 import CardText from 'material-ui/lib/card/card-text';
 import Snackbar from 'material-ui/lib/snackbar';
+import FontIcon from 'material-ui/lib/font-icon';
 
 import AppList from './AppList.component';
 import AppStore from './AppStore.component';
@@ -50,6 +51,11 @@ const styles = {
         left: '2rem',
         right: 'initial',
     },
+    menuLabel: {
+        position: 'relative',
+        top: -6,
+        marginLeft: 16,
+    },
 };
 
 
@@ -85,12 +91,16 @@ export default React.createClass({
 
     componentDidMount() {
         this.subscriptions = [
-            installedAppStore.subscribe(installedApps => { this.setState({ installedApps, lastUpdate: new Date() }); }),
+            installedAppStore.subscribe(installedApps => {
+                this.setState({ installedApps, lastUpdate: new Date() });
+            }),
             appStoreStore.subscribe(appStore => {
                 this.setState({ appStore, installing: appStore.installing !== undefined && appStore.installing > 0 });
             }),
 
-            actions.installApp.subscribe(() => { this.setState({ uploading: true }); }),
+            actions.installApp.subscribe(() => {
+                this.setState({ uploading: true });
+            }),
             actions.appInstalled.subscribe(({ data }) => {
                 this.setSection(installedAppStore.getAppFromKey(data).appType.toLowerCase() || 'app');
             }),
@@ -253,12 +263,31 @@ export default React.createClass({
     render() {
         const d2 = this.props.d2;
         const sections = [
-            { key: 'app', label: d2.i18n.getTranslation('app_apps') },
-            { key: 'dashboard_widget', label: d2.i18n.getTranslation('dashboard_widget_apps') },
-            { key: 'tracker_dashboard_widget', label: d2.i18n.getTranslation('tracker_dashboard_widget_apps') },
-            { key: 'resource', label: d2.i18n.getTranslation('resource_apps') },
-            { key: 'store', label: d2.i18n.getTranslation('app_store') },
-        ];
+            {
+                key: 'app', icon: 'wallpaper',
+                label: d2.i18n.getTranslation('app_apps'),
+            }, {
+                key: 'dashboard_widget', icon: 'dashboard',
+                label: d2.i18n.getTranslation('dashboard_widget_apps'),
+            }, {
+                key: 'tracker_dashboard_widget', icon: 'supervisor_account',
+                label: d2.i18n.getTranslation('tracker_dashboard_widget_apps'),
+            }, {
+                key: 'resource', icon: 'data_usage',
+                label: d2.i18n.getTranslation('resource_apps'),
+            }, {
+                key: 'store', icon: 'store',
+                label: d2.i18n.getTranslation('app_store'),
+            },
+        ].map(section => ({
+            key: section.key,
+            label: (
+                <span>
+                    <FontIcon className="material-icons">{section.icon}</FontIcon>
+                    <span style={styles.menuLabel}>{section.label}</span>
+                </span>
+            ),
+        }));
 
         return (
             <div className="app">
