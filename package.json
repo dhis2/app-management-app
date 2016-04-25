@@ -66,7 +66,7 @@
   "manifest.webapp": {
     "name": "DHIS 2 Application Management",
     "icons": {
-      "48": "dhis-web-app-management.png"
+      "48": "icon.png"
     },
     "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
     "activities": {
