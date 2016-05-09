@@ -12,7 +12,5 @@ manifest.webapp
 
 .DS_Store
 
-dev-jquery-auth.js
-
 *.zip
 npm-debug.log
