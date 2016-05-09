@@ -1,5 +1,6 @@
+const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
 if (process.env.NODE_ENV !== 'production') {
-    require('../dev-jquery-auth.js');
+    jQuery.ajaxSetup({ headers: { Authorization: dhisDevConfig.authorization } }); // eslint-disable-line
 }
 
 // Third party
@@ -23,9 +24,10 @@ require('../scss/style.scss');
 
 log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.INFO : log.levels.TRACE);
 
-D2Library.getManifest(process.env.NODE_ENV === 'production' ? 'manifest.webapp' : 'dev_manifest.webapp')
+D2Library.getManifest('manifest.webapp')
     .then(manifest => {
-        D2Library.config.baseUrl = `${manifest.getBaseUrl()}/api`;
+        const baseUrl = process.env.NODE_ENV === 'production' ? manifest.getBaseUrl() : dhisDevConfig.baseUrl;
+        D2Library.config.baseUrl = `${baseUrl}/api`;
         log.info(`Loading: ${manifest.name} v${manifest.version}`);
         log.info(`Built ${manifest.manifest_generated_at}`);
     })
