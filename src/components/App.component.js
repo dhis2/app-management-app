@@ -1,5 +1,7 @@
 import React from 'react';
-import HeaderBar from 'd2-ui/lib/header-bar/HeaderBar.component';
+import HeaderBarComponent from 'd2-ui/lib/app-header/HeaderBar';
+import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
+import withStateFrom from 'd2-ui/lib/component-helpers/withStateFrom';
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
 
 import CircularProgress from 'material-ui/lib/circular-progress';
@@ -18,6 +20,8 @@ import actions from '../actions';
 import appStoreStore from '../stores/appStore.store';
 import installedAppStore from '../stores/installedApp.store';
 
+
+const HeaderBar = withStateFrom(headerBarStore$, HeaderBarComponent);
 
 const styles = {
     header: {
