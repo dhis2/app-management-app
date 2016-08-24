@@ -49,7 +49,7 @@
     "http-proxy": "git+https://github.com/nicolayr/node-http-proxy.git",
     "loglevel": "1.4.0",
     "material-ui": "0.14.4",
-    "node-sass": "3.4.2",
+    "node-sass": "^3.8.0",
     "precommit-hook": "3.0.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
