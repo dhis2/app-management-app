@@ -27,9 +27,7 @@
     "url": "https://github.com/dhis2/app-management-app/issues"
   },
   "homepage": "https://github.com/dhis2/app-management-app#readme",
-  "dependencies": {
-    "jquery": "^2.2.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.2",
