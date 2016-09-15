@@ -48,7 +48,8 @@ D2Library.getManifest('manifest.webapp')
         );
     })
     .catch(error => {
-        ReactDOM.render((<div>Failed to initialise D2: {error}</div>), document.getElementById('app'));
+        log.error('D2 initialization error:', error);
+        ReactDOM.render((<div>Failed to initialise D2</div>), document.getElementById('app'));
     });
 
 ReactDOM.render(<LoadingMask />, document.getElementById('app'));
