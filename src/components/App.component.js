@@ -106,6 +106,7 @@ export default React.createClass({
                 this.setState({ uploading: true });
             }),
             actions.appInstalled.subscribe(({ data }) => {
+                this.setState({ uploading: false });
                 this.setSection(installedAppStore.getAppFromKey(data).appType.toLowerCase() || 'app');
             }),
             actions.showSnackbarMessage.subscribe(params => {
