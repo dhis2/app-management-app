@@ -95,10 +95,10 @@ export default React.createClass({
 
     componentDidMount() {
         this.subscriptions = [
-            installedAppStore.subscribe(installedApps => {
+            installedAppStore.subscribe((installedApps) => {
                 this.setState({ installedApps, lastUpdate: new Date() });
             }),
-            appStoreStore.subscribe(appStore => {
+            appStoreStore.subscribe((appStore) => {
                 this.setState({ appStore, installing: appStore.installing !== undefined && appStore.installing > 0 });
             }),
 
@@ -109,8 +109,11 @@ export default React.createClass({
                 this.setState({ uploading: false });
                 this.setSection(installedAppStore.getAppFromKey(data).appType.toLowerCase() || 'app');
             }),
-            actions.showSnackbarMessage.subscribe(params => {
-                if (!!this.state.snackbar) {
+            actions.refreshApps.subscribe(() => {
+                this.setState({ uploading: false });
+            }),
+            actions.showSnackbarMessage.subscribe((params) => {
+                if (this.state.snackbar) {
                     this.setState({ snackbar: undefined });
                     setTimeout(() => {
                         this.setState({ snackbar: params.data });
@@ -121,7 +124,7 @@ export default React.createClass({
             }),
             actions.installAppVersion.subscribe(({ data }) => {
                 const app = appStoreStore.getAppFromVersionId(data[0]);
-                this.setSection(app.appType && app.appType.toLowerCase() || 'app');
+                this.setSection((app.appType && app.appType.toLowerCase()) || 'app');
             }),
         ];
 
@@ -129,13 +132,13 @@ export default React.createClass({
     },
 
     componentWillUnmount() {
-        this.subscriptions.forEach(subscription => {
+        this.subscriptions.forEach((subscription) => {
             subscription.dispose();
         });
     },
 
     setSection(key) {
-        this.refs.sidebar.clearSearchBox();
+        this.sidebar.clearSearchBox();
         this.setState({ section: key, appSearch: undefined });
     },
 
@@ -221,7 +224,7 @@ export default React.createClass({
             return <AppStore appStore={this.state.appStore} />;
         }
 
-        const filter = key && key.toString().toUpperCase() || 'APP';
+        const filter = (key && key.toString().toUpperCase()) || 'APP';
 
         return (
             <AppList
@@ -259,7 +262,7 @@ export default React.createClass({
             <div>
                 <div style={styles.header}>{d2.i18n.getTranslation('no_apps_found')}</div>
                 <div style={styles.noApps}>
-                    {d2.i18n.getTranslation('no_installed_apps_matched')} "{this.state.appSearchText}"
+                    {d2.i18n.getTranslation('no_installed_apps_matched')} &quot;{this.state.appSearchText}&quot;
                 </div>
             </div>
         );
@@ -269,19 +272,24 @@ export default React.createClass({
         const d2 = this.props.d2;
         const sections = [
             {
-                key: 'app', icon: 'desktop_windows',
+                key: 'app',
+                icon: 'desktop_windows',
                 label: d2.i18n.getTranslation('app_apps'),
             }, {
-                key: 'dashboard_widget', icon: 'wallpaper',
+                key: 'dashboard_widget',
+                icon: 'wallpaper',
                 label: d2.i18n.getTranslation('dashboard_widget_apps'),
             }, {
-                key: 'tracker_dashboard_widget', icon: 'supervisor_account',
+                key: 'tracker_dashboard_widget',
+                icon: 'supervisor_account',
                 label: d2.i18n.getTranslation('tracker_dashboard_widget_apps'),
             }, {
-                key: 'resource', icon: 'data_usage',
+                key: 'resource',
+                icon: 'data_usage',
                 label: d2.i18n.getTranslation('resource_apps'),
             }, {
-                key: 'store', icon: 'store',
+                key: 'store',
+                icon: 'store',
                 label: d2.i18n.getTranslation('app_store'),
             },
         ].map(section => ({
@@ -299,7 +307,7 @@ export default React.createClass({
                     onChangeSection={this.setSection}
                     showSearchField
                     onChangeSearchText={this.search}
-                    ref="sidebar"
+                    ref={(sidebar) => { this.sidebar = sidebar; }}
                 />
                 <Snackbar
                     message={this.state.snackbar || ''}

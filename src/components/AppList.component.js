@@ -1,3 +1,4 @@
+/* global  window */
 import React from 'react';
 
 import Avatar from 'material-ui/lib/avatar';
@@ -83,7 +84,6 @@ export default React.createClass({
         installedApps: React.PropTypes.array.isRequired,
         uploadProgress: React.PropTypes.func.isRequired,
         showUpload: React.PropTypes.bool.isRequired,
-        appStore: React.PropTypes.object.isRequired,
         appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
     },
 
@@ -104,7 +104,7 @@ export default React.createClass({
     },
 
     uploadAction(e) {
-        this.refs.fileInput.click(e);
+        this.fileInput.click(e);
     },
 
     upload(e) {
@@ -127,7 +127,7 @@ export default React.createClass({
                     <Card style={styles.card}>
                         <CardText>
                             <List style={styles.container}>{
-                                appList.map(app => {
+                                appList.map((app) => {
                                     const uninstall = actions.uninstallApp.bind(null, app.folderName);
                                     const moreIcon = <IconButton><MoreVertIcon color="#808080" /></IconButton>;
                                     const open = window.open.bind(null, app.launchUrl);
@@ -163,7 +163,7 @@ export default React.createClass({
                             }</List>
                         </CardText>
                     </Card>
-                    { this.renderUploadButton() }
+                    {this.renderUploadButton()}
                 </div>
             );
         }
@@ -184,7 +184,7 @@ export default React.createClass({
             <div>
                 <div style={styles.header}>{d2.i18n.getTranslation(labelHeader)}</div>
                 <div style={styles.noApps}>{d2.i18n.getTranslation(labelNoApps)}</div>
-                { this.renderUploadButton() }
+                {this.renderUploadButton()}
             </div>
         );
     },
@@ -208,7 +208,7 @@ export default React.createClass({
                     </div>
                 </div>
                 <form ref={setFormRef} style={{ visibility: 'hidden' }}>
-                    <input type="file" ref="fileInput" onChange={this.upload} />
+                    <input type="file" ref={(fileInput) => { this.fileInput = fileInput; }} onChange={this.upload} />
                 </form>
             </div>
         );
@@ -217,7 +217,7 @@ export default React.createClass({
     render() {
         return (
             <div style={styles.wrapper}>
-                { this.renderInstalledApps() }
+                {this.renderInstalledApps()}
             </div>
         );
     },

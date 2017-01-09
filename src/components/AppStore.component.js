@@ -19,7 +19,6 @@ import actions from '../actions';
 export default React.createClass({
     propTypes: {
         appStore: React.PropTypes.object.isRequired,
-        transitionUnmount: React.PropTypes.bool,
     },
 
     contextTypes: {
@@ -56,11 +55,11 @@ export default React.createClass({
             __html: description
                 // Linkify email addresses
                 .replace(
-                    /([\w\.]*\w@[\w\.]*\w\.[a-zA-Z]{2,})/g,
+                    /([\w.]*\w@[\w.]*\w\.[a-zA-Z]{2,})/g,
                     '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>'
                 )
                 // Linkify http:// and https:// links
-                .replace(/(https?:\/\/[\w\.\/]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
+                .replace(/(https?:\/\/[\w./]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
                 // Convert newlines to HTML line breaks
                 .replace(/\n/g, '\n<br/>'),
         };
@@ -119,7 +118,7 @@ export default React.createClass({
                         />
                         <CardText style={styles.cardText}>{app.description}</CardText>
                         <CardActions style={styles.actions}>
-                            {app.versions.map(version => {
+                            {app.versions.map((version) => {
                                 const install = actions.installAppVersion.bind(null, version.id);
                                 return (
                                     <FlatButton
@@ -182,7 +181,7 @@ export default React.createClass({
         return this.props.appStore.apps ? (
             <div>
                 <div style={styles.header}>{this.props.appStore.name}</div>
-                <div style={styles.description} dangerouslySetInnerHTML={this.parseDescription(storeDescription)}></div>
+                <div style={styles.description} dangerouslySetInnerHTML={this.parseDescription(storeDescription)} />
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (
