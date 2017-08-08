@@ -1,12 +1,9 @@
 import React from 'react';
 
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardText from 'material-ui/lib/card/card-text';
-import FlatButton from 'material-ui/lib/flat-button';
-import FontIcon from 'material-ui/lib/font-icon';
-import Avatar from 'material-ui/lib/avatar';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import FontIcon from 'material-ui/FontIcon';
+import Avatar from 'material-ui/Avatar';
 
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
@@ -14,56 +11,43 @@ import AppTheme from '../theme';
 import actions from '../actions';
 
 
-// TODO: Rewrite as ES6 class
-/* eslint-disable react/prefer-es6-class */
-export default React.createClass({
-    propTypes: {
-        appStore: React.PropTypes.object.isRequired,
-    },
+function parseDescription(description) {
+    return {
+        __html: description
+        // Linkify email addresses
+            .replace(
+                /([\w.]*\w@[\w.]*\w\.[a-zA-Z]{2,})/g,
+                '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>'
+            )
+            // Linkify http:// and https:// links
+            .replace(/(https?:\/\/[\w./]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
+            // Convert newlines to HTML line breaks
+            .replace(/\n/g, '\n<br/>'),
+    };
+}
 
-    contextTypes: {
-        d2: React.PropTypes.object,
-    },
 
-    getDefaultProps() {
-        return {
-            appStore: {},
-        };
-    },
+class AppStore extends React.Component {
+    constructor(props) {
+        super(props);
 
-    getInitialState() {
-        return {
+        this.state = {
             installing: undefined,
             componentDidMount: false,
         };
-    },
+    }
 
     componentWillMount() {
         if (!this.props.appStore.apps) {
             actions.loadAppStore();
         }
-    },
+    }
 
     componentDidMount() {
         setTimeout(() => {
             this.setState({ componentDidMount: true });
         }, 0);
-    },
-
-    parseDescription(description) {
-        return {
-            __html: description
-                // Linkify email addresses
-                .replace(
-                    /([\w.]*\w@[\w.]*\w\.[a-zA-Z]{2,})/g,
-                    '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>'
-                )
-                // Linkify http:// and https:// links
-                .replace(/(https?:\/\/[\w./]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
-                // Convert newlines to HTML line breaks
-                .replace(/\n/g, '\n<br/>'),
-        };
-    },
+    }
 
     renderApps() {
         const d2 = this.context.d2;
@@ -135,7 +119,7 @@ export default React.createClass({
                 ))}
             </div>
         );
-    },
+    }
 
     render() {
         const storeDescription = this.props.appStore.description || '';
@@ -178,10 +162,11 @@ export default React.createClass({
             },
         };
 
+        /* eslint-disable react/no-danger */
         return this.props.appStore.apps ? (
             <div>
                 <div style={styles.header}>{this.props.appStore.name}</div>
-                <div style={styles.description} dangerouslySetInnerHTML={this.parseDescription(storeDescription)} />
+                <div style={styles.description} dangerouslySetInnerHTML={parseDescription(storeDescription)} />
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (
@@ -189,5 +174,17 @@ export default React.createClass({
                 <LoadingMask />
             </div>
         );
-    },
-});
+    }
+}
+AppStore.propTypes = {
+    appStore: React.PropTypes.object.isRequired,
+};
+AppStore.defaultProps = {
+    appStore: {},
+};
+
+AppStore.contextTypes = {
+    d2: React.PropTypes.object,
+};
+
+export default AppStore;

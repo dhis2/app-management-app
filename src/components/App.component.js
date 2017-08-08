@@ -1,16 +1,16 @@
 import React from 'react';
+
 import HeaderBarComponent from 'd2-ui/lib/app-header/HeaderBar';
 import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
 import withStateFrom from 'd2-ui/lib/component-helpers/withStateFrom';
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
 
-import CircularProgress from 'material-ui/lib/circular-progress';
-import LinearProgress from 'material-ui/lib/linear-progress';
+import CircularProgress from 'material-ui/CircularProgress';
+import LinearProgress from 'material-ui/LinearProgress';
 
-import Card from 'material-ui/lib/card/card';
-import CardText from 'material-ui/lib/card/card-text';
-import Snackbar from 'material-ui/lib/snackbar';
-import FontIcon from 'material-ui/lib/font-icon';
+import { Card, CardText } from 'material-ui/Card';
+import Snackbar from 'material-ui/Snackbar';
+import FontIcon from 'material-ui/FontIcon';
 
 import AppList from './AppList.component';
 import AppStore from './AppStore.component';
@@ -52,7 +52,7 @@ const styles = {
         maxWidth: 734,
     },
     snackbar: {
-        left: '2rem',
+        // left: '2rem',
         right: 'initial',
     },
     menuLabel: {
@@ -63,20 +63,11 @@ const styles = {
 };
 
 
-// TODO: Rewrite as ES6 class
-/* eslint-disable react/prefer-es6-class */
-export default React.createClass({
-    propTypes: {
-        d2: React.PropTypes.object.isRequired,
-    },
+class App extends React.Component {
+    constructor(props, context) {
+        super(props, context);
 
-    childContextTypes: {
-        d2: React.PropTypes.object,
-        muiTheme: React.PropTypes.object,
-    },
-
-    getInitialState() {
-        return {
+        this.state = {
             installedApps: [],
             installing: false,
             uploading: false,
@@ -84,14 +75,18 @@ export default React.createClass({
             appStore: {},
             lastUpdate: null,
         };
-    },
+
+        // Bind 'this' for functions that need it
+        ['setSection', 'progress', 'closeSnackbar', 'showSnackbar', 'search']
+            .forEach((fn) => { this[fn] = this[fn].bind(this); });
+    }
 
     getChildContext() {
         return {
             d2: this.props.d2,
             muiTheme: AppTheme,
         };
-    },
+    }
 
     componentDidMount() {
         this.subscriptions = [
@@ -129,22 +124,20 @@ export default React.createClass({
         ];
 
         actions.loadAppStore();
-    },
+    }
 
     componentWillUnmount() {
         this.subscriptions.forEach((subscription) => {
             subscription.dispose();
         });
-    },
+    }
 
     setSection(key) {
-        this.sidebar.clearSearchBox();
+        if (this.sidebar) {
+            this.sidebar.clearSearchBox();
+        }
         this.setState({ section: key, appSearch: undefined });
-    },
-
-    reloadInstalledApps() {
-        actions.refreshApps();
-    },
+    }
 
     progress(p) {
         if (p) {
@@ -156,15 +149,15 @@ export default React.createClass({
         } else {
             this.setState({ progress: undefined });
         }
-    },
+    }
 
     closeSnackbar() {
         this.setState({ snackbar: undefined });
-    },
+    }
 
     showSnackbar(message) {
         this.setState({ snackbar: message });
-    },
+    }
 
     search(text) {
         if (text.length > 0) {
@@ -177,7 +170,7 @@ export default React.createClass({
         } else {
             this.setState({ appSearch: undefined, appSearchText: undefined });
         }
-    },
+    }
 
     renderUploadProgress() {
         if (this.state.uploading) {
@@ -197,7 +190,7 @@ export default React.createClass({
         }
 
         return null;
-    },
+    }
 
     renderInstallProgress() {
         if (this.state.installing) {
@@ -207,7 +200,7 @@ export default React.createClass({
                     <CircularProgress
                         mode="indeterminate"
                         color="#6688AA"
-                        size={0.75}
+                        // size={0.75}
                         value={this.state.progress}
                     />
                     <br /><br />
@@ -217,7 +210,7 @@ export default React.createClass({
         }
 
         return null;
-    },
+    }
 
     renderSection(key, apps, showUpload) {
         if (key === 'store') {
@@ -236,7 +229,7 @@ export default React.createClass({
                 appTypeFilter={filter}
             />
         );
-    },
+    }
 
     renderSearchResults() {
         const d2 = this.props.d2;
@@ -266,7 +259,7 @@ export default React.createClass({
                 </div>
             </div>
         );
-    },
+    }
 
     render() {
         const d2 = this.props.d2;
@@ -298,6 +291,8 @@ export default React.createClass({
             icon: <FontIcon className="material-icons">{section.icon}</FontIcon>,
         }));
 
+        const reffer = (r) => { this.sidebar = r; };
+
         return (
             <div className="app">
                 <HeaderBar lastUpdate={this.state.lastUpdate} />
@@ -307,7 +302,7 @@ export default React.createClass({
                     onChangeSection={this.setSection}
                     showSearchField
                     onChangeSearchText={this.search}
-                    ref={(sidebar) => { this.sidebar = sidebar; }}
+                    ref={reffer}
                 />
                 <Snackbar
                     message={this.state.snackbar || ''}
@@ -326,5 +321,15 @@ export default React.createClass({
                 </div>
             </div>
         );
-    },
-});
+    }
+}
+App.propTypes = {
+    d2: React.PropTypes.object.isRequired,
+};
+
+App.childContextTypes = {
+    d2: React.PropTypes.object,
+    muiTheme: React.PropTypes.object,
+};
+
+export default App;

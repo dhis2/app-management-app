@@ -1,19 +1,16 @@
 /* global  window */
 import React from 'react';
 
-import Avatar from 'material-ui/lib/avatar';
-import IconButton from 'material-ui/lib/icon-button';
-import IconMenu from 'material-ui/lib/menus/icon-menu';
-import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
-import MenuItem from 'material-ui/lib/menus/menu-item';
-import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
+import Avatar from 'material-ui/Avatar';
+import IconButton from 'material-ui/IconButton';
+import IconMenu from 'material-ui/IconMenu';
+import { List, ListItem } from 'material-ui/List';
+import MenuItem from 'material-ui/MenuItem';
 
-import Card from 'material-ui/lib/card/card';
-import CardText from 'material-ui/lib/card/card-text';
+import { Card, CardText } from 'material-ui/Card';
 
-import FloatingActionButton from 'material-ui/lib/floating-action-button';
-import FontIcon from 'material-ui/lib/font-icon';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import FontIcon from 'material-ui/FontIcon';
 
 import AppTheme from '../theme';
 import actions from '../actions';
@@ -37,8 +34,8 @@ const styles = {
     },
     fab: {
         position: 'absolute',
-        top: 28,
-        right: 28,
+        top: 45,
+        right: 32,
     },
     fabAnim: {
         float: 'right',
@@ -79,21 +76,17 @@ const styles = {
 
 // TODO: Rewrite as ES6 class
 /* eslint-disable react/prefer-es6-class */
-export default React.createClass({
-    propTypes: {
-        installedApps: React.PropTypes.array.isRequired,
-        uploadProgress: React.PropTypes.func.isRequired,
-        showUpload: React.PropTypes.bool.isRequired,
-        appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
-    },
+class AppList extends React.Component {
+    constructor(props, context) {
+        super(props, context);
 
-    contextTypes: {
-        d2: React.PropTypes.object,
-    },
+        this.state = {
+            uploading: false,
+        };
 
-    getInitialState() {
-        return { uploading: false };
-    },
+        this.uploadAction = this.uploadAction.bind(this);
+        this.upload = this.upload.bind(this);
+    }
 
     componentDidMount() {
         actions.installApp.subscribe(() => {
@@ -101,15 +94,15 @@ export default React.createClass({
                 this.form.reset();
             }
         });
-    },
+    }
 
     uploadAction(e) {
         this.fileInput.click(e);
-    },
+    }
 
     upload(e) {
         actions.installApp(e.target.files[0], this.props.uploadProgress);
-    },
+    }
 
     renderInstalledApps() {
         const d2 = this.context.d2;
@@ -129,7 +122,11 @@ export default React.createClass({
                             <List style={styles.container}>{
                                 appList.map((app) => {
                                     const uninstall = actions.uninstallApp.bind(null, app.folderName);
-                                    const moreIcon = <IconButton><MoreVertIcon color="#808080" /></IconButton>;
+                                    const moreIcon = (
+                                        <IconButton>
+                                            <FontIcon className="material-icons" color="#808080">more_vert</FontIcon>
+                                        </IconButton>
+                                    );
                                     const open = window.open.bind(null, app.launchUrl);
                                     const rightIconButton = (
                                         <IconMenu iconButtonElement={moreIcon}>
@@ -169,7 +166,7 @@ export default React.createClass({
         }
 
         return this.renderEmptyList();
-    },
+    }
 
     renderEmptyList() {
         const d2 = this.context.d2;
@@ -187,7 +184,7 @@ export default React.createClass({
                 {this.renderUploadButton()}
             </div>
         );
-    },
+    }
 
     renderUploadButton() {
         if (!this.props.showUpload) {
@@ -197,6 +194,8 @@ export default React.createClass({
         const setFormRef = (ref) => {
             this.form = ref;
         };
+
+        const theref = (r) => { this.fileInput = r; };
 
         return (
             <div>
@@ -208,11 +207,11 @@ export default React.createClass({
                     </div>
                 </div>
                 <form ref={setFormRef} style={{ visibility: 'hidden' }}>
-                    <input type="file" ref={(fileInput) => { this.fileInput = fileInput; }} onChange={this.upload} />
+                    <input type="file" ref={theref} onChange={this.upload} />
                 </form>
             </div>
         );
-    },
+    }
 
     render() {
         return (
@@ -220,5 +219,18 @@ export default React.createClass({
                 {this.renderInstalledApps()}
             </div>
         );
-    },
-});
+    }
+}
+AppList.propTypes = {
+    installedApps: React.PropTypes.array.isRequired,
+    uploadProgress: React.PropTypes.func.isRequired,
+    showUpload: React.PropTypes.bool.isRequired,
+    appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
+};
+
+AppList.contextTypes = {
+    d2: React.PropTypes.object,
+};
+
+
+export default AppList;

@@ -3,11 +3,16 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import log from 'loglevel';
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import D2Library from 'd2/lib/d2';
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
+
 import installedAppStore from './stores/installedApp.store';
 import App from './components/App.component';
+import theme from './theme';
 
 require('../scss/style.scss');
 
@@ -36,7 +41,7 @@ D2Library.getManifest('manifest.webapp')
         log.debug('D2 initialized', d2);
         installedAppStore.setState(d2.system.installedApps);
         ReactDOM.render(
-            <App d2={d2} />,
+            <MuiThemeProvider muiTheme={theme}><App d2={d2} /></MuiThemeProvider>,
             document.getElementById('app')
         );
     })
@@ -45,4 +50,4 @@ D2Library.getManifest('manifest.webapp')
         ReactDOM.render((<div>Failed to initialise D2</div>), document.getElementById('app'));
     });
 
-ReactDOM.render(<LoadingMask />, document.getElementById('app'));
+ReactDOM.render(<MuiThemeProvider muiTheme={theme}><LoadingMask /></MuiThemeProvider>, document.getElementById('app'));
