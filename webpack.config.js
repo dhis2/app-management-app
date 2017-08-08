@@ -1,8 +1,8 @@
 'use strict';
 
-var webpack = require('webpack');
-var path = require('path');
-var colors = require('colors');
+const webpack = require('webpack');
+const path = require('path');
+const colors = require('colors');
 
 const isDevBuild = process.argv[1].indexOf('webpack-dev-server') !== -1;
 const dhisConfigPath = process.env.DHIS2_HOME && `${process.env.DHIS2_HOME}/config`;
@@ -29,7 +29,6 @@ function log(req, res, opt) {
 
 const webpackConfig = {
     context: __dirname,
-    contentBase: __dirname,
     entry: './src/apps-app.js',
     devtool: 'source-map',
     output: {
@@ -42,18 +41,18 @@ const webpackConfig = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 query: {
                     presets: ['es2015', 'stage-0', 'react'],
                 },
             },
             {
                 test: /\.css$/,
-                loader: 'style!css',
+                loader: 'style-loader!css-loader',
             },
             {
                 test: /\.scss$/,
-                loader: 'style!css!sass',
+                loader: 'style-loader!css-loader!sass-loader',
             },
         ],
     },
@@ -64,15 +63,13 @@ const webpackConfig = {
         },
     },
     devServer: {
-        progress: true,
-        colors: true,
         port: 8081,
         inline: true,
         compress: true,
         proxy: [
-            { path: '/api/*', target: dhisConfig.baseUrl, bypass: log },
-            { path: '/dhis-web-commons/*', target: dhisConfig.baseUrl, bypass: log },
-            { path: '/icons/*', target: dhisConfig.baseUrl, bypass: log },
+            { path: '/api/**', target: dhisConfig.baseUrl, bypass: log },
+            { path: '/dhis-web-commons/**', target: dhisConfig.baseUrl, bypass: log },
+            { path: '/icons/**', target: dhisConfig.baseUrl, bypass: log },
         ],
     },
 };
