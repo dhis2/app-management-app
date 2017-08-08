@@ -34,7 +34,7 @@ const webpackConfig = {
     output: {
         path: __dirname + '/build',
         filename: 'apps-app.js',
-        publicPath: 'http://localhost:8081/',
+        publicPath: isDevBuild ? 'http://localhost:8081/' : './',
     },
     module: {
         loaders: [
