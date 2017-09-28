@@ -1,4 +1,4 @@
-# DHIS 2 App Management App #
+# DHIS 2 App Management App [![Build Status](https://travis-ci.org/dhis2/app-management-app.svg?branch=master)](https://travis-ci.org/dhis2/app-management-app) #
 
 The app management app is a core DHIS2 app responsible for managing web apps. It provides the
 ability to upload and uninstall apps, as well as installing apps directly from the
