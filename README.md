@@ -7,19 +7,19 @@ ability to upload and uninstall apps, as well as installing apps directly from t
 
 ## Getting started
 
-The dependencies of the app are managed by `npm`. Working on the app requires cloning the
+The dependencies of the app are managed by `npm` or `yarn` (recommended). Working on the app requires cloning the
 repository and installing the dependencies:
 
 ```bash
 > git clone https://github.com/dhis2/app-management-app.git
 > cd app-management-app
-> npm install
+> yarn install
 ```
 
-Once dependencies are installed, you can run the app locally using npm.
+Once dependencies are installed, you can run the app locally using yarn (or npm):
 
 ```bash
-> npm start
+> yarn start
 ```
 
 By default app will be available on [localhost:8081](http://localhost:8081), and it will attempt to connect to the DHIS2 API on [localhost:8080/dhis](http://localhost:8080/dhis). To change these defaults, create a file called `$DHIS2_HOME/config.js` with the following format:
