@@ -11,6 +11,8 @@ import AppTheme from '../theme';
 import actions from '../actions';
 
 
+/*
+ * Discontinued...
 function parseDescription(description) {
     return {
         __html: description
@@ -25,6 +27,7 @@ function parseDescription(description) {
             .replace(/\n/g, '\n<br/>'),
     };
 }
+*/
 
 
 class AppStore extends React.Component {
@@ -33,20 +36,13 @@ class AppStore extends React.Component {
 
         this.state = {
             installing: undefined,
-            componentDidMount: false,
         };
     }
 
     componentWillMount() {
-        if (!this.props.appStore.apps) {
+        if (!Array.isArray(this.props.appStore.apps)) {
             actions.loadAppStore();
         }
-    }
-
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({ componentDidMount: true });
-        }, 0);
     }
 
     renderApps() {
@@ -66,6 +62,10 @@ class AppStore extends React.Component {
                 color: '#CCDDEE',
                 fontWeight: 300,
                 fontSize: 13,
+                overflowX: 'hidden',
+                maxWidth: 205,
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
             },
             cardText: {
                 borderTop: '1px solid #c3c3c3',
@@ -94,7 +94,7 @@ class AppStore extends React.Component {
                     <Card style={styles.card} key={app.name}>
                         <CardHeader
                             title={app.name}
-                            subtitle={`${d2.i18n.getTranslation('by')} ${app.developer}`}
+                            subtitle={`${d2.i18n.getTranslation('by')} ${app.developer.organisation}`}
                             avatar={avatar}
                             style={styles.cardTitle}
                             titleColor="white"
@@ -122,7 +122,6 @@ class AppStore extends React.Component {
     }
 
     render() {
-        const storeDescription = this.props.appStore.description || '';
         const styles = {
             loadingMaskContainer: {
                 position: 'fixed',
@@ -163,10 +162,9 @@ class AppStore extends React.Component {
         };
 
         /* eslint-disable react/no-danger */
-        return this.props.appStore.apps ? (
+        return Array.isArray(this.props.appStore.apps) ? (
             <div>
-                <div style={styles.header}>{this.props.appStore.name}</div>
-                <div style={styles.description} dangerouslySetInnerHTML={parseDescription(storeDescription)} />
+                <div style={styles.header}>{this.context.d2.i18n.getTranslation('app_store')}</div>
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (

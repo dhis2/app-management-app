@@ -83,7 +83,7 @@ actions.refreshApps.subscribe(() => {
 actions.loadAppStore.subscribe(() => {
     getD2().then((d2) => {
         d2.system.loadAppStore().then((apps) => {
-            appStoreStore.setState(apps);
+            appStoreStore.setState(Object.assign(appStoreStore.getState() || {}, { apps }));
         });
     });
 });
@@ -112,10 +112,12 @@ actions.installAppVersion.subscribe((params) => {
             })
             .catch((err) => {
                 actions.showSnackbarMessage(
-                    `${d2.i18n.getTranslation('failed_to_install_app_from_app_store')}: ${err}`
+                    `${d2.i18n.getTranslation('failed_to_install_app_from_app_store')}: ${err.message}`,
                 );
+                appStoreStore.setState(Object.assign(appStoreStore.getState(), {
+                    installing: appStoreStore.getState().installing - 1,
+                }));
                 log.error(err);
-                params.error(err);
             });
     });
 });

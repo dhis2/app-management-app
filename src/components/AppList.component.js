@@ -107,9 +107,7 @@ class AppList extends React.Component {
     renderInstalledApps() {
         const d2 = this.context.d2;
         const baseUrl = d2.Api.getApi().baseUrl;
-        const label = (this.props.appTypeFilter
-            ? `${this.props.appTypeFilter}_apps`
-            : 'app_apps').toLocaleLowerCase();
+        const label = `${this.props.appTypeFilter}_apps`.toLocaleLowerCase();
         const appList = this.props.installedApps
             .filter(app => !this.props.appTypeFilter || app.appType === this.props.appTypeFilter);
 
@@ -149,7 +147,8 @@ class AppList extends React.Component {
                                     return (
                                         <ListItem
                                             key={app.folderName}
-                                            primaryText={app.name} secondaryText={`v${app.version}`}
+                                            primaryText={app.name}
+                                            secondaryText={`v${app.version}`}
                                             style={styles.app}
                                             onTouchTap={open}
                                             leftAvatar={avatar}
@@ -226,6 +225,9 @@ AppList.propTypes = {
     uploadProgress: React.PropTypes.func.isRequired,
     showUpload: React.PropTypes.bool.isRequired,
     appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
+};
+AppList.defaultProps = {
+    appTypeFilter: 'app',
 };
 
 AppList.contextTypes = {

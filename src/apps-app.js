@@ -19,7 +19,7 @@ injectTapEventPlugin();
 
 const dhisDevConfig = DHIS_CONFIG; // eslint-disable-line
 
-log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.INFO : log.levels.TRACE);
+log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.INFO : log.levels.DEBUG);
 
 D2Library.getManifest('manifest.webapp')
     .then((manifest) => {
@@ -41,7 +41,7 @@ D2Library.getManifest('manifest.webapp')
         installedAppStore.setState(d2.system.installedApps);
         ReactDOM.render(
             <MuiThemeProvider muiTheme={theme}><App d2={d2} /></MuiThemeProvider>,
-            document.getElementById('app')
+            document.getElementById('app'),
         );
     })
     .catch((error) => {
