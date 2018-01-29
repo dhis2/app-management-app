@@ -2,7 +2,7 @@
 
 The app management app is a core DHIS2 app responsible for managing web apps. It provides the
 ability to upload and uninstall apps, as well as installing apps directly from the
-[DHIS 2 App Store](https://www.dhis2.org/appstore).
+[DHIS 2 App Store](https://play.dhis2.org/appstore).
 
 
 ## Getting started

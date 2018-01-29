@@ -150,7 +150,7 @@ class AppList extends React.Component {
                                             primaryText={app.name}
                                             secondaryText={`v${app.version}`}
                                             style={styles.app}
-                                            onTouchTap={open}
+                                            onClick={open}
                                             leftAvatar={avatar}
                                             rightIconButton={rightIconButton}
                                         />
