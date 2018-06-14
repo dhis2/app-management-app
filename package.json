@@ -43,7 +43,7 @@
     "exports-loader": "^0.6.4",
     "loglevel": "^1.4.1",
     "material-ui": "^0.19.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "4.9.0",
     "precommit-hook": "3.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
