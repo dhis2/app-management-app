@@ -1,4 +1,5 @@
-# DHIS 2 App Management App [![Build Status](https://travis-ci.org/dhis2/app-management-app.svg?branch=master)](https://travis-ci.org/dhis2/app-management-app) #
+# DHIS 2 App Management App [![Build Status](https://travis-ci.org/dhis2/app-management-app.svg?branch=master)](https://travis-ci.org/dhis2/app-management-app) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app?ref=badge_shield)
+#
 
 The app management app is a core DHIS2 app responsible for managing web apps. It provides the
 ability to upload and uninstall apps, as well as installing apps directly from the
@@ -36,3 +37,7 @@ Where the basic authentication string is a simple base64-encoded version of the 
 ```javascript
 btoa('admin:district'); // returns "YWRtaW46ZGlzdHJpY3Q="
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app?ref=badge_large)
