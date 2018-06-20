@@ -80,6 +80,10 @@ class AppStore extends React.Component {
                 marginRight: 0,
                 marginLeft: 8,
             },
+            flex: {
+                display: 'flex',
+                flexWrap: 'wrap',
+            }
         };
         const avatar = (
             <Avatar
@@ -89,7 +93,7 @@ class AppStore extends React.Component {
         );
 
         return (
-            <div>
+            <div style={styles.flex}>
                 {this.props.appStore.apps.map(app => (
                     <Card style={styles.card} key={app.name}>
                         <CardHeader
