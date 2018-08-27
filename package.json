@@ -10,7 +10,8 @@
     "prebuild": "rm -rf build",
     "build": "webpack",
     "postbuild": "cp -r  *.png i18n node_modules/babel-polyfill/dist/polyfill.min.js build/ && npm run manifest && cp ./package.json ./build/package.json",
-    "manifest": "d2-manifest package.json build/manifest.webapp"
+    "manifest": "d2-manifest package.json build/manifest.webapp",
+    "deploy": "deploy-build"
   },
   "repository": {
     "type": "git",
