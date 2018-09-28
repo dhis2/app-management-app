@@ -5,9 +5,21 @@ cache:
   yarn: true
   directories:
   - node_modules
+before_script:
+- npm install --global @dhis2/deploy-build
 script:
 - npm run build
-- npm run deploy
+deploy:
+    - provider: script
+      script: deploy-build
+      skip_cleanup: true
+      on:
+	      all_branches: true
+    - provider: script
+      script: publish-build
+      skip_cleanup: true
+      on:
+	      tags: true
 env:
   global:
     secure: mG1dzEFSnVQqeTNErk8YphX/yrLCamM/knbsbZZh/9Y1NHu0yYQTwp0xDkL/rsOJfZ/6ukm2D+UjCra1+e0otFDTnEVh9C3jLoBYFcDhgs5SZSbSrX4wOOeDDsE+smKRCw3j1AVeJimNrDv+SHibCWbEeJu+8tD3KPc+PS6vsvvjC1QOa0QeOnp7MkmYUYzXQFp9QNjanybBgftbjlWbwIvUIwluokUHUYgdFVz23KJEbo6g2kh6tnuPDJw54j/AGBjhmrJyXr8lNwEkqDm1r+cQ2Y4hE+PFvrNlHwONxJpTt/WosfYReqPN89RzGdEXriRwqC9r1Eu9Mgslihk6Db1Wzk6idjEz34EMWt+AZcK5pCgRSURvv4q3JHVz+zBXySOlZG6VOSqu9WUF+LuKtPx5ZZV5eh8/EWp5vHAzOoPY59jgzl4Ln1CYrL+Ku0Ng920jDz3zp6kWp1xi64cwsrhBIAkhUwA4DV5ToYm+V5kKDT5ZuleKWuY27gDamgFFfYt+AVM5rmdqCleIvK5jIMbVTIHbslDSWksY+Fd6J7OWRBaZTc/+d+15ycqtqv8EzWlj8OUd6uZDcevPs1RtLCopDTg8Gu+iuxAkXPIJIB+LQu0HrB84+XPF/YzOIMJKKfww095/I72YVFPTOs6mYdvwenjqSG4hj75Or1aovd0=
