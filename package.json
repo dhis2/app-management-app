@@ -9,8 +9,9 @@
     "start": "d2-manifest package.json manifest.webapp && webpack-dev-server",
     "prebuild": "rm -rf build",
     "build": "webpack",
-    "postbuild": "cp -r  *.png i18n node_modules/babel-polyfill/dist/polyfill.min.js build/ && npm run manifest",
-    "manifest": "d2-manifest package.json build/manifest.webapp"
+    "postbuild": "cp -r  *.png i18n node_modules/babel-polyfill/dist/polyfill.min.js build/ && npm run manifest && cp ./package.json ./build/package.json",
+    "manifest": "d2-manifest package.json build/manifest.webapp",
+    "deploy": "deploy-build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   },
   "homepage": "https://github.com/dhis2/app-management-app#readme",
   "devDependencies": {
+    "@dhis2/deploy-build": "^1.0.4",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-polyfill": "^6.23.0",
