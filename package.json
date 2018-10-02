@@ -10,8 +10,7 @@
     "prebuild": "rm -rf build",
     "build": "webpack",
     "postbuild": "cp -r  *.png i18n node_modules/babel-polyfill/dist/polyfill.min.js build/ && npm run manifest && cp ./package.json ./build/package.json",
-    "manifest": "d2-manifest package.json build/manifest.webapp",
-    "deploy": "deploy-build"
+    "manifest": "d2-manifest package.json build/manifest.webapp"
   },
   "repository": {
     "type": "git",
@@ -29,7 +28,6 @@
   },
   "homepage": "https://github.com/dhis2/app-management-app#readme",
   "devDependencies": {
-    "@dhis2/deploy-build": "^1.0.4",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-polyfill": "^6.23.0",
@@ -57,10 +55,6 @@
     "webpack": "^3.5.1",
     "webpack-dev-server": "^2.6.1"
   },
-  "pre-commit": [
-    "lint",
-    "validate"
-  ],
   "manifest.webapp": {
     "name": "DHIS 2 Application Management",
     "icons": {
