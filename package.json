@@ -1,6 +1,6 @@
 {
   "name": "app-management-app",
-  "version": "31.0.0",
+  "version": "30.0.0",
   "description": "Applications management app for DHIS2",
   "main": "index.html",
   "scripts": {
@@ -9,7 +9,7 @@
     "start": "d2-manifest package.json manifest.webapp && webpack-dev-server",
     "prebuild": "rm -rf build",
     "build": "webpack",
-    "postbuild": "cp -r  *.png i18n node_modules/babel-polyfill/dist/polyfill.min.js build/ && npm run manifest && cp ./package.json ./build/package.json",
+    "postbuild": "cp -r  *.png i18n node_modules/babel-polyfill/dist/polyfill.min.js build/ && npm run manifest",
     "manifest": "d2-manifest package.json build/manifest.webapp"
   },
   "repository": {
