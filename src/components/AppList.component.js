@@ -136,7 +136,7 @@ class AppList extends React.Component {
                                     const avatar = app.icons && app.icons['48'] ? (
                                         <Avatar
                                             style={styles.appIcon}
-                                            src={[baseUrl, 'apps', app.folderName, app.icons['48']].join('/')}
+                                            src={[baseUrl, 'apps', app.key, app.icons['48']].join('/')}
                                         />
                                     ) : (
                                         <Avatar
