@@ -1,8 +1,6 @@
 import React from 'react';
 
-import HeaderBarComponent from 'd2-ui/lib/app-header/HeaderBar';
-import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
-import withStateFrom from 'd2-ui/lib/component-helpers/withStateFrom';
+import { initHeaderBar } from 'd2-ui/lib/app-header/initHeaderBar';
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
 
 import CircularProgress from 'material-ui/CircularProgress';
@@ -20,8 +18,6 @@ import actions from '../actions';
 import appStoreStore from '../stores/appStore.store';
 import installedAppStore from '../stores/installedApp.store';
 
-
-const HeaderBar = withStateFrom(headerBarStore$, HeaderBarComponent);
 
 const styles = {
     header: {
@@ -89,6 +85,12 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        initHeaderBar(
+            document.getElementById('header-bar'),
+            `${DHIS_CONFIG.baseUrl}/api`,   // eslint-disable-line
+            { noLoadingIndicator: true },
+        );
+
         this.subscriptions = [
             installedAppStore.subscribe((installedApps) => {
                 this.setState({ installedApps, lastUpdate: new Date() });
@@ -295,7 +297,7 @@ class App extends React.Component {
 
         return (
             <div className="app">
-                <HeaderBar lastUpdate={this.state.lastUpdate} />
+                <div id="header-bar" />
                 <Sidebar
                     sections={sections}
                     currentSection={this.state.section}
