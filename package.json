@@ -35,7 +35,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "css-loader": "^0.28.4",
-    "d2": "^28.0.0",
+    "d2": "^30.0.0",
     "d2-manifest": "^1.0.0",
     "d2-ui": "^28.0.2",
     "d2-utilizr": "^0.2.13",
