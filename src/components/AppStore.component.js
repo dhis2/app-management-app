@@ -83,7 +83,7 @@ class AppStore extends React.Component {
             flex: {
                 display: 'flex',
                 flexWrap: 'wrap',
-            }
+            },
         };
         const avatar = (
             <Avatar

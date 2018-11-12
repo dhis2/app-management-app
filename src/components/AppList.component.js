@@ -119,7 +119,7 @@ class AppList extends React.Component {
                         <CardText>
                             <List style={styles.container}>{
                                 appList.map((app) => {
-                                    const uninstall = actions.uninstallApp.bind(null, app.folderName);
+                                    const uninstall = actions.uninstallApp.bind(null, app.key);
                                     const moreIcon = (
                                         <IconButton>
                                             <FontIcon className="material-icons" color="#808080">more_vert</FontIcon>
