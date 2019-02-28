@@ -40,4 +40,4 @@ btoa('admin:district'); // returns "YWRtaW46ZGlzdHJpY3Q="
 
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app?ref=badge_large) [![Greenkeeper badge](https://badges.greenkeeper.io/dhis2/app-management-app.svg)](https://greenkeeper.io/)
