@@ -8,7 +8,6 @@ node_modules/
 
 build/
 target/
-manifest.webapp
 
 .DS_Store
 

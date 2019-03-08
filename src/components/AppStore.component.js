@@ -9,6 +9,7 @@ import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
 import AppTheme from '../theme';
 import actions from '../actions';
+import i18n from '@dhis2/d2-i18n'
 
 
 /*
@@ -63,6 +64,7 @@ class AppStore extends React.Component {
                 fontWeight: 300,
                 fontSize: 13,
                 overflowX: 'hidden',
+                overflowY: 'hidden',
                 maxWidth: 205,
                 whiteSpace: 'nowrap',
                 textOverflow: 'ellipsis',
@@ -98,7 +100,7 @@ class AppStore extends React.Component {
                     <Card style={styles.card} key={app.name}>
                         <CardHeader
                             title={app.name}
-                            subtitle={`${d2.i18n.getTranslation('by')} ${app.developer.organisation}`}
+                            subtitle={`${i18n.t('By')} ${app.developer.organisation}`}
                             avatar={avatar}
                             style={styles.cardTitle}
                             titleColor="white"
@@ -114,7 +116,7 @@ class AppStore extends React.Component {
                                         style={styles.button}
                                         primary
                                         onClick={install}
-                                        label={`${d2.i18n.getTranslation('install')} v${version.version}`}
+                                        label={`${i18n.t('Install')} v${version.version}`}
                                     />
                                 );
                             })}
@@ -168,7 +170,7 @@ class AppStore extends React.Component {
         /* eslint-disable react/no-danger */
         return Array.isArray(this.props.appStore.apps) ? (
             <div>
-                <div style={styles.header}>{this.context.d2.i18n.getTranslation('app_store')}</div>
+                <div style={styles.header}>{i18n.t('App Store')}</div>
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (

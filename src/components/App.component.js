@@ -20,6 +20,7 @@ import actions from '../actions';
 import appStoreStore from '../stores/appStore.store';
 import installedAppStore from '../stores/installedApp.store';
 
+import i18n from '@dhis2/d2-i18n'
 
 const HeaderBar = withStateFrom(headerBarStore$, HeaderBarComponent);
 
@@ -178,7 +179,7 @@ class App extends React.Component {
             return (
                 <Card style={styles.progress}>
                     <CardText>
-                        {d2.i18n.getTranslation('uploading')}
+                        {i18n.t('Uploading...')}
                         <LinearProgress
                             mode={this.state.progress ? 'determinate' : 'indeterminate'}
                             color="#6688AA"
@@ -204,7 +205,7 @@ class App extends React.Component {
                         value={this.state.progress}
                     />
                     <br /><br />
-                    {d2.i18n.getTranslation('installing')}
+                    {i18n.t('Installing...')}
                 </div>
             );
         }
@@ -253,9 +254,9 @@ class App extends React.Component {
 
         return (
             <div>
-                <div style={styles.header}>{d2.i18n.getTranslation('no_apps_found')}</div>
+                <div style={styles.header}>{i18n.t('No apps found')}</div>
                 <div style={styles.noApps}>
-                    {d2.i18n.getTranslation('no_installed_apps_matched')} &quot;{this.state.appSearchText}&quot;
+                    {i18n.t('No installed apps matched the search term')} &quot;{this.state.appSearchText}&quot;
                 </div>
             </div>
         );
@@ -267,23 +268,23 @@ class App extends React.Component {
             {
                 key: 'app',
                 icon: 'desktop_windows',
-                label: d2.i18n.getTranslation('app_apps'),
+                label: i18n.t('Standard Apps'),
             }, {
                 key: 'dashboard_widget',
                 icon: 'wallpaper',
-                label: d2.i18n.getTranslation('dashboard_widget_apps'),
+                label: i18n.t('Dashboard Apps'),
             }, {
                 key: 'tracker_dashboard_widget',
                 icon: 'supervisor_account',
-                label: d2.i18n.getTranslation('tracker_dashboard_widget_apps'),
+                label: i18n.t('Tracker Dashboard Apps'),
             }, {
                 key: 'resource',
                 icon: 'data_usage',
-                label: d2.i18n.getTranslation('resource_apps'),
+                label: i18n.t('Resource Apps'),
             }, {
                 key: 'store',
                 icon: 'store',
-                label: d2.i18n.getTranslation('app_store'),
+                label: i18n.t('App Store'),
             },
         ].map(section => ({
             key: section.key,

@@ -13,7 +13,12 @@ import installedAppStore from './stores/installedApp.store';
 import App from './components/App.component';
 import theme from './theme';
 
-require('../scss/style.scss');
+import './locales'
+
+import 'typeface-roboto'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
+import '../scss/style.scss';
 
 injectTapEventPlugin();
 
@@ -29,12 +34,6 @@ D2Library.getManifest('manifest.webapp')
         log.info(`Built ${manifest.manifest_generated_at}`);
     })
     .then(D2Library.getUserSettings)
-    .then((userSettings) => {
-        if (userSettings.keyUiLocale !== 'en') {
-            D2Library.config.i18n.sources.add(`i18n/i18n_module_${userSettings.keyUiLocale}.properties`);
-        }
-        D2Library.config.i18n.sources.add('i18n/i18n_module_en.properties');
-    })
     .then(D2Library.init)
     .then((d2) => {
         log.debug('D2 initialized', d2);
