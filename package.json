@@ -6,12 +6,12 @@
   "scripts": {
     "extract-pot": "d2-i18n-extract -p src/ -o i18n/",
     "localize": "yarn extract-pot && d2-i18n-generate -n NAMESPACE -p ./i18n/ -o ./src/locales/",
-    "prestart": "d2-manifest package.json ./src/manifest.webapp && yarn localize",
+    "prestart": "yarn manifest && yarn localize",
     "start": "webpack-dev-server --config webpack.dev.config.js",
     "prebuild": "rm -rf build && yarn localize",
     "build": "webpack --config webpack.prod.config.js",
-    "postbuild": "cp -r  *.png ./src/index.html build/ && npm run manifest && cp ./package.json ./build/package.json",
-    "manifest": "d2-manifest package.json src/manifest.webapp"
+    "postbuild": "cp -r  *.png ./src/index.html ./src/manifest.webapp ./package.json build/",
+    "manifest": "d2-manifest package.json ./src/manifest.webapp"
   },
   "husky": {
     "hooks": {
