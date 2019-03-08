@@ -10,7 +10,7 @@
     "start": "webpack-dev-server --config webpack.dev.config.js",
     "prebuild": "rm -rf build && yarn localize",
     "build": "webpack --config webpack.prod.config.js",
-    "postbuild": "cp -r  *.png build/ && npm run manifest && cp ./package.json ./build/package.json",
+    "postbuild": "cp -r  *.png ./src/index.html build/ && npm run manifest && cp ./package.json ./build/package.json",
     "manifest": "d2-manifest package.json src/manifest.webapp"
   },
   "husky": {
