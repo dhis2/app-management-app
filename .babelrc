@@ -1,12 +1,12 @@
 {
-  "presets": [
-    [
-      "es2015",
-      {
-        "modules": false
-      }
-    ],
-    "react",
-    "stage-0"
-  ]
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "useBuiltIns": "entry",
+                "modules": "cjs",
+            }
+        ],
+        "@babel/preset-react",
+    ]
 }

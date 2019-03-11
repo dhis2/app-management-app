@@ -1,0 +1,22 @@
+{
+  "launch_path": "index.html",
+  "default_locale": "en",
+  "activities": {
+    "dhis": {
+      "href": ".."
+    }
+  },
+  "appType": "APP",
+  "name": "DHIS 2 Application Management",
+  "version": "31.0.0",
+  "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
+  "developer": {
+    "name": "Nicolay Ramm",
+    "email": "nicolay@dhis2.org",
+    "url": "https://www.dhis2.org"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "manifest_generated_at": "Fri Mar 08 2019 16:04:51 GMT+0100 (GMT+01:00)"
+}

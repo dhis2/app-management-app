@@ -15,6 +15,28 @@ import FontIcon from 'material-ui/FontIcon';
 import AppTheme from '../theme';
 import actions from '../actions';
 
+import i18n from '@dhis2/d2-i18n';
+
+const appTypeLabels = {
+    'app': 'Standard Apps',
+    'dashboard_widget': 'Dashboard Apps',
+    'tracker_dashboard_widget': 'Tracker Dashboard Apps',
+    'resource': 'Resource Apps',
+}
+
+const appTypeHeaders = {
+    'app': 'Installed Standard Apps',
+    'dashboard_widget': 'Installed Dashboard Apps',
+    'tracker_dashboard_widget': 'Installed Tracker Dashboard Apps',
+    'resource': 'Installed Resource Apps',
+}
+
+const appTypeMissing = {
+    'app': 'There are no standard apps installed.',
+    'dashboard_widget': 'There are no dashboard apps installed.',
+    'tracker_dashboard_widget': 'There are no tracker dashboard apps installed.',
+    'resource': 'There are no resource apps installed',
+}
 
 const styles = {
     wrapper: {
@@ -107,14 +129,14 @@ class AppList extends React.Component {
     renderInstalledApps() {
         const d2 = this.context.d2;
         const baseUrl = d2.Api.getApi().baseUrl;
-        const label = `${this.props.appTypeFilter}_apps`.toLocaleLowerCase();
+        const label = this.props.appTypeFilter.toLocaleLowerCase();
         const appList = this.props.installedApps
             .filter(app => !this.props.appTypeFilter || app.appType === this.props.appTypeFilter);
 
         if (appList.length > 0) {
             return (
                 <div>
-                    <div style={styles.header}>{d2.i18n.getTranslation(label)}</div>
+                    <div style={styles.header}>{i18n.t(appTypeHeaders[label])}</div>
                     <Card style={styles.card}>
                         <CardText>
                             <List style={styles.container}>{
@@ -169,17 +191,13 @@ class AppList extends React.Component {
 
     renderEmptyList() {
         const d2 = this.context.d2;
-        const labelHeader = (this.props.appTypeFilter
-            ? `${this.props.appTypeFilter}_apps`
-            : 'app_apps').toLocaleLowerCase();
-        const labelNoApps = (this.props.appTypeFilter
-            ? `no_${this.props.appTypeFilter}_apps_installed`
-            : 'no_apps_installed').toLowerCase();
+
+        const label = this.props.appTypeFilter.toLocaleLowerCase();
 
         return (
             <div>
-                <div style={styles.header}>{d2.i18n.getTranslation(labelHeader)}</div>
-                <div style={styles.noApps}>{d2.i18n.getTranslation(labelNoApps)}</div>
+                <div style={styles.header}>{i18n.t(appTypeHeaders[label])}</div>
+                <div style={styles.noApps}>{i18n.t(appTypeMissing[label])}</div>
                 {this.renderUploadButton()}
             </div>
         );
