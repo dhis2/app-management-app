@@ -9,7 +9,7 @@ import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
 import AppTheme from '../theme';
 import actions from '../actions';
-import i18n from '@dhis2/d2-i18n'
+import i18n from '@dhis2/d2-i18n';
 
 
 /*
