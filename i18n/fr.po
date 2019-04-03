@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2017-03-01 15:38+0000\n"
+"Last-Translator: bpiot <bram.piot@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1488382726.000000\n"
+
+msgid "App installed successfully"
+msgstr "L'appli a été installée avec succès"
+
+msgid "Failed to install app"
+msgstr "Échec de l'installation de l'appli"
+
+msgid "App removed successfully"
+msgstr "Suppression de l'appli réussie"
+
+msgid "Installing app from the app store..."
+msgstr "Installation de l'appli depuis l'app store..."
+
+msgid "Failed to install an app from the app store"
+msgstr "Échec de l'installation de l'appli depuis l'app store"
+
+msgid "Uploading..."
+msgstr "Téléchargement en cours..."
+
+msgid "Installing..."
+msgstr "Installation en cours..."
+
+msgid "No apps found"
+msgstr "Aucune appli trouvée"
+
+msgid "No installed apps matched the search term"
+msgstr "Aucune appli installée ne correspond au terme de recherche"
+
+msgid "Standard Apps"
+msgstr "Applis standards"
+
+msgid "Dashboard Apps"
+msgstr "Applis Tableau de bord"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Applis Tableau de bord Tracker"
+
+msgid "Resource Apps"
+msgstr "Applis Ressources"
+
+msgid "App Store"
+msgstr "App Store"
+
+msgid "By"
+msgstr "Par"
+
+msgid "Install"
+msgstr "Installer"
+
+#~ msgid "There are no standard apps installed."
+#~ msgstr "Aucune appli standard n'est installée."
+
+#~ msgid "There are no dashboard apps installed."
+#~ msgstr "Aucune appli tableau de bord n'est installée."
+
+#~ msgid "There are no tracker dashboard apps installed."
+#~ msgstr "Aucune appli tableau de bord tracker n'est installée."
+
+#~ msgid "There are no resource apps installed."
+#~ msgstr "Aucune appli ressource n'est installée."
+
+#~ msgid "Upload App Package (ZIP)"
+#~ msgstr "Télécharger l'App Package (ZIP)"
+
+#~ msgid "Installed Standard Apps"
+#~ msgstr "Applis standards installées"
+
+#~ msgid "Installed Dashboard Apps"
+#~ msgstr "Applis Tableau de bord installées"
+
+#~ msgid "Installed Tracker Dashboard Apps"
+#~ msgstr "Applis Tableau de bord Tracker installées"
+
+#~ msgid "Installed Resource Apps"
+#~ msgstr "Applis Ressources installées"
+
+#~ msgid "Search apps"
+#~ msgstr "Chercher applications"
+
+#~ msgid "Uninstall"
+#~ msgstr "Désinstaller"
+
+#~ msgid "Open"
+#~ msgstr "Ouvrir"
+
+#~ msgid "No apps installed"
+#~ msgstr "Aucune appli n'est installée"
+
+#~ msgid "Installed Applications"
+#~ msgstr "Applications installées"

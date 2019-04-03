@@ -1,0 +1,62 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2016-01-14 12:38+0000\n"
+"Last-Translator: Anonymous Pootle User\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Pootle 2.7\n"
+"X-POOTLE-MTIME: 1452775081.000000\n"
+
+msgid "App installed successfully"
+msgstr ""
+
+msgid "Failed to install app"
+msgstr ""
+
+msgid "App removed successfully"
+msgstr ""
+
+msgid "Installing app from the app store..."
+msgstr ""
+
+msgid "Failed to install an app from the app store"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Installing..."
+msgstr ""
+
+msgid "No apps found"
+msgstr ""
+
+msgid "No installed apps matched the search term"
+msgstr ""
+
+msgid "Standard Apps"
+msgstr ""
+
+msgid "Dashboard Apps"
+msgstr ""
+
+msgid "Tracker Dashboard Apps"
+msgstr ""
+
+msgid "Resource Apps"
+msgstr ""
+
+msgid "App Store"
+msgstr ""
+
+msgid "By"
+msgstr ""
+
+msgid "Install"
+msgstr ""
