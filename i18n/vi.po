@@ -1,0 +1,105 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2017-03-08 08:32+0000\n"
+"Last-Translator: Thuy N <thuy.hispvietnam@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pootle 2.8\n"
+"X-POOTLE-MTIME: 1488961966.000000\n"
+
+msgid "App installed successfully"
+msgstr "Ứng dụng đã cài đặt THÀNH CÔNG"
+
+msgid "Failed to install app"
+msgstr "Cài đặt ứng dụng KHÔNG THÀNH CÔNG"
+
+msgid "App removed successfully"
+msgstr "Gỡ bỏ ứng dụng THÀNH CÔNG"
+
+msgid "Installing app from the app store..."
+msgstr "Đang cài đặt ứng dụng từ kho ứng dụng..."
+
+msgid "Failed to install an app from the app store"
+msgstr "Cài đặt ứng dụng từ kho ứng dụng KHÔNG THÀNH CÔNG"
+
+msgid "Uploading..."
+msgstr "Đang tải lên"
+
+msgid "Installing..."
+msgstr "Đang cài đặt..."
+
+msgid "No apps found"
+msgstr "Không tìm thấy ứng dụng"
+
+msgid "No installed apps matched the search term"
+msgstr "Không tìm thấy ứng dụng đã cài đặt theo yêu cầu"
+
+msgid "Standard Apps"
+msgstr "Ứng dụng chuẩn"
+
+msgid "Dashboard Apps"
+msgstr "Ứng dụng bảng thông tin"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Ứng dụng bảng thông tin theo dõi"
+
+msgid "Resource Apps"
+msgstr "Ứng dụng tài nguyên"
+
+msgid "App Store"
+msgstr "Kho ứng dụng"
+
+msgid "By"
+msgstr "Bởi"
+
+msgid "Install"
+msgstr "Cài đặt"
+
+#~ msgid "There are no standard apps installed."
+#~ msgstr "Không có ứng dụng chuẩn nào được cài đặt"
+
+#~ msgid "There are no dashboard apps installed."
+#~ msgstr "Không có ứng dụng bảng thông tin nào được cài đặt"
+
+#~ msgid "There are no tracker dashboard apps installed."
+#~ msgstr "Không có ứng dụng bảng thông tin theo dõi nào được cài đặt"
+
+#~ msgid "There are no resource apps installed."
+#~ msgstr "Không có ứng dụng tài nguyên nào được cài đặt"
+
+#~ msgid "Upload App Package (ZIP)"
+#~ msgstr "Tải lên gói ứng dụng (ZIP)"
+
+#~ msgid "Installed Standard Apps"
+#~ msgstr "Ứng dụng chuẩn đã cài đặt"
+
+#~ msgid "Installed Dashboard Apps"
+#~ msgstr "Ứng dụng Bảng thông tin đã cài đặt"
+
+#~ msgid "Installed Tracker Dashboard Apps"
+#~ msgstr "Ứng dụng Bảng thông tin Theo dõi đã cài đặt"
+
+#~ msgid "Installed Resource Apps"
+#~ msgstr "Ứng dụng Tài nguyên đã cài đặt"
+
+#~ msgid "Search apps"
+#~ msgstr "Tìm kiếm ứng dụng"
+
+#~ msgid "Uninstall"
+#~ msgstr "Gỡ bỏ cài đặt"
+
+#~ msgid "Open"
+#~ msgstr "Mở"
+
+#~ msgid "No apps installed"
+#~ msgstr "Không có ứng dụng nào được cài đặt"
+
+#~ msgid "Installed Applications"
+#~ msgstr "Ứng dụng đã cài đặt"
