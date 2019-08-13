@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-30 08:59+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Pootle-Path: /ru/app-management-app/i18n/ru.po\n"
+"X-Pootle-Revision: 57057\n"
+
+#: upload_app_package
+msgid "Upload App Package (ZIP)"
+msgstr "Загрузить пакет приложений (ZIP)"
+
+#: app_apps
+msgid "Standard Apps"
+msgstr "Стандартные приложения"
+
+#: dashboard_widget_apps
+msgid "Dashboard Apps"
+msgstr "Приложения для панели инструментов"
+
+#: tracker_dashboard_widget_apps
+msgid "Tracker Dashboard Apps"
+msgstr "Приложения Tracker Dashboard Apps"
+
+#: resource_apps
+msgid "Resource Apps"
+msgstr "Приложения Resource Apps"
+
+#: installed_app_apps
+msgid "Installed Standard Apps"
+msgstr "Установленные приложения Standard Apps"
+
+#: installed_dashboard_widget_apps
+msgid "Installed Dashboard Apps"
+msgstr "Установленные приложения Dashboard Apps"
+
+#: installed_tracker_dashboard_widget_apps
+msgid "Installed Tracker Dashboard Apps"
+msgstr "Установленные приложения Tracker Dashboard Apps"
+
+#: installed_resource_apps
+msgid "Installed Resource Apps"
+msgstr "Установленные приложения Resource Apps"
+
+#: search
+msgid "Search apps"
+msgstr "Поиск приложений"
+
+#: no_app_apps_installed
+msgid "There are no standard apps installed."
+msgstr "Приложения standard apps не установлены."
+
+#: no_dashboard_widget_apps_installed
+msgid "There are no dashboard apps installed."
+msgstr "Приложения dashboard apps не установлены."
+
+#: no_tracker_dashboard_widget_apps_installed
+msgid "There are no tracker dashboard apps installed."
+msgstr "Приложения tracker dashboard apps не установлены."
+
+#: no_resource_apps_installed
+msgid "There are no resource apps installed."
+msgstr "Приложения resource apps не установлены."
+
+#: app_store
+msgid "App Store"
+msgstr "App Store"
+
+#: by
+msgid "By"
+msgstr "По"
+
+#: install
+msgid "Install"
+msgstr "Установить"
+
+#: uninstall
+msgid "Uninstall"
+msgstr "Удалить"
+
+#: uploading
+msgid "Uploading..."
+msgstr "Загрузка ..."
+
+#: installing
+msgid "Installing..."
+msgstr "Установка ..."
+
+#: open
+msgid "Open"
+msgstr "Открыть"
+
+#: app_installed
+msgid "App installed successfully"
+msgstr "Приложение успешно установлено"
+
+#: failed_to_install_app
+msgid "Failed to install app"
+msgstr "Не удалось установить приложение"
+
+#: app_removed
+msgid "App removed successfully"
+msgstr "Приложение успешно удалено"
+
+#: installing_app_from_app_store
+msgid "Installing app from the app store..."
+msgstr "Установка приложения из App Store ..."
+
+#: failed_to_install_app_from_app_store
+msgid "Failed to install an app from the app store"
+msgstr "Не удалось установить приложение из App Store"
+
+#: no_apps_found
+msgid "No apps found"
+msgstr "Приложения не найдены"
+
+#: no_installed_apps_matched
+msgid "No installed apps matched the search term"
+msgstr "Нет установленных приложений, соответствующих запросу"
+
+#: no_apps_installed
+msgid "No apps installed"
+msgstr "Приложения не установлены"
