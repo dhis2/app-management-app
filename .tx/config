@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[app-management-app.en-pot]
+[app-management-app.en-pot--master]
 file_filter = i18n/<lang>.po
 minimum_perc = 0
 source_file = i18n/en.pot
