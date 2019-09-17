@@ -1,0 +1,63 @@
+# Translators:
+# phil_dhis2, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-09-01 18:30+0000\n"
+"Last-Translator: phil_dhis2, 2019\n"
+"Language-Team: Russian (https://www.transifex.com/hisp-uio/teams/100509/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+msgid "App installed successfully"
+msgstr "Приложение успешно установлено"
+
+msgid "Failed to install app"
+msgstr "Не удалось установить приложение"
+
+msgid "App removed successfully"
+msgstr "Приложение успешно удалено"
+
+msgid "Installing app from the app store..."
+msgstr "Установка приложения из App Store ..."
+
+msgid "Failed to install an app from the app store"
+msgstr "Не удалось установить приложение из App Store"
+
+msgid "Uploading..."
+msgstr "Загрузка ..."
+
+msgid "Installing..."
+msgstr "Установка ..."
+
+msgid "No apps found"
+msgstr "Приложения не найдены"
+
+msgid "No installed apps matched the search term"
+msgstr "Нет установленных приложений, соответствующих запросу"
+
+msgid "Standard Apps"
+msgstr "Стандартные приложения"
+
+msgid "Dashboard Apps"
+msgstr "Приложения для панели инструментов"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Приложения Tracker Dashboard Apps"
+
+msgid "Resource Apps"
+msgstr "Приложения Resource Apps"
+
+msgid "App Store"
+msgstr "App Store"
+
+msgid "By"
+msgstr "По"
+
+msgid "Install"
+msgstr "Установить"
