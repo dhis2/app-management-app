@@ -1,131 +1,63 @@
+# Translators:
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-03 08:42+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: sv\n"
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: Swedish (https://www.transifex.com/hisp-uio/teams/100509/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"X-Pootle-Path: /sv/app-management-app/i18n/sv.po\n"
-"X-Pootle-Revision: 53261\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: upload_app_package
-msgid "Upload App Package (ZIP)"
-msgstr "Ladda upp App Package"
-
-#: app_apps
-msgid "Standard Apps"
-msgstr "Standardapps"
-
-#: dashboard_widget_apps
-msgid "Dashboard Apps"
-msgstr "Dashboard Apps"
-
-#: tracker_dashboard_widget_apps
-msgid "Tracker Dashboard Apps"
-msgstr "Tracker Dashboard Apps"
-
-#: resource_apps
-msgid "Resource Apps"
-msgstr "Resurs apps"
-
-#: installed_app_apps
-msgid "Installed Standard Apps"
-msgstr "Installerade standard apps"
-
-#: installed_dashboard_widget_apps
-msgid "Installed Dashboard Apps"
-msgstr "Installerade dashboard apps"
-
-#: installed_tracker_dashboard_widget_apps
-msgid "Installed Tracker Dashboard Apps"
-msgstr "Installerade tracker dashboard apps"
-
-#: installed_resource_apps
-msgid "Installed Resource Apps"
-msgstr "Installerade resurs apps"
-
-#: search
-msgid "Search apps"
-msgstr "Sök appar"
-
-#: no_app_apps_installed
-msgid "There are no standard apps installed."
-msgstr "Det finns inga standard apps installerade."
-
-#: no_dashboard_widget_apps_installed
-msgid "There are no dashboard apps installed."
-msgstr "Det finns inga dashboard appar installerade."
-
-#: no_tracker_dashboard_widget_apps_installed
-msgid "There are no tracker dashboard apps installed."
-msgstr "Det finns inga tracker dashboard appar installerade."
-
-#: no_resource_apps_installed
-msgid "There are no resource apps installed."
-msgstr "Det finns inga resursapps installerade."
-
-#: app_store
-msgid "App Store"
-msgstr "App Store"
-
-#: by
-msgid "By"
-msgstr "Av"
-
-#: install
-msgid "Install"
-msgstr "Installera"
-
-#: uninstall
-msgid "Uninstall"
-msgstr "Avinstallera"
-
-#: uploading
-msgid "Uploading..."
-msgstr "Laddar upp ..."
-
-#: installing
-msgid "Installing..."
-msgstr "Installerar ..."
-
-#: open
-msgid "Open"
-msgstr "Öppna"
-
-#: app_installed
 msgid "App installed successfully"
 msgstr "App installerats"
 
-#: failed_to_install_app
 msgid "Failed to install app"
 msgstr "Det gick inte att installera appen"
 
-#: app_removed
 msgid "App removed successfully"
 msgstr "Appen har tagits bort"
 
-#: installing_app_from_app_store
 msgid "Installing app from the app store..."
 msgstr "Installera app från appbutiken ..."
 
-#: failed_to_install_app_from_app_store
 msgid "Failed to install an app from the app store"
 msgstr "Det gick inte att installera en app från appbutiken"
 
-#: no_apps_found
+msgid "Uploading..."
+msgstr "Laddar upp ..."
+
+msgid "Installing..."
+msgstr "Installerar ..."
+
 msgid "No apps found"
 msgstr "Inga appar hittade"
 
-#: no_installed_apps_matched
 msgid "No installed apps matched the search term"
 msgstr "Inga installerade appar matchade sökordet"
 
-#: no_apps_installed
-msgid "No apps installed"
-msgstr "Inga appar installerade"
+msgid "Standard Apps"
+msgstr "Standardapps"
+
+msgid "Dashboard Apps"
+msgstr "Dashboard Apps"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Tracker Dashboard Apps"
+
+msgid "Resource Apps"
+msgstr "Resurs apps"
+
+msgid "App Store"
+msgstr "App Store"
+
+msgid "By"
+msgstr "Av"
+
+msgid "Install"
+msgstr "Installera"
