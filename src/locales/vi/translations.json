@@ -1,0 +1,18 @@
+{
+    "App installed successfully": "Ứng dụng đã cài đặt THÀNH CÔNG",
+    "Failed to install app": "Cài đặt ứng dụng KHÔNG THÀNH CÔNG",
+    "App removed successfully": "Gỡ bỏ ứng dụng THÀNH CÔNG",
+    "Installing app from the app store...": "Đang cài đặt ứng dụng từ kho ứng dụng...",
+    "Failed to install an app from the app store": "Cài đặt ứng dụng từ kho ứng dụng KHÔNG THÀNH CÔNG",
+    "Uploading...": "Đang tải lên",
+    "Installing...": "Đang cài đặt...",
+    "No apps found": "Không tìm thấy ứng dụng",
+    "No installed apps matched the search term": "Không tìm thấy ứng dụng đã cài đặt theo yêu cầu",
+    "Standard Apps": "Ứng dụng chuẩn",
+    "Dashboard Apps": "Ứng dụng bảng thông tin",
+    "Tracker Dashboard Apps": "Ứng dụng bảng thông tin theo dõi",
+    "Resource Apps": "Ứng dụng tài nguyên",
+    "App Store": "Kho ứng dụng",
+    "By": "Bởi",
+    "Install": "Cài đặt"
+}

@@ -1,0 +1,18 @@
+{
+    "App installed successfully": "Приложение успешно установлено",
+    "Failed to install app": "Не удалось установить приложение",
+    "App removed successfully": "Приложение успешно удалено",
+    "Installing app from the app store...": "Установка приложения из App Store ...",
+    "Failed to install an app from the app store": "Не удалось установить приложение из App Store",
+    "Uploading...": "Загрузка ...",
+    "Installing...": "Установка ...",
+    "No apps found": "Приложения не найдены",
+    "No installed apps matched the search term": "Нет установленных приложений, соответствующих запросу",
+    "Standard Apps": "Стандартные приложения",
+    "Dashboard Apps": "Приложения для панели инструментов",
+    "Tracker Dashboard Apps": "Приложения Tracker Dashboard Apps",
+    "Resource Apps": "Приложения Resource Apps",
+    "App Store": "App Store",
+    "By": "По",
+    "Install": "Установить"
+}

@@ -1,0 +1,18 @@
+{
+    "App installed successfully": "L'appli a été installée avec succès",
+    "Failed to install app": "Échec de l'installation de l'appli",
+    "App removed successfully": "Suppression de l'appli réussie",
+    "Installing app from the app store...": "Installation de l'appli depuis l'app store...",
+    "Failed to install an app from the app store": "Échec de l'installation de l'appli depuis l'app store",
+    "Uploading...": "Téléchargement en cours...",
+    "Installing...": "Installation en cours...",
+    "No apps found": "Aucune appli trouvée",
+    "No installed apps matched the search term": "Aucune appli installée ne correspond au terme de recherche",
+    "Standard Apps": "Applis standards",
+    "Dashboard Apps": "Applis Tableau de bord",
+    "Tracker Dashboard Apps": "Applis Tableau de bord Tracker",
+    "Resource Apps": "Applis Ressources",
+    "App Store": "App Store",
+    "By": "Par",
+    "Install": "Installer"
+}
