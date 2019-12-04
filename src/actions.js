@@ -90,6 +90,7 @@ actions.loadAppStore.subscribe(async () => {
 
     const d2 = await getD2();
     const baseUrl = d2.Api.getApi().baseUrl;
+    debug(`Got baseUrl: ${baseUrl}`)
 
     const fetchOptions = {
         credentials: 'include',

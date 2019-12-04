@@ -29,7 +29,7 @@ log.setLevel(process.env.NODE_ENV === 'production' ? log.levels.INFO : log.level
 D2Library.getManifest('manifest.webapp')
     .then((manifest) => {
         const baseUrl = process.env.NODE_ENV === 'production' ? manifest.getBaseUrl() : dhisDevConfig.baseUrl;
-        D2Library.config.baseUrl = `${baseUrl}/api`;
+        D2Library.config.baseUrl = `${baseUrl.replace(/\/$/, '')}/api`;
         log.info(`Loading: ${manifest.name} v${manifest.version}`);
         log.info(`Built ${manifest.manifest_generated_at}`);
     })
