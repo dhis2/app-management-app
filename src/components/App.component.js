@@ -20,7 +20,7 @@ import actions from '../actions';
 import appStoreStore from '../stores/appStore.store';
 import installedAppStore from '../stores/installedApp.store';
 
-import i18n from '@dhis2/d2-i18n'
+import i18n from '@dhis2/d2-i18n';
 
 const HeaderBar = withStateFrom(headerBarStore$, HeaderBarComponent);
 

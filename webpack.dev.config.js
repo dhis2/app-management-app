@@ -33,14 +33,6 @@ webpackConfig.plugins = [
     })
 ];
 
-function log(req, res, opt) {
-    if ( req.url === '/manifest.webapp' ) {
-        return req.url;
-    }
-    req.headers.Authorization = dhisConfig.authorization;
-    console.log('[PROXY]' + req.url);
-}
-
 webpackConfig.devServer = {
     contentBase: './src',
     progress: true,

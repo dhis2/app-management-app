@@ -15,7 +15,7 @@ import FontIcon from 'material-ui/FontIcon';
 import AppTheme from '../theme';
 import actions from '../actions';
 
-import i18n from '@dhis2/d2-i18n'
+import i18n from '@dhis2/d2-i18n';
 
 const appTypeLabels = {
     'app': 'Standard Apps',

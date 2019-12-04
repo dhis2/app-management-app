@@ -8,13 +8,27 @@
 //------------------------------------------------------------------------------
 import i18n from '@dhis2/d2-i18n';
 import moment from 'moment';
+import 'moment/locale/fr';
+import 'moment/locale/ru';
+import 'moment/locale/sv';
+import 'moment/locale/vi';
 
 import enTranslations from './en/translations.json';
+import frTranslations from './fr/translations.json';
+import idTranslations from './id/translations.json';
+import ruTranslations from './ru/translations.json';
+import svTranslations from './sv/translations.json';
+import viTranslations from './vi/translations.json';
 
 const namespace = 'NAMESPACE';
 moment.locale('en');
 
 i18n.addResources('en', namespace, enTranslations);
+i18n.addResources('fr', namespace, frTranslations);
+i18n.addResources('id', namespace, idTranslations);
+i18n.addResources('ru', namespace, ruTranslations);
+i18n.addResources('sv', namespace, svTranslations);
+i18n.addResources('vi', namespace, viTranslations);
 
 i18n.setDefaultNamespace(namespace);
 i18n.changeLanguage('en');

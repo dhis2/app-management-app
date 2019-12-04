@@ -1,0 +1,63 @@
+# Translators:
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "App installed successfully"
+msgstr "L'appli a été installée avec succès"
+
+msgid "Failed to install app"
+msgstr "Échec de l'installation de l'appli"
+
+msgid "App removed successfully"
+msgstr "Suppression de l'appli réussie"
+
+msgid "Installing app from the app store..."
+msgstr "Installation de l'appli depuis l'app store..."
+
+msgid "Failed to install an app from the app store"
+msgstr "Échec de l'installation de l'appli depuis l'app store"
+
+msgid "Uploading..."
+msgstr "Téléchargement en cours..."
+
+msgid "Installing..."
+msgstr "Installation en cours..."
+
+msgid "No apps found"
+msgstr "Aucune appli trouvée"
+
+msgid "No installed apps matched the search term"
+msgstr "Aucune appli installée ne correspond au terme de recherche"
+
+msgid "Standard Apps"
+msgstr "Applis standards"
+
+msgid "Dashboard Apps"
+msgstr "Applis Tableau de bord"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Applis Tableau de bord Tracker"
+
+msgid "Resource Apps"
+msgstr "Applis Ressources"
+
+msgid "App Store"
+msgstr "App Store"
+
+msgid "By"
+msgstr "Par"
+
+msgid "Install"
+msgstr "Installer"

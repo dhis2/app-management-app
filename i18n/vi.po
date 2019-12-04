@@ -1,0 +1,63 @@
+# Translators:
+# Viktor Varland <viktor@dhis2.org>, 2019
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2019\n"
+"Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "App installed successfully"
+msgstr "Ứng dụng đã cài đặt THÀNH CÔNG"
+
+msgid "Failed to install app"
+msgstr "Cài đặt ứng dụng KHÔNG THÀNH CÔNG"
+
+msgid "App removed successfully"
+msgstr "Gỡ bỏ ứng dụng THÀNH CÔNG"
+
+msgid "Installing app from the app store..."
+msgstr "Đang cài đặt ứng dụng từ kho ứng dụng..."
+
+msgid "Failed to install an app from the app store"
+msgstr "Cài đặt ứng dụng từ kho ứng dụng KHÔNG THÀNH CÔNG"
+
+msgid "Uploading..."
+msgstr "Đang tải lên"
+
+msgid "Installing..."
+msgstr "Đang cài đặt..."
+
+msgid "No apps found"
+msgstr "Không tìm thấy ứng dụng"
+
+msgid "No installed apps matched the search term"
+msgstr "Không tìm thấy ứng dụng đã cài đặt theo yêu cầu"
+
+msgid "Standard Apps"
+msgstr "Ứng dụng chuẩn"
+
+msgid "Dashboard Apps"
+msgstr "Ứng dụng bảng thông tin"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Ứng dụng bảng thông tin theo dõi"
+
+msgid "Resource Apps"
+msgstr "Ứng dụng tài nguyên"
+
+msgid "App Store"
+msgstr "Kho ứng dụng"
+
+msgid "By"
+msgstr "Bởi"
+
+msgid "Install"
+msgstr "Cài đặt"
