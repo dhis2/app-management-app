@@ -1,3 +1,5 @@
+import Debug from 'debug'
+
 import Action from 'd2-ui/lib/action/Action';
 import { getInstance as getD2 } from 'd2/lib/d2';
 import log from 'loglevel';
@@ -6,6 +8,8 @@ import appStoreStore from './stores/appStore.store';
 import installedAppStore from './stores/installedApp.store';
 
 import i18n from '@dhis2/d2-i18n'
+
+const debug = Debug('app-management-app:frontend:client')
 
 const actions = {
     // App management actions
@@ -82,12 +86,43 @@ actions.refreshApps.subscribe(() => {
 /*
  * Load the app store
  */
-actions.loadAppStore.subscribe(() => {
-    getD2().then((d2) => {
-        d2.system.loadAppStore().then((apps) => {
-            appStoreStore.setState(Object.assign(appStoreStore.getState() || {}, { apps }));
-        });
-    });
+actions.loadAppStore.subscribe(async () => {
+
+    const d2 = await getD2();
+    const baseUrl = d2.Api.getApi().baseUrl;
+
+    const fetchOptions = {
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    
+    const getAppstoreUrl = async () => {    
+        const response = await fetch(`${baseUrl}/configuration/settings/filter.json?type=CONFIGURATION`, fetchOptions)
+        const dhis2Configuration = await response.json();
+        return dhis2Configuration['dhis-configurations']['appstore.api.url'];
+    }
+    
+    const getDhisVersion = async () => {
+        const response = await fetch(`${baseUrl}/system/info`, fetchOptions)
+        const json = await response.json();
+        //if we're running a dev version remove the snapshot suffix to just keep the dhis version
+        return json.version.replace('-SNAPSHOT', '');
+    }
+
+    const url = await getAppstoreUrl();
+    debug(`Got appstore url: ${url}`)
+    
+    const version = await getDhisVersion();
+    debug(`Got dhis2 version: ${version}`)
+
+    const corsOptions = { ...fetchOptions, mode: 'cors', credentials: undefined }
+    debug('Using fetch/cors options:', corsOptions)
+
+    const response = await fetch(`${url}/v1/apps?dhis_version=${version}`, corsOptions)
+    const apps = await response.json();
+    appStoreStore.setState(Object.assign(appStoreStore.getState() || {}, { apps }));
 });
 
 
