@@ -121,7 +121,7 @@ actions.loadAppStore.subscribe(async () => {
     const corsOptions = { ...fetchOptions, mode: 'cors', credentials: undefined }
     debug('Using fetch/cors options:', corsOptions)
 
-    const response = await fetch(`${url}/v1/apps?dhis_version=${version}`, corsOptions)
+    const response = await fetch(`${url}/apps?dhis_version=${version}`, corsOptions)
     const apps = await response.json();
     appStoreStore.setState(Object.assign(appStoreStore.getState() || {}, { apps }));
 });
