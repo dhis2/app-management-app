@@ -9,7 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import D2Library from 'd2/lib/d2';
 import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
 
-import installedAppStore from './stores/installedApp.store';
+import installedAppHub from './stores/installedApp.store';
 import App from './components/App.component';
 import theme from './theme';
 
@@ -37,7 +37,7 @@ D2Library.getManifest('manifest.webapp')
     .then(D2Library.init)
     .then((d2) => {
         log.debug('D2 initialized', d2);
-        installedAppStore.setState(d2.system.installedApps);
+        installedAppHub.setState(d2.system.installedApps);
         ReactDOM.render(
             <MuiThemeProvider muiTheme={theme}><App d2={d2} /></MuiThemeProvider>,
             document.getElementById('app'),

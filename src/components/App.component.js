@@ -13,12 +13,12 @@ import Snackbar from 'material-ui/Snackbar';
 import FontIcon from 'material-ui/FontIcon';
 
 import AppList from './AppList.component';
-import AppStore from './AppStore.component';
+import AppHub from './AppHub.component';
 import AppTheme from '../theme';
 
 import actions from '../actions';
-import appStoreStore from '../stores/appStore.store';
-import installedAppStore from '../stores/installedApp.store';
+import appHubStore from '../stores/appHub.store';
+import installedAppHub from '../stores/installedApp.store';
 
 import i18n from '@dhis2/d2-i18n';
 
@@ -73,7 +73,7 @@ class App extends React.Component {
             installing: false,
             uploading: false,
             progress: undefined,
-            appStore: {},
+            appHub: {},
             lastUpdate: null,
         };
 
@@ -91,11 +91,11 @@ class App extends React.Component {
 
     componentDidMount() {
         this.subscriptions = [
-            installedAppStore.subscribe((installedApps) => {
+            installedAppHub.subscribe((installedApps) => {
                 this.setState({ installedApps, lastUpdate: new Date() });
             }),
-            appStoreStore.subscribe((appStore) => {
-                this.setState({ appStore, installing: appStore.installing !== undefined && appStore.installing > 0 });
+            appHubStore.subscribe((appHub) => {
+                this.setState({ appHub, installing: appHub.installing !== undefined && appHub.installing > 0 });
             }),
 
             actions.installApp.subscribe(() => {
@@ -103,7 +103,7 @@ class App extends React.Component {
             }),
             actions.appInstalled.subscribe(({ data }) => {
                 this.setState({ uploading: false });
-                this.setSection(installedAppStore.getAppFromKey(data).appType.toLowerCase() || 'app');
+                this.setSection(installedAppHub.getAppFromKey(data).appType.toLowerCase() || 'app');
             }),
             actions.refreshApps.subscribe(() => {
                 this.setState({ uploading: false });
@@ -119,12 +119,12 @@ class App extends React.Component {
                 }
             }),
             actions.installAppVersion.subscribe(({ data }) => {
-                const app = appStoreStore.getAppFromVersionId(data[0]);
+                const app = appHubStore.getAppFromVersionId(data[0]);
                 this.setSection((app.appType && app.appType.toLowerCase()) || 'app');
             }),
         ];
 
-        actions.loadAppStore();
+        actions.loadAppHub();
     }
 
     componentWillUnmount() {
@@ -215,7 +215,7 @@ class App extends React.Component {
 
     renderSection(key, apps, showUpload) {
         if (key === 'store') {
-            return <AppStore appStore={this.state.appStore} />;
+            return <AppHub appHub={this.state.appHub} />;
         }
 
         const filter = (key && key.toString().toUpperCase()) || 'APP';
@@ -226,7 +226,7 @@ class App extends React.Component {
                 uploadProgress={this.progress}
                 transitionUnmount={this.state.unmountSection}
                 showUpload={showUpload && !this.state.uploading}
-                appStore={this.state.appStore}
+                appHub={this.state.appHub}
                 appTypeFilter={filter}
             />
         );
@@ -284,7 +284,7 @@ class App extends React.Component {
             }, {
                 key: 'store',
                 icon: 'store',
-                label: i18n.t('App Store'),
+                label: i18n.t('App Hub'),
             },
         ].map(section => ({
             key: section.key,

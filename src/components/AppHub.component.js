@@ -31,7 +31,7 @@ function parseDescription(description) {
 */
 
 
-class AppStore extends React.Component {
+class AppHub extends React.Component {
     constructor(props) {
         super(props);
 
@@ -41,8 +41,8 @@ class AppStore extends React.Component {
     }
 
     componentWillMount() {
-        if (!Array.isArray(this.props.appStore.apps)) {
-            actions.loadAppStore();
+        if (!Array.isArray(this.props.appHub.apps)) {
+            actions.loadAppHub();
         }
     }
 
@@ -96,7 +96,7 @@ class AppStore extends React.Component {
 
         return (
             <div style={styles.flex}>
-                {this.props.appStore.apps.map(app => (
+                {this.props.appHub.apps.map(app => (
                     <Card style={styles.card} key={app.name}>
                         <CardHeader
                             title={app.name}
@@ -168,9 +168,9 @@ class AppStore extends React.Component {
         };
 
         /* eslint-disable react/no-danger */
-        return Array.isArray(this.props.appStore.apps) ? (
+        return Array.isArray(this.props.appHub.apps) ? (
             <div>
-                <div style={styles.header}>{i18n.t('App Store')}</div>
+                <div style={styles.header}>{i18n.t('App Hub')}</div>
                 <div style={styles.apps}>{this.renderApps()}</div>
             </div>
         ) : (
@@ -180,15 +180,15 @@ class AppStore extends React.Component {
         );
     }
 }
-AppStore.propTypes = {
-    appStore: React.PropTypes.object.isRequired,
+AppHub.propTypes = {
+    appHub: React.PropTypes.object.isRequired,
 };
-AppStore.defaultProps = {
-    appStore: {},
+AppHub.defaultProps = {
+    appHub: {},
 };
 
-AppStore.contextTypes = {
+AppHub.contextTypes = {
     d2: React.PropTypes.object,
 };
 
-export default AppStore;
+export default AppHub;
