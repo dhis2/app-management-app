@@ -139,7 +139,7 @@ actions.installAppVersion.subscribe((params) => {
 
     getD2().then((d2) => {
         actions.showSnackbarMessage(i18n.t('Installing app from the app hub...'));
-        d2.system.installAppVersion(versionId)
+        installAppVersion(versionId, d2)
             .then(() => d2.system.reloadApps())
             .then((apps) => {
                 actions.showSnackbarMessage(i18n.t('App installed successfully'));
@@ -159,5 +159,16 @@ actions.installAppVersion.subscribe((params) => {
             });
     });
 });
+
+function installAppVersion(uid, d2) {
+    const api = d2.Api.getApi();
+    return new Promise((resolve, reject) => {
+        api.post(['appHub', uid].join('/'), '', { dataType: 'text' }).then(() => {
+            resolve();
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+}
 
 export default actions;
