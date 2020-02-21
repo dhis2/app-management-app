@@ -100,9 +100,9 @@ actions.loadAppHub.subscribe(async () => {
     }
     
     const getAppHubUrl = async () => {    
-        const response = await fetch(`${baseUrl}/configuration/settings/filter.json?type=CONFIGURATION`, fetchOptions)
+        const response = await fetch(`${baseUrl}/configuration/appHubUrl`, fetchOptions)
         const dhis2Configuration = await response.json();
-        return dhis2Configuration['dhis-configurations']['apphub.api.url'];
+        return dhis2Configuration.apiUrl;
     }
     
     const getDhisVersion = async () => {
