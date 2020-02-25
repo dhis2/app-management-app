@@ -2,8 +2,8 @@
     "App installed successfully": "",
     "Failed to install app": "",
     "App removed successfully": "",
-    "Installing app from the app store...": "",
-    "Failed to install an app from the app store": "",
+    "Installing app from the app hub...": "",
+    "Failed to install an app from the app hub": "",
     "Uploading...": "",
     "Installing...": "",
     "No apps found": "",
@@ -12,7 +12,7 @@
     "Dashboard Apps": "",
     "Tracker Dashboard Apps": "",
     "Resource Apps": "",
-    "App Store": "",
+    "App Hub": "",
     "By": "",
     "Install": ""
 }
