@@ -54,7 +54,7 @@ msgid "Resource Apps"
 msgstr "Applis Ressources"
 
 msgid "App Store"
-msgstr "App Store"
+msgstr ""
 
 msgid "By"
 msgstr "Par"
