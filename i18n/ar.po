@@ -24,10 +24,10 @@ msgid "App removed successfully"
 msgstr "تم إزالة التطبيق بنجاح"
 
 msgid "Installing app from the app store..."
-msgstr ""
+msgstr "تنزيل التطبيق من مركز التطبيقات..."
 
 msgid "Failed to install an app from the app store"
-msgstr ""
+msgstr "فشل تثبيت التطبيق من مركز التطبيقات..."
 
 msgid "Uploading..."
 msgstr "رفع..."
@@ -54,7 +54,7 @@ msgid "Resource Apps"
 msgstr "تطبيقات الموارد"
 
 msgid "App Store"
-msgstr ""
+msgstr "مركز التطبيقات"
 
 msgid "By"
 msgstr "عن طريق"
