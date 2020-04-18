@@ -54,7 +54,7 @@ msgid "Resource Apps"
 msgstr "Приложения Resource Apps"
 
 msgid "App Store"
-msgstr "App Store"
+msgstr ""
 
 msgid "By"
 msgstr "По"
