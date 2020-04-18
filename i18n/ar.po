@@ -1,0 +1,63 @@
+# Translators:
+# Hamza Assada <7amza.it@gmail.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2020-02-21T13:01:54.731Z\n"
+"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2020\n"
+"Language-Team: Arabic (https://www.transifex.com/hisp-uio/teams/100509/ar/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+msgid "App installed successfully"
+msgstr "تم تثبيت التطبيق بنجاح"
+
+msgid "Failed to install app"
+msgstr "فشل تثبيت التطبيق"
+
+msgid "App removed successfully"
+msgstr "تم إزالة التطبيق بنجاح"
+
+msgid "Installing app from the app hub..."
+msgstr "تثبيت التطبيق من مركز التطبيقات..."
+
+msgid "Failed to install an app from the app hub"
+msgstr "فشل تثبيت تطبيق من مركز التطبيقات"
+
+msgid "Uploading..."
+msgstr "رفع..."
+
+msgid "Installing..."
+msgstr "تثبيت..."
+
+msgid "No apps found"
+msgstr "لم يتم العثور على تطبيقات"
+
+msgid "No installed apps matched the search term"
+msgstr "لا توجد تطبيقات مثبتة تطابق مصطلح البحث"
+
+msgid "Standard Apps"
+msgstr "التطبيقات القياسية"
+
+msgid "Dashboard Apps"
+msgstr "تطبيقات لوحة المعلومات"
+
+msgid "Tracker Dashboard Apps"
+msgstr "تطبيقات لوحة معلومات المتتبع"
+
+msgid "Resource Apps"
+msgstr "تطبيقات الموارد"
+
+msgid "App Hub"
+msgstr "مركز التطبيق"
+
+msgid "By"
+msgstr "عن طريق"
+
+msgid "Install"
+msgstr "تثبيت"
