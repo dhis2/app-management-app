@@ -24,10 +24,10 @@ msgid "App removed successfully"
 msgstr "App成功移除"
 
 msgid "Installing app from the app store..."
-msgstr ""
+msgstr "从应用市场安装应用"
 
 msgid "Failed to install an app from the app store"
-msgstr ""
+msgstr "从应用市场安装应用失败"
 
 msgid "Uploading..."
 msgstr "上传"
@@ -54,7 +54,7 @@ msgid "Resource Apps"
 msgstr "资源App"
 
 msgid "App Store"
-msgstr ""
+msgstr "App 商店"
 
 msgid "By"
 msgstr "由"
