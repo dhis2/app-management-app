@@ -1,63 +1,64 @@
+# 
+# Translators:
+# Carwoto Sa'an <carwoto@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
-"PO-Revision-Date: 2016-01-16 20:24+0000\n"
-"Last-Translator: Anonymous Pootle User\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: id\n"
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2020-02-21T13:01:54.731Z\n"
+"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"Last-Translator: Carwoto Sa'an <carwoto@gmail.com>, 2020\n"
+"Language-Team: Indonesian (https://www.transifex.com/hisp-uio/teams/100509/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Pootle 2.7\n"
-"X-POOTLE-MTIME: 1452975874.000000\n"
 
 msgid "App installed successfully"
-msgstr ""
+msgstr "App berhasil dipasang"
 
 msgid "Failed to install app"
-msgstr ""
+msgstr "Gagal memasang app"
 
 msgid "App removed successfully"
-msgstr ""
+msgstr "App berhasil dibuang"
 
-msgid "Installing app from the app store..."
-msgstr ""
+msgid "Installing app from the app hub..."
+msgstr "Sedang memasang app dari app hub..."
 
-msgid "Failed to install an app from the app store"
-msgstr ""
+msgid "Failed to install an app from the app hub"
+msgstr "Gagal memasang app dari app hub"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "Sedang mengunggah..."
 
 msgid "Installing..."
-msgstr ""
+msgstr "Sedang memasang..."
 
 msgid "No apps found"
-msgstr ""
+msgstr "Tidak ditemukan apps"
 
 msgid "No installed apps matched the search term"
-msgstr ""
+msgstr "Tidak ada apps terpasang yang sesuai dengan pencarian"
 
 msgid "Standard Apps"
-msgstr ""
+msgstr "Standard Apps"
 
 msgid "Dashboard Apps"
-msgstr ""
+msgstr "Dashboard Apps"
 
 msgid "Tracker Dashboard Apps"
-msgstr ""
+msgstr "Tracker Dashboard Apps"
 
 msgid "Resource Apps"
-msgstr ""
+msgstr "Resource Apps"
 
-msgid "App Store"
-msgstr ""
+msgid "App Hub"
+msgstr "App Hub"
 
 msgid "By"
-msgstr ""
+msgstr "Oleh"
 
 msgid "Install"
-msgstr ""
+msgstr "Pasang"
