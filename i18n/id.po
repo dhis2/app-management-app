@@ -1,0 +1,64 @@
+# 
+# Translators:
+# Carwoto Sa'an <carwoto@gmail.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-09-01 18:30+0000\n"
+"Last-Translator: Carwoto Sa'an <carwoto@gmail.com>, 2020\n"
+"Language-Team: Indonesian (https://www.transifex.com/hisp-uio/teams/100509/id/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "App installed successfully"
+msgstr "App berhasil dipasang"
+
+msgid "Failed to install app"
+msgstr "Gagal memasang app"
+
+msgid "App removed successfully"
+msgstr "App berhasil dibuang"
+
+msgid "Installing app from the app store..."
+msgstr ""
+
+msgid "Failed to install an app from the app store"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Sedang mengunggah..."
+
+msgid "Installing..."
+msgstr "Sedang memasang..."
+
+msgid "No apps found"
+msgstr "Tidak ditemukan apps"
+
+msgid "No installed apps matched the search term"
+msgstr "Tidak ada apps terpasang yang sesuai dengan pencarian"
+
+msgid "Standard Apps"
+msgstr "Standard Apps"
+
+msgid "Dashboard Apps"
+msgstr "Dashboard Apps"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Tracker Dashboard Apps"
+
+msgid "Resource Apps"
+msgstr "Resource Apps"
+
+msgid "App Store"
+msgstr ""
+
+msgid "By"
+msgstr "Oleh"
+
+msgid "Install"
+msgstr "Pasang"
