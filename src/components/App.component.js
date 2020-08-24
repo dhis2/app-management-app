@@ -1,8 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import HeaderBarComponent from 'd2-ui/lib/app-header/HeaderBar';
-import headerBarStore$ from 'd2-ui/lib/app-header/headerBar.store';
-import withStateFrom from 'd2-ui/lib/component-helpers/withStateFrom';
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component';
 
 import CircularProgress from 'material-ui/CircularProgress';
@@ -21,8 +19,6 @@ import appHubStore from '../stores/appHub.store';
 import installedAppHub from '../stores/installedApp.store';
 
 import i18n from '@dhis2/d2-i18n';
-
-const HeaderBar = withStateFrom(headerBarStore$, HeaderBarComponent);
 
 const styles = {
     header: {
@@ -215,13 +211,14 @@ class App extends React.Component {
 
     renderSection(key, apps, showUpload) {
         if (key === 'store') {
-            return <AppHub appHub={this.state.appHub} />;
+            return <AppHub appHub={this.state.appHub} d2={this.props.d2} />;
         }
 
         const filter = (key && key.toString().toUpperCase()) || 'APP';
 
         return (
             <AppList
+                d2={this.props.d2}
                 installedApps={apps}
                 uploadProgress={this.progress}
                 transitionUnmount={this.state.unmountSection}
@@ -296,7 +293,6 @@ class App extends React.Component {
 
         return (
             <div className="app">
-                <HeaderBar lastUpdate={this.state.lastUpdate} />
                 <Sidebar
                     sections={sections}
                     currentSection={this.state.section}
@@ -325,12 +321,12 @@ class App extends React.Component {
     }
 }
 App.propTypes = {
-    d2: React.PropTypes.object.isRequired,
+    d2: PropTypes.object.isRequired,
 };
 
 App.childContextTypes = {
-    d2: React.PropTypes.object,
-    muiTheme: React.PropTypes.object,
+    d2: PropTypes.object,
+    muiTheme: PropTypes.object,
 };
 
 export default App;

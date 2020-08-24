@@ -1,43 +1,37 @@
-# DHIS 2 App Management App [![Build Status](https://travis-ci.com/dhis2/app-management-app.svg?branch=master)](https://travis-ci.com/dhis2/app-management-app) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app?ref=badge_shield)
-#
+This project was bootstrapped with [DHIS2 Application Platform](https://github.com/dhis2/app-platform).
 
-The app management app is a core DHIS2 app responsible for managing web apps. It provides the
-ability to upload and uninstall apps, as well as installing apps directly from the
-[DHIS 2 App Store](https://play.dhis2.org/appstore).
+## Available Scripts
 
+In the project directory, you can run:
 
-## Getting started
+### `yarn start`
 
-The dependencies of the app are managed by `npm` or `yarn` (recommended). Working on the app requires cloning the
-repository and installing the dependencies:
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-```bash
-> git clone https://github.com/dhis2/app-management-app.git
-> cd app-management-app
-> yarn install
-```
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-Once dependencies are installed, you can run the app locally using yarn (or npm):
+### `yarn test`
 
-```bash
-> yarn start
-```
+Launches the test runner and runs all available tests found in `/src`.<br />
 
-By default app will be available on [localhost:8081](http://localhost:8081), and it will attempt to connect to the DHIS2 API on [localhost:8080/dhis](http://localhost:8080/dhis). To change these defaults, create a file called `$DHIS2_HOME/config.js` with the following format:
+See the section about [running tests](https://platform.dhis2.nu/#/scripts/test) for more information.
 
-```javascript
-module.exports = {
-  baseUrl: 'http://localhost:8080/dhis',
-  authentication: 'Basic YWRtaW46ZGlzdHJpY3Q=',
-};
-```
+### `yarn build`
 
-Where the basic authentication string is a simple base64-encoded version of the string `user:password`. For example:
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-```javascript
-btoa('admin:district'); // returns "YWRtaW46ZGlzdHJpY3Q="
-```
+The build is minified and the filenames include the hashes.<br />
+A deployable `.zip` file can be found in `build/bundle`!
 
+See the section about [building](https://platform.dhis2.nu/#/scripts/build) for more information.
 
-## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fdhis2%2Fapp-management-app?ref=badge_large)
+## Learn More
+
+You can learn more about the platform in the [DHIS2 Application Platform Documentation](https://platform.dhis2.nu/).
+
+You can learn more about the runtime in the [DHIS2 Application Runtime Documentation](https://runtime.dhis2.nu/).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

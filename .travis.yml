@@ -5,13 +5,11 @@ cache:
   yarn: true
   directories:
   - node_modules
-before_script:
-- npm install --global @dhis2/deploy-build
 script:
-- npm run build
+- yarn build
 deploy:
 - provider: script
-  script: deploy-build
+  script: npx --package @dhis2/deploy-build deploy-build d2-ci build/app
   skip_cleanup: true
   on:
     all_branches: true

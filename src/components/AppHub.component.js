@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -47,7 +48,7 @@ class AppHub extends React.Component {
     }
 
     renderApps() {
-        const d2 = this.context.d2;
+        const d2 = this.props.d2;
         const styles = {
             card: {
                 width: 297,
@@ -181,14 +182,11 @@ class AppHub extends React.Component {
     }
 }
 AppHub.propTypes = {
-    appHub: React.PropTypes.object.isRequired,
+    appHub: PropTypes.object.isRequired,
+    d2: PropTypes.object,
 };
 AppHub.defaultProps = {
     appHub: {},
-};
-
-AppHub.contextTypes = {
-    d2: React.PropTypes.object,
 };
 
 export default AppHub;

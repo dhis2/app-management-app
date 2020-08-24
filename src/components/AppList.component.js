@@ -1,5 +1,6 @@
 /* global  window */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
@@ -127,7 +128,7 @@ class AppList extends React.Component {
     }
 
     renderInstalledApps() {
-        const d2 = this.context.d2;
+        const d2 = this.props.d2;
         const baseUrl = d2.Api.getApi().baseUrl;
         const label = this.props.appTypeFilter.toLocaleLowerCase();
         const appList = this.props.installedApps
@@ -141,6 +142,7 @@ class AppList extends React.Component {
                         <CardText>
                             <List style={styles.container}>{
                                 appList.map((app) => {
+                                    console.log(app)
                                     const uninstall = actions.uninstallApp.bind(null, app.key);
                                     const moreIcon = (
                                         <IconButton>
@@ -239,18 +241,14 @@ class AppList extends React.Component {
     }
 }
 AppList.propTypes = {
-    installedApps: React.PropTypes.array.isRequired,
-    uploadProgress: React.PropTypes.func.isRequired,
-    showUpload: React.PropTypes.bool.isRequired,
-    appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
+    appTypeFilter: PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
+    d2: PropTypes.object,
+    installedApps: PropTypes.array.isRequired,
+    uploadProgress: PropTypes.func.isRequired,
+    showUpload: PropTypes.bool.isRequired
 };
 AppList.defaultProps = {
     appTypeFilter: 'app',
 };
-
-AppList.contextTypes = {
-    d2: React.PropTypes.object,
-};
-
 
 export default AppList;
