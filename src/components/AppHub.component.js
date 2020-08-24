@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import FontIcon from 'material-ui/FontIcon';
-import Avatar from 'material-ui/Avatar';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
+import FlatButton from 'material-ui/FlatButton'
+import FontIcon from 'material-ui/FontIcon'
+import Avatar from 'material-ui/Avatar'
 
-import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component';
+import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component'
 
-import AppTheme from '../theme';
-import actions from '../actions';
-import i18n from '@dhis2/d2-i18n';
-
+import AppTheme from '../theme'
+import actions from '../actions'
+import i18n from '@dhis2/d2-i18n'
 
 /*
  * Discontinued...
@@ -31,24 +30,22 @@ function parseDescription(description) {
 }
 */
 
-
 class AppHub extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
             installing: undefined,
-        };
+        }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (!Array.isArray(this.props.appHub.apps)) {
-            actions.loadAppHub();
+            actions.loadAppHub()
         }
     }
 
     renderApps() {
-        const d2 = this.props.d2;
         const styles = {
             card: {
                 width: 297,
@@ -86,14 +83,14 @@ class AppHub extends React.Component {
             flex: {
                 display: 'flex',
                 flexWrap: 'wrap',
-            }
-        };
+            },
+        }
         const avatar = (
             <Avatar
                 backgroundColor={AppTheme.rawTheme.palette.primary1Color}
                 icon={<FontIcon className="material-icons">folder</FontIcon>}
             />
-        );
+        )
 
         return (
             <div style={styles.flex}>
@@ -101,31 +98,40 @@ class AppHub extends React.Component {
                     <Card style={styles.card} key={app.name}>
                         <CardHeader
                             title={app.name}
-                            subtitle={`${i18n.t('By')} ${app.developer.organisation}`}
+                            subtitle={`${i18n.t('By')} ${
+                                app.developer.organisation
+                            }`}
                             avatar={avatar}
                             style={styles.cardTitle}
                             titleColor="white"
                             subtitleStyle={styles.cardTitleSubtitle}
                         />
-                        <CardText style={styles.cardText}>{app.description}</CardText>
+                        <CardText style={styles.cardText}>
+                            {app.description}
+                        </CardText>
                         <CardActions style={styles.actions}>
-                            {app.versions.map((version) => {
-                                const install = actions.installAppVersion.bind(null, version.id);
+                            {app.versions.map(version => {
+                                const install = actions.installAppVersion.bind(
+                                    null,
+                                    version.id
+                                )
                                 return (
                                     <FlatButton
                                         key={version.id}
                                         style={styles.button}
                                         primary
                                         onClick={install}
-                                        label={`${i18n.t('Install')} v${version.version}`}
+                                        label={`${i18n.t('Install')} v${
+                                            version.version
+                                        }`}
                                     />
-                                );
+                                )
                             })}
                         </CardActions>
                     </Card>
                 ))}
             </div>
-        );
+        )
     }
 
     render() {
@@ -166,9 +172,8 @@ class AppHub extends React.Component {
                 clear: 'both',
                 fontWeight: 300,
             },
-        };
+        }
 
-        /* eslint-disable react/no-danger */
         return Array.isArray(this.props.appHub.apps) ? (
             <div>
                 <div style={styles.header}>{i18n.t('App Hub')}</div>
@@ -178,15 +183,14 @@ class AppHub extends React.Component {
             <div style={styles.loadingMaskContainer}>
                 <LoadingMask />
             </div>
-        );
+        )
     }
 }
 AppHub.propTypes = {
     appHub: PropTypes.object.isRequired,
-    d2: PropTypes.object,
-};
+}
 AppHub.defaultProps = {
     appHub: {},
-};
+}
 
-export default AppHub;
+export default AppHub

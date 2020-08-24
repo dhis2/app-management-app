@@ -1,47 +1,50 @@
 {
-  "name": "app-management-app",
-  "version": "31.0.0",
-  "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
-  "scripts": {
-    "start": "d2-app-scripts start",
-    "build": "d2-app-scripts build",
-    "test": "d2-app-scripts test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dhis2/app-management-app.git"
-  },
-  "keywords": [
-    "DHIS2",
-    "HISP",
-    "apps"
-  ],
-  "author": "Nicolay Ramm <nicolay@dhis2.org> (https://www.dhis2.org)",
-  "license": "BSD-3-Clause",
-  "bugs": {
-    "url": "https://github.com/dhis2/app-management-app/issues"
-  },
-  "homepage": "https://github.com/dhis2/app-management-app#readme",
-  "devDependencies": {
-    "@dhis2/cli-app-scripts": "^5.0.0",
-    "node-sass": "^4.14.1"
-  },
-  "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "@dhis2/app-runtime": "^2.2.2",
-    "@dhis2/app-runtime-adapter-d2": "^1.0.1",
-    "@dhis2/d2-i18n": "^1.0.6",
-    "d2": "^31.8.2",
-    "d2-ui": "^29.0.35",
-    "d2-utilizr": "^0.2.16",
-    "debug": "^4.1.1",
-    "loglevel": "^1.4.1",
-    "material-design-icons-iconfont": "^4.0.5",
-    "material-ui": "^0.19.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "rxjs": "^5.4.3",
-    "susy": "^3.0.0"
-  }
+    "name": "app-management-app",
+    "version": "31.0.0",
+    "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
+    "scripts": {
+        "start": "d2-app-scripts start",
+        "build": "d2-app-scripts build",
+        "test": "d2-app-scripts test",
+        "lint": "d2-style js check && d2-style text check",
+        "format": "d2-style js apply && d2-style text apply"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dhis2/app-management-app.git"
+    },
+    "keywords": [
+        "DHIS2",
+        "HISP",
+        "apps"
+    ],
+    "author": "Nicolay Ramm <nicolay@dhis2.org> (https://www.dhis2.org)",
+    "license": "BSD-3-Clause",
+    "bugs": {
+        "url": "https://github.com/dhis2/app-management-app/issues"
+    },
+    "homepage": "https://github.com/dhis2/app-management-app#readme",
+    "devDependencies": {
+        "@dhis2/cli-app-scripts": "^5.0.0",
+        "@dhis2/cli-style": "^7.0.0",
+        "node-sass": "^4.14.1"
+    },
+    "dependencies": {
+        "@babel/polyfill": "^7.2.5",
+        "@dhis2/app-runtime": "^2.2.2",
+        "@dhis2/app-runtime-adapter-d2": "^1.0.1",
+        "@dhis2/d2-i18n": "^1.0.6",
+        "d2": "^31.8.2",
+        "d2-ui": "^29.0.35",
+        "d2-utilizr": "^0.2.16",
+        "debug": "^4.1.1",
+        "loglevel": "^1.4.1",
+        "material-design-icons-iconfont": "^4.0.5",
+        "material-ui": "^0.19.2",
+        "prop-types": "^15.7.2",
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "rxjs": "^5.4.3",
+        "susy": "^3.0.0"
+    }
 }

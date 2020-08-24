@@ -1,6 +1,5 @@
-
-import Spacing from 'material-ui/styles/spacing';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Spacing from 'material-ui/styles/spacing'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import {
     blue700,
     blue100,
@@ -10,8 +9,8 @@ import {
     darkBlack,
     white,
     grey400,
-} from 'material-ui/styles/colors';
-import { fade } from 'material-ui/utils/colorManipulator';
+} from 'material-ui/styles/colors'
+import { fade } from 'material-ui/utils/colorManipulator'
 
 const theme = {
     spacing: Spacing,
@@ -29,7 +28,7 @@ const theme = {
         borderColor: grey400,
         disabledColor: fade(darkBlack, 0.3),
     },
-};
+}
 
 function createAppTheme(style) {
     return {
@@ -45,10 +44,10 @@ function createAppTheme(style) {
             minWidth: 350,
             maxWidth: 900,
         },
-    };
+    }
 }
 
-const muiTheme = getMuiTheme(theme);
-const appTheme = createAppTheme(theme);
+const muiTheme = getMuiTheme(theme)
+const appTheme = createAppTheme(theme)
 
-export default Object.assign({}, muiTheme, appTheme);
+export default Object.assign({}, muiTheme, appTheme)
