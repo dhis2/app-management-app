@@ -13,7 +13,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './scss/style.scss'
 import { useConfig } from '@dhis2/app-runtime'
 
-const MyApp = () => {
+const AppWrapper = () => {
     const { baseUrl } = useConfig()
     const { d2 } = useD2({
         d2Config: {
@@ -35,4 +35,4 @@ const MyApp = () => {
     )
 }
 
-export default MyApp
+export default AppWrapper
