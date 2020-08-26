@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-08-24T15:35:44.108Z\n"
-"PO-Revision-Date: 2020-08-24T15:35:44.108Z\n"
+"POT-Creation-Date: 2020-08-26T09:22:41.223Z\n"
+"PO-Revision-Date: 2020-08-26T09:22:41.223Z\n"
 
 msgid "App installed successfully"
 msgstr ""
@@ -54,4 +54,7 @@ msgid "By"
 msgstr ""
 
 msgid "Install"
+msgstr ""
+
+msgid "CORE APP"
 msgstr ""
