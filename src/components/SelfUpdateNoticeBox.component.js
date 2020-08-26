@@ -50,9 +50,7 @@ export const SelfUpdateNoticeBox = ({ appHub }) => {
     }
 
     const upgradeSelf = async () => {
-        console.log('Upgrading to ', targetVersion.version)
         await actions.installAppVersion([targetVersion.id]).toPromise()
-
         setTimeout(() => location.reload(), 500)
     }
     return (
