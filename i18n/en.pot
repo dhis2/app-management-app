@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-08-26T09:22:41.223Z\n"
-"PO-Revision-Date: 2020-08-26T09:22:41.223Z\n"
+"POT-Creation-Date: 2020-08-26T16:41:08.474Z\n"
+"PO-Revision-Date: 2020-08-26T16:41:08.474Z\n"
 
 msgid "App installed successfully"
 msgstr ""
@@ -57,4 +57,10 @@ msgid "Install"
 msgstr ""
 
 msgid "CORE APP"
+msgstr ""
+
+msgid "A new version of App Management is available on the App Hub"
+msgstr ""
+
+msgid "Update App Management App"
 msgstr ""

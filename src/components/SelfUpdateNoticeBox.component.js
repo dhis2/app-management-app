@@ -2,7 +2,8 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NoticeBox } from '@dhis2/ui'
+import { NoticeBox, Button } from '@dhis2/ui'
+import i18n from '@dhis2/d2-i18n'
 
 import actions from '../actions'
 
@@ -48,21 +49,21 @@ export const SelfUpdateNoticeBox = ({ appHub }) => {
         return null
     }
 
-    const upgradeSelf = async e => {
-        e.preventDefault()
-
-        console.log('Upgrading to ', targetVersion)
+    const upgradeSelf = async () => {
+        console.log('Upgrading to ', targetVersion.version)
         await actions.installAppVersion([targetVersion.id]).toPromise()
 
         setTimeout(() => location.reload(), 500)
     }
     return (
-        <NoticeBox title="A new version of App Management is available on the App Hub">
-            To update the App Management app to version {targetVersion.version}{' '}
-            in your DHIS2 instance,{' '}
-            <a href="#" onClick={upgradeSelf}>
-                click here
-            </a>
+        <NoticeBox
+            title={i18n.t(
+                'A new version of App Management is available on the App Hub'
+            )}
+        >
+            <Button onClick={upgradeSelf}>
+                {i18n.t('Update App Management App')}
+            </Button>
         </NoticeBox>
     )
 }
