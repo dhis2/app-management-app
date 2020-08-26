@@ -1,6 +1,6 @@
 @import "~susy";
-@import "../node_modules/d2-ui/scss/HeaderBar";
-@import "../node_modules/d2-ui/scss/DataTable";
+@import "../../node_modules/d2-ui/scss/HeaderBar";
+@import "../../node_modules/d2-ui/scss/DataTable";
 
 $left-bar-width: 295px;
 
@@ -13,19 +13,12 @@ h1 {
   font-size: 1.75rem;
 }
 
-.app {
-  padding-top: 3rem;
-}
-
 .left-bar {
   width: $left-bar-width;
   float: left;
-  position: fixed;
-  margin-top: 16px;
   bottom: 0;
   top: 0;
   left: 0;
-  padding-top: 2rem;
 }
 
 .content-area {

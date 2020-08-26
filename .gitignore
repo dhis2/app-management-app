@@ -2,14 +2,16 @@ node_modules/
 .sass-cache
 *.iml
 .idea
-
 .jshintignore
 .jshintrc
-
 build/
 target/
-
 .DS_Store
-
 *.zip
 npm-debug.log
+
+# DHIS2 Platform
+node_modules
+.d2
+src/locales
+build

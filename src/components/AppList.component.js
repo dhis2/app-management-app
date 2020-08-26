@@ -1,41 +1,41 @@
-/* global  window */
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Avatar from 'material-ui/Avatar';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import { List, ListItem } from 'material-ui/List';
-import MenuItem from 'material-ui/MenuItem';
+import Avatar from 'material-ui/Avatar'
+import IconButton from 'material-ui/IconButton'
+import IconMenu from 'material-ui/IconMenu'
+import { List, ListItem } from 'material-ui/List'
+import MenuItem from 'material-ui/MenuItem'
 
-import { Card, CardText } from 'material-ui/Card';
+import { Card, CardText } from 'material-ui/Card'
 
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import FontIcon from 'material-ui/FontIcon';
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import FontIcon from 'material-ui/FontIcon'
 
-import AppTheme from '../theme';
-import actions from '../actions';
+import AppTheme from '../theme'
+import actions from '../actions'
 
-import i18n from '@dhis2/d2-i18n';
+import i18n from '@dhis2/d2-i18n'
 
-const appTypeLabels = {
-    'app': 'Standard Apps',
-    'dashboard_widget': 'Dashboard Apps',
-    'tracker_dashboard_widget': 'Tracker Dashboard Apps',
-    'resource': 'Resource Apps',
-}
+// const appTypeLabels = {
+//     app: 'Standard Apps',
+//     dashboard_widget: 'Dashboard Apps',
+//     tracker_dashboard_widget: 'Tracker Dashboard Apps',
+//     resource: 'Resource Apps',
+// }
 
 const appTypeHeaders = {
-    'app': 'Installed Standard Apps',
-    'dashboard_widget': 'Installed Dashboard Apps',
-    'tracker_dashboard_widget': 'Installed Tracker Dashboard Apps',
-    'resource': 'Installed Resource Apps',
+    app: 'Installed Standard Apps',
+    dashboard_widget: 'Installed Dashboard Apps',
+    tracker_dashboard_widget: 'Installed Tracker Dashboard Apps',
+    resource: 'Installed Resource Apps',
 }
 
 const appTypeMissing = {
-    'app': 'There are no standard apps installed.',
-    'dashboard_widget': 'There are no dashboard apps installed.',
-    'tracker_dashboard_widget': 'There are no tracker dashboard apps installed.',
-    'resource': 'There are no resource apps installed',
+    app: 'There are no standard apps installed.',
+    dashboard_widget: 'There are no dashboard apps installed.',
+    tracker_dashboard_widget: 'There are no tracker dashboard apps installed.',
+    resource: 'There are no resource apps installed',
 }
 
 const styles = {
@@ -94,78 +94,106 @@ const styles = {
         marginTop: 8,
         marginRight: '1rem',
     },
-};
+}
 
-// TODO: Rewrite as ES6 class
-/* eslint-disable react/prefer-es6-class */
 class AppList extends React.Component {
     constructor(props, context) {
-        super(props, context);
+        super(props, context)
 
         this.state = {
             uploading: false,
-        };
+        }
 
-        this.uploadAction = this.uploadAction.bind(this);
-        this.upload = this.upload.bind(this);
+        this.uploadAction = this.uploadAction.bind(this)
+        this.upload = this.upload.bind(this)
     }
 
     componentDidMount() {
         actions.installApp.subscribe(() => {
             if (this.form) {
-                this.form.reset();
+                this.form.reset()
             }
-        });
+        })
     }
 
     uploadAction(e) {
-        this.fileInput.click(e);
+        this.fileInput.click(e)
     }
 
     upload(e) {
-        actions.installApp(e.target.files[0], this.props.uploadProgress);
+        actions.installApp(e.target.files[0], this.props.uploadProgress)
     }
 
     renderInstalledApps() {
-        const d2 = this.context.d2;
-        const baseUrl = d2.Api.getApi().baseUrl;
-        const label = this.props.appTypeFilter.toLocaleLowerCase();
-        const appList = this.props.installedApps
-            .filter(app => !this.props.appTypeFilter || app.appType === this.props.appTypeFilter);
+        const d2 = this.props.d2
+        const baseUrl = d2.Api.getApi().baseUrl
+        const label = this.props.appTypeFilter.toLocaleLowerCase()
+        const appList = this.props.installedApps.filter(
+            app =>
+                !this.props.appTypeFilter ||
+                app.appType === this.props.appTypeFilter
+        )
 
         if (appList.length > 0) {
             return (
                 <div>
-                    <div style={styles.header}>{i18n.t(appTypeHeaders[label])}</div>
+                    <div style={styles.header}>
+                        {i18n.t(appTypeHeaders[label])}
+                    </div>
                     <Card style={styles.card}>
                         <CardText>
-                            <List style={styles.container}>{
-                                appList.map((app) => {
-                                    const uninstall = actions.uninstallApp.bind(null, app.key);
+                            <List style={styles.container}>
+                                {appList.map(app => {
+                                    console.log(app)
+                                    const uninstall = actions.uninstallApp.bind(
+                                        null,
+                                        app.key
+                                    )
                                     const moreIcon = (
                                         <IconButton>
-                                            <FontIcon className="material-icons" color="#808080">more_vert</FontIcon>
+                                            <FontIcon
+                                                className="material-icons"
+                                                color="#808080"
+                                            >
+                                                more_vert
+                                            </FontIcon>
                                         </IconButton>
-                                    );
-                                    const open = window.open.bind(null, app.launchUrl);
+                                    )
+                                    const open = window.open.bind(
+                                        null,
+                                        app.launchUrl
+                                    )
                                     const rightIconButton = (
                                         <IconMenu iconButtonElement={moreIcon}>
                                             <MenuItem onClick={uninstall}>
                                                 Uninstall
                                             </MenuItem>
                                         </IconMenu>
-                                    );
-                                    const avatar = app.icons && app.icons['48'] ? (
-                                        <Avatar
-                                            style={styles.appIcon}
-                                            src={[baseUrl, 'apps', app.key, app.icons['48']].join('/')}
-                                        />
-                                    ) : (
-                                        <Avatar
-                                            backgroundColor={AppTheme.rawTheme.palette.primary1Color}
-                                            icon={<FontIcon className="material-icons">folder</FontIcon>}
-                                        />
-                                    );
+                                    )
+                                    const avatar =
+                                        app.icons && app.icons['48'] ? (
+                                            <Avatar
+                                                style={styles.appIcon}
+                                                src={[
+                                                    baseUrl,
+                                                    'apps',
+                                                    app.key,
+                                                    app.icons['48'],
+                                                ].join('/')}
+                                            />
+                                        ) : (
+                                            <Avatar
+                                                backgroundColor={
+                                                    AppTheme.rawTheme.palette
+                                                        .primary1Color
+                                                }
+                                                icon={
+                                                    <FontIcon className="material-icons">
+                                                        folder
+                                                    </FontIcon>
+                                                }
+                                            />
+                                        )
                                     return (
                                         <ListItem
                                             key={app.folderName}
@@ -176,23 +204,21 @@ class AppList extends React.Component {
                                             leftAvatar={avatar}
                                             rightIconButton={rightIconButton}
                                         />
-                                    );
-                                })
-                            }</List>
+                                    )
+                                })}
+                            </List>
                         </CardText>
                     </Card>
                     {this.renderUploadButton()}
                 </div>
-            );
+            )
         }
 
-        return this.renderEmptyList();
+        return this.renderEmptyList()
     }
 
     renderEmptyList() {
-        const d2 = this.context.d2;
-
-        const label = this.props.appTypeFilter.toLocaleLowerCase();
+        const label = this.props.appTypeFilter.toLocaleLowerCase()
 
         return (
             <div>
@@ -200,26 +226,30 @@ class AppList extends React.Component {
                 <div style={styles.noApps}>{i18n.t(appTypeMissing[label])}</div>
                 {this.renderUploadButton()}
             </div>
-        );
+        )
     }
 
     renderUploadButton() {
         if (!this.props.showUpload) {
-            return null;
+            return null
         }
 
-        const setFormRef = (ref) => {
-            this.form = ref;
-        };
+        const setFormRef = ref => {
+            this.form = ref
+        }
 
-        const theref = (r) => { this.fileInput = r; };
+        const theref = r => {
+            this.fileInput = r
+        }
 
         return (
             <div>
                 <div style={styles.fab}>
                     <div style={styles.fabAnim} className="fab">
                         <FloatingActionButton onClick={this.uploadAction}>
-                            <FontIcon className="material-icons">file_upload</FontIcon>
+                            <FontIcon className="material-icons">
+                                file_upload
+                            </FontIcon>
                         </FloatingActionButton>
                     </div>
                 </div>
@@ -227,30 +257,27 @@ class AppList extends React.Component {
                     <input type="file" ref={theref} onChange={this.upload} />
                 </form>
             </div>
-        );
+        )
     }
 
     render() {
-        return (
-            <div style={styles.wrapper}>
-                {this.renderInstalledApps()}
-            </div>
-        );
+        return <div style={styles.wrapper}>{this.renderInstalledApps()}</div>
     }
 }
 AppList.propTypes = {
-    installedApps: React.PropTypes.array.isRequired,
-    uploadProgress: React.PropTypes.func.isRequired,
-    showUpload: React.PropTypes.bool.isRequired,
-    appTypeFilter: React.PropTypes.oneOf(['APP', 'DASHBOARD_WIDGET', 'TRACKER_DASHBOARD_WIDGET', 'RESOURCE']),
-};
+    appTypeFilter: PropTypes.oneOf([
+        'APP',
+        'DASHBOARD_WIDGET',
+        'TRACKER_DASHBOARD_WIDGET',
+        'RESOURCE',
+    ]).isRequired,
+    d2: PropTypes.object.isRequired,
+    installedApps: PropTypes.array.isRequired,
+    showUpload: PropTypes.bool.isRequired,
+    uploadProgress: PropTypes.func.isRequired,
+}
 AppList.defaultProps = {
     appTypeFilter: 'app',
-};
+}
 
-AppList.contextTypes = {
-    d2: React.PropTypes.object,
-};
-
-
-export default AppList;
+export default AppList
