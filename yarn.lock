@@ -12783,9 +12783,10 @@ supports-color@^7.0.0, supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
-susy@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/susy/-/susy-3.0.1.tgz#d8f7942911a1e16ef84dfae2db296cd2058e8b26"
+susy@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/susy/-/susy-3.0.6.tgz#1aa81dff219eb4385ae2a3688874cfef51fb854f"
+  integrity sha512-uf2rx5VvynBwa53eqOsis6iDmyQZOm1ydkuaMfSUo5tkp1190+BPcE/YpwFxhLHYkS/ZiiQVIJ+sKyRYl4dtiw==
 
 svg-parser@^2.0.0:
   version "2.0.4"
