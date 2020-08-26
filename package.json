@@ -38,7 +38,7 @@
         "d2-ui": "^29.0.35",
         "d2-utilizr": "^0.2.16",
         "debug": "^4.1.1",
-        "loglevel": "^1.4.1",
+        "loglevel": "^1.6.8",
         "material-design-icons-iconfont": "^4.0.5",
         "material-ui": "^0.19.2",
         "prop-types": "^15.7.2",
