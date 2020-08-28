@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-24T15:35:44.108Z\n"
+"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
 "Language-Team: Swedish (https://www.transifex.com/hisp-uio/teams/100509/sv/)\n"
@@ -62,3 +62,12 @@ msgstr "Av"
 
 msgid "Install"
 msgstr "Installera"
+
+msgid "CORE APP"
+msgstr ""
+
+msgid "A new version of App Management is available on the App Hub"
+msgstr ""
+
+msgid "Update and reload app"
+msgstr ""
