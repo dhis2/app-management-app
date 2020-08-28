@@ -60,7 +60,7 @@ export const SelfUpdateNoticeBox = ({ appHub }) => {
             )}
         >
             <Button onClick={upgradeSelf}>
-                {i18n.t('Update App Management App')}
+                {i18n.t('Update and reload app')}
             </Button>
         </NoticeBox>
     )
