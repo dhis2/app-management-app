@@ -12,6 +12,7 @@ import FontIcon from 'material-ui/FontIcon'
 
 import AppList from './AppList.component'
 import AppHub from './AppHub.component'
+import { SelfUpdateNoticeBox } from './SelfUpdateNoticeBox.component'
 import AppTheme from '../theme'
 
 import actions from '../actions'
@@ -328,6 +329,7 @@ class App extends React.Component {
 
         return (
             <div className="app">
+                <SelfUpdateNoticeBox appHub={this.state.appHub} />
                 <Sidebar
                     sections={sections}
                     currentSection={this.state.section}

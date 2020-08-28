@@ -1,6 +1,7 @@
 const config = {
     type: 'app',
-    title: 'DHIS 2 Application Management',
+    name: 'app-management',
+    title: 'App Management',
     coreApp: true,
 
     entryPoints: {

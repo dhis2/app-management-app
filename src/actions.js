@@ -198,6 +198,4 @@ function installAppVersion(uid, d2) {
     })
 }
 
-console.log(actions)
-
 export default actions

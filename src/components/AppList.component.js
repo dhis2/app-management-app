@@ -125,8 +125,6 @@ class AppList extends React.Component {
     }
 
     renderInstalledApps() {
-        const d2 = this.props.d2
-        const baseUrl = d2.Api.getApi().baseUrl
         const label = this.props.appTypeFilter.toLocaleLowerCase()
         const appList = this.props.installedApps.filter(
             app =>
@@ -144,7 +142,6 @@ class AppList extends React.Component {
                         <CardText>
                             <List style={styles.container}>
                                 {appList.map(app => {
-                                    console.log(app)
                                     const uninstall = actions.uninstallApp.bind(
                                         null,
                                         app.key
@@ -175,9 +172,7 @@ class AppList extends React.Component {
                                             <Avatar
                                                 style={styles.appIcon}
                                                 src={[
-                                                    baseUrl,
-                                                    'apps',
-                                                    app.key,
+                                                    app.baseUrl,
                                                     app.icons['48'],
                                                 ].join('/')}
                                             />
@@ -194,11 +189,23 @@ class AppList extends React.Component {
                                                 }
                                             />
                                         )
+
+                                    const secondaryText = (
+                                        <div>
+                                            {app.isBundledApp && (
+                                                <strong>
+                                                    {i18n.t('CORE APP')}{' '}
+                                                </strong>
+                                            )}
+                                            v{app.version}
+                                        </div>
+                                    )
+
                                     return (
                                         <ListItem
                                             key={app.folderName}
                                             primaryText={app.name}
-                                            secondaryText={`v${app.version}`}
+                                            secondaryText={secondaryText}
                                             style={styles.app}
                                             onClick={open}
                                             leftAvatar={avatar}
@@ -271,7 +278,6 @@ AppList.propTypes = {
         'TRACKER_DASHBOARD_WIDGET',
         'RESOURCE',
     ]).isRequired,
-    d2: PropTypes.object.isRequired,
     installedApps: PropTypes.array.isRequired,
     showUpload: PropTypes.bool.isRequired,
     uploadProgress: PropTypes.func.isRequired,
