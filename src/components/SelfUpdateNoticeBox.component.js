@@ -15,7 +15,19 @@ const needsUpdate = (current, candidate) => {
     const currentVersion = parseVersion(current)
     const candidateVersion = parseVersion(candidate)
 
-    return currentVersion.some((v, i) => v < candidateVersion[i])
+    for (let i = 0; i < currentVersion.length; ++i) {
+        if (candidateVersion[i] > currentVersion[i]) {
+            return true
+        }
+        if (candidateVersion[i] === currentVersion[i]) {
+            continue
+        }
+        if (candidateVersion[i] < currentVersion[i]) {
+            return false
+        }
+    }
+
+    return false
 }
 
 const getTargetVersion = (current, versions) => {
