@@ -101,15 +101,6 @@ actions.loadAppHub.subscribe(async () => {
         },
     }
 
-    const getAppHubUrl = async () => {
-        const response = await fetch(
-            `${baseUrl}/configuration/appHubUrl`,
-            fetchOptions
-        )
-        const dhis2Configuration = await response.json()
-        return dhis2Configuration.apiUrl
-    }
-
     const getDhisVersion = async () => {
         const response = await fetch(`${baseUrl}/system/info`, fetchOptions)
         const json = await response.json()
@@ -117,23 +108,14 @@ actions.loadAppHub.subscribe(async () => {
         return json.version.replace('-SNAPSHOT', '')
     }
 
-    const url = await getAppHubUrl()
-    debug(`Got apphub url: ${url}`)
-
     const version = await getDhisVersion()
     debug(`Got dhis2 version: ${version}`)
 
-    const corsOptions = {
-        ...fetchOptions,
-        mode: 'cors',
-        credentials: undefined,
-    }
-    debug('Using fetch/cors options:', corsOptions)
-
     const response = await fetch(
-        `${url}/apps?dhis_version=${version}`,
-        corsOptions
+        `${baseUrl}/appHub/v1/apps?dhis_version=${version}`,
+        fetchOptions
     )
+
     const apps = await response.json()
     appHubStore.setState(Object.assign(appHubStore.getState() || {}, { apps }))
 })
