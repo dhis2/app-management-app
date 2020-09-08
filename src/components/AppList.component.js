@@ -192,7 +192,7 @@ class AppList extends React.Component {
 
                                     const secondaryText = (
                                         <div>
-                                            {app.isBundledApp && (
+                                            {app.isBundled && (
                                                 <strong>
                                                     {i18n.t('CORE APP')}{' '}
                                                 </strong>
