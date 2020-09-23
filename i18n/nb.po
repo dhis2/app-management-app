@@ -64,10 +64,10 @@ msgid "Install"
 msgstr "Installer"
 
 msgid "CORE APP"
-msgstr ""
+msgstr "KJERNE-APP"
 
 msgid "A new version of App Management is available on the App Hub"
-msgstr ""
+msgstr "En ny versjon av Appadministrasjon er tilgjengelig på App Hub"
 
 msgid "Update and reload app"
-msgstr ""
+msgstr "Oppdater og last inn appen på nytt"
