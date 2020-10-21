@@ -25,10 +25,10 @@ msgid "App removed successfully"
 msgstr "Илова муваффақиятли ўчириб ташланди"
 
 msgid "Installing app from the app store..."
-msgstr ""
+msgstr "Иловалар захирасидан илова ўрнатилмоқда..."
 
 msgid "Failed to install an app from the app store"
-msgstr ""
+msgstr "Иловалар захирасидан илова ўрнатилиши амалга ошмади"
 
 msgid "Uploading..."
 msgstr "Юкланмоқда..."
@@ -55,7 +55,7 @@ msgid "Resource Apps"
 msgstr "Иловалар захираси"
 
 msgid "App Store"
-msgstr ""
+msgstr "Иловалар захираси"
 
 msgid "By"
 msgstr "Дан"
