@@ -1,0 +1,64 @@
+# 
+# Translators:
+# trendspotter, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-09-01 18:30+0000\n"
+"Last-Translator: trendspotter, 2020\n"
+"Language-Team: Czech (https://www.transifex.com/hisp-uio/teams/100509/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+msgid "App installed successfully"
+msgstr "Aplikace úspěšně nainstalována"
+
+msgid "Failed to install app"
+msgstr "Instalace aplikace se nezdařila"
+
+msgid "App removed successfully"
+msgstr "Aplikace úspěšně odstraněna"
+
+msgid "Installing app from the app store..."
+msgstr "Instalace aplikace z obchodu s aplikacemi ..."
+
+msgid "Failed to install an app from the app store"
+msgstr "Instalace aplikace z obchodu s aplikacemi se nezdařila"
+
+msgid "Uploading..."
+msgstr "Nahrávání ..."
+
+msgid "Installing..."
+msgstr "Instalace ..."
+
+msgid "No apps found"
+msgstr "Nebyly nalezeny žádné aplikace"
+
+msgid "No installed apps matched the search term"
+msgstr "Hledanému výrazu neodpovídají žádné nainstalované aplikace"
+
+msgid "Standard Apps"
+msgstr "Standardní aplikace"
+
+msgid "Dashboard Apps"
+msgstr "Aplikace Ovládacího panelu"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Trasovací aplikace ovládacího panelu"
+
+msgid "Resource Apps"
+msgstr "Zdrojové aplikace"
+
+msgid "App Store"
+msgstr "Obchod s aplikacemi"
+
+msgid "By"
+msgstr "Od"
+
+msgid "Install"
+msgstr "Instalovat"
