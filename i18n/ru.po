@@ -1,13 +1,14 @@
 # 
 # Translators:
-# phil_dhis2, 2019
+# phil_dhis2, 2020
+# Ulanbek Abakirov <ulans@mail.ru>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-24T15:35:44.108Z\n"
-"PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: phil_dhis2, 2019\n"
+"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"PO-Revision-Date: 2020-12-22 22:10+0000\n"
+"Last-Translator: Ulanbek Abakirov <ulans@mail.ru>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/hisp-uio/teams/100509/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +26,10 @@ msgid "App removed successfully"
 msgstr "Приложение успешно удалено"
 
 msgid "Installing app from the app hub..."
-msgstr ""
+msgstr "Установка приложения из хаба приложений..."
 
 msgid "Failed to install an app from the app hub"
-msgstr ""
+msgstr "Не удалось установить приложение из хаба приложений..."
 
 msgid "Uploading..."
 msgstr "Загрузка ..."
@@ -55,10 +56,19 @@ msgid "Resource Apps"
 msgstr "Приложения Resource Apps"
 
 msgid "App Hub"
-msgstr ""
+msgstr "Хаб приложений"
 
 msgid "By"
 msgstr "По"
 
 msgid "Install"
 msgstr "Установить"
+
+msgid "CORE APP"
+msgstr "Приложение ЯДРО"
+
+msgid "A new version of App Management is available on the App Hub"
+msgstr "Доступна новая версия \"Управление приложениями\" в Центре приложений"
+
+msgid "Update and reload app"
+msgstr "Обновить и перезагрузить приложение"

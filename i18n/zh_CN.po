@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-24T15:35:44.108Z\n"
-"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"PO-Revision-Date: 2020-12-22 22:10+0000\n"
 "Last-Translator: 晓东 林 <13981924470@126.com>, 2020\n"
 "Language-Team: Chinese (China) (https://www.transifex.com/hisp-uio/teams/100509/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -62,3 +62,12 @@ msgstr "由"
 
 msgid "Install"
 msgstr "安装"
+
+msgid "CORE APP"
+msgstr ""
+
+msgid "A new version of App Management is available on the App Hub"
+msgstr ""
+
+msgid "Update and reload app"
+msgstr ""
