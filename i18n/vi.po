@@ -1,13 +1,14 @@
 # 
 # Translators:
 # Viktor Varland <viktor@dhis2.org>, 2020
+# Mai Nguyen <thanhmai.jica@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-02-21T13:01:54.731Z\n"
 "PO-Revision-Date: 2020-02-28 15:01+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +26,10 @@ msgid "App removed successfully"
 msgstr "Gỡ bỏ ứng dụng THÀNH CÔNG"
 
 msgid "Installing app from the app hub..."
-msgstr ""
+msgstr "Đang cài đặt ứng dụng từ trung tâm ứng dụng ..."
 
 msgid "Failed to install an app from the app hub"
-msgstr ""
+msgstr "Không cài đặt được ứng dụng từ cổng ứng dụng"
 
 msgid "Uploading..."
 msgstr "Đang tải lên"
@@ -55,7 +56,7 @@ msgid "Resource Apps"
 msgstr "Ứng dụng tài nguyên"
 
 msgid "App Hub"
-msgstr ""
+msgstr "Cổng ứng dụng"
 
 msgid "By"
 msgstr "Bởi"
