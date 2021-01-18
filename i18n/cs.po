@@ -1,13 +1,13 @@
 # 
 # Translators:
-# trendspotter, 2020
+# Jiří Podhorecký, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
 "PO-Revision-Date: 2019-09-01 18:30+0000\n"
-"Last-Translator: trendspotter, 2020\n"
+"Last-Translator: Jiří Podhorecký, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/hisp-uio/teams/100509/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +37,7 @@ msgid "Installing..."
 msgstr "Instalace ..."
 
 msgid "No apps found"
-msgstr "Nebyly nalezeny žádné aplikace"
+msgstr "Nenalezeny žádné aplikace"
 
 msgid "No installed apps matched the search term"
 msgstr "Hledanému výrazu neodpovídají žádné nainstalované aplikace"
