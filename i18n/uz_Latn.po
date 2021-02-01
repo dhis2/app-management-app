@@ -1,0 +1,64 @@
+# 
+# Translators:
+# Yury Rogachev <yury@dhis2.org>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2019-03-08T14:42:33.797Z\n"
+"PO-Revision-Date: 2019-09-01 18:30+0000\n"
+"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2021\n"
+"Language-Team: Uzbek (Latin) (https://www.transifex.com/hisp-uio/teams/100509/uz@Latn/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: uz@Latn\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "App installed successfully"
+msgstr "Ilova muvaffaqiyatli oʼrnatildi"
+
+msgid "Failed to install app"
+msgstr "Ilovani oʼrnatish amalga oshmadi"
+
+msgid "App removed successfully"
+msgstr "Ilova muvaffaqiyatli oʼchirib tashlandi"
+
+msgid "Installing app from the app store..."
+msgstr ""
+
+msgid "Failed to install an app from the app store"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Yuklanmoqda..."
+
+msgid "Installing..."
+msgstr "Oʼrnatilmoqda..."
+
+msgid "No apps found"
+msgstr "Ilovalar topilmadi"
+
+msgid "No installed apps matched the search term"
+msgstr "Oʼrnatilgan ilovalar qidiruv soʼziga mos kelmaydi"
+
+msgid "Standard Apps"
+msgstr "Standart ilovalar"
+
+msgid "Dashboard Apps"
+msgstr "Boshqaruv paneli ilovalari"
+
+msgid "Tracker Dashboard Apps"
+msgstr "Boshqaruv paneli uchun kuzatuv ilovasi"
+
+msgid "Resource Apps"
+msgstr "Ilovalar zaxirasi"
+
+msgid "App Store"
+msgstr ""
+
+msgid "By"
+msgstr "Tomonidan"
+
+msgid "Install"
+msgstr "Oʼrnatish"
