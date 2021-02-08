@@ -225,7 +225,6 @@ class App extends React.Component {
                     <CircularProgress
                         mode="indeterminate"
                         color="#6688AA"
-                        // size={0.75}
                         value={this.state.progress}
                     />
                     <br />

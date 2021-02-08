@@ -17,13 +17,6 @@ import actions from '../actions'
 
 import i18n from '@dhis2/d2-i18n'
 
-// const appTypeLabels = {
-//     app: 'Standard Apps',
-//     dashboard_widget: 'Dashboard Apps',
-//     tracker_dashboard_widget: 'Tracker Dashboard Apps',
-//     resource: 'Resource Apps',
-// }
-
 const appTypeHeaders = {
     app: 'Installed Standard Apps',
     dashboard_widget: 'Installed Dashboard Apps',

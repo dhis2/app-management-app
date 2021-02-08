@@ -12,24 +12,6 @@ import AppTheme from '../theme'
 import actions from '../actions'
 import i18n from '@dhis2/d2-i18n'
 
-/*
- * Discontinued...
-function parseDescription(description) {
-    return {
-        __html: description
-        // Linkify email addresses
-            .replace(
-                /([\w.]*\w@[\w.]*\w\.[a-zA-Z]{2,})/g,
-                '<a href="mailto:$1" rel="nofollow" target="_blank">$1</a>'
-            )
-            // Linkify http:// and https:// links
-            .replace(/(https?:\/\/[\w./]*)/g, '<a href="$1" rel="nofollow" target="_blank">$1</a>')
-            // Convert newlines to HTML line breaks
-            .replace(/\n/g, '\n<br/>'),
-    };
-}
-*/
-
 class AppHub extends React.Component {
     constructor(props) {
         super(props)
