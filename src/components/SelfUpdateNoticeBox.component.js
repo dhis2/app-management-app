@@ -16,7 +16,14 @@ const needsUpdate = (current, candidate) => {
     const currentVersion = parseVersion(current)
     const candidateVersion = parseVersion(candidate)
 
-    return currentVersion.some((v, i) => v < candidateVersion[i])
+    for (let i = 0; i < 3; i++) {
+        const current = currentVersion[i]
+        const candidate = candidateVersion[i]
+        if (current != candidate) {
+            return current < candidate
+        }
+    }
+    return false
 }
 
 const getTargetVersion = (current, versions) => {
@@ -50,7 +57,7 @@ export const SelfUpdateNoticeBox = ({ appHub }) => {
     }
 
     const upgradeSelf = async () => {
-        await actions.installAppVersion([targetVersion.id]).toPromise()
+        await actions.installAppVersion(targetVersion.id).toPromise()
         setTimeout(() => location.reload(), 500)
     }
     return (
