@@ -6,38 +6,11 @@ import { NoticeBox, Button } from '@dhis2/ui'
 import i18n from '@dhis2/d2-i18n'
 
 import actions from '../actions'
+import latestAppVersion from '../latest-app-version'
 
 const currentVersion = __VERSION__
 const appManagementAppOrg = 'DHIS2'
 const appManagementAppName = 'App Management'
-
-const parseVersion = versionString => versionString.split('.').map(Number)
-const needsUpdate = (current, candidate) => {
-    const currentVersion = parseVersion(current)
-    const candidateVersion = parseVersion(candidate)
-
-    for (let i = 0; i < 3; i++) {
-        const current = currentVersion[i]
-        const candidate = candidateVersion[i]
-        if (current != candidate) {
-            return current < candidate
-        }
-    }
-    return false
-}
-
-const getTargetVersion = (current, versions) => {
-    if (!versions) return null
-
-    let targetVersion
-    versions.forEach(candidate => {
-        if (needsUpdate(targetVersion?.version || current, candidate.version)) {
-            targetVersion = candidate
-        }
-    })
-
-    return targetVersion
-}
 
 const SelfUpdateNoticeBox = ({ appHub }) => {
     if (!appHub.apps) return null
@@ -48,16 +21,17 @@ const SelfUpdateNoticeBox = ({ appHub }) => {
             app.name === appManagementAppName
     )
 
-    const targetVersion = getTargetVersion(
-        currentVersion,
-        appManagementApp?.versions
-    )
-    if (!appManagementApp || !targetVersion) {
+    const latestVersion = latestAppVersion(appManagementApp?.versions)
+    if (
+        !appManagementApp ||
+        !latestVersion ||
+        latestVersion != currentVersion
+    ) {
         return null
     }
 
     const upgradeSelf = async () => {
-        await actions.installAppVersion(targetVersion.id).toPromise()
+        await actions.installAppVersion(latestVersion.id).toPromise()
         setTimeout(() => location.reload(), 500)
     }
     return (

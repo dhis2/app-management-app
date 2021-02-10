@@ -15,7 +15,7 @@ import AppHub from './AppHub.component'
 import SelfUpdateNoticeBox from './SelfUpdateNoticeBox.component'
 import AppTheme from '../theme'
 
-import actions from '../actions'
+import actions, { wrapData as wrapActionData } from '../actions'
 import appHubStore from '../stores/appHub.store'
 import installedAppHub from '../stores/installedApp.store'
 
@@ -130,7 +130,9 @@ class App extends React.Component {
                 }
             }),
             actions.installAppVersion.subscribe(({ data }) => {
-                const app = appHubStore.getAppFromVersionId(data[0])
+                const app = appHubStore.getAppFromVersionId(
+                    wrapActionData(data)[0]
+                )
                 this.setSection(
                     (app.appType && app.appType.toLowerCase()) || 'app'
                 )

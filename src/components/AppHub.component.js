@@ -93,16 +93,14 @@ class AppHub extends React.Component {
                         </CardText>
                         <CardActions style={styles.actions}>
                             {app.versions.map(version => {
-                                const install = actions.installAppVersion.bind(
-                                    null,
-                                    version.id
-                                )
+                                const handleInstall = () =>
+                                    actions.installAppVersion(version.id)
                                 return (
                                     <FlatButton
                                         key={version.id}
                                         style={styles.button}
                                         primary
-                                        onClick={install}
+                                        onClick={handleInstall}
                                         label={`${i18n.t('Install')} v${
                                             version.version
                                         }`}

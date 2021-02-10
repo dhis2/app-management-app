@@ -26,13 +26,13 @@ const actions = {
     showSnackbarMessage: Action.create('Show Snackbar message'),
 }
 
+export const wrapData = data => (Array.isArray(data) ? data : [data])
+
 /*
  * Install app from zip file
  */
 actions.installApp.subscribe(params => {
-    const [zipFile, progressCallback] = Array.isArray(params.data)
-        ? params.data
-        : [params.data, undefined]
+    const [zipFile, progressCallback] = wrapData(params.data)
 
     getD2().then(d2 => {
         d2.system
@@ -66,7 +66,7 @@ actions.installApp.subscribe(params => {
  * Uninstall app
  */
 actions.uninstallApp.subscribe(params => {
-    const appKey = params.data[0]
+    const appKey = wrapData(params.data)[0]
     getD2().then(d2 => {
         d2.system.uninstallApp(appKey).then(() => {
             actions.showSnackbarMessage(i18n.t('App removed successfully'))
@@ -124,7 +124,7 @@ actions.loadAppHub.subscribe(async () => {
  * Install app version from the app hub
  */
 actions.installAppVersion.subscribe(params => {
-    const versionId = params.data[0]
+    const versionId = wrapData(params.data)[0]
     const appHubState = appHubStore.getState()
     appHubStore.setState(
         Object.assign(appHubState, {

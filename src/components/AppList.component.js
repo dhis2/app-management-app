@@ -6,14 +6,15 @@ import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'
 import { List, ListItem } from 'material-ui/List'
 import MenuItem from 'material-ui/MenuItem'
-
 import { Card, CardText } from 'material-ui/Card'
-
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import FontIcon from 'material-ui/FontIcon'
 
+import { Chip } from '@dhis2/ui'
+
 import AppTheme from '../theme'
 import actions from '../actions'
+import latestAppVersion from '../latest-app-version'
 
 import i18n from '@dhis2/d2-i18n'
 
@@ -87,6 +88,86 @@ const styles = {
         marginTop: 8,
         marginRight: '1rem',
     },
+    coreAppLabel: {
+        fontWeight: 'bold',
+        marginRight: '0.3em',
+    },
+}
+
+const AppItem = ({ app, appVersions }) => {
+    const latestVersion = latestAppVersion(appVersions)
+    const needsUpdate =
+        latestVersion !== null && latestVersion.version != app.version
+    const handleUpdate = async event => {
+        event.stopPropagation()
+        await actions.installAppVersion(latestVersion.id).toPromise()
+        if (app.name === 'App Management') {
+            setTimeout(() => location.reload(), 500)
+        }
+    }
+    const handleUninstall = () => actions.uninstallApp(app.key)
+    const handleOpen = () => window.open(app.launchUrl)
+    const moreIcon = (
+        <IconButton>
+            <FontIcon className="material-icons" color="#808080">
+                more_vert
+            </FontIcon>
+        </IconButton>
+    )
+    const rightIconButton = (
+        <IconMenu iconButtonElement={moreIcon}>
+            {needsUpdate && (
+                <MenuItem onClick={handleUpdate}>
+                    Update to v{latestVersion.version}
+                </MenuItem>
+            )}
+            <MenuItem onClick={handleUninstall}>Uninstall</MenuItem>
+        </IconMenu>
+    )
+    const avatar = app.icons?.['48'] ? (
+        <Avatar
+            style={styles.appIcon}
+            src={[app.baseUrl, app.icons['48']].join('/')}
+        />
+    ) : (
+        <Avatar
+            backgroundColor={AppTheme.rawTheme.palette.primary1Color}
+            icon={<FontIcon className="material-icons">folder</FontIcon>}
+        />
+    )
+    const primaryText = (
+        <div>
+            {app.name}
+            {needsUpdate && (
+                <Chip onClick={(_, e) => handleUpdate(e)} dense>
+                    Update to v{latestVersion.version}
+                </Chip>
+            )}
+        </div>
+    )
+    const secondaryText = (
+        <div>
+            {app.isBundledApp && (
+                <span style={styles.coreAppLabel}>{i18n.t('CORE APP')}</span>
+            )}
+            {`v${app.version}`}
+        </div>
+    )
+
+    return (
+        <ListItem
+            primaryText={primaryText}
+            secondaryText={secondaryText}
+            style={styles.app}
+            onClick={handleOpen}
+            leftAvatar={avatar}
+            rightIconButton={rightIconButton}
+        />
+    )
+}
+AppItem.propTypes = {
+    app: PropTypes.object.isRequired,
+    appVersions: PropTypes.array,
 }
 
 class AppList extends React.Component {
@@ -96,9 +177,6 @@ class AppList extends React.Component {
         this.state = {
             uploading: false,
         }
-
-        this.uploadAction = this.uploadAction.bind(this)
-        this.upload = this.upload.bind(this)
     }
 
     componentDidMount() {
@@ -109,12 +187,27 @@ class AppList extends React.Component {
         })
     }
 
-    uploadAction(e) {
+    uploadAction = e => {
         this.fileInput.click(e)
     }
 
-    upload(e) {
+    upload = e => {
         actions.installApp(e.target.files[0], this.props.uploadProgress)
+    }
+
+    appVersions = app => {
+        if (!this.props.appHub.apps) {
+            return null
+        }
+
+        const appHubData = this.props.appHub.apps.find(
+            appHubApp =>
+                appHubApp.name === app.name &&
+                (!app.developer ||
+                    appHubApp.developer.name == app.developer?.name ||
+                    appHubApp.developer.organisation == app.developer?.name)
+        )
+        return appHubData?.versions
     }
 
     renderInstalledApps() {
@@ -134,78 +227,13 @@ class AppList extends React.Component {
                     <Card style={styles.card}>
                         <CardText>
                             <List style={styles.container}>
-                                {appList.map(app => {
-                                    const uninstall = actions.uninstallApp.bind(
-                                        null,
-                                        app.key
-                                    )
-                                    const moreIcon = (
-                                        <IconButton>
-                                            <FontIcon
-                                                className="material-icons"
-                                                color="#808080"
-                                            >
-                                                more_vert
-                                            </FontIcon>
-                                        </IconButton>
-                                    )
-                                    const open = window.open.bind(
-                                        null,
-                                        app.launchUrl
-                                    )
-                                    const rightIconButton = (
-                                        <IconMenu iconButtonElement={moreIcon}>
-                                            <MenuItem onClick={uninstall}>
-                                                Uninstall
-                                            </MenuItem>
-                                        </IconMenu>
-                                    )
-                                    const avatar =
-                                        app.icons && app.icons['48'] ? (
-                                            <Avatar
-                                                style={styles.appIcon}
-                                                src={[
-                                                    app.baseUrl,
-                                                    app.icons['48'],
-                                                ].join('/')}
-                                            />
-                                        ) : (
-                                            <Avatar
-                                                backgroundColor={
-                                                    AppTheme.rawTheme.palette
-                                                        .primary1Color
-                                                }
-                                                icon={
-                                                    <FontIcon className="material-icons">
-                                                        folder
-                                                    </FontIcon>
-                                                }
-                                            />
-                                        )
-
-                                    const secondaryText = (
-                                        <div>
-                                            {app.isBundledApp && (
-                                                <strong>
-                                                    {i18n.t('CORE APP')}{' '}
-                                                </strong>
-                                            )}
-                                            v{app.version}
-                                        </div>
-                                    )
-
-                                    return (
-                                        <ListItem
-                                            key={app.folderName}
-                                            primaryText={app.name}
-                                            secondaryText={secondaryText}
-                                            style={styles.app}
-                                            onClick={open}
-                                            leftAvatar={avatar}
-                                            rightIconButton={rightIconButton}
-                                        />
-                                    )
-                                })}
+                                {appList.map(app => (
+                                    <AppItem
+                                        key={app.folderName}
+                                        app={app}
+                                        appVersions={this.appVersions(app)}
+                                    />
+                                ))}
                             </List>
                         </CardText>
                     </Card>
@@ -265,6 +293,7 @@ class AppList extends React.Component {
     }
 }
 AppList.propTypes = {
+    appHub: PropTypes.object.isRequired,
     appTypeFilter: PropTypes.oneOf([
         'APP',
         'DASHBOARD_WIDGET',
