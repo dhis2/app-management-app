@@ -12,7 +12,7 @@ import FontIcon from 'material-ui/FontIcon'
 
 import AppList from './AppList.component'
 import AppHub from './AppHub.component'
-import { SelfUpdateNoticeBox } from './SelfUpdateNoticeBox.component'
+import SelfUpdateNoticeBox from './SelfUpdateNoticeBox.component'
 import AppTheme from '../theme'
 
 import actions from '../actions'

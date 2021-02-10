@@ -39,7 +39,7 @@ const getTargetVersion = (current, versions) => {
     return targetVersion
 }
 
-export const SelfUpdateNoticeBox = ({ appHub }) => {
+const SelfUpdateNoticeBox = ({ appHub }) => {
     if (!appHub.apps) return null
 
     const appManagementApp = appHub.apps.find(
@@ -76,3 +76,5 @@ export const SelfUpdateNoticeBox = ({ appHub }) => {
 SelfUpdateNoticeBox.propTypes = {
     appHub: PropTypes.object.isRequired,
 }
+
+export default SelfUpdateNoticeBox
