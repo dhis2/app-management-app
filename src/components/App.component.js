@@ -229,7 +229,7 @@ class App extends React.Component {
         return null
     }
 
-    renderSection(key, apps, showUpload) {
+    renderSection({ key, apps, showUpload }) {
         if (key === 'store') {
             return <AppHub appHub={this.state.appHub} d2={this.props.d2} />
         }
@@ -261,9 +261,13 @@ class App extends React.Component {
         }, {})
 
         if (Object.keys(appsByType).length) {
-            return Object.keys(appsByType).map((type, i) => (
+            return Object.entries(appsByType).map(([type, apps], i) => (
                 <div key={type}>
-                    {this.renderSection(type, appsByType[type], i === 0)}
+                    {this.renderSection({
+                        key: type,
+                        apps,
+                        showUpload: i === 0,
+                    })}
                 </div>
             ))
         }
@@ -344,11 +348,11 @@ class App extends React.Component {
                 <div className="content-area">
                     {this.state.appSearch
                         ? this.renderSearchResults()
-                        : this.renderSection(
-                              this.state.section,
-                              this.state.installedApps,
-                              true
-                          )}
+                        : this.renderSection({
+                              key: this.state.section,
+                              apps: this.state.installedApps,
+                              showUpload: true,
+                          })}
                     {this.renderUploadProgress()}
                     {this.renderInstallProgress()}
                 </div>
