@@ -67,6 +67,7 @@ class App extends React.Component {
         this.state = {
             installedApps: [],
             installing: false,
+            section: 'bundled_app',
             uploading: false,
             progress: undefined,
             appHub: {},
@@ -291,6 +292,11 @@ class App extends React.Component {
 
     render() {
         const sections = [
+            {
+                key: 'bundled_app',
+                icon: 'widgets',
+                label: i18n.t('Bundled Apps'),
+            },
             {
                 key: 'app',
                 icon: 'desktop_windows',

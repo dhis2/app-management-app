@@ -19,6 +19,7 @@ import latestAppVersion from '../latest-app-version'
 import i18n from '@dhis2/d2-i18n'
 
 const appTypeHeaders = {
+    bundled_app: 'Installed Bundled Apps',
     app: 'Installed Standard Apps',
     dashboard_widget: 'Installed Dashboard Apps',
     tracker_dashboard_widget: 'Installed Tracker Dashboard Apps',
@@ -26,6 +27,7 @@ const appTypeHeaders = {
 }
 
 const appTypeMissing = {
+    bundled_app: 'There are no bundled apps installed.',
     app: 'There are no standard apps installed.',
     dashboard_widget: 'There are no dashboard apps installed.',
     tracker_dashboard_widget: 'There are no tracker dashboard apps installed.',
@@ -215,6 +217,8 @@ class AppList extends React.Component {
         const appList = this.props.installedApps.filter(
             app =>
                 !this.props.appTypeFilter ||
+                (this.props.appTypeFilter === 'BUNDLED_APP' &&
+                    app.isBundledApp) ||
                 app.appType === this.props.appTypeFilter
         )
 
@@ -295,6 +299,7 @@ class AppList extends React.Component {
 AppList.propTypes = {
     appHub: PropTypes.object.isRequired,
     appTypeFilter: PropTypes.oneOf([
+        'BUNDLED_APP',
         'APP',
         'DASHBOARD_WIDGET',
         'TRACKER_DASHBOARD_WIDGET',
