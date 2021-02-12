@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { DataQuery } from '@dhis2/app-runtime'
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component'
 
 import CircularProgress from 'material-ui/CircularProgress'
@@ -57,6 +58,12 @@ const styles = {
         position: 'relative',
         top: -6,
         marginLeft: 16,
+    },
+}
+
+const bundledAppsQuery = {
+    bundledApps: {
+        resource: 'action::menu/getModules',
     },
 }
 
@@ -345,17 +352,43 @@ class App extends React.Component {
                     open={!!this.state.snackbar}
                     style={styles.snackbar}
                 />
-                <div className="content-area">
-                    {this.state.appSearch
-                        ? this.renderSearchResults()
-                        : this.renderSection({
-                              key: this.state.section,
-                              apps: this.state.installedApps,
-                              showUpload: true,
-                          })}
-                    {this.renderUploadProgress()}
-                    {this.renderInstallProgress()}
-                </div>
+                <DataQuery query={bundledAppsQuery}>
+                    {({ data }) => {
+                        const bundledApps = (data
+                            ? data.bundledApps.modules
+                            : []
+                        )
+                            .filter(
+                                app =>
+                                    !this.state.installedApps.find(
+                                        a =>
+                                            a.isBundledApp &&
+                                            a.short_name === app.name
+                                    )
+                            )
+                            .map(app => ({
+                                ...app,
+                                name: app.displayName,
+                                isBundledApp: true,
+                            }))
+                        return (
+                            <div className="content-area">
+                                {this.state.appSearch
+                                    ? this.renderSearchResults()
+                                    : this.renderSection({
+                                          key: this.state.section,
+                                          apps: [
+                                              ...bundledApps,
+                                              ...this.state.installedApps,
+                                          ],
+                                          showUpload: true,
+                                      })}
+                                {this.renderUploadProgress()}
+                                {this.renderInstallProgress()}
+                            </div>
+                        )
+                    }}
+                </DataQuery>
             </div>
         )
     }

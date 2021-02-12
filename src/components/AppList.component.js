@@ -152,7 +152,7 @@ const AppItem = ({ app, appVersions }) => {
             {app.isBundledApp && (
                 <span style={styles.coreAppLabel}>{i18n.t('CORE APP')}</span>
             )}
-            {`v${app.version}`}
+            {app.version ? `v${app.version}` : null}
         </div>
     )
 
