@@ -202,13 +202,18 @@ class AppList extends React.Component {
             return null
         }
 
-        const appHubData = this.props.appHub.apps.find(
-            appHubApp =>
-                appHubApp.name === app.name &&
-                (!app.developer ||
+        const appHubData = this.props.appHub.apps.find(appHubApp => {
+            if (appHubApp.name === app.name) {
+                if (app.isBundledApp) {
+                    return appHubApp.developer.organisation === 'DHIS2'
+                }
+                return (
                     appHubApp.developer.name == app.developer?.name ||
-                    appHubApp.developer.organisation == app.developer?.name)
-        )
+                    appHubApp.developer.organisation == app.developer?.name
+                )
+            }
+            return false
+        })
         return appHubData?.versions
     }
 
