@@ -73,17 +73,6 @@ class App extends React.Component {
             appHub: {},
             lastUpdate: null,
         }
-
-        // Bind 'this' for functions that need it
-        ;[
-            'setSection',
-            'progress',
-            'closeSnackbar',
-            'showSnackbar',
-            'search',
-        ].forEach(fn => {
-            this[fn] = this[fn].bind(this)
-        })
     }
 
     getChildContext() {
@@ -149,14 +138,14 @@ class App extends React.Component {
         })
     }
 
-    setSection(key) {
+    setSection = key => {
         if (this.sidebar) {
             this.sidebar.clearSearchBox()
         }
         this.setState({ section: key, appSearch: undefined })
     }
 
-    progress(p) {
+    progress = p => {
         if (p) {
             if (p === 1) {
                 this.setState({ uploading: false, progress: undefined })
@@ -168,15 +157,15 @@ class App extends React.Component {
         }
     }
 
-    closeSnackbar() {
+    closeSnackbar = () => {
         this.setState({ snackbar: undefined })
     }
 
-    showSnackbar(message) {
+    showSnackbar = message => {
         this.setState({ snackbar: message })
     }
 
-    search(text) {
+    search = text => {
         if (text.length > 0) {
             this.setState({
                 appSearch: this.state.installedApps
