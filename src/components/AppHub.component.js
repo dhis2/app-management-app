@@ -1,16 +1,13 @@
-import React from 'react'
+import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
-
+import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component'
+import Avatar from 'material-ui/Avatar'
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 import FontIcon from 'material-ui/FontIcon'
-import Avatar from 'material-ui/Avatar'
-
-import LoadingMask from 'd2-ui/lib/loading-mask/LoadingMask.component'
-
-import AppTheme from '../theme'
+import React from 'react'
 import actions from '../actions'
-import i18n from '@dhis2/d2-i18n'
+import AppTheme from '../theme'
 
 /*
  * Discontinued...
