@@ -38,7 +38,7 @@ AllApps.propTypes = {
     label: PropTypes.string.isRequired,
 }
 
-const EmptyApps = (
+const EmptyApps = () => (
     <>
         <h1 className={styles.header}>{i18n.t('No apps found')}</h1>
         <p>No apps match your criteria</p>
