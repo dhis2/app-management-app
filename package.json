@@ -42,7 +42,6 @@
         "@dhis2/prop-types": "^2.0.3",
         "d2": "^31.8.2",
         "d2-ui": "^29.0.35",
-        "debug": "^4.1.1",
         "loglevel": "^1.4.1",
         "material-design-icons-iconfont": "^4.0.5",
         "material-ui": "^0.19.2",

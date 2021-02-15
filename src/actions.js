@@ -1,12 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
 import { getInstance as getD2 } from 'd2'
 import Action from 'd2-ui/lib/action/Action'
-import Debug from 'debug'
 import log from 'loglevel'
 import appHubStore from './stores/appHub.store'
 import installedAppHub from './stores/installedApp.store'
-
-const debug = Debug('app-management-app:frontend:client')
 
 const actions = {
     // App management actions
@@ -89,7 +86,6 @@ actions.refreshApps.subscribe(() => {
 actions.loadAppHub.subscribe(async () => {
     const d2 = await getD2()
     const baseUrl = d2.Api.getApi().baseUrl
-    debug(`Got baseUrl: ${baseUrl}`)
 
     const fetchOptions = {
         credentials: 'include',
@@ -106,7 +102,6 @@ actions.loadAppHub.subscribe(async () => {
     }
 
     const version = await getDhisVersion()
-    debug(`Got dhis2 version: ${version}`)
 
     const response = await fetch(
         `${baseUrl}/appHub/v1/apps?dhis_version=${version}`,
