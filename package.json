@@ -33,21 +33,14 @@
     "devDependencies": {
         "@dhis2/cli-app-scripts": "^5.5.0",
         "@dhis2/cli-style": "^7.3.0",
-        "babel-plugin-minify-replace": "^0.5.0",
-        "node-sass": "^4.14.1"
+        "babel-plugin-minify-replace": "^0.5.0"
     },
     "dependencies": {
         "@dhis2/app-runtime": "^2.7.0",
-        "@dhis2/app-runtime-adapter-d2": "^1.0.1",
         "@dhis2/prop-types": "^2.0.3",
         "d2": "^31.8.2",
-        "d2-ui": "^29.0.35",
-        "loglevel": "^1.4.1",
-        "material-design-icons-iconfont": "^4.0.5",
-        "material-ui": "^0.19.2",
-        "prop-types": "^15.7.2",
+        "query-string": "^6.14.0",
         "react-router-dom": "^5.2.0",
-        "rxjs": "^5.4.3",
-        "susy": "^3.0.0"
+        "use-query-params": "^1.1.9"
     }
 }

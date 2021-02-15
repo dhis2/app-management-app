@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-15T13:13:41.656Z\n"
-"PO-Revision-Date: 2021-02-15T13:13:41.656Z\n"
+"POT-Creation-Date: 2021-02-15T16:10:32.472Z\n"
+"PO-Revision-Date: 2021-02-15T16:10:32.473Z\n"
 
 msgid "App installed successfully"
 msgstr ""
@@ -59,10 +59,13 @@ msgstr ""
 msgid "Resource Apps"
 msgstr ""
 
-msgid "A new version of App Management is available on the App Hub"
+msgid "Something went wrong whilst loading your custom apps"
 msgstr ""
 
-msgid "Update and reload app"
+msgid "Custom apps with updates available"
+msgstr ""
+
+msgid "All installed custom apps"
 msgstr ""
 
 msgid "Preinstalled core apps"

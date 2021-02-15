@@ -1,3 +1,5 @@
 import React from 'react'
 
-export default () => <p>Core apps</p>
+const CoreApps = () => <p>Core apps</p>
+
+export default CoreApps
