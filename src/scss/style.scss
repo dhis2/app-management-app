@@ -21,16 +21,6 @@ h1 {
   left: 0;
 }
 
-.content-area {
-  margin-left: $left-bar-width;
-  max-width: 940px;
-  min-width: 400px;
-  a {
-    color: #5892BE;
-    text-decoration: none;
-  }
-}
-
 .transition-mount,
 .transition-unmount {
   transition: 150ms ease-out;

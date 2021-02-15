@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
-"PO-Revision-Date: 2020-08-28T10:39:30.969Z\n"
+"POT-Creation-Date: 2021-02-15T13:13:41.656Z\n"
+"PO-Revision-Date: 2021-02-15T13:13:41.656Z\n"
 
 msgid "App installed successfully"
 msgstr ""
@@ -21,6 +21,18 @@ msgid "Installing app from the app hub..."
 msgstr ""
 
 msgid "Failed to install an app from the app hub"
+msgstr ""
+
+msgid "By"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "App Hub"
+msgstr ""
+
+msgid "CORE APP"
 msgstr ""
 
 msgid "Uploading..."
@@ -47,20 +59,20 @@ msgstr ""
 msgid "Resource Apps"
 msgstr ""
 
-msgid "App Hub"
-msgstr ""
-
-msgid "By"
-msgstr ""
-
-msgid "Install"
-msgstr ""
-
-msgid "CORE APP"
-msgstr ""
-
 msgid "A new version of App Management is available on the App Hub"
 msgstr ""
 
 msgid "Update and reload app"
+msgstr ""
+
+msgid "Preinstalled core apps"
+msgstr ""
+
+msgid "Custom apps"
+msgstr ""
+
+msgid "Discover more apps"
+msgstr ""
+
+msgid "Manual install"
 msgstr ""

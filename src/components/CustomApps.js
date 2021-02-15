@@ -1,11 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
-import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component'
 import { Card, CardText } from 'material-ui/Card'
 import CircularProgress from 'material-ui/CircularProgress'
 import FontIcon from 'material-ui/FontIcon'
 import LinearProgress from 'material-ui/LinearProgress'
-import Snackbar from 'material-ui/Snackbar'
 import React from 'react'
 import actions from '../actions'
 import appHubStore from '../stores/appHub.store'
@@ -43,10 +41,6 @@ const styles = {
         fontWeight: 300,
         maxWidth: 734,
     },
-    snackbar: {
-        // left: '2rem',
-        right: 'initial',
-    },
     menuLabel: {
         position: 'relative',
         top: -6,
@@ -54,9 +48,9 @@ const styles = {
     },
 }
 
-class App extends React.Component {
-    constructor(props, context) {
-        super(props, context)
+class CustomApps extends React.Component {
+    constructor(props) {
+        super(props)
 
         this.state = {
             installedApps: [],
@@ -65,24 +59,6 @@ class App extends React.Component {
             progress: undefined,
             appHub: {},
             lastUpdate: null,
-        }
-
-        // Bind 'this' for functions that need it
-        ;[
-            'setSection',
-            'progress',
-            'closeSnackbar',
-            'showSnackbar',
-            'search',
-        ].forEach(fn => {
-            this[fn] = this[fn].bind(this)
-        })
-    }
-
-    getChildContext() {
-        return {
-            d2: this.props.d2,
-            muiTheme: AppTheme,
         }
     }
 
@@ -113,16 +89,6 @@ class App extends React.Component {
             actions.refreshApps.subscribe(() => {
                 this.setState({ uploading: false })
             }),
-            actions.showSnackbarMessage.subscribe(params => {
-                if (this.state.snackbar) {
-                    this.setState({ snackbar: undefined })
-                    setTimeout(() => {
-                        this.setState({ snackbar: params.data })
-                    }, 150)
-                } else {
-                    this.setState({ snackbar: params.data })
-                }
-            }),
             actions.installAppVersion.subscribe(({ data }) => {
                 const app = appHubStore.getAppFromVersionId(data[0])
                 this.setSection(
@@ -136,18 +102,11 @@ class App extends React.Component {
 
     componentWillUnmount() {
         this.subscriptions.forEach(subscription => {
-            subscription.dispose()
+            subscription.remove()
         })
     }
 
-    setSection(key) {
-        if (this.sidebar) {
-            this.sidebar.clearSearchBox()
-        }
-        this.setState({ section: key, appSearch: undefined })
-    }
-
-    progress(p) {
+    progress = p => {
         if (p) {
             if (p === 1) {
                 this.setState({ uploading: false, progress: undefined })
@@ -159,15 +118,7 @@ class App extends React.Component {
         }
     }
 
-    closeSnackbar() {
-        this.setState({ snackbar: undefined })
-    }
-
-    showSnackbar(message) {
-        this.setState({ snackbar: message })
-    }
-
-    search(text) {
+    search = text => {
         if (text.length > 0) {
             this.setState({
                 appSearch: this.state.installedApps
@@ -219,7 +170,6 @@ class App extends React.Component {
                     <CircularProgress
                         mode="indeterminate"
                         color="#6688AA"
-                        // size={0.75}
                         value={this.state.progress}
                     />
                     <br />
@@ -234,14 +184,13 @@ class App extends React.Component {
 
     renderSection(key, apps, showUpload) {
         if (key === 'store') {
-            return <AppHub appHub={this.state.appHub} d2={this.props.d2} />
+            return <AppHub appHub={this.state.appHub} />
         }
 
         const filter = (key && key.toString().toUpperCase()) || 'APP'
 
         return (
             <AppList
-                d2={this.props.d2}
                 installedApps={apps}
                 uploadProgress={this.progress}
                 transitionUnmount={this.state.unmountSection}
@@ -317,29 +266,10 @@ class App extends React.Component {
             ),
         }))
 
-        const reffer = r => {
-            this.sidebar = r
-        }
-
         return (
             <div className="app">
                 <SelfUpdateNoticeBox appHub={this.state.appHub} />
-                <Sidebar
-                    sections={sections}
-                    currentSection={this.state.section}
-                    onChangeSection={this.setSection}
-                    showSearchField
-                    onChangeSearchText={this.search}
-                    ref={reffer}
-                />
-                <Snackbar
-                    message={this.state.snackbar || ''}
-                    autoHideDuration={2500}
-                    onRequestClose={this.closeSnackbar}
-                    open={!!this.state.snackbar}
-                    style={styles.snackbar}
-                />
-                <div className="content-area">
+                <div>
                     {this.state.appSearch
                         ? this.renderSearchResults()
                         : this.renderSection(
@@ -354,13 +284,5 @@ class App extends React.Component {
         )
     }
 }
-App.propTypes = {
-    d2: PropTypes.object.isRequired,
-}
 
-App.childContextTypes = {
-    d2: PropTypes.object,
-    muiTheme: PropTypes.object,
-}
-
-export default App
+export default CustomApps

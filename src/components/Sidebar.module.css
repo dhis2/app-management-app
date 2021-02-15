@@ -1,0 +1,7 @@
+li.sidebarItem {
+    background-color: inherit;
+}
+
+li.sidebarItem:hover, li.sidebarItem:focus {
+    background-color: var(--colors-grey300);
+}
