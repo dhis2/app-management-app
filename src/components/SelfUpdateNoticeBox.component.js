@@ -1,7 +1,7 @@
 /* global __VERSION__ */
 
 import React from 'react'
-import PropTypes from 'prop-types'
+import { PropTypes } from '@dhis2/prop-types'
 import { NoticeBox, Button } from '@dhis2/ui'
 import i18n from '@dhis2/d2-i18n'
 

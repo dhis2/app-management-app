@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import { PropTypes } from '@dhis2/prop-types'
 
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component'
 
