@@ -10,40 +10,48 @@ import React from 'react'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
 import styles from './AppList.module.css'
 
-const AppsWithUpdates = ({ label, apps }) => (
-    <>
-        <h1 className={styles.header}>{label}</h1>
-        {apps.map(app => (
-            <p key={app.name}>{app.name}</p>
-        ))}
-    </>
-)
+const AppsWithUpdates = ({ label, apps }) => {
+    if (apps.length === 0) {
+        return null
+    }
+    return (
+        <>
+            <h1 className={styles.header}>{label}</h1>
+            {apps.map(app => (
+                <p key={app.name}>{app.name}</p>
+            ))}
+        </>
+    )
+}
 
 AppsWithUpdates.propTypes = {
     apps: PropTypes.array.isRequired,
     label: PropTypes.string.isRequired,
 }
 
-const AllApps = ({ label, apps }) => (
-    <>
-        <h1 className={styles.header}>{label}</h1>
-        {apps.map(app => (
-            <p key={app.name}>{app.name}</p>
-        ))}
-    </>
-)
+const AllApps = ({ label, apps }) => {
+    if (apps.length === 0) {
+        return (
+            <>
+                <h1 className={styles.header}>{i18n.t('No apps found')}</h1>
+                <p>No apps match your criteria</p>
+            </>
+        )
+    }
+    return (
+        <>
+            <h1 className={styles.header}>{label}</h1>
+            {apps.map(app => (
+                <p key={app.name}>{app.name}</p>
+            ))}
+        </>
+    )
+}
 
 AllApps.propTypes = {
     apps: PropTypes.array.isRequired,
     label: PropTypes.string.isRequired,
 }
-
-const EmptyApps = () => (
-    <>
-        <h1 className={styles.header}>{i18n.t('No apps found')}</h1>
-        <p>No apps match your criteria</p>
-    </>
-)
 
 const AppList = ({
     error,
@@ -95,17 +103,11 @@ const AppList = ({
                 placeholder={searchLabel}
                 onChange={handleQueryChange}
             />
-            {filteredAppsWithUpdates.length > 0 ? (
-                <AppsWithUpdates
-                    apps={filteredAppsWithUpdates}
-                    label={updatesAvailableLabel}
-                />
-            ) : null}
-            {filteredApps.length > 0 ? (
-                <AllApps apps={filteredApps} label={allAppsLabel} />
-            ) : (
-                <EmptyApps />
-            )}
+            <AppsWithUpdates
+                apps={filteredAppsWithUpdates}
+                label={updatesAvailableLabel}
+            />
+            <AllApps apps={filteredApps} label={allAppsLabel} />
         </>
     )
 }
