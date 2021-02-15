@@ -6,8 +6,14 @@
         "start": "d2-app-scripts start",
         "build": "d2-app-scripts build",
         "test": "d2-app-scripts test",
-        "lint": "d2-style js check && d2-style text check",
-        "format": "d2-style js apply && d2-style text apply"
+        "lint:js": "d2-style js check",
+        "lint:text": "d2-style text check",
+        "lint:staged": "yarn lint:js --staged && yarn lint:text --staged",
+        "lint": "yarn lint:js && yarn lint:text",
+        "format:js": "d2-style js apply",
+        "format:text": "d2-style text apply",
+        "format:staged": "yarn format:js --staged && yarn format:text --staged",
+        "format": "yarn format:js && yarn format:text"
     },
     "repository": {
         "type": "git",
