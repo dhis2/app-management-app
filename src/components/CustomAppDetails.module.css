@@ -50,9 +50,11 @@
 }
 
 .otherScreenshot:hover, .otherScreenshot:focus {
-    opacity: 0.85;
+    border-color: var(--colors-grey400);
+    outline: none;
 }
 
-.otherScreenshotCurrent {
+.otherScreenshotCurrent,
+.otherScreenshotCurrent:hover, .otherScreenshotCurrent:focus {
     border-color: var(--colors-blue500);
 }

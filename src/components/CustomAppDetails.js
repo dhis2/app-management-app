@@ -23,8 +23,9 @@ const Screenshots = ({ screenshots }) => {
             </div>
             <div>
                 {screenshots.map((screenshot, index) => (
-                    <img
+                    <button
                         key={index}
+                        onClick={() => setCurrentScreenshotIndex(index)}
                         className={
                             styles.otherScreenshot +
                             ' ' +
@@ -32,9 +33,9 @@ const Screenshots = ({ screenshots }) => {
                                 ? styles.otherScreenshotCurrent
                                 : '')
                         }
-                        src={screenshot}
-                        onClick={() => setCurrentScreenshotIndex(index)}
-                    />
+                    >
+                        <img src={screenshot} />
+                    </button>
                 ))}
             </div>
         </div>
