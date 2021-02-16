@@ -1,24 +1,6 @@
-import i18n from '@dhis2/d2-i18n'
 import { getInstance as getD2 } from 'd2'
-import Action from 'd2-ui/lib/action/Action'
-import log from 'loglevel'
-import appHubStore from './stores/appHub.store'
-import installedAppHub from './stores/installedApp.store'
 
-const actions = {
-    // App management actions
-    installApp: Action.create('Install App'),
-    uninstallApp: Action.create('Uninstall App'),
-    refreshApps: Action.create('Refresh Apps'),
-    appInstalled: Action.create('An app was installed'),
-
-    // App store actions
-    loadAppHub: Action.create('Load DHIS2 App Hub'),
-    installAppVersion: Action.create('Install App Version from DHIS2 App Hub'),
-
-    // Snackbar
-    showSnackbarMessage: Action.create('Show Snackbar message'),
-}
+const actions = {}
 
 /*
  * Install app from zip file
