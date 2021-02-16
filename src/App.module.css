@@ -18,5 +18,5 @@
     position: relative;
     grid-area: main;
     padding: var(--spacers-dp16);
-    background: var(--colors-grey050);
+    background: var(--colors-grey100);
 }

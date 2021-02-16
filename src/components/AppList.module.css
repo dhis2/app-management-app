@@ -1,6 +1,63 @@
+.searchField {
+    max-width: 420px;
+}
+
 .header {
-    font-weight: 500;
     font-size: 20px;
+    font-weight: 500;
     margin-top: var(--spacers-dp24);
     margin-bottom: var(--spacers-dp16);
+}
+
+.appsWithUpdates {
+    margin-bottom: var(--spacers-dp64);
+}
+
+.appCards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: var(--spacers-dp16);
+    max-width: 992px;
+}
+
+.appCard {
+    display: grid;
+    grid-template-columns: 72px auto;
+    grid-gap: var(--spacers-dp12);
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 18px var(--spacers-dp16);
+    line-height: 20px;
+}
+
+.appCardName {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--colors-grey900);
+    margin-top: 0;
+    margin-bottom: var(--spacers-dp4);
+}
+
+.appCardMetadata {
+    display: block;
+    margin: var(--spacers-dp4) 0;
+    font-size: 14px;
+    color: var(--colors-grey700)
+}
+
+.appCardIcon {
+    display: flex;
+}
+
+.appCardIconFallback {
+    height: 100%;
+    width: 100%;
+    background: #e6e9ec;
+    border-radius: 5px;
+}
+
+.appCardIcon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: scale-down;
 }

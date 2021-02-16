@@ -16,7 +16,7 @@ const CustomApps = () => {
         <AppList
             error={error}
             loading={loading}
-            apps={data?.customApps}
+            apps={data?.customApps.filter(app => !app.bundled)}
             errorLabel={i18n.t(
                 'Something went wrong whilst loading your custom apps'
             )}

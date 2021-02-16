@@ -10,17 +10,60 @@ import React from 'react'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
 import styles from './AppList.module.css'
 
+const getIconSrc = app => {
+    const iconSize = ['128', '48', '16'].find(iconSize => iconSize in app.icons)
+    if (iconSize) {
+        return `${app.baseUrl}/${app.icons[iconSize]}`
+    }
+    return null
+}
+
+const AppIcon = ({ app }) => (
+    <div className={styles.appCardIcon}>
+        {getIconSrc(app) ? (
+            <img src={getIconSrc(app)} />
+        ) : (
+            <div className={styles.appCardIconFallback}></div>
+        )}
+    </div>
+)
+
+AppIcon.propTypes = {
+    app: PropTypes.object.isRequired,
+}
+
+const AppCards = ({ apps }) => (
+    <div className={styles.appCards}>
+        {apps.map(app => (
+            <div key={app.key} className={styles.appCard}>
+                <AppIcon app={app} />
+                <div>
+                    <h2 className={styles.appCardName}>{app.name}</h2>
+                    <span className={styles.appCardMetadata}>
+                        {app.developer?.organisation || app.developer?.name}
+                    </span>
+                    <span className={styles.appCardMetadata}>
+                        {app.version && `Version ${app.version}`}
+                    </span>
+                </div>
+            </div>
+        ))}
+    </div>
+)
+
+AppCards.propTypes = {
+    apps: PropTypes.array.isRequired,
+}
+
 const AppsWithUpdates = ({ label, apps }) => {
     if (apps.length === 0) {
         return null
     }
     return (
-        <>
+        <div className={styles.appsWithUpdates}>
             <h1 className={styles.header}>{label}</h1>
-            {apps.map(app => (
-                <p key={app.name}>{app.name}</p>
-            ))}
-        </>
+            <AppCards apps={apps} />
+        </div>
     )
 }
 
@@ -41,9 +84,7 @@ const AllApps = ({ label, apps }) => {
     return (
         <>
             <h1 className={styles.header}>{label}</h1>
-            {apps.map(app => (
-                <p key={app.name}>{app.name}</p>
-            ))}
+            <AppCards apps={apps} />
         </>
     )
 }
@@ -99,6 +140,7 @@ const AppList = ({
     return (
         <>
             <InputField
+                className={styles.searchField}
                 value={query}
                 placeholder={searchLabel}
                 onChange={handleQueryChange}
