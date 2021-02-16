@@ -6,17 +6,37 @@ import AppList from './AppList'
 const query = {
     customApps: {
         resource: 'apps',
+        params: {
+            bundled: false,
+        },
+    },
+    appHub: {
+        resource: 'appHub/v1/apps',
     },
 }
 
 const CustomApps = () => {
     const { loading, error, data } = useDataQuery(query)
 
+    const apps = data?.customApps
+        .filter(app => !app.bundled)
+        .map(app => ({
+            ...app,
+            appHubId: data.appHub.find(
+                ({ name, developer }) =>
+                    name == app.name &&
+                    app.developer &&
+                    (developer.organisation ==
+                        (app.developer.company || app.developer.name) ||
+                        developer.name == app.developer.name)
+            )?.id,
+        }))
+
     return (
         <AppList
             error={error}
             loading={loading}
-            apps={data?.customApps.filter(app => !app.bundled)}
+            apps={apps}
             errorLabel={i18n.t(
                 'Something went wrong whilst loading your custom apps'
             )}

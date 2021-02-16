@@ -4,6 +4,7 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import styles from './App.module.css'
 import CoreApps from './components/CoreApps'
+import CustomAppDetails from './components/CustomAppDetails'
 import CustomApps from './components/CustomApps'
 import Sidebar from './components/Sidebar'
 import './locales'
@@ -28,7 +29,15 @@ const App = () => (
                 <main className={styles.content}>
                     <Switch>
                         <Route exact path="/" component={CoreApps} />
-                        <Route path="/custom-apps" component={CustomApps} />
+                        <Route
+                            exact
+                            path="/custom-apps"
+                            component={CustomApps}
+                        />
+                        <Route
+                            path="/custom-apps/:appHubId"
+                            component={CustomAppDetails}
+                        />
                         <Route path="/discover" component={AppHub} />
                         <Route
                             path="/manual-install"
