@@ -1,5 +1,6 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
+import { PropTypes } from '@dhis2/prop-types'
 import {
     Card,
     Divider,
@@ -13,6 +14,7 @@ import styles from './CustomAppDetails.module.css'
 const Screenshots = ({ screenshots }) => {
     const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0)
     const currentScreenshot = screenshots[currentScreenshotIndex]
+
     return (
         <div className={styles.screenshots}>
             <div>
@@ -40,6 +42,10 @@ const Screenshots = ({ screenshots }) => {
             </div>
         </div>
     )
+}
+
+Screenshots.propTypes = {
+    screenshots: PropTypes.array.isRequired,
 }
 
 const CustomAppDetails = ({ match }) => {
@@ -107,6 +113,10 @@ const CustomAppDetails = ({ match }) => {
             </div>
         </Card>
     )
+}
+
+CustomAppDetails.propTypes = {
+    match: PropTypes.object.isRequired,
 }
 
 export default CustomAppDetails
