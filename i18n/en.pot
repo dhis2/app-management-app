@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-15T17:07:26.410Z\n"
-"PO-Revision-Date: 2021-02-15T17:07:26.410Z\n"
+"POT-Creation-Date: 2021-02-16T16:35:31.694Z\n"
+"PO-Revision-Date: 2021-02-16T16:35:31.694Z\n"
 
 msgid "App installed successfully"
 msgstr ""
@@ -24,6 +24,21 @@ msgid "Failed to install an app from the app hub"
 msgstr ""
 
 msgid "No apps found"
+msgstr ""
+
+msgid "by {{developer}}"
+msgstr ""
+
+msgid "About this app"
+msgstr ""
+
+msgid "Screenshots"
+msgstr ""
+
+msgid "All versions of this application"
+msgstr ""
+
+msgid "Channel"
 msgstr ""
 
 msgid "Something went wrong whilst loading your custom apps"
@@ -48,4 +63,12 @@ msgid "Discover more apps"
 msgstr ""
 
 msgid "Manual install"
+msgstr ""
+
+msgctxt "creator of AppHub application"
+msgid "by {{developer}}"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Channel"
 msgstr ""

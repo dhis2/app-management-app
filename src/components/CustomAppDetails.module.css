@@ -26,7 +26,14 @@
     font-size: 16px;
     font-weight: 500;
     margin: 0;
-    margin-bottom: 16px;
+    margin-bottom: var(--spacers-dp16);
+}
+
+.sectionSubheader {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: var(--spacers-dp8);
 }
 
 .screenshots {
@@ -57,4 +64,22 @@
 .otherScreenshotCurrent,
 .otherScreenshotCurrent:hover, .otherScreenshotCurrent:focus {
     border-color: var(--colors-blue500);
+}
+
+.versionsContainer {
+    border: 1px solid var(--colors-grey300);
+}
+
+.versionsFilters {
+    padding: var(--spacers-dp16) var(--spacers-dp8);
+}
+
+.channelCheckbox {
+    display: inline-block;
+    margin-right: var(--spacers-dp24);
+}
+
+.dhisVersionSelect {
+    max-width: 200px;
+    margin-top: var(--spacers-dp16);
 }
