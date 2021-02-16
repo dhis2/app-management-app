@@ -7,49 +7,43 @@ import {
     InputField,
 } from '@dhis2/ui'
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
+import AppIcon from './AppIcon'
 import styles from './AppList.module.css'
 
-const getIconSrc = app => {
-    const iconSize = ['128', '48', '16'].find(iconSize => iconSize in app.icons)
-    if (iconSize) {
-        return `${app.baseUrl}/${app.icons[iconSize]}`
+const AppCards = ({ apps }) => {
+    const history = useHistory()
+    const createClickHandler = appHubId => () => {
+        if (appHubId) {
+            history.push(`/custom-apps/${appHubId}`)
+        }
     }
-    return null
+
+    return (
+        <div className={styles.appCards}>
+            {apps.map(app => (
+                <button
+                    key={app.short_name}
+                    className={styles.appCard}
+                    disabled={!app.appHubId}
+                    onClick={createClickHandler(app.appHubId)}
+                >
+                    <AppIcon app={app} />
+                    <div>
+                        <h2 className={styles.appCardName}>{app.name}</h2>
+                        <span className={styles.appCardMetadata}>
+                            {app.developer?.company || app.developer?.name}
+                        </span>
+                        <span className={styles.appCardMetadata}>
+                            {app.version && `Version ${app.version}`}
+                        </span>
+                    </div>
+                </button>
+            ))}
+        </div>
+    )
 }
-
-const AppIcon = ({ app }) => (
-    <div className={styles.appCardIcon}>
-        {getIconSrc(app) ? (
-            <img src={getIconSrc(app)} />
-        ) : (
-            <div className={styles.appCardIconFallback}></div>
-        )}
-    </div>
-)
-
-AppIcon.propTypes = {
-    app: PropTypes.object.isRequired,
-}
-
-const AppCards = ({ apps }) => (
-    <div className={styles.appCards}>
-        {apps.map(app => (
-            <div key={app.key} className={styles.appCard}>
-                <AppIcon app={app} />
-                <div>
-                    <h2 className={styles.appCardName}>{app.name}</h2>
-                    <span className={styles.appCardMetadata}>
-                        {app.developer?.organisation || app.developer?.name}
-                    </span>
-                    <span className={styles.appCardMetadata}>
-                        {app.version && `Version ${app.version}`}
-                    </span>
-                </div>
-            </div>
-        ))}
-    </div>
-)
 
 AppCards.propTypes = {
     apps: PropTypes.array.isRequired,
