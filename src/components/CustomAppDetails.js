@@ -11,8 +11,33 @@ import {
     SingleSelectField,
     SingleSelectOption,
 } from '@dhis2/ui'
+import moment from 'moment'
 import React, { useState } from 'react'
 import styles from './CustomAppDetails.module.css'
+
+const Metadata = ({ versions }) => {
+    const relativeTime = datetime => moment(datetime).fromNow()
+    versions = versions.sort((a, b) => a.created - b.created)
+    const latestVersion = versions[versions.length - 1]
+
+    return (
+        <ul className={styles.metadataList}>
+            <li className={styles.metadataItem}>
+                Version {latestVersion.version}
+            </li>
+            <li className={styles.metadataItem}>
+                Last updated {relativeTime(latestVersion.created)}
+            </li>
+            <li className={styles.metadataItem}>
+                First published {relativeTime(versions[0].created)}
+            </li>
+        </ul>
+    )
+}
+
+Metadata.propTypes = {
+    versions: PropTypes.array.isRequired,
+}
 
 const Screenshots = ({ screenshots }) => {
     const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0)
@@ -55,6 +80,7 @@ const Versions = ({ versions }) => {
     const [channelFilters, setChannelFilters] = useState(new Set(['Stable']))
     const hasChannel = channel => versions.some(v => v.channel == channel)
 
+    // eslint-disable-next-line react/prop-types
     const ChannelCheckbox = ({ name, label }) => {
         const handleChange = ({ checked }) => {
             const newState = new Set(channelFilters)
@@ -165,30 +191,38 @@ const CustomAppDetails = ({ match }) => {
                 </span>
             </header>
             <Divider />
-            <div className={styles.section}>
-                <h2 className={styles.sectionHeader}>
-                    {i18n.t('About this app')}
-                </h2>
-                <p>{app.description}</p>
-            </div>
+            <section className={[styles.section, styles.mainSection].join(' ')}>
+                <div>
+                    <h2 className={styles.sectionHeader}>
+                        {i18n.t('About this app')}
+                    </h2>
+                    <p>{app.description}</p>
+                </div>
+                <div>
+                    <h2 className={styles.sectionHeader}>
+                        {i18n.t('Additional information')}
+                    </h2>
+                    <Metadata versions={app.versions} />
+                </div>
+            </section>
             {screenshots.length > 0 ? (
                 <>
                     <Divider />
-                    <div className={styles.section}>
+                    <section className={styles.section}>
                         <h2 className={styles.sectionHeader}>
                             {i18n.t('Screenshots')}
                         </h2>
                         <Screenshots screenshots={screenshots} />
-                    </div>
+                    </section>
                 </>
             ) : null}
             <Divider />
-            <div className={styles.section}>
+            <section className={styles.section}>
                 <h2 className={styles.sectionHeader}>
                     {i18n.t('All versions of this application')}
                 </h2>
                 <Versions versions={app.versions} />
-            </div>
+            </section>
         </Card>
     )
 }

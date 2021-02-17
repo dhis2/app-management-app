@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-16T16:35:31.694Z\n"
-"PO-Revision-Date: 2021-02-16T16:35:31.694Z\n"
+"POT-Creation-Date: 2021-02-17T11:19:59.917Z\n"
+"PO-Revision-Date: 2021-02-17T11:19:59.917Z\n"
 
 msgid "App installed successfully"
 msgstr ""
@@ -26,19 +26,37 @@ msgstr ""
 msgid "No apps found"
 msgstr ""
 
+msgid "Channel"
+msgstr ""
+
+msgid "Stable"
+msgstr ""
+
+msgid "Development"
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "Select a version"
+msgstr ""
+
+msgid "Compatible with DHIS2 version"
+msgstr ""
+
 msgid "by {{developer}}"
 msgstr ""
 
 msgid "About this app"
 msgstr ""
 
+msgid "Additional information"
+msgstr ""
+
 msgid "Screenshots"
 msgstr ""
 
 msgid "All versions of this application"
-msgstr ""
-
-msgid "Channel"
 msgstr ""
 
 msgid "Something went wrong whilst loading your custom apps"
@@ -65,10 +83,22 @@ msgstr ""
 msgid "Manual install"
 msgstr ""
 
-msgctxt "creator of AppHub application"
-msgid "by {{developer}}"
+msgctxt "AppHub release channel"
+msgid "Channel"
 msgstr ""
 
 msgctxt "AppHub release channel"
-msgid "Channel"
+msgid "Stable"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Development"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Canary"
+msgstr ""
+
+msgctxt "creator of AppHub application"
+msgid "by {{developer}}"
 msgstr ""

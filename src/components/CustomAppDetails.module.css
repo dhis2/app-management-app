@@ -36,6 +36,25 @@
     margin-bottom: var(--spacers-dp8);
 }
 
+.mainSection {
+    display: grid;
+    grid-gap: var(--spacers-dp24);
+    grid-template-columns: 60% auto;
+}
+
+.metadataList {
+    font-size: 13px;
+    color: var(--colors-grey800);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    line-height: 16px;
+}
+
+.metadataItem {
+    margin-bottom: var(--spacers-dp12);
+}
+
 .screenshots {
     display: grid;
     grid-gap: var(--spacers-dp8);
