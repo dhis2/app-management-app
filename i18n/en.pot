@@ -5,23 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-17T11:58:52.975Z\n"
-"PO-Revision-Date: 2021-02-17T11:58:52.975Z\n"
-
-msgid "App installed successfully"
-msgstr ""
-
-msgid "Failed to install app"
-msgstr ""
-
-msgid "App removed successfully"
-msgstr ""
-
-msgid "Installing app from the app hub..."
-msgstr ""
-
-msgid "Failed to install an app from the app hub"
-msgstr ""
+"POT-Creation-Date: 2021-02-17T13:54:07.268Z\n"
+"PO-Revision-Date: 2021-02-17T13:54:07.268Z\n"
 
 msgid "No apps found"
 msgstr ""
@@ -69,6 +54,26 @@ msgid "All installed custom apps"
 msgstr ""
 
 msgid "Search installed custom apps"
+msgstr ""
+
+msgid "App installed successfully"
+msgstr ""
+
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Upload an app to install"
+msgstr ""
+
+msgid "Manually install an app"
+msgstr ""
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
 msgstr ""
 
 msgid "Preinstalled core apps"

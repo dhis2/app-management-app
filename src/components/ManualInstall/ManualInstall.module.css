@@ -1,0 +1,19 @@
+.header {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: var(--spacers-dp16);
+}
+
+.warning {
+    font-size: 16px;
+    color: var(--colors-grey700);
+}
+
+.uploadBtn {
+    margin-top: var(--spacers-dp16);
+}
+
+.hiddenForm {
+    display: none;
+}

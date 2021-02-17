@@ -9,7 +9,6 @@ import {
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
-import commonStyles from '../common.module.css'
 import AppIcon from './AppIcon'
 import styles from './AppList.module.css'
 
@@ -56,7 +55,7 @@ const AppsWithUpdates = ({ label, apps }) => {
     }
     return (
         <div className={styles.appsWithUpdates}>
-            <h1 className={commonStyles.h1}>{label}</h1>
+            <h1 className={styles.header}>{label}</h1>
             <AppCards apps={apps} />
         </div>
     )
@@ -71,14 +70,14 @@ const AllApps = ({ label, apps }) => {
     if (apps.length === 0) {
         return (
             <>
-                <h1 className={commonStyles.h1}>{i18n.t('No apps found')}</h1>
+                <h1 className={styles.header}>{i18n.t('No apps found')}</h1>
                 <p>No apps match your criteria</p>
             </>
         )
     }
     return (
         <>
-            <h1 className={commonStyles.h1}>{label}</h1>
+            <h1 className={styles.header}>{label}</h1>
             <AppCards apps={apps} />
         </>
     )
