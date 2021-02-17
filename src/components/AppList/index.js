@@ -9,9 +9,9 @@ import {
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
+import commonStyles from '../common.module.css'
 import AppIcon from './AppIcon'
 import styles from './AppList.module.css'
-import commonStyles from './common.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
