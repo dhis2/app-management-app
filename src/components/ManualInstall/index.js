@@ -28,7 +28,7 @@ const UploadButton = () => {
         ({ error }) =>
             i18n.t('Failed to install app: {{errorMessage}}', {
                 errorMessage: error.message,
-                nsSeparator: '|',
+                nsSeparator: null,
             }),
         { critical: true }
     )
