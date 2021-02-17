@@ -6,12 +6,12 @@ import styles from './App.module.css'
 import CoreApps from './components/CoreApps'
 import CustomAppDetails from './components/CustomAppDetails'
 import CustomApps from './components/CustomApps'
+import ManualInstall from './components/ManualInstall'
 import Sidebar from './components/Sidebar'
 import './locales'
 
 // TODO
 const AppHub = () => null
-const ManualInstall = () => null
 const AvailableUpdates = () => null
 
 const App = () => (

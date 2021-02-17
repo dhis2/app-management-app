@@ -2,13 +2,6 @@
     max-width: 420px;
 }
 
-.header {
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: var(--spacers-dp24);
-    margin-bottom: var(--spacers-dp16);
-}
-
 .appsWithUpdates {
     margin-bottom: var(--spacers-dp64);
 }
