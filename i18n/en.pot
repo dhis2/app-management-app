@@ -5,10 +5,28 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-17T15:30:32.550Z\n"
-"PO-Revision-Date: 2021-02-17T15:30:32.550Z\n"
+"POT-Creation-Date: 2021-02-17T19:06:56.634Z\n"
+"PO-Revision-Date: 2021-02-17T19:06:56.634Z\n"
 
 msgid "No apps found"
+msgstr ""
+
+msgid "Version {{version}}"
+msgstr ""
+
+msgid "Last updated {{relativeTime}}"
+msgstr ""
+
+msgid "First published {{relativeTime}}"
+msgstr ""
+
+msgid "{{minDhisVersion}} and above"
+msgstr ""
+
+msgid "{{maxDhisVersion}} and below"
+msgstr ""
+
+msgid "All versions"
 msgstr ""
 
 msgid "Channel"
@@ -27,6 +45,15 @@ msgid "Select a version"
 msgstr ""
 
 msgid "Compatible with DHIS2 version"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "DHIS2 version compatibility"
+msgstr ""
+
+msgid "Upload date"
 msgstr ""
 
 msgid "by {{developer}}"

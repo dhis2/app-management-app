@@ -24,11 +24,11 @@ const CustomApps = () => {
             ...app,
             appHubId: data.appHub.find(
                 ({ name, developer }) =>
-                    name == app.name &&
+                    name === app.name &&
                     app.developer &&
-                    (developer.organisation ==
+                    (developer.organisation ===
                         (app.developer.company || app.developer.name) ||
-                        developer.name == app.developer.name)
+                        developer.name === app.developer.name)
             )?.id,
         }))
 
