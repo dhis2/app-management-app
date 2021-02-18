@@ -1,25 +1,12 @@
-import { useAlert, useConfig } from '@dhis2/app-runtime'
+import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button } from '@dhis2/ui'
 import React, { useState, useRef } from 'react'
+import { useApi } from '../../api'
 import styles from './ManualInstall.module.css'
 
-const uploadApp = (baseUrl, file) => {
-    const data = new FormData()
-    data.append('file', file)
-    return fetch(`${baseUrl}/api/apps`, {
-        method: 'post',
-        body: data,
-        credentials: 'include',
-    }).then(res => {
-        if (status >= 300) {
-            throw new Error(res.statusText)
-        }
-    })
-}
-
 const UploadButton = () => {
-    const { baseUrl } = useConfig()
+    const { uploadApp } = useApi()
     const [isUploading, setIsUploading] = useState(false)
     const successAlert = useAlert(i18n.t('App installed successfully'), {
         success: true,
@@ -40,7 +27,7 @@ const UploadButton = () => {
     const handleUpload = async event => {
         setIsUploading(true)
         try {
-            await uploadApp(baseUrl, event.target.files[0])
+            await uploadApp(event.target.files[0])
             formEl.current.reset()
             successAlert.show()
         } catch (error) {

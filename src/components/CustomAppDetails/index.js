@@ -1,7 +1,8 @@
-import { useDataQuery } from '@dhis2/app-runtime'
+import { useAlert, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import {
+    Button,
     Card,
     Divider,
     NoticeBox,
@@ -11,19 +12,84 @@ import {
 import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
+import { useApi } from '../../api'
 import styles from './CustomAppDetails.module.css'
 import Versions from './Versions'
 
-const Metadata = ({ installedVersion, versions }) => {
-    const relativeTime = datetime => moment(datetime).fromNow()
-    versions = versions.sort((a, b) => a.created - b.created)
-    const latestVersion = versions.reduce((acc, { version }) => {
+const getLatestVersion = versions =>
+    versions.reduce((acc, { version }) => {
         if (semver.gt(semver.coerce(version), acc)) {
             return version
         } else {
             return acc
         }
     }, semver.coerce(versions[0].version))
+
+const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
+    const { installVersion, uninstallApp } = useApi()
+    const successAlert = useAlert(({ message }) => message, { success: true })
+    const errorAlert = useAlert(({ message }) => message, { critical: true })
+    const latestVersion = getLatestVersion(versions)
+    const handleUpdate = async () => {
+        try {
+            await installVersion(latestVersion.id)
+            successAlert.show({
+                message: i18n.t('App uninstalled successfully'),
+            })
+            reloadPage()
+        } catch (error) {
+            errorAlert.show({
+                message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
+                    errorMessage: error.message,
+                    nsSeparator: null,
+                }),
+            })
+        }
+    }
+    const handleUninstall = async () => {
+        try {
+            await uninstallApp(installedApp.key)
+            successAlert.show({
+                message: i18n.t('App uninstalled successfully'),
+            })
+            reloadPage()
+        } catch (error) {
+            errorAlert.show({
+                message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
+                    errorMessage: error.message,
+                    nsSeparator: null,
+                }),
+            })
+        }
+    }
+
+    if (!installedApp) {
+        return null
+    }
+    return (
+        <>
+            {installedApp.version !== latestVersion && (
+                <Button primary onClick={handleUpdate}>
+                    {i18n.t('Update to latest version')}
+                </Button>
+            )}
+            <Button secondary onClick={handleUninstall}>
+                {i18n.t('Uninstall')}
+            </Button>
+        </>
+    )
+}
+
+ManageInstalledVersion.propTypes = {
+    reloadPage: PropTypes.func.isRequired,
+    versions: PropTypes.array.isRequired,
+    installedApp: PropTypes.object,
+}
+
+const Metadata = ({ installedVersion, versions }) => {
+    const relativeTime = datetime => moment(datetime).fromNow()
+    versions = versions.sort((a, b) => a.created - b.created)
+    const latestVersion = getLatestVersion(versions)
 
     return (
         <ul className={styles.metadataList}>
@@ -119,14 +185,14 @@ const CustomAppDetails = ({ match }) => {
 
     const { app, installedApps } = data
     const screenshots = app.images.filter(i => !i.logo).map(i => i.imageUrl)
-    const installedVersion = installedApps.find(
+    const installedApp = installedApps.find(
         a =>
             a.name === app.name &&
             a.developer &&
             (app.developer.organisation ===
                 (a.developer.company || a.developer.name) ||
                 app.developer.name === a.developer.name)
-    )?.version
+    )
 
     return (
         <Card className={styles.appCard}>
@@ -149,11 +215,16 @@ const CustomAppDetails = ({ match }) => {
                     <p>{app.description}</p>
                 </div>
                 <div>
+                    <ManageInstalledVersion
+                        installedApp={installedApp}
+                        versions={app.versions}
+                        reloadPage={refetch}
+                    />
                     <h2 className={styles.sectionHeader}>
                         {i18n.t('Additional information')}
                     </h2>
                     <Metadata
-                        installedVersion={installedVersion}
+                        installedVersion={installedApp?.version}
                         versions={app.versions}
                     />
                 </div>
@@ -175,7 +246,7 @@ const CustomAppDetails = ({ match }) => {
                     {i18n.t('All versions of this application')}
                 </h2>
                 <Versions
-                    installedVersion={installedVersion}
+                    installedVersion={installedApp?.version}
                     versions={app.versions}
                     reloadPage={refetch}
                 />

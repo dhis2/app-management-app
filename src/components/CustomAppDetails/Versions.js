@@ -17,6 +17,7 @@ import {
 import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
+import { useApi } from '../../api'
 import styles from './CustomAppDetails.module.css'
 
 const channelToDisplayName = {
@@ -30,16 +31,6 @@ const channelToDisplayName = {
         context: 'Name of AppHub release channel',
     }),
 }
-
-const installVersion = (baseUrl, versionId) =>
-    fetch(`${baseUrl}/api/appHub/${versionId}`, {
-        method: 'post',
-        credentials: 'include',
-    }).then(res => {
-        if (status >= 300) {
-            throw new Error(res.statusText)
-        }
-    })
 
 const ChannelCheckbox = ({
     name,
@@ -226,7 +217,8 @@ const Versions = ({ installedVersion, versions, reloadPage }) => {
             }),
         { critical: true }
     )
-    const { baseUrl, apiVersion } = useConfig()
+    const { apiVersion } = useConfig()
+    const { installVersion } = useApi()
     const latestDhisVersion = `2.${apiVersion}`
     const dhisVersions = [
         latestDhisVersion,
@@ -254,7 +246,7 @@ const Versions = ({ installedVersion, versions, reloadPage }) => {
         .filter(satisfiesDhisVersion)
     const handleVersionInstall = async version => {
         try {
-            await installVersion(baseUrl, version.id)
+            await installVersion(version.id)
             installSuccessAlert.show()
             reloadPage()
         } catch (error) {
