@@ -60,6 +60,7 @@ const UploadButton = () => {
                 />
             </form>
             <Button
+                primary
                 className={styles.uploadBtn}
                 onClick={handleClick}
                 disabled={isUploading}
