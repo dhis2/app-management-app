@@ -13,17 +13,25 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api'
+import { channelToDisplayName } from './channel-to-display-name'
 import styles from './CustomAppDetails.module.css'
 import Versions from './Versions'
 
 const getLatestVersion = versions =>
-    versions.reduce((acc, { version }) => {
-        if (semver.gt(semver.coerce(version), acc)) {
-            return version
+    versions.reduce((latestVersion, version) => {
+        const parsedLatestVersion = semver.coerce(latestVersion.version)
+        const parsedVersion = semver.coerce(version.version)
+        if (parsedVersion) {
+            if (!parsedLatestVersion) {
+                return version
+            }
+            return semver.gt(parsedVersion, parsedLatestVersion)
+                ? version
+                : latestVersion
         } else {
-            return acc
+            return latestVersion
         }
-    }, semver.coerce(versions[0].version))
+    }, versions[0])
 
 const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
     const { installVersion, uninstallApp } = useApi()
@@ -62,21 +70,52 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
             })
         }
     }
+    const renderVersionRange = ({
+        minDhisVersion: min,
+        maxDhisVersion: max,
+    }) => {
+        if (min && max) {
+            return `${min}–${max}`
+        } else if (min && !max) {
+            return i18n.t('{{minDhisVersion}} and above', {
+                minDhisVersion: min,
+            })
+        } else if (!min && max) {
+            return i18n.t('{{maxDhisVersion}} and below', {
+                maxDhisVersion: max,
+            })
+        } else {
+            return i18n.t('all versions')
+        }
+    }
 
     if (!installedApp) {
         return null
     }
     return (
-        <>
+        <div className={styles.manageInstalledVersion}>
             {installedApp.version !== latestVersion && (
-                <Button primary onClick={handleUpdate}>
-                    {i18n.t('Update to latest version')}
-                </Button>
+                <>
+                    <Button primary onClick={handleUpdate}>
+                        {i18n.t('Update to latest version')}
+                    </Button>
+                    <span className={styles.manageInstalledVersionDescription}>
+                        {i18n.t(
+                            '{{channel}} release {{version}}. Compatible with DHIS2 {{versionRange}}',
+                            {
+                                channel:
+                                    channelToDisplayName[latestVersion.channel],
+                                version: latestVersion.version,
+                                versionRange: renderVersionRange(latestVersion),
+                            }
+                        )}
+                    </span>
+                </>
             )}
             <Button secondary onClick={handleUninstall}>
                 {i18n.t('Uninstall')}
             </Button>
-        </>
+        </div>
     )
 }
 
@@ -95,7 +134,7 @@ const Metadata = ({ installedVersion, versions }) => {
         <ul className={styles.metadataList}>
             <li className={styles.metadataItem}>
                 {i18n.t('Version {{version}}', {
-                    version: installedVersion || latestVersion,
+                    version: installedVersion || latestVersion.version,
                 })}
             </li>
             <li className={styles.metadataItem}>

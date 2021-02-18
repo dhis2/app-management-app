@@ -18,19 +18,8 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api'
+import { channelToDisplayName } from './channel-to-display-name'
 import styles from './CustomAppDetails.module.css'
-
-const channelToDisplayName = {
-    Stable: i18n.t('Stable', {
-        context: 'Name of AppHub release channel',
-    }),
-    Development: i18n.t('Development', {
-        context: 'Name of AppHub release channel',
-    }),
-    Canary: i18n.t('Canary', {
-        context: 'Name of AppHub release channel',
-    }),
-}
 
 const ChannelCheckbox = ({
     name,
