@@ -102,3 +102,7 @@
     max-width: 200px;
     margin-top: var(--spacers-dp16);
 }
+
+.installBtn {
+    margin-right: var(--spacers-dp8);
+}
