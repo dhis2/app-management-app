@@ -1,5 +1,7 @@
 .appIcon {
     display: flex;
+    height: 72px;
+    width: 72px;
 }
 
 .appIconFallback {

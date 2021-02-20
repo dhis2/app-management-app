@@ -92,6 +92,7 @@ const AppList = ({
     error,
     loading,
     apps,
+    appsWithUpdates,
     errorLabel,
     updatesAvailableLabel,
     allAppsLabel,
@@ -121,15 +122,11 @@ const AppList = ({
         )
     }
 
-    const filteredApps = apps.filter(
-        app =>
-            !query ||
-            app.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-    )
-    // XXX
-    const filteredAppsWithUpdates = filteredApps.filter(
-        app => app.name.length % 2 == 0
-    )
+    const searchFilter = app =>
+        !query ||
+        app.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+    const filteredApps = apps.filter(searchFilter)
+    const filteredAppsWithUpdates = (appsWithUpdates || []).filter(searchFilter)
 
     return (
         <>
@@ -154,6 +151,7 @@ AppList.propTypes = {
     searchLabel: PropTypes.string.isRequired,
     updatesAvailableLabel: PropTypes.string.isRequired,
     apps: PropTypes.array,
+    appsWithUpdates: PropTypes.array,
     error: PropTypes.object,
     loading: PropTypes.bool,
 }

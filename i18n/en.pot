@@ -5,10 +5,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-18T17:30:03.432Z\n"
-"PO-Revision-Date: 2021-02-18T17:30:03.432Z\n"
+"POT-Creation-Date: 2021-02-22T14:32:42.096Z\n"
+"PO-Revision-Date: 2021-02-22T14:32:42.096Z\n"
 
 msgid "No apps found"
+msgstr ""
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
 msgstr ""
 
 msgid "Channel"
