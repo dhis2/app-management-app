@@ -10,10 +10,6 @@ import ManualInstall from './components/ManualInstall'
 import Sidebar from './components/Sidebar'
 import './locales'
 
-// TODO
-const AppHub = () => null
-const AvailableUpdates = () => null
-
 const App = () => (
     <HashRouter>
         <QueryParamProvider
@@ -38,14 +34,9 @@ const App = () => (
                             path="/custom-apps/:appHubId"
                             component={CustomAppDetails}
                         />
-                        <Route path="/discover" component={AppHub} />
                         <Route
                             path="/manual-install"
                             component={ManualInstall}
-                        />
-                        <Route
-                            path="/available-updates"
-                            component={AvailableUpdates}
                         />
                         <Redirect from="*" to="/" />
                     </Switch>

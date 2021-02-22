@@ -42,7 +42,6 @@ const Sidebar = () => (
             exactMatch={true}
         />
         <SidebarItem label={i18n.t('Custom apps')} path="/custom-apps" />
-        <SidebarItem label={i18n.t('Discover more apps')} path="/discover" />
         <SidebarItem label={i18n.t('Manual install')} path="/manual-install" />
     </Menu>
 )
