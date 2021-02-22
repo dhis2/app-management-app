@@ -1,6 +1,7 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
+import getLatestVersion from '../../get-latest-version'
 import AppList from '../AppList'
 
 const query = {
@@ -22,21 +23,26 @@ const CustomApps = () => {
         .filter(app => !app.bundled)
         .map(app => ({
             ...app,
-            appHubId: data.appHub.find(
+            appHub: data.appHub.find(
                 ({ name, developer }) =>
                     name === app.name &&
                     app.developer &&
                     (developer.organisation ===
                         (app.developer.company || app.developer.name) ||
                         developer.name === app.developer.name)
-            )?.id,
+            ),
         }))
+    const appsWithUpdates = apps?.filter(
+        app =>
+            app.appHub && getLatestVersion(app.appHub.versions) !== app.version
+    )
 
     return (
         <AppList
             error={error}
             loading={loading}
             apps={apps}
+            appsWithUpdates={appsWithUpdates}
             errorLabel={i18n.t(
                 'Something went wrong whilst loading your custom apps'
             )}

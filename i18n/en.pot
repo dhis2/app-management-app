@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-02-22T14:32:42.096Z\n"
-"PO-Revision-Date: 2021-02-22T14:32:42.096Z\n"
+"POT-Creation-Date: 2021-02-22T16:33:52.400Z\n"
+"PO-Revision-Date: 2021-02-22T16:33:52.400Z\n"
 
 msgid "No apps found"
 msgstr ""
@@ -149,9 +149,6 @@ msgid "Preinstalled core apps"
 msgstr ""
 
 msgid "Custom apps"
-msgstr ""
-
-msgid "Discover more apps"
 msgstr ""
 
 msgid "Manual install"

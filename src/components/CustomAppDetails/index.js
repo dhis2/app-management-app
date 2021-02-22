@@ -11,27 +11,11 @@ import {
 } from '@dhis2/ui'
 import moment from 'moment'
 import React, { useState } from 'react'
-import semver from 'semver'
 import { useApi } from '../../api'
+import getLatestVersion from '../../get-latest-version'
 import { channelToDisplayName } from './channel-to-display-name'
 import styles from './CustomAppDetails.module.css'
 import Versions from './Versions'
-
-const getLatestVersion = versions =>
-    versions.reduce((latestVersion, version) => {
-        const parsedLatestVersion = semver.coerce(latestVersion.version)
-        const parsedVersion = semver.coerce(version.version)
-        if (parsedVersion) {
-            if (!parsedLatestVersion) {
-                return version
-            }
-            return semver.gt(parsedVersion, parsedLatestVersion)
-                ? version
-                : latestVersion
-        } else {
-            return latestVersion
-        }
-    }, versions[0])
 
 const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
     const { installVersion, uninstallApp } = useApi()

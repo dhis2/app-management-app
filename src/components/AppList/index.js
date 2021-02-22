@@ -26,8 +26,8 @@ const AppCards = ({ apps }) => {
                 <button
                     key={app.short_name}
                     className={styles.appCard}
-                    disabled={!app.appHubId}
-                    onClick={createClickHandler(app.appHubId)}
+                    disabled={!app.appHub?.id}
+                    onClick={createClickHandler(app.appHub?.id)}
                 >
                     <AppIcon app={app} />
                     <div>

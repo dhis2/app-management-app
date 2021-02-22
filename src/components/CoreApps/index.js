@@ -1,6 +1,7 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
+import getLatestVersion from '../../get-latest-version'
 import AppList from '../AppList'
 
 const coreAppNames = [
@@ -56,18 +57,19 @@ const CoreApps = () => {
                 icons: {},
             }
         })
-        .map(app => {
-            const appHubId = data?.appHub.find(
+        .map(app => ({
+            ...app,
+            appHub: data?.appHub.find(
                 ({ name, developer }) =>
                     name === app.name && developer.organisation === 'DHIS2'
-            )?.id
-            return {
-                ...app,
-                appHubId,
-            }
-        })
-    // TODO: Also compare app.version to latest AppHub version
-    const appsWithUpdates = apps.filter(app => !app.version && app.appHubId)
+            ),
+        }))
+    const appsWithUpdates = apps.filter(
+        app =>
+            (!app.version && app.appHub?.id) ||
+            (app.appHub &&
+                app.version !== getLatestVersion(app.appHub.versions))
+    )
 
     return (
         <AppList
