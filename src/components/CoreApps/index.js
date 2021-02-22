@@ -66,6 +66,7 @@ const CoreApps = () => {
                 appHubId,
             }
         })
+    // TODO: Also compare app.version to latest AppHub version
     const appsWithUpdates = apps.filter(app => !app.version && app.appHubId)
 
     return (

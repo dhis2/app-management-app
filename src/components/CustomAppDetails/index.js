@@ -75,6 +75,9 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
         maxDhisVersion: max,
     }) => {
         if (min && max) {
+            if (min === max) {
+                return `${min}`
+            }
             return `${min}–${max}`
         } else if (min && !max) {
             return i18n.t('{{minDhisVersion}} and above', {
@@ -224,7 +227,7 @@ const CustomAppDetails = ({ match }) => {
 
     const { app, installedApps } = data
     const screenshots = app.images.filter(i => !i.logo).map(i => i.imageUrl)
-    const installedApp = installedApps.find(
+    let installedApp = installedApps.find(
         a =>
             a.name === app.name &&
             a.developer &&
@@ -232,6 +235,9 @@ const CustomAppDetails = ({ match }) => {
                 (a.developer.company || a.developer.name) ||
                 app.developer.name === a.developer.name)
     )
+    if (!installedApp && app.developer.organisation === 'DHIS2') {
+        installedApp = { version: null }
+    }
 
     return (
         <Card className={styles.appCard}>
