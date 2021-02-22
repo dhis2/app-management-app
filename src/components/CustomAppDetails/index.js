@@ -182,16 +182,22 @@ Screenshots.propTypes = {
     screenshots: PropTypes.array.isRequired,
 }
 
+const query = {
+    app: {
+        resource: `appHub/v1/apps`,
+        id: ({ appHubId }) => appHubId,
+    },
+    installedApps: {
+        resource: 'apps',
+    },
+}
+
 const CustomAppDetails = ({ match }) => {
-    const query = {
-        app: {
-            resource: `appHub/v1/apps/${match.params.appHubId}`,
+    const { loading, error, data, refetch } = useDataQuery(query, {
+        variables: {
+            appHubId: match.params.appHubId,
         },
-        installedApps: {
-            resource: 'apps',
-        },
-    }
-    const { loading, error, data, refetch } = useDataQuery(query)
+    })
 
     if (error) {
         return (
