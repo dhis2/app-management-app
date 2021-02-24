@@ -4,13 +4,6 @@
     width: 72px;
 }
 
-.appIconFallback {
-    height: 100%;
-    width: 100%;
-    background: #e6e9ec;
-    border-radius: 5px;
-}
-
 .appIcon img {
     max-width: 100%;
     max-height: 100%;
