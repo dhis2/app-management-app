@@ -31,7 +31,7 @@ const App = () => (
                             component={CustomApps}
                         />
                         <Route
-                            path="/custom-apps/:appHubId"
+                            path="/app/:appHubId"
                             component={CustomAppDetails}
                         />
                         <Route

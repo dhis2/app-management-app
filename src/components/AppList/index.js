@@ -16,7 +16,7 @@ const AppCards = ({ apps }) => {
     const history = useHistory()
     const createClickHandler = appHubId => () => {
         if (appHubId) {
-            history.push(`/custom-apps/${appHubId}`)
+            history.push(`/app/${appHubId}`)
         }
     }
 
