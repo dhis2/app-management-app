@@ -1,3 +1,4 @@
+import { useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { Menu, MenuItem } from '@dhis2/ui'
@@ -34,13 +35,18 @@ SidebarItem.propTypes = {
     exactMatch: PropTypes.bool,
 }
 
+const showCoreApps = ({ minor, patch }) =>
+    minor > 35 || (minor == 35 && patch >= 2)
+
 const Sidebar = () => (
     <Menu>
-        <SidebarItem
-            label={i18n.t('Preinstalled core apps')}
-            path="/"
-            exactMatch={true}
-        />
+        {showCoreApps(useConfig().serverVersion) ? (
+            <SidebarItem
+                label={i18n.t('Preinstalled core apps')}
+                path="/"
+                exactMatch={true}
+            />
+        ) : null}
         <SidebarItem label={i18n.t('Custom apps')} path="/custom-apps" />
         <SidebarItem label={i18n.t('Manual install')} path="/manual-install" />
     </Menu>
