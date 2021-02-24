@@ -23,14 +23,18 @@ const CustomApps = () => {
         .filter(app => !app.bundled)
         .map(app => ({
             ...app,
-            appHub: data.appHub.find(
-                ({ name, developer }) =>
+            appHub: data.appHub.find(({ id, name, developer }) => {
+                if (app.app_hub_id) {
+                    return id === app.app_hub_id
+                }
+                return (
                     name === app.name &&
                     app.developer &&
                     (developer.organisation ===
                         (app.developer.company || app.developer.name) ||
                         developer.name === app.developer.name)
-            ),
+                )
+            }),
         }))
     const appsWithUpdates = apps?.filter(
         app =>

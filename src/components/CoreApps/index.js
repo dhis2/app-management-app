@@ -60,16 +60,16 @@ const CoreApps = () => {
         })
         .map(app => ({
             ...app,
-            appHub: data?.appHub.find(
-                ({ name, developer }) =>
-                    name === app.name && developer.organisation === 'DHIS2'
-            ),
+            appHub: data?.appHub.find(({ id, name, developer }) => {
+                if (app.app_hub_id) {
+                    return id === app.app_hub_id
+                }
+                return name === app.name && developer.organisation === 'DHIS2'
+            }),
         }))
     const appsWithUpdates = apps.filter(
         app =>
-            (!app.version && app.appHub?.id) ||
-            (app.appHub &&
-                app.version !== getLatestVersion(app.appHub.versions))
+            app.appHub && app.version !== getLatestVersion(app.appHub.versions)
     )
 
     return (
