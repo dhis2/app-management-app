@@ -50,6 +50,7 @@ const CoreApps = () => {
             }
             return {
                 name: coreAppName,
+                bundled: true,
                 short_name: coreAppName,
                 developer: {
                     company: 'DHIS2',

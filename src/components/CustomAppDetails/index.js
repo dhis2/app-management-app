@@ -99,9 +99,11 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
                     </span>
                 </>
             )}
-            <Button secondary onClick={handleUninstall}>
-                {i18n.t('Uninstall')}
-            </Button>
+            {installedApp.version && (
+                <Button secondary onClick={handleUninstall}>
+                    {i18n.t('Uninstall')}
+                </Button>
+            )}
         </div>
     )
 }
