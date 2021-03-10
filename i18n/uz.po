@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
-"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"PO-Revision-Date: 2019-09-01 18:30+0000\n"
 "Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
 "Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
 "MIME-Version: 1.0\n"
@@ -25,10 +25,10 @@ msgid "App removed successfully"
 msgstr "Илова муваффақиятли ўчириб ташланди"
 
 msgid "Installing app from the app hub..."
-msgstr "Илова илова марказидан (hub...) дан ўрнатилмоқда"
+msgstr ""
 
 msgid "Failed to install an app from the app hub"
-msgstr "Иловани илова марказидан (hub) дан ўрнатиш амалга ошмади"
+msgstr ""
 
 msgid "Uploading..."
 msgstr "Юкланмоқда..."
@@ -55,19 +55,19 @@ msgid "Resource Apps"
 msgstr "Иловалар захираси"
 
 msgid "App Hub"
-msgstr "Илова маркази (hub)"
+msgstr ""
 
 msgid "By"
-msgstr "Томонидан"
+msgstr "Дан"
 
 msgid "Install"
 msgstr "Ўрнатиш"
 
 msgid "CORE APP"
-msgstr "CORE APP"
+msgstr ""
 
 msgid "A new version of App Management is available on the App Hub"
-msgstr "Илова маркази (hub)да Илова Бошқаруви янги варианти мавжуд"
+msgstr ""
 
 msgid "Update and reload app"
-msgstr "Иловани янгилаш ва қайта юклаш"
+msgstr ""
