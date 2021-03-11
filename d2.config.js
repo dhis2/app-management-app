@@ -1,11 +1,11 @@
 const config = {
     type: 'app',
-    name: 'app-management',
+    name: 'dhis-web-app-management',
     title: 'App Management',
     coreApp: true,
 
     entryPoints: {
-        app: './src/AppWrapper',
+        app: './src/AppWrapper.js',
     },
 }
 
