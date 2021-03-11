@@ -1,26 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
 import { DataQuery } from '@dhis2/app-runtime'
+import i18n from '@dhis2/d2-i18n'
 import Sidebar from 'd2-ui/lib/sidebar/Sidebar.component'
-
-import CircularProgress from 'material-ui/CircularProgress'
-import LinearProgress from 'material-ui/LinearProgress'
-
 import { Card, CardText } from 'material-ui/Card'
-import Snackbar from 'material-ui/Snackbar'
+import CircularProgress from 'material-ui/CircularProgress'
 import FontIcon from 'material-ui/FontIcon'
-
-import AppList from './AppList.component'
-import AppHub from './AppHub.component'
-import SelfUpdateNoticeBox from './SelfUpdateNoticeBox.component'
-import AppTheme from '../theme'
-
+import LinearProgress from 'material-ui/LinearProgress'
+import Snackbar from 'material-ui/Snackbar'
+import PropTypes from 'prop-types'
+import React from 'react'
 import actions, { wrapData as wrapActionData } from '../actions'
 import appHubStore from '../stores/appHub.store'
 import installedAppHub from '../stores/installedApp.store'
-
-import i18n from '@dhis2/d2-i18n'
+import AppTheme from '../theme'
+import AppHub from './AppHub.component'
+import AppList from './AppList.component'
+import { SelfUpdateNoticeBox } from './SelfUpdateNoticeBox.component'
 
 const styles = {
     header: {

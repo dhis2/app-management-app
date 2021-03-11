@@ -1,10 +1,9 @@
 /* global __VERSION__ */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { NoticeBox, Button } from '@dhis2/ui'
 import i18n from '@dhis2/d2-i18n'
-
+import { NoticeBox, Button } from '@dhis2/ui'
+import PropTypes from 'prop-types'
+import React from 'react'
 import actions from '../actions'
 import latestAppVersion from '../latest-app-version'
 
@@ -12,7 +11,7 @@ const currentVersion = __VERSION__
 const appManagementAppOrg = 'DHIS2'
 const appManagementAppName = 'App Management'
 
-const SelfUpdateNoticeBox = ({ appHub }) => {
+export const SelfUpdateNoticeBox = ({ appHub }) => {
     if (!appHub.apps) return null
 
     const appManagementApp = appHub.apps.find(
@@ -50,5 +49,3 @@ const SelfUpdateNoticeBox = ({ appHub }) => {
 SelfUpdateNoticeBox.propTypes = {
     appHub: PropTypes.object.isRequired,
 }
-
-export default SelfUpdateNoticeBox

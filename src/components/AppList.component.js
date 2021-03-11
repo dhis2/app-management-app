@@ -1,22 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import i18n from '@dhis2/d2-i18n'
+import { Chip } from '@dhis2/ui'
 import Avatar from 'material-ui/Avatar'
+import { Card, CardText } from 'material-ui/Card'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import FontIcon from 'material-ui/FontIcon'
 import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'
 import { List, ListItem } from 'material-ui/List'
 import MenuItem from 'material-ui/MenuItem'
-import { Card, CardText } from 'material-ui/Card'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import FontIcon from 'material-ui/FontIcon'
-
-import { Chip } from '@dhis2/ui'
-
-import AppTheme from '../theme'
+import PropTypes from 'prop-types'
+import React from 'react'
 import actions from '../actions'
 import latestAppVersion from '../latest-app-version'
-
-import i18n from '@dhis2/d2-i18n'
+import AppTheme from '../theme'
 
 const appTypeHeaders = {
     bundled_app: 'Installed Bundled Apps',
