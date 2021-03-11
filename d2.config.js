@@ -1,6 +1,6 @@
 const config = {
     type: 'app',
-    name: 'dhis-web-app-management',
+    name: 'app-management',
     title: 'App Management',
     coreApp: true,
 
