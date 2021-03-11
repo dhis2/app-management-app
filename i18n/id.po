@@ -1,13 +1,13 @@
 # 
 # Translators:
-# Carwoto Sa'an <carwoto@gmail.com>, 2020
+# Carwoto Sa'an <carwoto@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
 "PO-Revision-Date: 2019-09-01 18:30+0000\n"
-"Last-Translator: Carwoto Sa'an <carwoto@gmail.com>, 2020\n"
+"Last-Translator: Carwoto Sa'an <carwoto@gmail.com>, 2021\n"
 "Language-Team: Indonesian (https://www.transifex.com/hisp-uio/teams/100509/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +25,10 @@ msgid "App removed successfully"
 msgstr "App berhasil dibuang"
 
 msgid "Installing app from the app hub..."
-msgstr ""
+msgstr "Sedang memasang app dari app hub..."
 
 msgid "Failed to install an app from the app hub"
-msgstr ""
+msgstr "Gagal memasang app dari app hub"
 
 msgid "Uploading..."
 msgstr "Sedang mengunggah..."
@@ -55,7 +55,7 @@ msgid "Resource Apps"
 msgstr "Resource Apps"
 
 msgid "App Hub"
-msgstr ""
+msgstr "App Hub"
 
 msgid "By"
 msgstr "Oleh"
