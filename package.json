@@ -42,7 +42,7 @@
         "debug": "^4.1.1",
         "loglevel": "^1.4.1",
         "material-design-icons-iconfont": "^4.0.5",
-        "material-ui": "^0.19.2",
+        "material-ui": "^0.20.2",
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
