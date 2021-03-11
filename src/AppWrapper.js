@@ -1,10 +1,8 @@
-import React from 'react'
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { useD2 } from '@dhis2/app-runtime-adapter-d2'
-
-import installedAppHub from './stores/installedApp.store'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import React from 'react'
 import App from './components/App.component'
+import installedAppHub from './stores/installedApp.store'
 import theme from './theme'
 
 import './locales'
