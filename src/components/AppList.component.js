@@ -207,10 +207,6 @@ class AppList extends React.Component {
                 if (app.isBundledApp) {
                     return appHubApp.developer.organisation === 'DHIS2'
                 }
-                return (
-                    appHubApp.developer.name == app.developer?.name ||
-                    appHubApp.developer.organisation == app.developer?.name
-                )
             }
             return false
         })
