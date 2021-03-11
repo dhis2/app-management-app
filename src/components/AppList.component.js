@@ -1,21 +1,16 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import i18n from '@dhis2/d2-i18n'
 import Avatar from 'material-ui/Avatar'
+import { Card, CardText } from 'material-ui/Card'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import FontIcon from 'material-ui/FontIcon'
 import IconButton from 'material-ui/IconButton'
 import IconMenu from 'material-ui/IconMenu'
 import { List, ListItem } from 'material-ui/List'
 import MenuItem from 'material-ui/MenuItem'
-
-import { Card, CardText } from 'material-ui/Card'
-
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import FontIcon from 'material-ui/FontIcon'
-
-import AppTheme from '../theme'
+import PropTypes from 'prop-types'
+import React from 'react'
 import actions from '../actions'
-
-import i18n from '@dhis2/d2-i18n'
+import AppTheme from '../theme'
 
 // const appTypeLabels = {
 //     app: 'Standard Apps',
