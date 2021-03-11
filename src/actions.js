@@ -1,13 +1,10 @@
-import Debug from 'debug'
-
-import Action from 'd2-ui/lib/action/Action'
+import i18n from '@dhis2/d2-i18n'
 import { getInstance as getD2 } from 'd2'
+import Action from 'd2-ui/lib/action/Action'
+import Debug from 'debug'
 import log from 'loglevel'
-
 import appHubStore from './stores/appHub.store'
 import installedAppHub from './stores/installedApp.store'
-
-import i18n from '@dhis2/d2-i18n'
 
 const debug = Debug('app-management-app:frontend:client')
 

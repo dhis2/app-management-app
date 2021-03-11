@@ -1,10 +1,9 @@
 /* global __VERSION__ */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import { NoticeBox, Button } from '@dhis2/ui'
 import i18n from '@dhis2/d2-i18n'
-
+import { NoticeBox, Button } from '@dhis2/ui'
+import PropTypes from 'prop-types'
+import React from 'react'
 import actions from '../actions'
 
 const currentVersion = __VERSION__
