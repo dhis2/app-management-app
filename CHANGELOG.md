@@ -1,3 +1,24 @@
+## [28.2.5](https://github.com/dhis2/app-management-app/compare/v28.2.4...v28.2.5) (2021-03-11)
+
+
+### Bug Fixes
+
+* upgrade cli-app-scripts to enable modern headerbar and tree-shaking (DHIS2-9893) ([#192](https://github.com/dhis2/app-management-app/issues/192)) ([67bd72c](https://github.com/dhis2/app-management-app/commit/67bd72c075fad3ffd33bf7e712ed60686455cdc3))
+
+## [28.2.4](https://github.com/dhis2/app-management-app/compare/v28.2.3...v28.2.4) (2021-02-15)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([a061b61](https://github.com/dhis2/app-management-app/commit/a061b616ab83d6ff05051ecb3c6ee30fc24ab981))
+
+## [28.2.3](https://github.com/dhis2/app-management-app/compare/v28.2.2...v28.2.3) (2021-02-01)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([0525151](https://github.com/dhis2/app-management-app/commit/0525151eac637aab0df879c0889d551325ad3f86))
+
 ## [28.2.2](https://github.com/dhis2/app-management-app/compare/v28.2.1...v28.2.2) (2021-01-18)
 
 
