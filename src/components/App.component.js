@@ -45,7 +45,6 @@ const styles = {
         maxWidth: 734,
     },
     snackbar: {
-        // left: '2rem',
         right: 'initial',
     },
     menuLabel: {
@@ -55,8 +54,8 @@ const styles = {
     },
 }
 
-const bundledAppsQuery = {
-    bundledApps: {
+const modulesQuery = {
+    modules: {
         resource: 'action::menu/getModules',
     },
 }
@@ -346,24 +345,21 @@ class App extends React.Component {
                     open={!!this.state.snackbar}
                     style={styles.snackbar}
                 />
-                <DataQuery query={bundledAppsQuery}>
+                <DataQuery query={modulesQuery}>
                     {({ data }) => {
-                        const bundledApps = (data
-                            ? data.bundledApps.modules
-                            : []
-                        )
+                        const bundledApps = (data ? data.modules.modules : [])
                             .filter(
                                 app =>
                                     !this.state.installedApps.find(
                                         a =>
-                                            a.isBundledApp &&
-                                            a.short_name === app.name
+                                            a.bundled &&
+                                            a.short_name === app.short_name
                                     )
                             )
                             .map(app => ({
                                 ...app,
                                 name: app.displayName,
-                                isBundledApp: true,
+                                bundled: true,
                             }))
                         return (
                             <div className="content-area">

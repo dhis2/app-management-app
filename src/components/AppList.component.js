@@ -145,7 +145,7 @@ const AppItem = ({ app, appVersions }) => {
     )
     const secondaryText = (
         <div>
-            {app.isBundledApp && (
+            {app.bundled && (
                 <span style={styles.coreAppLabel}>{i18n.t('CORE APP')}</span>
             )}
             {app.version ? `v${app.version}` : null}
@@ -200,7 +200,7 @@ class AppList extends React.Component {
 
         const appHubData = this.props.appHub.apps.find(appHubApp => {
             if (appHubApp.name === app.name) {
-                if (app.isBundledApp) {
+                if (app.bundled) {
                     return appHubApp.developer.organisation === 'DHIS2'
                 }
             }
@@ -214,8 +214,7 @@ class AppList extends React.Component {
         const appList = this.props.installedApps.filter(
             app =>
                 !this.props.appTypeFilter ||
-                (this.props.appTypeFilter === 'BUNDLED_APP' &&
-                    app.isBundledApp) ||
+                (this.props.appTypeFilter === 'BUNDLED_APP' && app.bundled) ||
                 app.appType === this.props.appTypeFilter
         )
 
