@@ -1,11 +1,6 @@
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
-import {
-    NoticeBox,
-    CenteredContent,
-    CircularLoader,
-    InputField,
-} from '@dhis2/ui'
+import { InputField } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
@@ -89,11 +84,8 @@ AllApps.propTypes = {
 }
 
 const AppList = ({
-    error,
-    loading,
     apps,
     appsWithUpdates,
-    errorLabel,
     updatesAvailableLabel,
     allAppsLabel,
     searchLabel,
@@ -104,22 +96,6 @@ const AppList = ({
     )
     const handleQueryChange = ({ value }) => {
         setQuery(value, 'replaceIn')
-    }
-
-    if (error) {
-        return (
-            <NoticeBox error title={errorLabel}>
-                {error.message}
-            </NoticeBox>
-        )
-    }
-
-    if (loading) {
-        return (
-            <CenteredContent>
-                <CircularLoader />
-            </CenteredContent>
-        )
     }
 
     const searchFilter = app =>
@@ -147,13 +123,10 @@ const AppList = ({
 
 AppList.propTypes = {
     allAppsLabel: PropTypes.string.isRequired,
-    errorLabel: PropTypes.string.isRequired,
     searchLabel: PropTypes.string.isRequired,
     updatesAvailableLabel: PropTypes.string.isRequired,
     apps: PropTypes.array,
     appsWithUpdates: PropTypes.array,
-    error: PropTypes.object,
-    loading: PropTypes.bool,
 }
 
 export default AppList

@@ -1,5 +1,6 @@
 import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
+import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import getLatestVersion from '../../get-latest-version'
 import AppList from '../AppList'
@@ -63,7 +64,28 @@ export const CoreApps = () => {
     const { baseUrl } = useConfig()
     const { loading, error, data } = useDataQuery(query)
 
-    const overridenCoreApps = data?.coreApps.filter(app => app.bundled)
+    if (error) {
+        return (
+            <NoticeBox
+                error
+                title={i18n.t(
+                    'Something went wrong whilst loading your core apps'
+                )}
+            >
+                {error.message}
+            </NoticeBox>
+        )
+    }
+
+    if (loading) {
+        return (
+            <CenteredContent>
+                <CircularLoader />
+            </CenteredContent>
+        )
+    }
+
+    const overridenCoreApps = data.coreApps.filter(app => app.bundled)
     const apps = coreApps
         .map(coreApp => {
             const overridenApp = overridenCoreApps?.find(
@@ -72,13 +94,16 @@ export const CoreApps = () => {
             if (overridenApp) {
                 return overridenApp
             }
-            const iconUrl = data?.modules.modules.find(
+            const module = data.modules.modules.find(
                 m => m.name === `dhis-web-${coreApp.short_name}`
-            )?.icon
+            )
+            const iconUrl = module?.icon
             const icons = iconUrl ? { 48: iconUrl } : {}
+            const name = module?.displayName || coreApp.name
             return {
                 ...coreApp,
                 baseUrl: `${baseUrl}/dhis-web-${coreApp.short_name}`,
+                name,
                 icons,
             }
         })
@@ -95,13 +120,8 @@ export const CoreApps = () => {
 
     return (
         <AppList
-            error={error}
-            loading={loading}
             apps={apps}
             appsWithUpdates={appsWithUpdates}
-            errorLabel={i18n.t(
-                'Something went wrong whilst loading your core apps'
-            )}
             updatesAvailableLabel={i18n.t('Core apps with updates available')}
             allAppsLabel={i18n.t('All core apps')}
             searchLabel={i18n.t('Search core apps')}
