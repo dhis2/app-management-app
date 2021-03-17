@@ -14,6 +14,7 @@ import './scss/style.scss'
 
 const AppWrapper = () => {
     const { d2 } = useD2({
+        i18nRoot: './i18n_legacy',
         onInitialized: d2 => {
             installedAppHub.setState(d2.system.installedApps)
         },

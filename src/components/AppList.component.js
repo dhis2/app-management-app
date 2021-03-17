@@ -18,24 +18,26 @@ import actions from '../actions'
 import i18n from '@dhis2/d2-i18n'
 
 // const appTypeLabels = {
-//     app: 'Standard Apps',
-//     dashboard_widget: 'Dashboard Apps',
-//     tracker_dashboard_widget: 'Tracker Dashboard Apps',
-//     resource: 'Resource Apps',
+//     app: i18n.t('Standard Apps'),
+//     dashboard_widget: i18n.t('Dashboard Apps'),
+//     tracker_dashboard_widget: i18n.t('Tracker Dashboard Apps'),
+//     resource: i18n.t('Resource Apps'),
 // }
 
 const appTypeHeaders = {
-    app: 'Installed Standard Apps',
-    dashboard_widget: 'Installed Dashboard Apps',
-    tracker_dashboard_widget: 'Installed Tracker Dashboard Apps',
-    resource: 'Installed Resource Apps',
+    app: i18n.t('Installed Standard Apps'),
+    dashboard_widget: i18n.t('Installed Dashboard Apps'),
+    tracker_dashboard_widget: i18n.t('Installed Tracker Dashboard Apps'),
+    resource: i18n.t('Installed Resource Apps'),
 }
 
 const appTypeMissing = {
-    app: 'There are no standard apps installed.',
-    dashboard_widget: 'There are no dashboard apps installed.',
-    tracker_dashboard_widget: 'There are no tracker dashboard apps installed.',
-    resource: 'There are no resource apps installed',
+    app: i18n.t('There are no standard apps installed.'),
+    dashboard_widget: i18n.t('There are no dashboard apps installed.'),
+    tracker_dashboard_widget: i18n.t(
+        'There are no tracker dashboard apps installed.'
+    ),
+    resource: i18n.t('There are no resource apps installed'),
 }
 
 const styles = {
@@ -135,9 +137,7 @@ class AppList extends React.Component {
         if (appList.length > 0) {
             return (
                 <div>
-                    <div style={styles.header}>
-                        {i18n.t(appTypeHeaders[label])}
-                    </div>
+                    <div style={styles.header}>{appTypeHeaders[label]}</div>
                     <Card style={styles.card}>
                         <CardText>
                             <List style={styles.container}>
@@ -229,8 +229,8 @@ class AppList extends React.Component {
 
         return (
             <div>
-                <div style={styles.header}>{i18n.t(appTypeHeaders[label])}</div>
-                <div style={styles.noApps}>{i18n.t(appTypeMissing[label])}</div>
+                <div style={styles.header}>{appTypeHeaders[label]}</div>
+                <div style={styles.noApps}>{appTypeMissing[label]}</div>
                 {this.renderUploadButton()}
             </div>
         )
