@@ -151,7 +151,9 @@ const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => {
                 {versions.map(version => (
                     <TableRow key={version.id}>
                         <TableCell>{version.version}</TableCell>
-                        <TableCell>{version.channel}</TableCell>
+                        <TableCell>
+                            {channelToDisplayName[version.channel]}
+                        </TableCell>
                         <TableCell>
                             {renderVersionRange(
                                 version.minDhisVersion,
@@ -193,7 +195,7 @@ VersionsTable.propTypes = {
 }
 
 const Versions = ({ installedVersion, versions, reloadPage }) => {
-    const [channelsFilter, setChannelsFilter] = useState(new Set(['Stable']))
+    const [channelsFilter, setChannelsFilter] = useState(new Set(['stable']))
     const [dhisVersionFilter, setDhisVersionFilter] = useState('')
     const installSuccessAlert = useAlert(i18n.t('App installed successfully'), {
         success: true,

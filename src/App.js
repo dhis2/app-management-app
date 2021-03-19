@@ -3,6 +3,7 @@ import React from 'react'
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import styles from './App.module.css'
+import { AppDetails } from './components/AppDetails/AppDetails'
 import { CoreApps } from './components/CoreApps/CoreApps'
 import CustomAppDetails from './components/CustomAppDetails'
 import CustomApps from './components/CustomApps'
@@ -29,6 +30,10 @@ const App = () => (
                             exact
                             path="/custom-apps"
                             component={CustomApps}
+                        />
+                        <Route
+                            path="/installed_app/:appKey"
+                            component={AppDetails}
                         />
                         <Route
                             path="/app/:appHubId"

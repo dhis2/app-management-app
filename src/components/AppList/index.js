@@ -9,11 +9,6 @@ import styles from './AppList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
-    const createClickHandler = appHubId => () => {
-        if (appHubId) {
-            history.push(`/app/${appHubId}`)
-        }
-    }
 
     return (
         <div className={styles.appCards}>
@@ -21,8 +16,7 @@ const AppCards = ({ apps }) => {
                 <button
                     key={app.short_name}
                     className={styles.appCard}
-                    disabled={!app.appHub?.id}
-                    onClick={createClickHandler(app.appHub?.id)}
+                    onClick={() => history.push(`/installed_app/${app.key}`)}
                 >
                     <AppIcon app={app} />
                     <div>

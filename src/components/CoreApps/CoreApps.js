@@ -2,46 +2,9 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
+import { coreApps } from '../../core-apps'
 import getLatestVersion from '../../get-latest-version'
 import AppList from '../AppList'
-
-const coreApps = [
-    { name: 'App Management', short_name: 'app-management' },
-    { name: 'Cache Cleaner', short_name: 'cache-cleaner' },
-    { name: 'Capture', short_name: 'capture' },
-    { name: 'Dashboard', short_name: 'dashboard' },
-    { name: 'Data Administration', short_name: 'data-administration' },
-    { name: 'Data Approval', short_name: 'approval' },
-    { name: 'Data Entry', short_name: 'dataentry' },
-    { name: 'Data Quality', short_name: 'data-quality' },
-    { name: 'Data Visualizer', short_name: 'data-visualizer' },
-    { name: 'Datastore', short_name: 'datastore' },
-    { name: 'Event Reports', short_name: 'event-reports' },
-    { name: 'Event Visualizer', short_name: 'event-visualizer' },
-    { name: 'Import/Export', short_name: 'import-export' },
-    { name: 'Interpretations', short_name: 'interpretation' },
-    { name: 'Maintenance', short_name: 'maintenance' },
-    { name: 'Maps', short_name: 'maps' },
-    { name: 'Menu Management', short_name: 'menu-management' },
-    { name: 'Messaging', short_name: 'messaging' },
-    { name: 'Pivot Table', short_name: 'pivot' },
-    { name: 'Reports', short_name: 'reports' },
-    { name: 'SMS Configuration', short_name: 'sms-configuration' },
-    { name: 'Scheduler', short_name: 'scheduler' },
-    { name: 'System Settings', short_name: 'settings' },
-    { name: 'Tracker Capture', short_name: 'tracker-capture' },
-    { name: 'Translations', short_name: 'translations' },
-    { name: 'Usage Analytics', short_name: 'usage-analytics' },
-    { name: 'User Profile', short_name: 'user-profile' },
-    { name: 'Users', short_name: 'user' },
-].map(coreApp => ({
-    ...coreApp,
-    key: coreApp.short_name,
-    bundled: true,
-    developer: {
-        company: 'DHIS2',
-    },
-}))
 
 const query = {
     coreApps: {
