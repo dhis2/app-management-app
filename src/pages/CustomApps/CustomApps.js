@@ -1,8 +1,10 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
+import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { AppList } from '../../components/AppList/AppList'
 import { getLatestVersion } from '../../get-latest-version'
+import { semverGt } from '../../semver-gt'
 
 const query = {
     customApps: {
@@ -11,6 +13,8 @@ const query = {
             bundled: false,
         },
     },
+    // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
+    // that instead
     appHub: {
         resource: 'appHub/v1/apps',
     },
@@ -19,32 +23,46 @@ const query = {
 export const CustomApps = () => {
     const { loading, error, data } = useDataQuery(query)
 
-    const apps = data?.customApps
+    if (error) {
+        return (
+            <NoticeBox
+                error
+                title={i18n.t(
+                    'Something went wrong whilst loading your custom apps'
+                )}
+            >
+                {error.message}
+            </NoticeBox>
+        )
+    }
+
+    if (loading) {
+        return (
+            <CenteredContent>
+                <CircularLoader />
+            </CenteredContent>
+        )
+    }
+
+    const apps = data.customApps
         .filter(app => !app.bundled)
         .map(app => ({
             ...app,
-            appHub: data.appHub.find(({ id, name, developer }) => {
-                if (app.app_hub_id) {
-                    return id === app.app_hub_id
-                }
-                return (
-                    name === app.name &&
-                    app.developer &&
-                    (developer.organisation ===
-                        (app.developer.company || app.developer.name) ||
-                        developer.name === app.developer.name)
-                )
-            }),
+            appHub:
+                app.app_hub_id &&
+                data.appHub.find(({ id }) => id === app.app_hub_id),
         }))
-    const appsWithUpdates = apps?.filter(
+    const appsWithUpdates = apps.filter(
         app =>
-            app.appHub && getLatestVersion(app.appHub.versions) !== app.version
+            app.appHub &&
+            semverGt(
+                getLatestVersion(app.appHub.versions)?.version,
+                app.version
+            )
     )
 
     return (
         <AppList
-            error={error}
-            loading={loading}
             apps={apps}
             appsWithUpdates={appsWithUpdates}
             errorLabel={i18n.t(

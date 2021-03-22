@@ -5,6 +5,7 @@ import React from 'react'
 import { AppList } from '../../components/AppList/AppList'
 import { coreApps } from '../../core-apps'
 import { getLatestVersion } from '../../get-latest-version'
+import { semverGt } from '../../semver-gt'
 
 const query = {
     coreApps: {
@@ -74,11 +75,15 @@ export const CoreApps = () => {
             ...app,
             appHub:
                 app.app_hub_id &&
-                data?.appHub.find(({ id }) => id === app.app_hub_id),
+                data.appHub.find(({ id }) => id === app.app_hub_id),
         }))
     const appsWithUpdates = apps.filter(
         app =>
-            app.appHub && app.version !== getLatestVersion(app.appHub.versions)
+            app.appHub &&
+            semverGt(
+                getLatestVersion(app.appHub.versions)?.version,
+                app.version
+            )
     )
 
     return (

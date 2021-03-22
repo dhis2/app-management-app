@@ -6,6 +6,7 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import { useApi } from '../../api'
 import { getLatestVersion } from '../../get-latest-version'
+import { semverGt } from '../../semver-gt'
 import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name'
 import { Versions } from './Versions'
@@ -50,7 +51,7 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
 
     return (
         <div className={styles.manageInstalledVersion}>
-            {latestVersion && installedApp.version !== latestVersion && (
+            {latestVersion && semverGt(latestVersion, installedApp.version) && (
                 <>
                     <Button primary onClick={handleUpdate}>
                         {i18n.t('Update to latest version')}
@@ -155,9 +156,9 @@ Screenshots.propTypes = {
 
 export const AppDetails = ({ installedApp, appHubApp, onVersionInstall }) => {
     const appName = installedApp ? installedApp.name : appHubApp.name
-    const appDeveloper = installedApp
-        ? installedApp.developer.company || installedApp.developer.name
-        : appHubApp.developer.organisation || appHubApp.developer.name
+    const appDeveloper = appHubApp
+        ? appHubApp.developer.organisation || appHubApp.developer.name
+        : installedApp.developer?.company || installedApp.developer?.name
     const screenshots = appHubApp?.images
         .filter(i => !i.logo)
         .map(i => i.imageUrl)
@@ -166,12 +167,14 @@ export const AppDetails = ({ installedApp, appHubApp, onVersionInstall }) => {
         <Card className={styles.appCard}>
             <header className={styles.header}>
                 <h1 className={styles.headerName}>{appName}</h1>
-                <span className={styles.headerDeveloper}>
-                    {i18n.t('by {{developer}}', {
-                        developer: appDeveloper,
-                        context: 'developer of application',
-                    })}
-                </span>
+                {appDeveloper && (
+                    <span className={styles.headerDeveloper}>
+                        {i18n.t('by {{developer}}', {
+                            developer: appDeveloper,
+                            context: 'developer of application',
+                        })}
+                    </span>
+                )}
             </header>
             <Divider />
             <section className={[styles.section, styles.mainSection].join(' ')}>

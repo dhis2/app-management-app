@@ -57,11 +57,6 @@ export const InstalledApp = ({ match }) => {
         )
     }
 
-    // XXX
-    if (app.bundled && !app.app_hub_id && app.name === 'App Management') {
-        app.app_hub_id = '28823170-1203-46d1-81d5-eea67abae41c'
-    }
-
     const module = modules.find(app => app.name === `dhis-web-${appKey}`)
     // If the app is a core app, then `module.displayName` should contain its translated name
     if (coreApp && module) {
