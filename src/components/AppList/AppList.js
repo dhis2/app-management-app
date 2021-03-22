@@ -77,7 +77,7 @@ AllApps.propTypes = {
     label: PropTypes.string.isRequired,
 }
 
-const AppList = ({
+export const AppList = ({
     apps,
     appsWithUpdates,
     updatesAvailableLabel,
@@ -122,5 +122,3 @@ AppList.propTypes = {
     apps: PropTypes.array,
     appsWithUpdates: PropTypes.array,
 }
-
-export default AppList

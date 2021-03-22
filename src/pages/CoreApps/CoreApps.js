@@ -2,9 +2,9 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
+import { AppList } from '../../components/AppList/AppList'
 import { coreApps } from '../../core-apps'
-import getLatestVersion from '../../get-latest-version'
-import AppList from '../AppList'
+import { getLatestVersion } from '../../get-latest-version'
 
 const query = {
     coreApps: {

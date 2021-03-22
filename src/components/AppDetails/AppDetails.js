@@ -1,22 +1,14 @@
-import { useAlert, useDataQuery } from '@dhis2/app-runtime'
+import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
-import {
-    Button,
-    Card,
-    Divider,
-    NoticeBox,
-    CenteredContent,
-    CircularLoader,
-} from '@dhis2/ui'
+import { Button, Card, Divider } from '@dhis2/ui'
 import moment from 'moment'
 import React, { useState } from 'react'
 import { useApi } from '../../api'
-import { coreApps } from '../../core-apps'
-import getLatestVersion from '../../get-latest-version'
-import { channelToDisplayName } from '../CustomAppDetails/channel-to-display-name'
-import styles from '../CustomAppDetails/CustomAppDetails.module.css'
-import Versions from '../CustomAppDetails/Versions'
+import { getLatestVersion } from '../../get-latest-version'
+import styles from './AppDetails.module.css'
+import { channelToDisplayName } from './channel-to-display-name'
+import { Versions } from './Versions'
 
 const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
     const { installVersion, uninstallApp } = useApi()
@@ -161,77 +153,11 @@ Screenshots.propTypes = {
     screenshots: PropTypes.array.isRequired,
 }
 
-const appsQuery = {
-    modules: {
-        resource: 'action::menu/getModules',
-    },
-    installedApps: {
-        resource: 'apps',
-    },
-}
-
-const appHubQuery = {
-    app: {
-        resource: `appHub/v1/apps`,
-        id: ({ appHubId }) => appHubId,
-    },
-}
-
-export const AppDetails = ({ match }) => {
-    const { appKey } = match.params
-    const appsResponse = useDataQuery(appsQuery)
-    const appHubResponse = useDataQuery(appHubQuery, { lazy: true })
-
-    if (appsResponse.error || appHubResponse.error) {
-        return (
-            <NoticeBox error title={i18n.t('Error loading app')}>
-                {(appsResponse.error || appHubResponse.error).message}
-            </NoticeBox>
-        )
-    }
-
-    if (appsResponse.loading || appHubResponse.loading) {
-        return (
-            <CenteredContent>
-                <CircularLoader />
-            </CenteredContent>
-        )
-    }
-
-    const {
-        modules: { modules },
-        installedApps,
-    } = appsResponse.data
-    const coreApp = coreApps.find(app => app.key === appKey)
-    const app = installedApps.find(app => app.key === appKey) || coreApp
-    if (!app) {
-        return (
-            <NoticeBox error title={i18n.t('Error loading app')}>
-                {i18n.t('App not found')}
-            </NoticeBox>
-        )
-    }
-
-    // XXX
-    if (app.bundled && !app.app_hub_id && app.name === 'App Management') {
-        app.app_hub_id = '28823170-1203-46d1-81d5-eea67abae41c'
-    }
-
-    const module = modules.find(app => app.name === `dhis-web-${appKey}`)
-    // If the app is a core app, then `module.displayName` should contain its translated name
-    if (coreApp && module) {
-        app.name = module.displayName
-    }
-
-    if (app.app_hub_id && !appHubResponse.called) {
-        appHubResponse.refetch({ appHubId: app.app_hub_id })
-        return (
-            <CenteredContent>
-                <CircularLoader />
-            </CenteredContent>
-        )
-    }
-    const appHubApp = appHubResponse.data?.app
+export const AppDetails = ({ installedApp, appHubApp, onVersionInstall }) => {
+    const appName = installedApp ? installedApp.name : appHubApp.name
+    const appDeveloper = installedApp
+        ? installedApp.developer.company || installedApp.developer.name
+        : appHubApp.developer.organisation || appHubApp.developer.name
     const screenshots = appHubApp?.images
         .filter(i => !i.logo)
         .map(i => i.imageUrl)
@@ -239,10 +165,10 @@ export const AppDetails = ({ match }) => {
     return (
         <Card className={styles.appCard}>
             <header className={styles.header}>
-                <h1 className={styles.headerName}>{app.name}</h1>
+                <h1 className={styles.headerName}>{appName}</h1>
                 <span className={styles.headerDeveloper}>
                     {i18n.t('by {{developer}}', {
-                        developer: app.developer.company || app.developer.name,
+                        developer: appDeveloper,
                         context: 'developer of application',
                     })}
                 </span>
@@ -266,18 +192,20 @@ export const AppDetails = ({ match }) => {
                     </div>
                 )}
                 <div>
-                    <ManageInstalledVersion
-                        installedApp={app}
-                        versions={appHubApp?.versions || []}
-                        reloadPage={appsResponse.refetch}
-                    />
+                    {installedApp && (
+                        <ManageInstalledVersion
+                            installedApp={installedApp}
+                            versions={appHubApp?.versions || []}
+                            reloadPage={onVersionInstall}
+                        />
+                    )}
                     {appHubApp && (
                         <div>
                             <h2 className={styles.sectionHeader}>
                                 {i18n.t('Additional information')}
                             </h2>
                             <Metadata
-                                installedVersion={app.version}
+                                installedVersion={installedApp.version}
                                 versions={appHubApp.versions}
                             />
                         </div>
@@ -305,9 +233,9 @@ export const AppDetails = ({ match }) => {
                             )}
                         </h2>
                         <Versions
-                            installedVersion={app.version}
+                            installedVersion={installedApp.version}
                             versions={appHubApp.versions}
-                            reloadPage={appsResponse.refetch}
+                            onVersionInstall={onVersionInstall}
                         />
                     </section>
                 </>
@@ -317,5 +245,7 @@ export const AppDetails = ({ match }) => {
 }
 
 AppDetails.propTypes = {
-    match: PropTypes.object.isRequired,
+    onVersionInstall: PropTypes.func.isRequired,
+    appHubApp: PropTypes.object,
+    installedApp: PropTypes.object,
 }

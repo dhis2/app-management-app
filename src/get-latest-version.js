@@ -1,6 +1,6 @@
 import semver from 'semver'
 
-export default versions =>
+export const getLatestVersion = versions =>
     versions.reduce((latestVersion, version) => {
         const parsedLatestVersion = semver.coerce(latestVersion.version)
         const parsedVersion = semver.coerce(version.version)

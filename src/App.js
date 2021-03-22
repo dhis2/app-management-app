@@ -3,13 +3,15 @@ import React from 'react'
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import styles from './App.module.css'
-import { AppDetails } from './components/AppDetails/AppDetails'
-import { CoreApps } from './components/CoreApps/CoreApps'
-import CustomAppDetails from './components/CustomAppDetails'
-import CustomApps from './components/CustomApps'
-import ManualInstall from './components/ManualInstall'
 import Sidebar from './components/Sidebar'
+import { CoreApps } from './pages/CoreApps/CoreApps'
+import { CustomApps } from './pages/CustomApps/CustomApps'
+import { InstalledApp } from './pages/InstalledApp/InstalledApp'
+import { ManualInstall } from './pages/ManualInstall/ManualInstall'
 import './locales'
+
+// XXX
+const AppHubApp = () => null
 
 const App = () => (
     <HashRouter>
@@ -33,12 +35,9 @@ const App = () => (
                         />
                         <Route
                             path="/installed_app/:appKey"
-                            component={AppDetails}
+                            component={InstalledApp}
                         />
-                        <Route
-                            path="/app/:appHubId"
-                            component={CustomAppDetails}
-                        />
+                        <Route path="/app/:appHubId" component={AppHubApp} />
                         <Route
                             path="/manual-install"
                             component={ManualInstall}

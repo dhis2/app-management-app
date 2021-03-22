@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-22T18:57:08.932Z\n"
-"PO-Revision-Date: 2021-03-22T18:57:08.932Z\n"
+"POT-Creation-Date: 2021-03-22T20:55:54.447Z\n"
+"PO-Revision-Date: 2021-03-22T20:55:54.447Z\n"
 
 msgid "App uninstalled successfully"
 msgstr ""
@@ -23,6 +23,9 @@ msgstr ""
 msgid "Uninstall"
 msgstr ""
 
+msgid "Version {{version}} installed"
+msgstr ""
+
 msgid "Version {{version}}"
 msgstr ""
 
@@ -32,16 +35,13 @@ msgstr ""
 msgid "First published {{relativeTime}}"
 msgstr ""
 
-msgid "Error loading app"
-msgstr ""
-
-msgid "App not found"
-msgstr ""
-
 msgid "by {{developer}}"
 msgstr ""
 
 msgid "About this app"
+msgstr ""
+
+msgid "The developer of this application has not provided a description"
 msgstr ""
 
 msgid "Additional information"
@@ -50,22 +50,7 @@ msgstr ""
 msgid "Screenshots"
 msgstr ""
 
-msgid "All versions of this application"
-msgstr ""
-
-msgid "No apps found"
-msgstr ""
-
-msgid "Something went wrong whilst loading your core apps"
-msgstr ""
-
-msgid "Core apps with updates available"
-msgstr ""
-
-msgid "All core apps"
-msgstr ""
-
-msgid "Search core apps"
+msgid "All compatible versions of this application"
 msgstr ""
 
 msgid "Channel"
@@ -101,19 +86,28 @@ msgstr ""
 msgid "Canary"
 msgstr ""
 
-msgid "{{minDhisVersion}} and above"
+msgid "No apps found"
 msgstr ""
 
-msgid "{{maxDhisVersion}} and below"
+msgid "Preinstalled core apps"
 msgstr ""
 
-msgid "all versions"
+msgid "Custom apps"
 msgstr ""
 
-msgid "{{channel}} release {{version}}. Compatible with DHIS2 {{versionRange}}"
+msgid "Manual install"
 msgstr ""
 
-msgid "Error loading custom app"
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
 msgstr ""
 
 msgid "Something went wrong whilst loading your custom apps"
@@ -128,6 +122,12 @@ msgstr ""
 msgid "Search installed custom apps"
 msgstr ""
 
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
+msgstr ""
+
 msgid "Uploading..."
 msgstr ""
 
@@ -140,15 +140,6 @@ msgstr ""
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
-msgstr ""
-
-msgid "Preinstalled core apps"
-msgstr ""
-
-msgid "Custom apps"
-msgstr ""
-
-msgid "Manual install"
 msgstr ""
 
 msgctxt "developer of application"
@@ -169,8 +160,4 @@ msgstr ""
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
-
-msgctxt "creator of AppHub application"
-msgid "by {{developer}}"
 msgstr ""

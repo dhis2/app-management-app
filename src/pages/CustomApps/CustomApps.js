@@ -1,8 +1,8 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import React from 'react'
-import getLatestVersion from '../../get-latest-version'
-import AppList from '../AppList'
+import { AppList } from '../../components/AppList/AppList'
+import { getLatestVersion } from '../../get-latest-version'
 
 const query = {
     customApps: {
@@ -16,7 +16,7 @@ const query = {
     },
 }
 
-const CustomApps = () => {
+export const CustomApps = () => {
     const { loading, error, data } = useDataQuery(query)
 
     const apps = data?.customApps
@@ -56,5 +56,3 @@ const CustomApps = () => {
         />
     )
 }
-
-export default CustomApps

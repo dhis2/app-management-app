@@ -60,7 +60,7 @@ const UploadButton = () => {
     )
 }
 
-const ManualInstall = () => (
+export const ManualInstall = () => (
     <>
         <h1 className={styles.header}>{i18n.t('Manually install an app')}</h1>
         <p className={styles.warning}>
@@ -71,5 +71,3 @@ const ManualInstall = () => (
         <UploadButton />
     </>
 )
-
-export default ManualInstall

@@ -16,8 +16,8 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api'
+import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name'
-import styles from './CustomAppDetails.module.css'
 
 const ChannelCheckbox = ({
     name,
@@ -135,7 +135,7 @@ VersionsTable.propTypes = {
     installedVersion: PropTypes.string,
 }
 
-const Versions = ({ installedVersion, versions, reloadPage }) => {
+export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
     const [channelsFilter, setChannelsFilter] = useState(new Set(['stable']))
     const installSuccessAlert = useAlert(i18n.t('App installed successfully'), {
         success: true,
@@ -175,7 +175,7 @@ const Versions = ({ installedVersion, versions, reloadPage }) => {
         try {
             await installVersion(version.id)
             installSuccessAlert.show()
-            reloadPage()
+            onVersionInstall()
         } catch (error) {
             installErrorAlert.show({ error })
         }
@@ -198,9 +198,7 @@ const Versions = ({ installedVersion, versions, reloadPage }) => {
 }
 
 Versions.propTypes = {
-    reloadPage: PropTypes.func.isRequired,
     versions: PropTypes.array.isRequired,
+    onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
 }
-
-export default Versions
