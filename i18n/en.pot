@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-22T13:08:23.228Z\n"
-"PO-Revision-Date: 2021-03-22T13:08:23.228Z\n"
+"POT-Creation-Date: 2021-03-22T18:57:08.932Z\n"
+"PO-Revision-Date: 2021-03-22T18:57:08.932Z\n"
 
 msgid "App uninstalled successfully"
 msgstr ""
@@ -14,19 +14,10 @@ msgstr ""
 msgid "Failed to uninstall app: {{errorMessage}}"
 msgstr ""
 
-msgid "{{minDhisVersion}} and above"
-msgstr ""
-
-msgid "{{maxDhisVersion}} and below"
-msgstr ""
-
-msgid "all versions"
-msgstr ""
-
 msgid "Update to latest version"
 msgstr ""
 
-msgid "{{channel}} release {{version}}. Compatible with DHIS2 {{versionRange}}"
+msgid "{{channel}} release {{version}}"
 msgstr ""
 
 msgid "Uninstall"
@@ -80,19 +71,7 @@ msgstr ""
 msgid "Channel"
 msgstr ""
 
-msgid "Select a version"
-msgstr ""
-
-msgid "Compatible with DHIS2 version"
-msgstr ""
-
-msgid "All versions"
-msgstr ""
-
 msgid "Version"
-msgstr ""
-
-msgid "DHIS2 version compatibility"
 msgstr ""
 
 msgid "Upload date"
@@ -120,6 +99,18 @@ msgid "Development"
 msgstr ""
 
 msgid "Canary"
+msgstr ""
+
+msgid "{{minDhisVersion}} and above"
+msgstr ""
+
+msgid "{{maxDhisVersion}} and below"
+msgstr ""
+
+msgid "all versions"
+msgstr ""
+
+msgid "{{channel}} release {{version}}. Compatible with DHIS2 {{versionRange}}"
 msgstr ""
 
 msgid "Error loading custom app"

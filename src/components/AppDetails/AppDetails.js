@@ -55,27 +55,6 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
             })
         }
     }
-    const renderVersionRange = ({
-        minDhisVersion: min,
-        maxDhisVersion: max,
-    }) => {
-        if (min && max) {
-            if (min === max) {
-                return `${min}`
-            }
-            return `${min}–${max}`
-        } else if (min && !max) {
-            return i18n.t('{{minDhisVersion}} and above', {
-                minDhisVersion: min,
-            })
-        } else if (!min && max) {
-            return i18n.t('{{maxDhisVersion}} and below', {
-                maxDhisVersion: max,
-            })
-        } else {
-            return i18n.t('all versions')
-        }
-    }
 
     return (
         <div className={styles.manageInstalledVersion}>
@@ -85,15 +64,11 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
                         {i18n.t('Update to latest version')}
                     </Button>
                     <span className={styles.manageInstalledVersionDescription}>
-                        {i18n.t(
-                            '{{channel}} release {{version}}. Compatible with DHIS2 {{versionRange}}',
-                            {
-                                channel:
-                                    channelToDisplayName[latestVersion.channel],
-                                version: latestVersion.version,
-                                versionRange: renderVersionRange(latestVersion),
-                            }
-                        )}
+                        {i18n.t('{{channel}} release {{version}}', {
+                            channel:
+                                channelToDisplayName[latestVersion.channel],
+                            version: latestVersion.version,
+                        })}
                     </span>
                 </>
             )}
@@ -120,9 +95,13 @@ const Metadata = ({ installedVersion, versions }) => {
     return (
         <ul className={styles.metadataList}>
             <li className={styles.metadataItem}>
-                {i18n.t('Version {{version}}', {
-                    version: installedVersion || latestVersion.version,
-                })}
+                {installedVersion
+                    ? i18n.t('Version {{version}} installed', {
+                          version: installedVersion,
+                      })
+                    : i18n.t('Version {{version}}', {
+                          version: latestVersion.version,
+                      })}
             </li>
             <li className={styles.metadataItem}>
                 {i18n.t('Last updated {{relativeTime}}', {
@@ -275,7 +254,15 @@ export const AppDetails = ({ match }) => {
                         <h2 className={styles.sectionHeader}>
                             {i18n.t('About this app')}
                         </h2>
-                        <p>{appHubApp.description}</p>
+                        <p>
+                            {appHubApp.description || (
+                                <em>
+                                    {i18n.t(
+                                        'The developer of this application has not provided a description'
+                                    )}
+                                </em>
+                            )}
+                        </p>
                     </div>
                 )}
                 <div>
@@ -313,7 +300,9 @@ export const AppDetails = ({ match }) => {
                     <Divider />
                     <section className={styles.section}>
                         <h2 className={styles.sectionHeader}>
-                            {i18n.t('All versions of this application')}
+                            {i18n.t(
+                                'All compatible versions of this application'
+                            )}
                         </h2>
                         <Versions
                             installedVersion={app.version}
