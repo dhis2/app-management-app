@@ -3,7 +3,7 @@ import React from 'react'
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import styles from './App.module.css'
-import Sidebar from './components/Sidebar'
+import { Sidebar } from './components/Sidebar'
 import { CoreApps } from './pages/CoreApps/CoreApps'
 import { CustomApps } from './pages/CustomApps/CustomApps'
 import { InstalledApp } from './pages/InstalledApp/InstalledApp'
@@ -11,6 +11,7 @@ import { ManualInstall } from './pages/ManualInstall/ManualInstall'
 import './locales'
 
 // XXX
+const AppHub = () => null
 const AppHubApp = () => null
 
 const App = () => (
@@ -37,6 +38,7 @@ const App = () => (
                             path="/installed-app/:appKey"
                             component={InstalledApp}
                         />
+                        <Route path="/app-hub" component={AppHub} />
                         <Route path="/app/:appHubId" component={AppHubApp} />
                         <Route
                             path="/manual-install"

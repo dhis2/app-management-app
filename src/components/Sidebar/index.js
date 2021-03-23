@@ -38,7 +38,7 @@ SidebarItem.propTypes = {
 const showCoreApps = ({ minor, patch }) =>
     minor > 35 || (minor == 35 && patch >= 2)
 
-const Sidebar = () => (
+export const Sidebar = () => (
     <Menu>
         {showCoreApps(useConfig().serverVersion) ? (
             <SidebarItem
@@ -51,5 +51,3 @@ const Sidebar = () => (
         <SidebarItem label={i18n.t('Manual install')} path="/manual-install" />
     </Menu>
 )
-
-export default Sidebar
