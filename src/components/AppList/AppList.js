@@ -16,7 +16,7 @@ const AppCards = ({ apps }) => {
                 <button
                     key={app.short_name}
                     className={styles.appCard}
-                    onClick={() => history.push(`/installed_app/${app.key}`)}
+                    onClick={() => history.push(`/installed-app/${app.key}`)}
                 >
                     <AppIcon app={app} />
                     <div>
