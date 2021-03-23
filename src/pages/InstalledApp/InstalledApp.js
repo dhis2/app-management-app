@@ -3,6 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails'
 import { coreApps } from '../../core-apps'
 
@@ -24,6 +25,7 @@ const appHubQuery = {
 
 export const InstalledApp = ({ match }) => {
     const { appKey } = match.params
+    const history = useHistory()
     const appsResponse = useDataQuery(appsQuery)
     const appHubResponse = useDataQuery(appHubQuery, { lazy: true })
 
@@ -77,6 +79,7 @@ export const InstalledApp = ({ match }) => {
             installedApp={app}
             appHubApp={appHubResponse.data?.app}
             onVersionInstall={appsResponse.refetch}
+            onUninstall={() => history.push('/custom-apps')}
         />
     )
 }

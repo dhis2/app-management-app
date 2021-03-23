@@ -11,7 +11,12 @@ import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name'
 import { Versions } from './Versions'
 
-const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
+const ManageInstalledVersion = ({
+    installedApp,
+    versions,
+    onVersionInstall,
+    onUninstall,
+}) => {
     const { installVersion, uninstallApp } = useApi()
     const successAlert = useAlert(({ message }) => message, { success: true })
     const errorAlert = useAlert(({ message }) => message, { critical: true })
@@ -22,7 +27,7 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
             successAlert.show({
                 message: i18n.t('App uninstalled successfully'),
             })
-            reloadPage()
+            onVersionInstall()
         } catch (error) {
             errorAlert.show({
                 message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
@@ -38,7 +43,7 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
             successAlert.show({
                 message: i18n.t('App uninstalled successfully'),
             })
-            reloadPage()
+            onUninstall()
         } catch (error) {
             errorAlert.show({
                 message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
@@ -75,9 +80,10 @@ const ManageInstalledVersion = ({ installedApp, versions, reloadPage }) => {
 }
 
 ManageInstalledVersion.propTypes = {
-    reloadPage: PropTypes.func.isRequired,
     versions: PropTypes.array.isRequired,
+    onVersionInstall: PropTypes.func.isRequired,
     installedApp: PropTypes.object,
+    onUninstall: PropTypes.func,
 }
 
 const Metadata = ({ installedVersion, versions }) => {
@@ -154,7 +160,12 @@ Screenshots.propTypes = {
     screenshots: PropTypes.array.isRequired,
 }
 
-export const AppDetails = ({ installedApp, appHubApp, onVersionInstall }) => {
+export const AppDetails = ({
+    installedApp,
+    appHubApp,
+    onVersionInstall,
+    onUninstall,
+}) => {
     const appName = installedApp ? installedApp.name : appHubApp.name
     const appDeveloper = appHubApp
         ? appHubApp.developer.organisation || appHubApp.developer.name
@@ -199,7 +210,8 @@ export const AppDetails = ({ installedApp, appHubApp, onVersionInstall }) => {
                         <ManageInstalledVersion
                             installedApp={installedApp}
                             versions={appHubApp?.versions || []}
-                            reloadPage={onVersionInstall}
+                            onVersionInstall={onVersionInstall}
+                            onUninstall={onUninstall}
                         />
                     )}
                     {appHubApp && (
@@ -251,4 +263,5 @@ AppDetails.propTypes = {
     onVersionInstall: PropTypes.func.isRequired,
     appHubApp: PropTypes.object,
     installedApp: PropTypes.object,
+    onUninstall: PropTypes.func,
 }
