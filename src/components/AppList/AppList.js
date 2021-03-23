@@ -4,11 +4,20 @@ import { InputField } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
-import AppIcon from './AppIcon'
+import { AppIcon } from '../AppIcon/AppIcon'
 import styles from './AppList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
+    const getIconSrc = app => {
+        const iconSize = ['128', '48', '16'].find(
+            iconSize => iconSize in app.icons
+        )
+        if (iconSize) {
+            return `${app.baseUrl}/${app.icons[iconSize]}`
+        }
+        return null
+    }
 
     return (
         <div className={styles.appCards}>
@@ -18,7 +27,7 @@ const AppCards = ({ apps }) => {
                     className={styles.appCard}
                     onClick={() => history.push(`/installed-app/${app.key}`)}
                 >
-                    <AppIcon app={app} />
+                    <AppIcon src={getIconSrc(app)} />
                     <div>
                         <h2 className={styles.appCardName}>{app.name}</h2>
                         <span className={styles.appCardMetadata}>

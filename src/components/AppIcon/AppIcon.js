@@ -2,14 +2,6 @@ import { PropTypes } from '@dhis2/prop-types'
 import React from 'react'
 import styles from './AppIcon.module.css'
 
-const getIconSrc = app => {
-    const iconSize = ['128', '48', '16'].find(iconSize => iconSize in app.icons)
-    if (iconSize) {
-        return `${app.baseUrl}/${app.icons[iconSize]}`
-    }
-    return null
-}
-
 const FallbackIcon = () => (
     <svg viewBox="0 0 72 72">
         <g fill="none" fillRule="evenodd">
@@ -23,14 +15,12 @@ const FallbackIcon = () => (
     </svg>
 )
 
-const AppIcon = ({ app }) => (
+export const AppIcon = ({ src }) => (
     <div className={styles.appIcon}>
-        {getIconSrc(app) ? <img src={getIconSrc(app)} /> : <FallbackIcon />}
+        {src ? <img src={src} /> : <FallbackIcon />}
     </div>
 )
 
 AppIcon.propTypes = {
-    app: PropTypes.object.isRequired,
+    src: PropTypes.string,
 }
-
-export default AppIcon

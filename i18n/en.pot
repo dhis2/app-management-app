@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-23T17:51:56.709Z\n"
-"PO-Revision-Date: 2021-03-23T17:51:56.709Z\n"
+"POT-Creation-Date: 2021-03-23T20:07:00.622Z\n"
+"PO-Revision-Date: 2021-03-23T20:07:00.622Z\n"
 
 msgid "App uninstalled successfully"
 msgstr ""
@@ -95,7 +95,13 @@ msgstr ""
 msgid "Custom apps"
 msgstr ""
 
+msgid "App Hub"
+msgstr ""
+
 msgid "Manual install"
+msgstr ""
+
+msgid "Something went wrong whilst loading App Hub apps"
 msgstr ""
 
 msgid "Something went wrong whilst loading your core apps"

@@ -1,18 +1,3 @@
-.header {
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: var(--spacers-dp24);
-    margin-bottom: var(--spacers-dp16);
-}
-
-.searchField {
-    max-width: 420px;
-}
-
-.appsWithUpdates {
-    margin-bottom: var(--spacers-dp64);
-}
-
 .appCards {
     display: grid;
     grid-template-columns: 1fr 1fr;

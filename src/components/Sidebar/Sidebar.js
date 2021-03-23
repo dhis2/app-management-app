@@ -48,6 +48,7 @@ export const Sidebar = () => (
             />
         ) : null}
         <SidebarItem label={i18n.t('Custom apps')} path="/custom-apps" />
+        <SidebarItem label={i18n.t('App Hub')} path="/app-hub" />
         <SidebarItem label={i18n.t('Manual install')} path="/manual-install" />
     </Menu>
 )
