@@ -65,9 +65,6 @@ export const CustomApps = () => {
         <AppList
             apps={apps}
             appsWithUpdates={appsWithUpdates}
-            errorLabel={i18n.t(
-                'Something went wrong whilst loading your custom apps'
-            )}
             updatesAvailableLabel={i18n.t('Custom apps with updates available')}
             allAppsLabel={i18n.t('All installed custom apps')}
             searchLabel={i18n.t('Search installed custom apps')}
