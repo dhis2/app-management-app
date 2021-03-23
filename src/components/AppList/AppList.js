@@ -42,6 +42,7 @@ const AppsWithUpdates = ({ label, apps }) => {
     if (apps.length === 0) {
         return null
     }
+
     return (
         <div className={styles.appsWithUpdates}>
             <h1 className={styles.header}>{label}</h1>
@@ -105,6 +106,7 @@ export const AppList = ({
                 value={query}
                 placeholder={searchLabel}
                 onChange={handleQueryChange}
+                type="search"
             />
             <AppsWithUpdates
                 apps={filteredAppsWithUpdates}
