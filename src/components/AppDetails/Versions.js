@@ -188,11 +188,19 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
                 channelsFilter={channelsFilter}
                 setChannelsFilter={setChannelsFilter}
             />
-            <VersionsTable
-                installedVersion={installedVersion}
-                versions={filteredVersions}
-                onVersionInstall={handleVersionInstall}
-            />
+            {filteredVersions.length > 0 ? (
+                <VersionsTable
+                    installedVersion={installedVersion}
+                    versions={filteredVersions}
+                    onVersionInstall={handleVersionInstall}
+                />
+            ) : (
+                <em>
+                    {i18n.t(
+                        'There are no compatible versions matching your criteria'
+                    )}
+                </em>
+            )}
         </div>
     )
 }

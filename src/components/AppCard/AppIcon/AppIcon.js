@@ -17,7 +17,7 @@ const FallbackIcon = () => (
 
 export const AppIcon = ({ src }) => (
     <div className={styles.appIcon}>
-        {src ? <img src={src} /> : <FallbackIcon />}
+        {src ? <img src={src} loading="lazy" /> : <FallbackIcon />}
     </div>
 )
 

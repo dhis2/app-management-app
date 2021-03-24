@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-24T20:15:27.415Z\n"
-"PO-Revision-Date: 2021-03-24T20:15:27.415Z\n"
+"POT-Creation-Date: 2021-03-24T22:33:00.378Z\n"
+"PO-Revision-Date: 2021-03-24T22:33:00.378Z\n"
 
 msgid "App uninstalled successfully"
 msgstr ""
@@ -101,7 +101,16 @@ msgstr ""
 msgid "Manual install"
 msgstr ""
 
+msgid "Search AppHub apps"
+msgstr ""
+
 msgid "Something went wrong whilst loading App Hub apps"
+msgstr ""
+
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
 msgstr ""
 
 msgid "Something went wrong whilst loading your core apps"
@@ -126,12 +135,6 @@ msgid "All installed custom apps"
 msgstr ""
 
 msgid "Search installed custom apps"
-msgstr ""
-
-msgid "Error loading app"
-msgstr ""
-
-msgid "App not found"
 msgstr ""
 
 msgid "Uploading..."

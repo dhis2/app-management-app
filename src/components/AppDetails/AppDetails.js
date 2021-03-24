@@ -13,7 +13,7 @@ import { Versions } from './Versions'
 
 const ManageInstalledVersion = ({
     installedApp,
-    versions,
+    versions = [],
     onVersionInstall,
     onUninstall,
 }) => {
@@ -56,10 +56,13 @@ const ManageInstalledVersion = ({
 
     return (
         <div className={styles.manageInstalledVersion}>
-            {latestVersion && semverGt(latestVersion, installedApp.version) && (
+            {latestVersion && (
                 <>
                     <Button primary onClick={handleUpdate}>
-                        {i18n.t('Update to latest version')}
+                        {installedApp &&
+                        semverGt(latestVersion, installedApp.version)
+                            ? i18n.t('Update to latest version')
+                            : i18n.t('Install')}
                     </Button>
                     <span className={styles.manageInstalledVersionDescription}>
                         {i18n.t('{{channel}} release {{version}}', {
@@ -70,7 +73,7 @@ const ManageInstalledVersion = ({
                     </span>
                 </>
             )}
-            {!installedApp.bundled && (
+            {installedApp && !installedApp.bundled && (
                 <Button secondary onClick={handleUninstall}>
                     {i18n.t('Uninstall')}
                 </Button>
@@ -180,7 +183,7 @@ export const AppDetails = ({
                 <h1 className={styles.headerName}>{appName}</h1>
                 {appDeveloper && (
                     <span className={styles.headerDeveloper}>
-                        {i18n.t('by {{developer}}', {
+                        {i18n.t('by {{- developer}}', {
                             developer: appDeveloper,
                             context: 'developer of application',
                         })}
@@ -206,15 +209,13 @@ export const AppDetails = ({
                     </div>
                 )}
                 <div>
-                    {installedApp && (
-                        <ManageInstalledVersion
-                            installedApp={installedApp}
-                            versions={appHubApp?.versions || []}
-                            onVersionInstall={onVersionInstall}
-                            onUninstall={onUninstall}
-                        />
-                    )}
-                    {appHubApp && (
+                    <ManageInstalledVersion
+                        installedApp={installedApp}
+                        versions={appHubApp?.versions}
+                        onVersionInstall={onVersionInstall}
+                        onUninstall={onUninstall}
+                    />
+                    {installedApp && appHubApp && (
                         <div>
                             <h2 className={styles.sectionHeader}>
                                 {i18n.t('Additional information')}
@@ -248,7 +249,7 @@ export const AppDetails = ({
                             )}
                         </h2>
                         <Versions
-                            installedVersion={installedApp.version}
+                            installedVersion={installedApp?.version}
                             versions={appHubApp.versions}
                             onVersionInstall={onVersionInstall}
                         />

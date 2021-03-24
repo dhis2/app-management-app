@@ -5,14 +5,12 @@ import { QueryParamProvider } from 'use-query-params'
 import styles from './App.module.css'
 import { Sidebar } from './components/Sidebar/Sidebar'
 import { AppHub } from './pages/AppHub/AppHub'
+import { AppHubApp } from './pages/AppHubApp/AppHubApp'
 import { CoreApps } from './pages/CoreApps/CoreApps'
 import { CustomApps } from './pages/CustomApps/CustomApps'
 import { InstalledApp } from './pages/InstalledApp/InstalledApp'
 import { ManualInstall } from './pages/ManualInstall/ManualInstall'
 import './locales'
-
-// XXX
-const AppHubApp = () => null
 
 const App = () => (
     <HashRouter>
