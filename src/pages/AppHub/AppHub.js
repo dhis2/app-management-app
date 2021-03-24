@@ -4,9 +4,9 @@ import { PropTypes } from '@dhis2/prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { AppIcon } from '../../components/AppIcon/AppIcon'
+import { AppCard } from '../../components/AppCard/AppCard'
+import { AppCards } from '../../components/AppCards/AppCards'
 import { getLatestVersion } from '../../get-latest-version'
-import styles from './AppHub.module.css'
 
 const query = {
     appHub: {
@@ -14,37 +14,29 @@ const query = {
     },
 }
 
-const AppCards = ({ apps }) => {
+const AppsList = ({ apps }) => {
     const history = useHistory()
     const getIconSrc = app => app.images.find(i => i.logo)?.imageUrl
 
     return (
-        <div className={styles.appCards}>
+        <AppCards>
             {apps.map(app => (
-                <button
+                <AppCard
                     key={app.id}
-                    className={styles.appCard}
+                    iconSrc={getIconSrc(app)}
+                    appName={app.name}
+                    appDeveloper={
+                        app.developer.organisation || app.developer.name
+                    }
+                    appVersion={getLatestVersion(app.versions).version}
                     onClick={() => history.push(`/app/${app.id}`)}
-                >
-                    <AppIcon src={getIconSrc(app)} />
-                    <div>
-                        <h2 className={styles.appCardName}>{app.name}</h2>
-                        <span className={styles.appCardMetadata}>
-                            {app.developer.organisation || app.developer.name}
-                        </span>
-                        <span className={styles.appCardMetadata}>
-                            {`Version ${
-                                getLatestVersion(app.versions).version
-                            }`}
-                        </span>
-                    </div>
-                </button>
+                />
             ))}
-        </div>
+        </AppCards>
     )
 }
 
-AppCards.propTypes = {
+AppsList.propTypes = {
     apps: PropTypes.array.isRequired,
 }
 
@@ -72,5 +64,5 @@ export const AppHub = () => {
         )
     }
 
-    return <AppCards apps={data.appHub.result} />
+    return <AppsList apps={data.appHub.result} />
 }

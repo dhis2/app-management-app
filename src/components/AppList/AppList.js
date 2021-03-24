@@ -4,7 +4,8 @@ import { InputField } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
-import { AppIcon } from '../AppIcon/AppIcon'
+import { AppCard } from '../AppCard/AppCard'
+import { AppCards as AppCards_ } from '../AppCards/AppCards'
 import styles from './AppList.module.css'
 
 const AppCards = ({ apps }) => {
@@ -20,26 +21,18 @@ const AppCards = ({ apps }) => {
     }
 
     return (
-        <div className={styles.appCards}>
+        <AppCards_>
             {apps.map(app => (
-                <button
+                <AppCard
                     key={app.short_name}
-                    className={styles.appCard}
+                    iconSrc={getIconSrc(app)}
+                    appName={app.name}
+                    appDeveloper={app.developer?.company || app.developer?.name}
+                    appVersion={app.version}
                     onClick={() => history.push(`/installed-app/${app.key}`)}
-                >
-                    <AppIcon src={getIconSrc(app)} />
-                    <div>
-                        <h2 className={styles.appCardName}>{app.name}</h2>
-                        <span className={styles.appCardMetadata}>
-                            {app.developer?.company || app.developer?.name}
-                        </span>
-                        <span className={styles.appCardMetadata}>
-                            {app.version && `Version ${app.version}`}
-                        </span>
-                    </div>
-                </button>
+                />
             ))}
-        </div>
+        </AppCards_>
     )
 }
 
