@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
 import { AppCard } from '../AppCard/AppCard'
 import { AppCards as AppCards_ } from '../AppCards/AppCards'
-import styles from './AppList.module.css'
+import styles from './AppsList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
@@ -80,7 +80,7 @@ AllApps.propTypes = {
     label: PropTypes.string.isRequired,
 }
 
-export const AppList = ({
+export const AppsList = ({
     apps,
     appsWithUpdates,
     updatesAvailableLabel,
@@ -119,7 +119,7 @@ export const AppList = ({
     )
 }
 
-AppList.propTypes = {
+AppsList.propTypes = {
     allAppsLabel: PropTypes.string.isRequired,
     searchLabel: PropTypes.string.isRequired,
     updatesAvailableLabel: PropTypes.string.isRequired,
