@@ -5,7 +5,6 @@ import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails'
-import { coreApps } from '../../core-apps'
 
 const query = {
     appHubApp: {

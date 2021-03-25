@@ -3,8 +3,15 @@ import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { InputField, Pagination } from '@dhis2/ui'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDebouncedCallback } from 'use-debounce'
+import {
+    useQueryParams,
+    StringParam,
+    NumberParam,
+    withDefault,
+} from 'use-query-params'
 import { AppCard } from '../../components/AppCard/AppCard'
 import { AppCards as AppCards_ } from '../../components/AppCards/AppCards'
 import { getLatestVersion } from '../../get-latest-version'
@@ -46,23 +53,32 @@ AppCards.propTypes = {
     apps: PropTypes.array.isRequired,
 }
 
-const SearchFilter = ({ onQueryChange }) => {
-    return (
-        <InputField
-            className={styles.searchField}
-            placeholder={i18n.t('Search AppHub apps')}
-            onChange={onQueryChange}
-            type="search"
-        />
-    )
+const SearchFilter = ({ query, onQueryChange }) => (
+    <InputField
+        className={styles.searchField}
+        placeholder={i18n.t('Search AppHub apps')}
+        value={query}
+        onChange={({ value }) => onQueryChange(value)}
+        type="search"
+    />
+)
+
+SearchFilter.propTypes = {
+    onQueryChange: PropTypes.func.isRequired,
+    query: PropTypes.string,
 }
 
-const AppsList = ({ apps, onQueryChange, pager, onPageChange }) => {
-    // TODO: Add search filter and `onQueryChange`
-
+const AppsList = ({ apps, pager, onPageChange }) => {
+    if (apps.length === 0) {
+        return (
+            <>
+                <h1 className={styles.header}>{i18n.t('No apps found')}</h1>
+                <p>No apps match your criteria</p>
+            </>
+        )
+    }
     return (
         <>
-            <SearchFilter onQueryChange={onQueryChange} />
             <AppCards apps={apps} />
             <div className={styles.paginationWrapper}>
                 <Pagination
@@ -82,9 +98,29 @@ AppsList.propTypes = {
 }
 
 export const AppHub = () => {
-    const { loading, error, data, refetch } = useDataQuery(query)
-    const handleQueryChange = query => refetch({ query })
-    const handlePageChange = page => refetch({ page })
+    const [queryParams, setQueryParams] = useQueryParams({
+        query: StringParam,
+        page: withDefault(NumberParam, 1),
+    })
+    const { loading, error, data, called, refetch } = useDataQuery(query, {
+        lazy: true,
+    })
+    const debouncedRefetch = useDebouncedCallback(
+        params => refetch(params),
+        300,
+        {
+            leading: true,
+        }
+    )
+    useEffect(() => {
+        debouncedRefetch(queryParams)
+    }, [queryParams.query, queryParams.page])
+    const handleQueryChange = query => {
+        setQueryParams({ query, page: 1 }, 'replace')
+    }
+    const handlePageChange = page => {
+        setQueryParams({ page })
+    }
 
     if (error) {
         return (
@@ -99,20 +135,23 @@ export const AppHub = () => {
         )
     }
 
-    if (loading) {
-        return (
-            <CenteredContent>
-                <CircularLoader />
-            </CenteredContent>
-        )
-    }
-
     return (
-        <AppsList
-            apps={data.appHub.result}
-            pager={data.appHub.pager}
-            onQueryChange={handleQueryChange}
-            onPageChange={handlePageChange}
-        />
+        <>
+            <SearchFilter
+                query={queryParams.query}
+                onQueryChange={handleQueryChange}
+            />
+            {!called || loading ? (
+                <CenteredContent>
+                    <CircularLoader />
+                </CenteredContent>
+            ) : (
+                <AppsList
+                    apps={data.appHub.result}
+                    pager={data.appHub.pager}
+                    onPageChange={handlePageChange}
+                />
+            )}
+        </>
     )
 }

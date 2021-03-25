@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-24T22:33:00.378Z\n"
-"PO-Revision-Date: 2021-03-24T22:33:00.378Z\n"
+"POT-Creation-Date: 2021-03-24T23:49:58.761Z\n"
+"PO-Revision-Date: 2021-03-24T23:49:58.761Z\n"
 
 msgid "App uninstalled successfully"
 msgstr ""
@@ -15,6 +15,9 @@ msgid "Failed to uninstall app: {{errorMessage}}"
 msgstr ""
 
 msgid "Update to latest version"
+msgstr ""
+
+msgid "Install"
 msgstr ""
 
 msgid "{{channel}} release {{version}}"
@@ -35,7 +38,7 @@ msgstr ""
 msgid "First published {{relativeTime}}"
 msgstr ""
 
-msgid "by {{developer}}"
+msgid "by {{- developer}}"
 msgstr ""
 
 msgid "About this app"
@@ -65,9 +68,6 @@ msgstr ""
 msgid "Installed"
 msgstr ""
 
-msgid "Install"
-msgstr ""
-
 msgid "Download"
 msgstr ""
 
@@ -75,6 +75,9 @@ msgid "App installed successfully"
 msgstr ""
 
 msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
+
+msgid "There are no compatible versions matching your criteria"
 msgstr ""
 
 msgid "Stable"
@@ -152,7 +155,7 @@ msgid ""
 msgstr ""
 
 msgctxt "developer of application"
-msgid "by {{developer}}"
+msgid "by {{- developer}}"
 msgstr ""
 
 msgctxt "AppHub release channel"
