@@ -13,17 +13,19 @@ const debug = Debug('app-management-app:frontend:client')
 
 const actions = {
     // App management actions
-    installApp: Action.create('Install App'),
-    uninstallApp: Action.create('Uninstall App'),
-    refreshApps: Action.create('Refresh Apps'),
-    appInstalled: Action.create('An app was installed'),
+    installApp: Action.create(i18n.t('Install App')),
+    uninstallApp: Action.create(i18n.t('Uninstall App')),
+    refreshApps: Action.create(i18n.t('Refresh Apps')),
+    appInstalled: Action.create(i18n.t('An app was installed')),
 
     // App store actions
-    loadAppHub: Action.create('Load DHIS2 App Hub'),
-    installAppVersion: Action.create('Install App Version from DHIS2 App Hub'),
+    loadAppHub: Action.create(i18n.t('Load DHIS2 App Hub')),
+    installAppVersion: Action.create(
+        i18n.t('Install App Version from DHIS2 App Hub')
+    ),
 
     // Snackbar
-    showSnackbarMessage: Action.create('Show Snackbar message'),
+    showSnackbarMessage: Action.create(i18n.t('Show Snackbar message')),
 }
 
 /*
