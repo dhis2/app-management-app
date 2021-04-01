@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"POT-Creation-Date: 2021-03-22T15:30:51.849Z\n"
 "PO-Revision-Date: 2020-12-22 22:10+0000\n"
 "Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -15,6 +15,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Install App"
+msgstr ""
+
+msgid "Uninstall App"
+msgstr ""
+
+msgid "Refresh Apps"
+msgstr ""
+
+msgid "An app was installed"
+msgstr ""
+
+msgid "Load DHIS2 App Hub"
+msgstr ""
+
+msgid "Install App Version from DHIS2 App Hub"
+msgstr ""
+
+msgid "Show Snackbar message"
+msgstr ""
 
 msgid "App installed successfully"
 msgstr "Ứng dụng đã cài đặt THÀNH CÔNG"
@@ -63,6 +84,30 @@ msgstr "Bởi"
 
 msgid "Install"
 msgstr "Cài đặt"
+
+msgid "Installed Standard Apps"
+msgstr ""
+
+msgid "Installed Dashboard Apps"
+msgstr ""
+
+msgid "Installed Tracker Dashboard Apps"
+msgstr ""
+
+msgid "Installed Resource Apps"
+msgstr ""
+
+msgid "There are no standard apps installed."
+msgstr ""
+
+msgid "There are no dashboard apps installed."
+msgstr ""
+
+msgid "There are no tracker dashboard apps installed."
+msgstr ""
+
+msgid "There are no resource apps installed"
+msgstr ""
 
 msgid "CORE APP"
 msgstr "ỨNG DỤNG CORE"
