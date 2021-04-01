@@ -1,3 +1,10 @@
+## [28.2.6](https://github.com/dhis2/app-management-app/compare/v28.2.5...v28.2.6) (2021-04-01)
+
+
+### Bug Fixes
+
+* translate headers, menu actions, searchbar, and 'missing' messages ([#199](https://github.com/dhis2/app-management-app/issues/199)) ([bc58ad2](https://github.com/dhis2/app-management-app/commit/bc58ad2580965635e352d06b8bedc8202f13e37b))
+
 ## [28.2.5](https://github.com/dhis2/app-management-app/compare/v28.2.4...v28.2.5) (2021-03-11)
 
 
