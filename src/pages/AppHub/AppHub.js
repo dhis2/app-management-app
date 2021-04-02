@@ -5,7 +5,7 @@ import { InputField, Pagination } from '@dhis2/ui'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useDebouncedCallback } from 'use-debounce'
+import { useDebounce } from 'use-debounce'
 import {
     useQueryParams,
     StringParam,
@@ -99,22 +99,16 @@ AppsList.propTypes = {
 
 export const AppHub = () => {
     const [queryParams, setQueryParams] = useQueryParams({
-        query: StringParam,
+        query: withDefault(StringParam, ''),
         page: withDefault(NumberParam, 1),
     })
+    const [debouncedQuery] = useDebounce(queryParams.query, 300)
     const { loading, error, data, called, refetch } = useDataQuery(query, {
         lazy: true,
     })
-    const debouncedRefetch = useDebouncedCallback(
-        params => refetch(params),
-        300,
-        {
-            leading: true,
-        }
-    )
     useEffect(() => {
-        debouncedRefetch(queryParams)
-    }, [queryParams.query, queryParams.page])
+        refetch(queryParams)
+    }, [debouncedQuery, queryParams.page])
     const handleQueryChange = query => {
         setQueryParams({ query, page: 1 }, 'replace')
     }
