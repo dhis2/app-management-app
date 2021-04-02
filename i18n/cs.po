@@ -19,19 +19,19 @@ msgid "Install App"
 msgstr ""
 
 msgid "Uninstall App"
-msgstr ""
+msgstr "Odinstalovat aplikaci"
 
 msgid "Refresh Apps"
 msgstr ""
 
 msgid "An app was installed"
-msgstr ""
+msgstr "Aplikace byla nainstalována"
 
 msgid "Load DHIS2 App Hub"
 msgstr ""
 
 msgid "Install App Version from DHIS2 App Hub"
-msgstr ""
+msgstr "Nainstalovat verzi aplikace z DHIS2 App Hub"
 
 msgid "Show Snackbar message"
 msgstr ""
@@ -88,10 +88,10 @@ msgid "Installed Standard Apps"
 msgstr ""
 
 msgid "Installed Dashboard Apps"
-msgstr ""
+msgstr "Nainstalované aplikace na Ovládacím panelu"
 
 msgid "Installed Tracker Dashboard Apps"
-msgstr ""
+msgstr "Nainstalované aplikace Trasovače na Ovládacím panelu"
 
 msgid "Installed Resource Apps"
 msgstr ""
