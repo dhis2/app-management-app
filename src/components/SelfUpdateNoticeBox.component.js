@@ -5,31 +5,11 @@ import { NoticeBox, Button } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import actions from '../actions'
+import { getTargetVersion } from '../utils/versions'
 
 const currentVersion = __VERSION__
 const appManagementAppOrg = 'DHIS2'
 const appManagementAppName = 'App Management'
-
-const parseVersion = versionString => versionString.split('.').map(Number)
-const needsUpdate = (current, candidate) => {
-    const currentVersion = parseVersion(current)
-    const candidateVersion = parseVersion(candidate)
-
-    return currentVersion.some((v, i) => v < candidateVersion[i])
-}
-
-const getTargetVersion = (current, versions) => {
-    if (!versions) return null
-
-    let targetVersion
-    versions.forEach(candidate => {
-        if (needsUpdate(targetVersion?.version || current, candidate.version)) {
-            targetVersion = candidate
-        }
-    })
-
-    return targetVersion
-}
 
 export const SelfUpdateNoticeBox = ({ appHub }) => {
     if (!appHub.apps) return null
