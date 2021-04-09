@@ -1,5 +1,5 @@
 const pkg = require('../package.json')
-const version = pkg.version
+const cfg = require('../d2.config.js')
 
 module.exports = {
     plugins: [
@@ -11,9 +11,16 @@ module.exports = {
                         identifierName: '__VERSION__',
                         replacement: {
                             type: 'stringLiteral',
-                            value: version,
+                            value: pkg.version,
                         },
                     },
+                    {
+                        identifierName: '__APP_HUB_ID__',
+                        replacement: {
+                            type: 'stringLiteral',
+                            value: cfg.id || '',
+                        },
+                    }
                 ],
             },
         ],

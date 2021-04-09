@@ -1,4 +1,4 @@
-/* global __VERSION__ */
+/* global __VERSION__,__APP_HUB_ID__ */
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -6,39 +6,17 @@ import { NoticeBox, Button } from '@dhis2/ui'
 import i18n from '@dhis2/d2-i18n'
 
 import actions from '../actions'
+import { getTargetVersion } from '../utils/versions'
 
 const currentVersion = __VERSION__
-const appManagementAppOrg = 'DHIS2'
-const appManagementAppName = 'App Management'
-
-const parseVersion = versionString => versionString.split('.').map(Number)
-const needsUpdate = (current, candidate) => {
-    const currentVersion = parseVersion(current)
-    const candidateVersion = parseVersion(candidate)
-
-    return currentVersion.some((v, i) => v < candidateVersion[i])
-}
-
-const getTargetVersion = (current, versions) => {
-    if (!versions) return null
-
-    let targetVersion
-    versions.forEach(candidate => {
-        if (needsUpdate(targetVersion?.version || current, candidate.version)) {
-            targetVersion = candidate
-        }
-    })
-
-    return targetVersion
-}
+const appManagementAppId = __APP_HUB_ID__
 
 export const SelfUpdateNoticeBox = ({ appHub }) => {
     if (!appHub.apps) return null
 
+    // TODO: Fetch app management app from App Hub directly (by id)
     const appManagementApp = appHub.apps.find(
-        app =>
-            app.developer.organisation === appManagementAppOrg &&
-            app.name === appManagementAppName
+        app => app.id === appManagementAppId
     )
 
     const targetVersion = getTargetVersion(
