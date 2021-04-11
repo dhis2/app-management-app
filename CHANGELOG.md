@@ -1,3 +1,10 @@
+## [28.2.10](https://github.com/dhis2/app-management-app/compare/v28.2.9...v28.2.10) (2021-04-11)
+
+
+### Bug Fixes
+
+* use app hub id instead of name and org for update matching [DHIS2-10859] ([#218](https://github.com/dhis2/app-management-app/issues/218)) ([1417a84](https://github.com/dhis2/app-management-app/commit/1417a84f2b8c981a8f527be5184245cb9823afe0))
+
 ## [28.2.9](https://github.com/dhis2/app-management-app/compare/v28.2.8...v28.2.9) (2021-04-08)
 
 
