@@ -1,13 +1,14 @@
 # 
 # Translators:
 # Viktor Varland <viktor@dhis2.org>, 2020
+# Yayra Gomado <ygomado@hispwca.org>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2020-02-21T13:01:54.731Z\n"
 "PO-Revision-Date: 2020-02-28 15:01+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2020\n"
+"Last-Translator: Yayra Gomado <ygomado@hispwca.org>, 2021\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,10 +26,11 @@ msgid "App removed successfully"
 msgstr "Suppression de l'appli réussie"
 
 msgid "Installing app from the app hub..."
-msgstr ""
+msgstr "Installation de l'application à partir du hub d'applications ..."
 
 msgid "Failed to install an app from the app hub"
 msgstr ""
+"Échec de l'installation d'une application à partir du hub d'applications"
 
 msgid "Uploading..."
 msgstr "Téléchargement en cours..."
@@ -55,7 +57,7 @@ msgid "Resource Apps"
 msgstr "Applis Ressources"
 
 msgid "App Hub"
-msgstr ""
+msgstr "Hub d'applications"
 
 msgid "By"
 msgstr "Par"
