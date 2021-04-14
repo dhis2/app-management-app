@@ -17,7 +17,11 @@ const query = {
     // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
     // that instead
     appHub: {
-        resource: 'appHub/v1/apps',
+        resource: 'appHub/v2/apps',
+        params: ({ dhis_version }) => ({
+            paging: false,
+            dhis_version,
+        }),
     },
     modules: {
         resource: 'action::menu/getModules',
@@ -25,8 +29,12 @@ const query = {
 }
 
 export const CoreApps = () => {
-    const { baseUrl } = useConfig()
-    const { loading, error, data } = useDataQuery(query)
+    const { baseUrl, systemInfo } = useConfig()
+    const { loading, error, data } = useDataQuery(query, {
+        variables: {
+            dhis_version: systemInfo.version,
+        },
+    })
 
     if (error) {
         return (

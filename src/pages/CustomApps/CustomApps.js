@@ -1,4 +1,4 @@
-import { useDataQuery } from '@dhis2/app-runtime'
+import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
@@ -16,12 +16,21 @@ const query = {
     // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
     // that instead
     appHub: {
-        resource: 'appHub/v1/apps',
+        resource: 'appHub/v2/apps',
+        params: ({ dhis_version }) => ({
+            paging: false,
+            dhis_version,
+        }),
     },
 }
 
 export const CustomApps = () => {
-    const { loading, error, data } = useDataQuery(query)
+    const { systemInfo } = useConfig()
+    const { loading, error, data } = useDataQuery(query, {
+        variables: {
+            dhis_version: systemInfo.version,
+        },
+    })
 
     if (error) {
         return (

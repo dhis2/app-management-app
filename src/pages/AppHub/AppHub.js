@@ -1,4 +1,4 @@
-import { useDataQuery } from '@dhis2/app-runtime'
+import { useConfig, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { InputField, Pagination } from '@dhis2/ui'
@@ -98,6 +98,7 @@ AppsList.propTypes = {
 }
 
 export const AppHub = () => {
+    const { systemInfo } = useConfig()
     const [queryParams, setQueryParams] = useQueryParams({
         query: withDefault(StringParam, ''),
         page: withDefault(NumberParam, 1),
@@ -105,6 +106,9 @@ export const AppHub = () => {
     const [debouncedQuery] = useDebounce(queryParams.query, 300)
     const { loading, error, data, called, refetch } = useDataQuery(query, {
         lazy: true,
+        variables: {
+            dhis_version: systemInfo.version,
+        },
     })
     useEffect(() => {
         refetch(queryParams)
