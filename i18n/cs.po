@@ -16,25 +16,25 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 msgid "Install App"
-msgstr ""
+msgstr "Nainstalovat aplikaci"
 
 msgid "Uninstall App"
 msgstr "Odinstalovat aplikaci"
 
 msgid "Refresh Apps"
-msgstr ""
+msgstr "Obnovit aplikace"
 
 msgid "An app was installed"
 msgstr "Aplikace byla nainstalována"
 
 msgid "Load DHIS2 App Hub"
-msgstr ""
+msgstr "Načíst DHIS2 App Hub"
 
 msgid "Install App Version from DHIS2 App Hub"
 msgstr "Nainstalovat verzi aplikace z DHIS2 App Hub"
 
 msgid "Show Snackbar message"
-msgstr ""
+msgstr "Zobrazit zprávu Snackbar"
 
 msgid "App installed successfully"
 msgstr "Aplikace úspěšně nainstalována"
@@ -85,7 +85,7 @@ msgid "Install"
 msgstr "Instalovat"
 
 msgid "Installed Standard Apps"
-msgstr ""
+msgstr "Nainstalované standardní aplikace"
 
 msgid "Installed Dashboard Apps"
 msgstr "Nainstalované aplikace na Ovládacím panelu"
@@ -94,19 +94,19 @@ msgid "Installed Tracker Dashboard Apps"
 msgstr "Nainstalované aplikace Trasovače na Ovládacím panelu"
 
 msgid "Installed Resource Apps"
-msgstr ""
+msgstr "Nainstalované aplikace prostředků"
 
 msgid "There are no standard apps installed."
-msgstr ""
+msgstr "Nejsou nainstalovány žádné standardní aplikace."
 
 msgid "There are no dashboard apps installed."
-msgstr ""
+msgstr "Nejsou nainstalovány žádné aplikace na ovládacím panelu."
 
 msgid "There are no tracker dashboard apps installed."
-msgstr ""
+msgstr "Nejsou nainstalovány žádné aplikace na ovládacím panelu trasovače."
 
 msgid "There are no resource apps installed"
-msgstr ""
+msgstr "Nejsou nainstalovány žádné aplikace prostředků"
 
 msgid "CORE APP"
 msgstr "ZÁKLADNÍ APLIKACE"
