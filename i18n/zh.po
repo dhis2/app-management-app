@@ -20,13 +20,13 @@ msgid "Install App"
 msgstr "安装应用"
 
 msgid "Uninstall App"
-msgstr ""
+msgstr "卸载应用"
 
 msgid "Refresh Apps"
-msgstr ""
+msgstr "刷新应用"
 
 msgid "An app was installed"
-msgstr ""
+msgstr "已安装一个应用"
 
 msgid "Load DHIS2 App Hub"
 msgstr "加载DHIS2 应用集市"
@@ -86,28 +86,28 @@ msgid "Install"
 msgstr "安装"
 
 msgid "Installed Standard Apps"
-msgstr ""
+msgstr "已安装的标准应用"
 
 msgid "Installed Dashboard Apps"
-msgstr ""
+msgstr "已安装的仪表板应用程序"
 
 msgid "Installed Tracker Dashboard Apps"
 msgstr "已安装的跟踪随访仪表板应用程序"
 
 msgid "Installed Resource Apps"
-msgstr ""
+msgstr "已安装的资源应用程序"
 
 msgid "There are no standard apps installed."
-msgstr ""
+msgstr "没有安装标准应用程序。"
 
 msgid "There are no dashboard apps installed."
-msgstr ""
+msgstr "没有安装仪表板应用程序。"
 
 msgid "There are no tracker dashboard apps installed."
 msgstr "没有安装跟踪随访仪表板应用程序。"
 
 msgid "There are no resource apps installed"
-msgstr ""
+msgstr "没有安装资源应用程序"
 
 msgid "CORE APP"
 msgstr "核心应用"
