@@ -33,7 +33,7 @@
     "dependencies": {
         "@babel/polyfill": "^7.2.5",
         "@dhis2/app-runtime": "^2.8.0",
-        "@dhis2/app-runtime-adapter-d2": "^1.0.1",
+        "@dhis2/app-runtime-adapter-d2": "^1.1.0",
         "@dhis2/d2-i18n": "^1.1.0",
         "@dhis2/ui": "^6.5.5",
         "d2": "^31.8.2",
