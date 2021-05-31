@@ -8,18 +8,17 @@ import { getLatestVersion } from '../../get-latest-version'
 import { semverGt } from '../../semver-gt'
 
 const query = {
-    coreApps: {
+    overriddenCoreApps: {
         resource: 'apps',
         params: {
-            filter: 'bundled:eq:true'
+            filter: 'bundled:eq:true',
         },
     },
-    // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
-    // that instead
-    appHub: {
+    availableCoreApps: {
         resource: 'appHub/v2/apps',
         params: ({ dhis_version }) => ({
             paging: false,
+            core: true,
             dhis_version,
         }),
     },
@@ -57,41 +56,40 @@ export const CoreApps = () => {
         )
     }
 
-    const overriddenCoreApps = data.coreApps.filter(app => app.bundled)
-    const apps = coreApps
-        .map(coreApp => {
-            const overriddenApp = overriddenCoreApps?.find(
-                a => a.short_name === coreApp.short_name
-            )
-            if (overriddenApp) {
-                return overriddenApp
-            }
+    const appsByShortName = {}
+    data.availableCoreApps.forEach(app => {
+        const shortName = coreApps.find(({ name }) => name === app.name)
+            ?.shortName
+        if (shortName) {
             const module = data.modules.modules.find(
-                m => m.name === `dhis-web-${coreApp.short_name}`
+                m => m.name === `dhis-web-${shortName}`
             )
+            const name = module?.displayName || app.name
             const iconUrl = module?.icon
             const icons = iconUrl ? { 48: iconUrl } : {}
-            const name = module?.displayName || coreApp.name
-            return {
-                ...coreApp,
-                baseUrl: `${baseUrl}/dhis-web-${coreApp.short_name}`,
+            appsByShortName[shortName] = {
+                short_name: shortName,
+                appHub: app,
+                baseUrl: `${baseUrl}/dhis-web-${shortName}`,
                 name,
                 icons,
             }
-        })
-        .map(app => ({
-            ...app,
-            appHub:
-                app.app_hub_id &&
-                data.appHub.find(({ id }) => id === app.app_hub_id),
-        }))
+        }
+    })
+    data.overriddenCoreApps.forEach(app => {
+        if (!(app.short_name in appsByShortName)) {
+            appsByShortName[app.short_name] = app
+        }
+    })
+    const apps = Object.values(appsByShortName)
     const appsWithUpdates = apps.filter(
         app =>
             app.appHub &&
-            semverGt(
-                getLatestVersion(app.appHub.versions)?.version,
-                app.version
-            )
+            (!app.version ||
+                semverGt(
+                    getLatestVersion(app.appHub.versions)?.version,
+                    app.version
+                ))
     )
 
     return (

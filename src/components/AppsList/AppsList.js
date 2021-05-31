@@ -19,6 +19,14 @@ const AppCards = ({ apps }) => {
         }
         return null
     }
+    const handleAppClick = app => {
+        if (!app.version && !app.appHub) {
+            return
+        }
+        history.push(
+            app.version ? `/installed-app/${app.key}` : `/app/${app.appHub.id}`
+        )
+    }
 
     return (
         <AppCards_>
@@ -29,7 +37,7 @@ const AppCards = ({ apps }) => {
                     appName={app.name}
                     appDeveloper={app.developer?.company || app.developer?.name}
                     appVersion={app.version}
-                    onClick={() => history.push(`/installed-app/${app.key}`)}
+                    onClick={() => handleAppClick(app)}
                 />
             ))}
         </AppCards_>
