@@ -27,12 +27,12 @@ export const ManageInstalledVersion = ({
         try {
             await installVersion(latestVersion.id)
             successAlert.show({
-                message: i18n.t('App uninstalled successfully'),
+                message: i18n.t('App updated successfully'),
             })
             onVersionInstall()
         } catch (error) {
             errorAlert.show({
-                message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
+                message: i18n.t('Failed to update app: {{errorMessage}}', {
                     errorMessage: error.message,
                     nsSeparator: null,
                 }),
