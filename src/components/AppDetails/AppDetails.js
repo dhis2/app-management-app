@@ -17,6 +17,10 @@ const ManageInstalledVersion = ({
     onVersionInstall,
     onUninstall,
 }) => {
+    // Overridden core apps have `bundled` set to true, but unlike preinstalled
+    // apps their `version` field has a value
+    const isBundled =
+        installedApp && installedApp.bundled && !installedApp.version
     const { installVersion, uninstallApp } = useApi()
     const successAlert = useAlert(({ message }) => message, { success: true })
     const errorAlert = useAlert(({ message }) => message, { critical: true })
@@ -73,7 +77,7 @@ const ManageInstalledVersion = ({
                     </span>
                 </>
             )}
-            {installedApp && !installedApp.bundled && (
+            {installedApp && !isBundled && (
                 <Button secondary onClick={handleUninstall}>
                     {i18n.t('Uninstall')}
                 </Button>
