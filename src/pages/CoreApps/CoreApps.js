@@ -57,14 +57,14 @@ export const CoreApps = () => {
         )
     }
 
-    const overridenCoreApps = data.coreApps.filter(app => app.bundled)
+    const overriddenCoreApps = data.coreApps.filter(app => app.bundled)
     const apps = coreApps
         .map(coreApp => {
-            const overridenApp = overridenCoreApps?.find(
+            const overriddenApp = overriddenCoreApps?.find(
                 a => a.short_name === coreApp.short_name
             )
-            if (overridenApp) {
-                return overridenApp
+            if (overriddenApp) {
+                return overriddenApp
             }
             const module = data.modules.modules.find(
                 m => m.name === `dhis-web-${coreApp.short_name}`
