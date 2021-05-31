@@ -1,6 +1,6 @@
 import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { Button } from '@dhis2/ui'
+import { Button, CircularLoader } from '@dhis2/ui'
 import React, { useState, useRef } from 'react'
 import { useApi } from '../../api'
 import styles from './ManualInstall.module.css'
@@ -52,9 +52,14 @@ const UploadButton = () => {
                 onClick={handleClick}
                 disabled={isUploading}
             >
-                {isUploading
-                    ? i18n.t('Uploading...')
-                    : i18n.t('Upload an app to install')}
+                {isUploading ? (
+                    <>
+                        {i18n.t('Uploading...')}
+                        <CircularLoader small />
+                    </>
+                ) : (
+                    i18n.t('Upload an app to install')
+                )}
             </Button>
         </>
     )
