@@ -54,30 +54,33 @@ ChannelCheckbox.propTypes = {
     setChannelsFilter: PropTypes.func.isRequired,
 }
 
-const Filters = ({ versions, channelsFilter, setChannelsFilter }) => {
+const ChannelsFilter = ({ versions, channelsFilter, setChannelsFilter }) => {
     const hasChannel = channel => versions.some(v => v.channel === channel)
+    const channels = Object.keys(channelToDisplayName).filter(hasChannel)
+
+    if (channels.length <= 1) {
+        return null
+    }
 
     return (
         <div className={styles.versionsFilters}>
             <h3 className={styles.sectionSubheader}>
                 {i18n.t('Channel', { context: 'AppHub release channel' })}
             </h3>
-            {Object.keys(channelToDisplayName)
-                .filter(hasChannel)
-                .map(name => (
-                    <ChannelCheckbox
-                        key={name}
-                        name={name}
-                        label={channelToDisplayName[name]}
-                        channelsFilter={channelsFilter}
-                        setChannelsFilter={setChannelsFilter}
-                    />
-                ))}
+            {channels.map(name => (
+                <ChannelCheckbox
+                    key={name}
+                    name={name}
+                    label={channelToDisplayName[name]}
+                    channelsFilter={channelsFilter}
+                    setChannelsFilter={setChannelsFilter}
+                />
+            ))}
         </div>
     )
 }
 
-Filters.propTypes = {
+ChannelsFilter.propTypes = {
     channelsFilter: PropTypes.object.isRequired,
     setChannelsFilter: PropTypes.func.isRequired,
     versions: PropTypes.array.isRequired,
@@ -183,7 +186,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
 
     return (
         <div className={styles.versionsContainer}>
-            <Filters
+            <ChannelsFilter
                 versions={versions}
                 channelsFilter={channelsFilter}
                 setChannelsFilter={setChannelsFilter}
