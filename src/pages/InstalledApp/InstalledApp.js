@@ -5,7 +5,6 @@ import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails'
-import { coreApps } from '../../core-apps'
 
 const appsQuery = {
     modules: {
@@ -49,8 +48,7 @@ export const InstalledApp = ({ match }) => {
         modules: { modules },
         installedApps,
     } = appsResponse.data
-    const coreApp = coreApps.find(app => app.key === appKey)
-    const app = installedApps.find(app => app.key === appKey) || coreApp
+    const app = installedApps.find(app => app.key === appKey)
     if (!app) {
         return (
             <NoticeBox error title={i18n.t('Error loading app')}>
@@ -60,8 +58,7 @@ export const InstalledApp = ({ match }) => {
     }
 
     const module = modules.find(app => app.name === `dhis-web-${appKey}`)
-    // If the app is a core app, then `module.displayName` should contain its translated name
-    if (coreApp && module) {
+    if (module) {
         app.name = module.displayName
     }
 
