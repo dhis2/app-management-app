@@ -5,26 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-05-31T10:57:26.807Z\n"
-"PO-Revision-Date: 2021-05-31T10:57:26.807Z\n"
-
-msgid "App uninstalled successfully"
-msgstr ""
-
-msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
-
-msgid "Update to latest version"
-msgstr ""
-
-msgid "Install"
-msgstr ""
-
-msgid "{{channel}} release {{version}}"
-msgstr ""
-
-msgid "Uninstall"
-msgstr ""
+"POT-Creation-Date: 2021-05-31T12:04:27.077Z\n"
+"PO-Revision-Date: 2021-05-31T12:04:27.077Z\n"
 
 msgid "Version {{version}} installed"
 msgstr ""
@@ -56,6 +38,36 @@ msgstr ""
 msgid "All compatible versions of this application"
 msgstr ""
 
+msgid "App updated successfully"
+msgstr ""
+
+msgid "App installed successfully"
+msgstr ""
+
+msgid "Failed to update app: {{errorMessage}}"
+msgstr ""
+
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
+
+msgid "App uninstalled successfully"
+msgstr ""
+
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr ""
+
+msgid "Update to latest version"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "{{channel}} release {{version}}"
+msgstr ""
+
+msgid "Uninstall"
+msgstr ""
+
 msgid "Channel"
 msgstr ""
 
@@ -69,12 +81,6 @@ msgid "Installed"
 msgstr ""
 
 msgid "Download"
-msgstr ""
-
-msgid "App installed successfully"
-msgstr ""
-
-msgid "Failed to install app: {{errorMessage}}"
 msgstr ""
 
 msgid "There are no compatible versions matching your criteria"

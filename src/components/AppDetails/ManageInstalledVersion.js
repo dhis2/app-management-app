@@ -19,23 +19,34 @@ export const ManageInstalledVersion = ({
     // apps their `version` field has a value
     const isBundled =
         installedApp && installedApp.bundled && !installedApp.version
+    const latestVersion = getLatestVersion(versions)
+    const canUpdate =
+        installedApp &&
+        latestVersion &&
+        semverGt(latestVersion, installedApp.version)
     const { installVersion, uninstallApp } = useApi()
     const successAlert = useAlert(({ message }) => message, { success: true })
     const errorAlert = useAlert(({ message }) => message, { critical: true })
-    const latestVersion = getLatestVersion(versions)
-    const handleUpdate = async () => {
+    const handleInstall = async () => {
         try {
             await installVersion(latestVersion.id)
             successAlert.show({
-                message: i18n.t('App uninstalled successfully'),
+                message: canUpdate
+                    ? i18n.t('App updated successfully')
+                    : i18n.t('App installed successfully'),
             })
             onVersionInstall()
         } catch (error) {
             errorAlert.show({
-                message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
-                    errorMessage: error.message,
-                    nsSeparator: null,
-                }),
+                message: canUpdate
+                    ? i18n.t('Failed to update app: {{errorMessage}}', {
+                          errorMessage: error.message,
+                          nsSeparator: null,
+                      })
+                    : i18n.t('Failed to install app: {{errorMessage}}', {
+                          errorMessage: error.message,
+                          nsSeparator: null,
+                      }),
             })
         }
     }
@@ -60,9 +71,8 @@ export const ManageInstalledVersion = ({
         <div className={styles.manageInstalledVersion}>
             {latestVersion && (
                 <>
-                    <Button primary onClick={handleUpdate}>
-                        {installedApp &&
-                        semverGt(latestVersion, installedApp.version)
+                    <Button primary onClick={handleInstall}>
+                        {canUpdate
                             ? i18n.t('Update to latest version')
                             : i18n.t('Install')}
                     </Button>
