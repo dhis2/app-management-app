@@ -1,3 +1,59 @@
+## [28.2.13](https://github.com/dhis2/app-management-app/compare/v28.2.12...v28.2.13) (2021-04-18)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([1b949c5](https://github.com/dhis2/app-management-app/commit/1b949c5f273af6b991a1e695d7b07271e5fb2bca))
+
+## [28.2.12](https://github.com/dhis2/app-management-app/compare/v28.2.11...v28.2.12) (2021-04-16)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([6988b57](https://github.com/dhis2/app-management-app/commit/6988b57364ac66eaca2a6fe94279e698e1cd3e48))
+
+## [28.2.11](https://github.com/dhis2/app-management-app/compare/v28.2.10...v28.2.11) (2021-04-12)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([dfeb8ab](https://github.com/dhis2/app-management-app/commit/dfeb8ab8a5d8e0e8702a2dabace1d3ce90a8e220))
+
+## [28.2.10](https://github.com/dhis2/app-management-app/compare/v28.2.9...v28.2.10) (2021-04-11)
+
+
+### Bug Fixes
+
+* use app hub id instead of name and org for update matching [DHIS2-10859] ([#218](https://github.com/dhis2/app-management-app/issues/218)) ([1417a84](https://github.com/dhis2/app-management-app/commit/1417a84f2b8c981a8f527be5184245cb9823afe0))
+
+## [28.2.9](https://github.com/dhis2/app-management-app/compare/v28.2.8...v28.2.9) (2021-04-08)
+
+
+### Bug Fixes
+
+* correctly compare versions to find the latest version on app hub [DHIS2-10859] ([#127](https://github.com/dhis2/app-management-app/issues/127)) ([411d813](https://github.com/dhis2/app-management-app/commit/411d8132e6534f6998f35ca203f6c6a79cb11cac))
+
+## [28.2.8](https://github.com/dhis2/app-management-app/compare/v28.2.7...v28.2.8) (2021-04-02)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([00ef7ac](https://github.com/dhis2/app-management-app/commit/00ef7ac80688d42a47faf3256db90bbcc6d5a657))
+
+## [28.2.7](https://github.com/dhis2/app-management-app/compare/v28.2.6...v28.2.7) (2021-04-01)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([301867a](https://github.com/dhis2/app-management-app/commit/301867aaa7e19b54a99a77e147308419f421c73a))
+
+## [28.2.6](https://github.com/dhis2/app-management-app/compare/v28.2.5...v28.2.6) (2021-04-01)
+
+
+### Bug Fixes
+
+* translate headers, menu actions, searchbar, and 'missing' messages ([#199](https://github.com/dhis2/app-management-app/issues/199)) ([bc58ad2](https://github.com/dhis2/app-management-app/commit/bc58ad2580965635e352d06b8bedc8202f13e37b))
+
 ## [28.2.5](https://github.com/dhis2/app-management-app/compare/v28.2.4...v28.2.5) (2021-03-11)
 
 
