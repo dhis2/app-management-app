@@ -11,7 +11,7 @@ const query = {
     coreApps: {
         resource: 'apps',
         params: {
-            bundled: true,
+            filter: 'bundled:eq:true'
         },
     },
     // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
