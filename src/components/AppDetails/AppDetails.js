@@ -11,7 +11,7 @@ import { Versions } from './Versions'
 const Metadata = ({ installedVersion, versions }) => {
     const relativeTime = datetime => moment(datetime).fromNow()
     versions = versions.sort((a, b) => a.created - b.created)
-    const latestVersion = getLatestVersion(versions)
+    const latestVersion = getLatestVersion(versions)?.version
 
     return (
         <ul className={styles.metadataList}>
@@ -21,7 +21,7 @@ const Metadata = ({ installedVersion, versions }) => {
                           version: installedVersion,
                       })
                     : i18n.t('Version {{version}}', {
-                          version: latestVersion.version,
+                          version: latestVersion,
                       })}
             </li>
             <li className={styles.metadataItem}>

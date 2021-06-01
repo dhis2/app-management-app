@@ -5,177 +5,179 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-05-31T16:43:30.605Z\n"
-"PO-Revision-Date: 2021-05-31T16:43:30.605Z\n"
+"POT-Creation-Date: 2021-06-01T07:54:16.857Z\n"
+"PO-Revision-Date: 2021-06-01T07:54:16.857Z\n"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Version {{version}} installed"
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "Version {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Last updated {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "First published {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "by {{- developer}}"
 
 msgid "About this app"
-msgstr ""
+msgstr "About this app"
 
 msgid "The developer of this application has not provided a description"
-msgstr ""
+msgstr "The developer of this application has not provided a description"
 
 msgid "Additional information"
-msgstr ""
+msgstr "Additional information"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "Screenshots"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "All compatible versions of this application"
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "App updated successfully"
 
 msgid "App installed successfully"
-msgstr ""
+msgstr "App installed successfully"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Failed to update app: {{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Failed to install app: {{errorMessage}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "App uninstalled successfully"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "Failed to uninstall app: {{errorMessage}}"
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "Update to latest version"
 
 msgid "Install"
-msgstr ""
+msgstr "Install"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{channel}} release {{version}}"
 
 msgid "Uninstall"
-msgstr ""
+msgstr "Uninstall"
 
 msgid "Channel"
-msgstr ""
+msgstr "Channel"
 
 msgid "Version"
-msgstr ""
+msgstr "Version"
 
 msgid "Upload date"
-msgstr ""
+msgstr "Upload date"
 
 msgid "Installed"
-msgstr ""
+msgstr "Installed"
 
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "There are no compatible versions matching your criteria"
 
 msgid "Stable"
-msgstr ""
+msgstr "Stable"
 
 msgid "Development"
-msgstr ""
+msgstr "Development"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
 
 msgid "No apps found"
-msgstr ""
+msgstr "No apps found"
 
 msgid "Preinstalled core apps"
-msgstr ""
+msgstr "Preinstalled core apps"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Custom apps"
 
 msgid "App Hub"
-msgstr ""
+msgstr "App Hub"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Manual install"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Search AppHub apps"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "Something went wrong whilst loading App Hub apps"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Error loading app"
 
 msgid "App not found"
-msgstr ""
+msgstr "App not found"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "Something went wrong whilst loading your core apps"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "Core apps with updates available"
 
 msgid "All core apps"
-msgstr ""
+msgstr "All core apps"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Search core apps"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr ""
+msgstr "Something went wrong whilst loading your custom apps"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "Custom apps with updates available"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "All installed custom apps"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Search installed custom apps"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "Uploading..."
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Upload an app to install"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Manually install an app"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "by {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "Channel"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "Stable"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "Development"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canary"

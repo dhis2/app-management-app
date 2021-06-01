@@ -23,7 +23,7 @@ export const ManageInstalledVersion = ({
     const canUpdate =
         installedApp &&
         latestVersion &&
-        semverGt(latestVersion, installedApp.version)
+        semverGt(latestVersion.version, installedApp.version)
     const { installVersion, uninstallApp } = useApi()
     const successAlert = useAlert(({ message }) => message, { success: true })
     const errorAlert = useAlert(({ message }) => message, { critical: true })

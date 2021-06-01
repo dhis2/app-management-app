@@ -64,6 +64,7 @@ export const InstalledApp = ({ match }) => {
 
     if (app.app_hub_id && !appHubResponse.called) {
         appHubResponse.refetch({ appHubId: app.app_hub_id })
+
         return (
             <CenteredContent>
                 <CircularLoader />
