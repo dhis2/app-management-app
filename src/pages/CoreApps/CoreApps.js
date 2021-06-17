@@ -58,22 +58,23 @@ export const CoreApps = () => {
 
     const appsByShortName = {}
     data.availableCoreApps.forEach(app => {
-        const shortName = coreApps.find(({ name }) => name === app.name)
-            ?.shortName
-        if (shortName) {
-            const module = data.modules.modules.find(
-                m => m.name === `dhis-web-${shortName}`
-            )
-            const name = module?.displayName || app.name
-            const iconUrl = module?.icon
-            const icons = iconUrl ? { 48: iconUrl } : {}
-            appsByShortName[shortName] = {
-                short_name: shortName,
-                appHub: app,
-                baseUrl: `${baseUrl}/dhis-web-${shortName}`,
-                name,
-                icons,
-            }
+        const coreApp = coreApps.find(({ name }) => name === app.name)
+        if (!coreApp) {
+            return
+        }
+        const { shortName } = coreApp
+        const module = data.modules.modules.find(
+            m => m.name === `dhis-web-${shortName}`
+        )
+        const name = module?.displayName || app.name
+        const iconUrl = module?.icon
+        const icons = iconUrl ? { 48: iconUrl } : {}
+        appsByShortName[shortName] = {
+            short_name: shortName,
+            appHub: app,
+            baseUrl: `${baseUrl}/dhis-web-${shortName}`,
+            name,
+            icons,
         }
     })
     data.overriddenCoreApps.forEach(app => {
