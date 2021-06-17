@@ -23,6 +23,7 @@ const SidebarItem = ({ label, path, exactMatch = false }) => {
         <MenuItem
             className={styles.sidebarItem}
             onClick={navigateToPath}
+            href={path}
             active={isActive}
             label={label}
         />
