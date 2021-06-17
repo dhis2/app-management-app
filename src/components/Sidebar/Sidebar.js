@@ -43,7 +43,7 @@ export const Sidebar = () => (
     <Menu>
         {showCoreApps(useConfig().serverVersion) ? (
             <SidebarItem
-                label={i18n.t('Preinstalled core apps')}
+                label={i18n.t('Core apps')}
                 path="/"
                 exactMatch={true}
             />
