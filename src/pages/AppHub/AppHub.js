@@ -73,7 +73,7 @@ const AppsList = ({ apps, pager, onPageChange }) => {
         return (
             <>
                 <h1 className={styles.header}>{i18n.t('No apps found')}</h1>
-                <p>No apps match your criteria</p>
+                <p>{i18n.t('No apps match your criteria')}</p>
             </>
         )
     }
