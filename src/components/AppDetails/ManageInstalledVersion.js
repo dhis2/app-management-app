@@ -20,6 +20,9 @@ export const ManageInstalledVersion = ({
     const isBundled =
         installedApp && installedApp.bundled && !installedApp.version
     const latestVersion = getLatestVersion(versions)
+    const canInstall =
+        latestVersion && latestVersion.version !== installedApp?.version
+    const canUninstall = installedApp && !isBundled
     const canUpdate =
         installedApp &&
         latestVersion &&
@@ -69,7 +72,7 @@ export const ManageInstalledVersion = ({
 
     return (
         <div className={styles.manageInstalledVersion}>
-            {latestVersion && (
+            {canInstall && (
                 <>
                     <Button primary onClick={handleInstall}>
                         {canUpdate
@@ -85,7 +88,7 @@ export const ManageInstalledVersion = ({
                     </span>
                 </>
             )}
-            {installedApp && !isBundled && (
+            {canUninstall && (
                 <Button secondary onClick={handleUninstall}>
                     {i18n.t('Uninstall v{{appVersion}}', {
                         appVersion: installedApp.version,
