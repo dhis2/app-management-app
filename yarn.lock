@@ -1540,17 +1540,17 @@
   dependencies:
     prop-types "^15"
 
-"@dhis2/ui-constants@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-constants/-/ui-constants-6.7.0.tgz#f2719c29fc989467eecc5a4b1f60402014b7d887"
-  integrity sha512-LGsLLhXUji1Ltbu+Ez/2fdCx63XfWuxVKmUeojvCCBA4paERPA6+ZyORe6pMJrUJnwf0gOoqHtZbEXX+7RVLvQ==
+"@dhis2/ui-constants@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-constants/-/ui-constants-6.9.2.tgz#ede26c1eaa1e43ec67cb5e34fb099ff25ae14e2b"
+  integrity sha512-PWlEe33IYHLB6rbfna08D2OMgh732Ut1yBxYuZV7ijL8tdE3L1H+ppNwTSBpqBNfanfHII/YGIDR2un8dW2aHA==
   dependencies:
     "@dhis2/prop-types" "^1.6.4"
 
-"@dhis2/ui-core@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-6.7.0.tgz#47eb59aef5efeb0dcc344bb44d7330f4e7532942"
-  integrity sha512-BLyyinW0sz020v9tJcVZLKiUXYE0/kutDzctTRiRkiPA9Rmc8uOcwgsQgUUYigLCwle4YWh3P11Rxev5Lj7CnA==
+"@dhis2/ui-core@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-core/-/ui-core-6.9.2.tgz#f433081385f8d3303679b029a3e9a1864c52f38a"
+  integrity sha512-UhHSXlW24PUgwxkTVAtRXvBzMXyOfQQhWPBkpX5/FoXT1R9I7UiLN/T9xH4U4G64C4k1cwqWDCu3JYHC+/LwDg==
   dependencies:
     "@dhis2/prop-types" "^1.6.4"
     "@popperjs/core" "^2.9.2"
@@ -1558,41 +1558,41 @@
     react-popper "^2.2.5"
     resize-observer-polyfill "^1.5.1"
 
-"@dhis2/ui-forms@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-forms/-/ui-forms-6.7.0.tgz#e410f63be1ec391c50f069a76feb167d7147c5a7"
-  integrity sha512-lwTip0aJNaapBAFeg0I7xvd9vDV21nmESIOgPY3b3x1Q7hqg+kPFdcZvpAW5O7N+L8+uDiPeFELRAqxNEMjXxg==
+"@dhis2/ui-forms@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-forms/-/ui-forms-6.9.2.tgz#661bebe87584af84eb56c62e9958c88c77467583"
+  integrity sha512-+61ER5mu3J/arid2j096b8reJrYfNtNB9S4bUVls+PMykzkhmkhE7kZFOEDTJjntGSkRrStqD6XXdB5fSkmKpQ==
   dependencies:
     "@dhis2/prop-types" "^1.6.4"
     classnames "^2.3.1"
     final-form "^4.20.2"
     react-final-form "^6.5.3"
 
-"@dhis2/ui-icons@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-icons/-/ui-icons-6.7.0.tgz#8d8cb4defc74031102dc9b1e0f1dae1d6df96f16"
-  integrity sha512-EuX9lDlYIdj2Alm1HBOgukExT+qa8xZJrfQjg6lLwoHbAJvJ9F2sb1iqB6Qf0ozvDD2f6ZtJohx45ko6x2EeQg==
+"@dhis2/ui-icons@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-icons/-/ui-icons-6.9.2.tgz#d0750a4a282b2e654851311919e0b2634b9a7e2a"
+  integrity sha512-A8lbJZH+L7GAKNOvEJAmCn3aOxdKrxhTVE7JBs2N6I0Z+jh3aPwKtTynwWVERPIMOi/Pfx0KvVU9zOQvGEU8Mg==
   dependencies:
     "@dhis2/prop-types" "^1.6.4"
 
-"@dhis2/ui-widgets@6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui-widgets/-/ui-widgets-6.7.0.tgz#464a00579d3ca0b60afeea3c741a7bdc677ddf18"
-  integrity sha512-twCk9tzCmpONctKSgOXVOb2CSkxgFI3n8cE9/Dfknv0brdrVCnUiMKcxgUP+ob7sypB0+/PHwcRFU13VG0V1Ag==
+"@dhis2/ui-widgets@6.9.2":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui-widgets/-/ui-widgets-6.9.2.tgz#46d050a611ee9fb236fc23f897e556a5fe4eb0f5"
+  integrity sha512-A2GzE7MUCGhd+MKB6l17hRr1cfq6D/UGdjhUY8+5CeZ13AN2s3Y7qtUdC7bjitipDRYN6no9RwLoYXSK6/ctCw==
   dependencies:
     "@dhis2/prop-types" "^1.6.4"
     classnames "^2.3.1"
 
-"@dhis2/ui@^6.5.3", "@dhis2/ui@^6.5.5":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@dhis2/ui/-/ui-6.7.0.tgz#ba4b7655ff3a45f764801d6c57624d408e742c22"
-  integrity sha512-PbYqohnPVj67Sx1kynA4sBHkix2gKg0rRcWLR2peRxaTcDjgxEPFWz7GflRKABF9NWtMhmXMDSnltDtIJuyNng==
+"@dhis2/ui@^6.5.3", "@dhis2/ui@^6.9.0":
+  version "6.9.2"
+  resolved "https://registry.yarnpkg.com/@dhis2/ui/-/ui-6.9.2.tgz#d55034750d2c52ce440581b165455170c6ca2cd8"
+  integrity sha512-ZqvsoZU1O7ZD+ejd8w9B1YeLhbyxmBc4Leca769Htq6uFzFGAWzQZpmavRjJlRPIOD9GeFKH/Z5Yo4ikAT4RKg==
   dependencies:
-    "@dhis2/ui-constants" "6.7.0"
-    "@dhis2/ui-core" "6.7.0"
-    "@dhis2/ui-forms" "6.7.0"
-    "@dhis2/ui-icons" "6.7.0"
-    "@dhis2/ui-widgets" "6.7.0"
+    "@dhis2/ui-constants" "6.9.2"
+    "@dhis2/ui-core" "6.9.2"
+    "@dhis2/ui-forms" "6.9.2"
+    "@dhis2/ui-icons" "6.9.2"
+    "@dhis2/ui-widgets" "6.9.2"
 
 "@eslint/eslintrc@^0.4.1":
   version "0.4.1"
