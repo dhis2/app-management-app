@@ -87,7 +87,9 @@ export const ManageInstalledVersion = ({
             )}
             {installedApp && !isBundled && (
                 <Button secondary onClick={handleUninstall}>
-                    {i18n.t('Uninstall')}
+                    {i18n.t('Uninstall v{{appVersion}}', {
+                        appVersion: installedApp.version,
+                    })}
                 </Button>
             )}
         </div>
