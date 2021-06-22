@@ -1,0 +1,16 @@
+.header {
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: var(--spacers-dp24);
+    margin-bottom: var(--spacers-dp16);
+}
+
+.searchField {
+    max-width: 420px;
+    margin-bottom: var(--spacers-dp24);
+}
+
+.paginationWrapper {
+    max-width: 992px;
+    margin: var(--spacers-dp24) 0;
+}

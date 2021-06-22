@@ -1,0 +1,22 @@
+.container {
+    display: grid;
+    height: 100%;
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 224px auto;
+    color: var(--colors-grey900);
+}
+
+.sidebar {
+    grid-area: sidebar;
+    padding-top: var(--spacers-dp4);
+    height: 100%;
+    background: var(--colors-grey200);
+    border-right: 1px solid var(--colors-grey400);
+}
+
+.content {
+    position: relative;
+    grid-area: main;
+    padding: var(--spacers-dp16);
+    background: var(--colors-grey100);
+}

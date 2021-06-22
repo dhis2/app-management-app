@@ -5,107 +5,182 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-03-22T15:30:51.849Z\n"
-"PO-Revision-Date: 2021-03-22T15:30:51.849Z\n"
+"POT-Creation-Date: 2021-06-18T12:41:40.481Z\n"
+"PO-Revision-Date: 2021-06-18T12:41:40.481Z\n"
 
-msgid "Install App"
-msgstr ""
+msgid "Version {{version}} installed"
+msgstr "Version {{version}} installed"
 
-msgid "Uninstall App"
-msgstr ""
+msgid "Version {{version}}"
+msgstr "Version {{version}}"
 
-msgid "Refresh Apps"
-msgstr ""
+msgid "Last updated {{relativeTime}}"
+msgstr "Last updated {{relativeTime}}"
 
-msgid "An app was installed"
-msgstr ""
+msgid "First published {{relativeTime}}"
+msgstr "First published {{relativeTime}}"
 
-msgid "Load DHIS2 App Hub"
-msgstr ""
+msgid "by {{- developer}}"
+msgstr "by {{- developer}}"
 
-msgid "Install App Version from DHIS2 App Hub"
-msgstr ""
+msgid "About this app"
+msgstr "About this app"
 
-msgid "Show Snackbar message"
-msgstr ""
+msgid "The developer of this application has not provided a description"
+msgstr "The developer of this application has not provided a description"
+
+msgid "Additional information"
+msgstr "Additional information"
+
+msgid "Screenshots"
+msgstr "Screenshots"
+
+msgid "All compatible versions of this application"
+msgstr "All compatible versions of this application"
+
+msgid "App updated successfully"
+msgstr "App updated successfully"
 
 msgid "App installed successfully"
-msgstr ""
+msgstr "App installed successfully"
 
-msgid "Failed to install app"
-msgstr ""
+msgid "Failed to update app: {{errorMessage}}"
+msgstr "Failed to update app: {{errorMessage}}"
 
-msgid "App removed successfully"
-msgstr ""
+msgid "Failed to install app: {{errorMessage}}"
+msgstr "Failed to install app: {{errorMessage}}"
 
-msgid "Installing app from the app hub..."
-msgstr ""
+msgid "App uninstalled successfully"
+msgstr "App uninstalled successfully"
 
-msgid "Failed to install an app from the app hub"
-msgstr ""
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr "Failed to uninstall app: {{errorMessage}}"
 
-msgid "Uploading..."
-msgstr ""
-
-msgid "Installing..."
-msgstr ""
-
-msgid "No apps found"
-msgstr ""
-
-msgid "No installed apps matched the search term"
-msgstr ""
-
-msgid "Standard Apps"
-msgstr ""
-
-msgid "Dashboard Apps"
-msgstr ""
-
-msgid "Tracker Dashboard Apps"
-msgstr ""
-
-msgid "Resource Apps"
-msgstr ""
-
-msgid "App Hub"
-msgstr ""
-
-msgid "By"
-msgstr ""
+msgid "Update to latest version"
+msgstr "Update to latest version"
 
 msgid "Install"
-msgstr ""
+msgstr "Install"
 
-msgid "Installed Standard Apps"
-msgstr ""
+msgid "{{channel}} release {{version}}"
+msgstr "{{channel}} release {{version}}"
 
-msgid "Installed Dashboard Apps"
-msgstr ""
+msgid "Uninstall v{{appVersion}}"
+msgstr "Uninstall v{{appVersion}}"
 
-msgid "Installed Tracker Dashboard Apps"
-msgstr ""
+msgid "Channel"
+msgstr "Channel"
 
-msgid "Installed Resource Apps"
-msgstr ""
+msgid "Version"
+msgstr "Version"
 
-msgid "There are no standard apps installed."
-msgstr ""
+msgid "Upload date"
+msgstr "Upload date"
 
-msgid "There are no dashboard apps installed."
-msgstr ""
+msgid "Installed"
+msgstr "Installed"
 
-msgid "There are no tracker dashboard apps installed."
-msgstr ""
+msgid "Download"
+msgstr "Download"
 
-msgid "There are no resource apps installed"
-msgstr ""
+msgid "There are no compatible versions matching your criteria"
+msgstr "There are no compatible versions matching your criteria"
 
-msgid "CORE APP"
-msgstr ""
+msgid "Stable"
+msgstr "Stable"
 
-msgid "A new version of App Management is available on the App Hub"
-msgstr ""
+msgid "Development"
+msgstr "Development"
 
-msgid "Update and reload app"
+msgid "Canary"
+msgstr "Canary"
+
+msgid "No apps found"
+msgstr "No apps found"
+
+msgid "No apps match your criteria"
+msgstr "No apps match your criteria"
+
+msgid "Core apps"
+msgstr "Core apps"
+
+msgid "Custom apps"
+msgstr "Custom apps"
+
+msgid "App Hub"
+msgstr "App Hub"
+
+msgid "Manual install"
+msgstr "Manual install"
+
+msgid "Search AppHub apps"
+msgstr "Search AppHub apps"
+
+msgid "Something went wrong whilst loading App Hub apps"
+msgstr "Something went wrong whilst loading App Hub apps"
+
+msgid "Error loading app"
+msgstr "Error loading app"
+
+msgid "App not found"
+msgstr "App not found"
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr "Something went wrong whilst loading your core apps"
+
+msgid "Core apps with updates available"
+msgstr "Core apps with updates available"
+
+msgid "All core apps"
+msgstr "All core apps"
+
+msgid "Search core apps"
+msgstr "Search core apps"
+
+msgid "Something went wrong whilst loading your custom apps"
+msgstr "Something went wrong whilst loading your custom apps"
+
+msgid "Custom apps with updates available"
+msgstr "Custom apps with updates available"
+
+msgid "All installed custom apps"
+msgstr "All installed custom apps"
+
+msgid "Search installed custom apps"
+msgstr "Search installed custom apps"
+
+msgid "Uploading..."
+msgstr "Uploading..."
+
+msgid "Upload an app to install"
+msgstr "Upload an app to install"
+
+msgid "Manually install an app"
+msgstr "Manually install an app"
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
 msgstr ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
+
+msgctxt "developer of application"
+msgid "by {{- developer}}"
+msgstr "by {{- developer}}"
+
+msgctxt "AppHub release channel"
+msgid "Channel"
+msgstr "Channel"
+
+msgctxt "Name of AppHub release channel"
+msgid "Stable"
+msgstr "Stable"
+
+msgctxt "Name of AppHub release channel"
+msgid "Development"
+msgstr "Development"
+
+msgctxt "Name of AppHub release channel"
+msgid "Canary"
+msgstr "Canary"

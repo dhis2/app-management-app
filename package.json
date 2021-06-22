@@ -1,13 +1,19 @@
 {
     "name": "app-management-app",
-    "version": "31.2.0",
+    "version": "31.0.0",
     "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
     "scripts": {
         "start": "d2-app-scripts start",
         "build": "d2-app-scripts build",
         "test": "d2-app-scripts test",
-        "lint": "d2-style js check && d2-style text check",
-        "format": "d2-style js apply && d2-style text apply"
+        "lint:js": "d2-style js check",
+        "lint:text": "d2-style text check",
+        "lint:staged": "yarn lint:js --staged && yarn lint:text --staged",
+        "lint": "yarn lint:js && yarn lint:text",
+        "format:js": "d2-style js apply",
+        "format:text": "d2-style text apply",
+        "format:staged": "yarn format:js --staged && yarn format:text --staged",
+        "format": "yarn format:js && yarn format:text"
     },
     "repository": {
         "type": "git",
@@ -25,29 +31,19 @@
     },
     "homepage": "https://github.com/dhis2/app-management-app#readme",
     "devDependencies": {
-        "@dhis2/cli-app-scripts": "^6.0.0",
-        "@dhis2/cli-style": "^7.3.0",
-        "babel-plugin-minify-replace": "^0.5.0",
-        "node-sass": "^4.14.1"
+        "@dhis2/cli-app-scripts": "^6.2.0",
+        "@dhis2/cli-style": "^7.3.0"
     },
     "dependencies": {
-        "@babel/polyfill": "^7.2.5",
         "@dhis2/app-runtime": "^2.8.0",
-        "@dhis2/app-runtime-adapter-d2": "^1.0.1",
         "@dhis2/d2-i18n": "^1.1.0",
-        "@dhis2/ui": "^6.5.5",
-        "d2": "^31.8.2",
-        "d2-ui": "^29.0.35",
-        "d2-utilizr": "^0.2.16",
-        "debug": "^4.1.1",
-        "loglevel": "^1.4.1",
-        "material-design-icons-iconfont": "^4.0.5",
-        "material-ui": "^0.19.2",
-        "prop-types": "^15.7.2",
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1",
-        "rxjs": "^5.4.3",
-        "semver": "^7.3.2",
-        "susy": "^3.0.0"
+        "@dhis2/prop-types": "^2.0.3",
+        "@dhis2/ui": "^6.9.0",
+        "moment": "^2.29.0",
+        "query-string": "^6.14.1",
+        "react-router-dom": "^5.2.0",
+        "semver": "^7.3.4",
+        "use-debounce": "^6.0.0",
+        "use-query-params": "^1.2.0"
     }
 }

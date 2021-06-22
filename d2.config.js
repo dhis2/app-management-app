@@ -6,7 +6,7 @@ const config = {
     coreApp: true,
 
     entryPoints: {
-        app: './src/AppWrapper.js',
+        app: './src/App.js',
     },
 }
 
