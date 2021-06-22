@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"POT-Creation-Date: 2021-06-18T12:41:40.481Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
@@ -15,59 +15,177 @@ msgstr ""
 "Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "Version {{version}} installed"
+msgstr ""
+
+msgid "Version {{version}}"
+msgstr ""
+
+msgid "Last updated {{relativeTime}}"
+msgstr ""
+
+msgid "First published {{relativeTime}}"
+msgstr ""
+
+msgid "by {{- developer}}"
+msgstr ""
+
+msgid "About this app"
+msgstr ""
+
+msgid "The developer of this application has not provided a description"
+msgstr ""
+
+msgid "Additional information"
+msgstr ""
+
+msgid "Screenshots"
+msgstr ""
+
+msgid "All compatible versions of this application"
+msgstr ""
+
+msgid "App updated successfully"
+msgstr ""
+
 msgid "App installed successfully"
 msgstr "Applikasjonen ble installert"
 
-msgid "Failed to install app"
-msgstr "Kunne ikke installere applikasjonen"
+msgid "Failed to update app: {{errorMessage}}"
+msgstr ""
 
-msgid "App removed successfully"
-msgstr "Applikasjonen ble fjernet"
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
 
-msgid "Installing app from the app hub..."
-msgstr "Installerer applikasjon fra app hub..."
+msgid "App uninstalled successfully"
+msgstr ""
 
-msgid "Failed to install an app from the app hub"
-msgstr "Kunne ikke installere applikasjon fra app hub"
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr ""
 
-msgid "Uploading..."
-msgstr "Laster opp..."
-
-msgid "Installing..."
-msgstr "Installerer..."
-
-msgid "No apps found"
-msgstr "Ingen applikasjoner funnet"
-
-msgid "No installed apps matched the search term"
-msgstr "Ingen installerte applikasjoner samsvarte med søkeordet"
-
-msgid "Standard Apps"
-msgstr "Standardapplikasjoner"
-
-msgid "Dashboard Apps"
-msgstr "Dashbord-applikasjoner"
-
-msgid "Tracker Dashboard Apps"
-msgstr "Tracker Dashbord-applikasjoner"
-
-msgid "Resource Apps"
-msgstr "Ressurs-applikasjoner"
-
-msgid "App Hub"
-msgstr "App Hub"
-
-msgid "By"
-msgstr "Av"
+msgid "Update to latest version"
+msgstr ""
 
 msgid "Install"
 msgstr "Installer"
 
-msgid "CORE APP"
-msgstr "KJERNE-APP"
+msgid "{{channel}} release {{version}}"
+msgstr ""
 
-msgid "A new version of App Management is available on the App Hub"
-msgstr "En ny versjon av Appadministrasjon er tilgjengelig på App Hub"
+msgid "Uninstall v{{appVersion}}"
+msgstr ""
 
-msgid "Update and reload app"
-msgstr "Oppdater og last inn appen på nytt"
+msgid "Channel"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Upload date"
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "There are no compatible versions matching your criteria"
+msgstr ""
+
+msgid "Stable"
+msgstr ""
+
+msgid "Development"
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "No apps found"
+msgstr "Ingen applikasjoner funnet"
+
+msgid "No apps match your criteria"
+msgstr ""
+
+msgid "Core apps"
+msgstr ""
+
+msgid "Custom apps"
+msgstr ""
+
+msgid "App Hub"
+msgstr "App Hub"
+
+msgid "Manual install"
+msgstr ""
+
+msgid "Search AppHub apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading App Hub apps"
+msgstr ""
+
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
+msgstr ""
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading your custom apps"
+msgstr ""
+
+msgid "Custom apps with updates available"
+msgstr ""
+
+msgid "All installed custom apps"
+msgstr ""
+
+msgid "Search installed custom apps"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Laster opp..."
+
+msgid "Upload an app to install"
+msgstr ""
+
+msgid "Manually install an app"
+msgstr ""
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
+msgstr ""
+
+msgctxt "developer of application"
+msgid "by {{- developer}}"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Channel"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Stable"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Development"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Canary"
+msgstr ""

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"POT-Creation-Date: 2021-06-18T12:41:40.481Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
 "Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
@@ -15,59 +15,177 @@ msgstr ""
 "Language: uz@Cyrl\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Version {{version}} installed"
+msgstr ""
+
+msgid "Version {{version}}"
+msgstr ""
+
+msgid "Last updated {{relativeTime}}"
+msgstr ""
+
+msgid "First published {{relativeTime}}"
+msgstr ""
+
+msgid "by {{- developer}}"
+msgstr ""
+
+msgid "About this app"
+msgstr ""
+
+msgid "The developer of this application has not provided a description"
+msgstr ""
+
+msgid "Additional information"
+msgstr ""
+
+msgid "Screenshots"
+msgstr ""
+
+msgid "All compatible versions of this application"
+msgstr ""
+
+msgid "App updated successfully"
+msgstr ""
+
 msgid "App installed successfully"
 msgstr "Илова муваффақиятли ўрнатилди"
 
-msgid "Failed to install app"
-msgstr "Иловани ўрнатиш амалга ошмади"
+msgid "Failed to update app: {{errorMessage}}"
+msgstr ""
 
-msgid "App removed successfully"
-msgstr "Илова муваффақиятли ўчириб ташланди"
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
 
-msgid "Installing app from the app hub..."
-msgstr "Илова илова марказидан (hub...) дан ўрнатилмоқда"
+msgid "App uninstalled successfully"
+msgstr ""
 
-msgid "Failed to install an app from the app hub"
-msgstr "Иловани илова марказидан (hub) дан ўрнатиш амалга ошмади"
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr ""
 
-msgid "Uploading..."
-msgstr "Юкланмоқда..."
-
-msgid "Installing..."
-msgstr "Ўрнатилмоқда..."
-
-msgid "No apps found"
-msgstr "Иловалар топилмади"
-
-msgid "No installed apps matched the search term"
-msgstr "Ўрнатилган иловалар қидирув сўзига мос келмайди"
-
-msgid "Standard Apps"
-msgstr "Стандарт иловалар"
-
-msgid "Dashboard Apps"
-msgstr "Бошқарув панели иловалари"
-
-msgid "Tracker Dashboard Apps"
-msgstr "Бошқарув панели учун кузатув иловаси"
-
-msgid "Resource Apps"
-msgstr "Иловалар захираси"
-
-msgid "App Hub"
-msgstr "Илова маркази (hub)"
-
-msgid "By"
-msgstr "Томонидан"
+msgid "Update to latest version"
+msgstr ""
 
 msgid "Install"
 msgstr "Ўрнатиш"
 
-msgid "CORE APP"
-msgstr "CORE APP"
+msgid "{{channel}} release {{version}}"
+msgstr ""
 
-msgid "A new version of App Management is available on the App Hub"
-msgstr "Илова маркази (hub)да Илова Бошқаруви янги варианти мавжуд"
+msgid "Uninstall v{{appVersion}}"
+msgstr ""
 
-msgid "Update and reload app"
-msgstr "Иловани янгилаш ва қайта юклаш"
+msgid "Channel"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Upload date"
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "There are no compatible versions matching your criteria"
+msgstr ""
+
+msgid "Stable"
+msgstr ""
+
+msgid "Development"
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "No apps found"
+msgstr "Иловалар топилмади"
+
+msgid "No apps match your criteria"
+msgstr ""
+
+msgid "Core apps"
+msgstr ""
+
+msgid "Custom apps"
+msgstr ""
+
+msgid "App Hub"
+msgstr "Илова маркази (hub)"
+
+msgid "Manual install"
+msgstr ""
+
+msgid "Search AppHub apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading App Hub apps"
+msgstr ""
+
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
+msgstr ""
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading your custom apps"
+msgstr ""
+
+msgid "Custom apps with updates available"
+msgstr ""
+
+msgid "All installed custom apps"
+msgstr ""
+
+msgid "Search installed custom apps"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Юкланмоқда..."
+
+msgid "Upload an app to install"
+msgstr ""
+
+msgid "Manually install an app"
+msgstr ""
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
+msgstr ""
+
+msgctxt "developer of application"
+msgid "by {{- developer}}"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Channel"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Stable"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Development"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Canary"
+msgstr ""

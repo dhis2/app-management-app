@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"POT-Creation-Date: 2021-06-18T12:41:40.481Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Mai Nguyen <thanhmai.jica@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -16,59 +16,177 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Version {{version}} installed"
+msgstr ""
+
+msgid "Version {{version}}"
+msgstr ""
+
+msgid "Last updated {{relativeTime}}"
+msgstr ""
+
+msgid "First published {{relativeTime}}"
+msgstr ""
+
+msgid "by {{- developer}}"
+msgstr ""
+
+msgid "About this app"
+msgstr ""
+
+msgid "The developer of this application has not provided a description"
+msgstr ""
+
+msgid "Additional information"
+msgstr ""
+
+msgid "Screenshots"
+msgstr ""
+
+msgid "All compatible versions of this application"
+msgstr ""
+
+msgid "App updated successfully"
+msgstr ""
+
 msgid "App installed successfully"
 msgstr "Ứng dụng đã cài đặt THÀNH CÔNG"
 
-msgid "Failed to install app"
-msgstr "Cài đặt ứng dụng KHÔNG THÀNH CÔNG"
+msgid "Failed to update app: {{errorMessage}}"
+msgstr ""
 
-msgid "App removed successfully"
-msgstr "Gỡ bỏ ứng dụng THÀNH CÔNG"
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
 
-msgid "Installing app from the app hub..."
-msgstr "Đang cài đặt ứng dụng từ cổng ứng dụng ..."
+msgid "App uninstalled successfully"
+msgstr ""
 
-msgid "Failed to install an app from the app hub"
-msgstr "Không cài đặt được ứng dụng từ cổng ứng dụng"
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr ""
 
-msgid "Uploading..."
-msgstr "Đang tải lên"
-
-msgid "Installing..."
-msgstr "Đang cài đặt..."
-
-msgid "No apps found"
-msgstr "Không tìm thấy ứng dụng"
-
-msgid "No installed apps matched the search term"
-msgstr "Không tìm thấy ứng dụng đã cài đặt theo yêu cầu"
-
-msgid "Standard Apps"
-msgstr "Ứng dụng chuẩn"
-
-msgid "Dashboard Apps"
-msgstr "Ứng dụng bảng thông tin"
-
-msgid "Tracker Dashboard Apps"
-msgstr "Ứng dụng bảng thông tin theo dõi"
-
-msgid "Resource Apps"
-msgstr "Ứng dụng tài nguyên"
-
-msgid "App Hub"
-msgstr "Cổng ứng dụng"
-
-msgid "By"
-msgstr "Bởi"
+msgid "Update to latest version"
+msgstr ""
 
 msgid "Install"
 msgstr "Cài đặt"
 
-msgid "CORE APP"
-msgstr "ỨNG DỤNG CORE"
+msgid "{{channel}} release {{version}}"
+msgstr ""
 
-msgid "A new version of App Management is available on the App Hub"
-msgstr "Đã có phiên bản Quản lý ứng dụng mới trên cổng ứng dụng"
+msgid "Uninstall v{{appVersion}}"
+msgstr ""
 
-msgid "Update and reload app"
-msgstr "Cập nhật và tải lại ứng dụng"
+msgid "Channel"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Upload date"
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "There are no compatible versions matching your criteria"
+msgstr ""
+
+msgid "Stable"
+msgstr ""
+
+msgid "Development"
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "No apps found"
+msgstr "Không tìm thấy ứng dụng"
+
+msgid "No apps match your criteria"
+msgstr ""
+
+msgid "Core apps"
+msgstr ""
+
+msgid "Custom apps"
+msgstr ""
+
+msgid "App Hub"
+msgstr "Cổng ứng dụng"
+
+msgid "Manual install"
+msgstr ""
+
+msgid "Search AppHub apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading App Hub apps"
+msgstr ""
+
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
+msgstr ""
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading your custom apps"
+msgstr ""
+
+msgid "Custom apps with updates available"
+msgstr ""
+
+msgid "All installed custom apps"
+msgstr ""
+
+msgid "Search installed custom apps"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Đang tải lên"
+
+msgid "Upload an app to install"
+msgstr ""
+
+msgid "Manually install an app"
+msgstr ""
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
+msgstr ""
+
+msgctxt "developer of application"
+msgid "by {{- developer}}"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Channel"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Stable"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Development"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Canary"
+msgstr ""
