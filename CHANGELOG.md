@@ -1,3 +1,10 @@
+## [28.3.1](https://github.com/dhis2/app-management-app/compare/v28.3.0...v28.3.1) (2021-06-22)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([8502968](https://github.com/dhis2/app-management-app/commit/8502968f04cf60bb7ced853f1ee8217cb8eea2da))
+
 # [28.3.0](https://github.com/dhis2/app-management-app/compare/v28.2.13...v28.3.0) (2021-06-22)
 
 
