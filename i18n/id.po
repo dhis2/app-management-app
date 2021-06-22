@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2020-08-28T10:39:30.969Z\n"
+"POT-Creation-Date: 2021-06-18T12:41:40.481Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Carwoto Sa'an <carwoto@gmail.com>, 2020\n"
 "Language-Team: Indonesian (https://www.transifex.com/hisp-uio/teams/100509/id/)\n"
@@ -15,59 +15,177 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+msgid "Version {{version}} installed"
+msgstr ""
+
+msgid "Version {{version}}"
+msgstr ""
+
+msgid "Last updated {{relativeTime}}"
+msgstr ""
+
+msgid "First published {{relativeTime}}"
+msgstr ""
+
+msgid "by {{- developer}}"
+msgstr ""
+
+msgid "About this app"
+msgstr ""
+
+msgid "The developer of this application has not provided a description"
+msgstr ""
+
+msgid "Additional information"
+msgstr ""
+
+msgid "Screenshots"
+msgstr ""
+
+msgid "All compatible versions of this application"
+msgstr ""
+
+msgid "App updated successfully"
+msgstr ""
+
 msgid "App installed successfully"
 msgstr "App berhasil dipasang"
 
-msgid "Failed to install app"
-msgstr "Gagal memasang app"
+msgid "Failed to update app: {{errorMessage}}"
+msgstr ""
 
-msgid "App removed successfully"
-msgstr "App berhasil dibuang"
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
 
-msgid "Installing app from the app hub..."
-msgstr "Sedang memasang app dari app hub..."
+msgid "App uninstalled successfully"
+msgstr ""
 
-msgid "Failed to install an app from the app hub"
-msgstr "Gagal memasang app dari app hub"
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr ""
 
-msgid "Uploading..."
-msgstr "Sedang mengunggah..."
-
-msgid "Installing..."
-msgstr "Sedang memasang..."
-
-msgid "No apps found"
-msgstr "Tidak ditemukan apps"
-
-msgid "No installed apps matched the search term"
-msgstr "Tidak ada apps terpasang yang sesuai dengan pencarian"
-
-msgid "Standard Apps"
-msgstr "Standard Apps"
-
-msgid "Dashboard Apps"
-msgstr "Dashboard Apps"
-
-msgid "Tracker Dashboard Apps"
-msgstr "Tracker Dashboard Apps"
-
-msgid "Resource Apps"
-msgstr "Resource Apps"
-
-msgid "App Hub"
-msgstr "App Hub"
-
-msgid "By"
-msgstr "Oleh"
+msgid "Update to latest version"
+msgstr ""
 
 msgid "Install"
 msgstr "Pasang"
 
-msgid "CORE APP"
+msgid "{{channel}} release {{version}}"
 msgstr ""
 
-msgid "A new version of App Management is available on the App Hub"
+msgid "Uninstall v{{appVersion}}"
 msgstr ""
 
-msgid "Update and reload app"
+msgid "Channel"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Upload date"
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "There are no compatible versions matching your criteria"
+msgstr ""
+
+msgid "Stable"
+msgstr ""
+
+msgid "Development"
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "No apps found"
+msgstr "Tidak ditemukan apps"
+
+msgid "No apps match your criteria"
+msgstr ""
+
+msgid "Core apps"
+msgstr ""
+
+msgid "Custom apps"
+msgstr ""
+
+msgid "App Hub"
+msgstr "App Hub"
+
+msgid "Manual install"
+msgstr ""
+
+msgid "Search AppHub apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading App Hub apps"
+msgstr ""
+
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
+msgstr ""
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading your custom apps"
+msgstr ""
+
+msgid "Custom apps with updates available"
+msgstr ""
+
+msgid "All installed custom apps"
+msgstr ""
+
+msgid "Search installed custom apps"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Sedang mengunggah..."
+
+msgid "Upload an app to install"
+msgstr ""
+
+msgid "Manually install an app"
+msgstr ""
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
+msgstr ""
+
+msgctxt "developer of application"
+msgid "by {{- developer}}"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Channel"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Stable"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Development"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Canary"
 msgstr ""
