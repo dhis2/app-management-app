@@ -1,3 +1,16 @@
+# [100.0.0](https://github.com/dhis2/app-management-app/compare/v99.9.9...v100.0.0) (2021-06-23)
+
+
+### chore
+
+* **release:** migrate to new app version scheme ([#265](https://github.com/dhis2/app-management-app/issues/265)) ([7af89ce](https://github.com/dhis2/app-management-app/commit/7af89cef575fe3f0306561db3400c58ab64ee354)), closes [dhis2/notes#293](https://github.com/dhis2/notes/issues/293)
+
+
+### BREAKING CHANGES
+
+* **release:** App version becomes decoupled from DHIS2 versions, see
+the d2.config.js or App Hub for DHIS2 version compatibility.
+
 ## [28.3.1](https://github.com/dhis2/app-management-app/compare/v28.3.0...v28.3.1) (2021-06-22)
 
 
