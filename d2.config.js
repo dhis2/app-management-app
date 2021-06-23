@@ -5,6 +5,8 @@ const config = {
     title: 'App Management',
     coreApp: true,
 
+    minDHIS2Version: '2.37',
+
     entryPoints: {
         app: './src/App.js',
     },
