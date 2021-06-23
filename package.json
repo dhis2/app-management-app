@@ -32,7 +32,7 @@
     "homepage": "https://github.com/dhis2/app-management-app#readme",
     "devDependencies": {
         "@dhis2/cli-app-scripts": "7.0.0",
-        "@dhis2/cli-style": "^7.3.0"
+        "@dhis2/cli-style": "^9.0.1"
     },
     "dependencies": {
         "@dhis2/app-runtime": "^2.8.0",
