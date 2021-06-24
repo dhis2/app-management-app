@@ -1,13 +1,13 @@
 # 
 # Translators:
-# Karoline Tufte Lien <karoline@dhis2.org>, 2020
+# Karoline Tufte Lien <karoline@dhis2.org>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-06-18T12:41:40.481Z\n"
+"POT-Creation-Date: 2021-06-23T11:27:13.375Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2020\n"
+"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2021\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/hisp-uio/teams/100509/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +79,7 @@ msgid "Channel"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Versjon"
 
 msgid "Upload date"
 msgstr ""
@@ -88,7 +88,7 @@ msgid "Installed"
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "Last ned"
 
 msgid "There are no compatible versions matching your criteria"
 msgstr ""
