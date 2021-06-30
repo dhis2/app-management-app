@@ -4,21 +4,13 @@ import { InputField } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
+import { getAppIconSrc } from '../../get-app-icon-src'
 import { AppCard } from '../AppCard/AppCard'
 import { AppCards as AppCards_ } from '../AppCards/AppCards'
 import styles from './AppsList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
-    const getIconSrc = app => {
-        const iconSize = ['128', '48', '16'].find(
-            iconSize => iconSize in app.icons
-        )
-        if (iconSize) {
-            return `${app.baseUrl}/${app.icons[iconSize]}`
-        }
-        return null
-    }
     const handleAppClick = app => {
         if (!app.version && !app.appHub) {
             return
@@ -33,7 +25,7 @@ const AppCards = ({ apps }) => {
             {apps.map(app => (
                 <AppCard
                     key={app.short_name}
-                    iconSrc={getIconSrc(app)}
+                    iconSrc={getAppIconSrc(app)}
                     appName={app.name}
                     appDeveloper={app.developer?.company || app.developer?.name}
                     appVersion={app.version}
