@@ -1,3 +1,10 @@
+# [100.1.0](https://github.com/dhis2/app-management-app/compare/v100.0.1...v100.1.0) (2021-07-02)
+
+
+### Features
+
+* get app description from manifest for non App Hub apps ([05b1f49](https://github.com/dhis2/app-management-app/commit/05b1f49cd4c76eede4e01c268bab180f6026f24a))
+
 ## [100.0.1](https://github.com/dhis2/app-management-app/compare/v100.0.0...v100.0.1) (2021-06-24)
 
 
