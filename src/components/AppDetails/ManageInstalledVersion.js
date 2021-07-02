@@ -100,8 +100,8 @@ export const ManageInstalledVersion = ({
 }
 
 ManageInstalledVersion.propTypes = {
-    versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedApp: PropTypes.object,
+    versions: PropTypes.array,
     onUninstall: PropTypes.func,
 }
