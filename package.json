@@ -38,7 +38,7 @@
         "@dhis2/app-runtime": "^2.8.0",
         "@dhis2/d2-i18n": "^1.1.0",
         "@dhis2/prop-types": "^2.0.3",
-        "@dhis2/ui": "^6.9.0",
+        "@dhis2/ui": "^6.10.6",
         "moment": "^2.29.0",
         "query-string": "^6.14.1",
         "react-router-dom": "^5.2.0",
