@@ -147,7 +147,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
         ({ error }) =>
             i18n.t('Failed to install app: {{errorMessage}}', {
                 errorMessage: error.message,
-                nsSeparator: null,
+                nsSeparator: '-:-',
             }),
         { critical: true }
     )
