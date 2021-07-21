@@ -1,3 +1,10 @@
+## [100.1.2](https://github.com/dhis2/app-management-app/compare/v100.1.1...v100.1.2) (2021-07-21)
+
+
+### Bug Fixes
+
+* use '-:-' instead of null as i18n namespace separator ([8f9389b](https://github.com/dhis2/app-management-app/commit/8f9389b84e7edd122fb1d84ec35cff2a32245f48))
+
 ## [100.1.1](https://github.com/dhis2/app-management-app/compare/v100.1.0...v100.1.1) (2021-07-02)
 
 
