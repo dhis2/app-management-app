@@ -44,11 +44,11 @@ export const ManageInstalledVersion = ({
                 message: canUpdate
                     ? i18n.t('Failed to update app: {{errorMessage}}', {
                           errorMessage: error.message,
-                          nsSeparator: null,
+                          nsSeparator: '-:-',
                       })
                     : i18n.t('Failed to install app: {{errorMessage}}', {
                           errorMessage: error.message,
-                          nsSeparator: null,
+                          nsSeparator: '-:-',
                       }),
             })
         }
@@ -64,7 +64,7 @@ export const ManageInstalledVersion = ({
             errorAlert.show({
                 message: i18n.t('Failed to uninstall app: {{errorMessage}}', {
                     errorMessage: error.message,
-                    nsSeparator: null,
+                    nsSeparator: '-:-',
                 }),
             })
         }
