@@ -1,3 +1,10 @@
+# [100.2.0](https://github.com/dhis2/app-management-app/compare/v100.1.3...v100.2.0) (2021-08-04)
+
+
+### Features
+
+* show app logo on app details pages ([d7e74e9](https://github.com/dhis2/app-management-app/commit/d7e74e99788dfa2c2a1afb7a35e7d4bb7c385c89))
+
 ## [100.1.3](https://github.com/dhis2/app-management-app/compare/v100.1.2...v100.1.3) (2021-07-22)
 
 
