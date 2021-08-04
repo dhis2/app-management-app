@@ -97,6 +97,9 @@ export const AppDetails = ({
     const logo = installedApp
         ? getAppIconSrc(installedApp)
         : appHubApp.images.find(i => i.logo)?.imageUrl
+    const description = appHubApp
+        ? appHubApp.description
+        : installedApp.description
     const screenshots = appHubApp?.images
         .filter(i => !i.logo)
         .map(i => i.imageUrl)
@@ -121,22 +124,20 @@ export const AppDetails = ({
             </header>
             <Divider />
             <section className={[styles.section, styles.mainSection].join(' ')}>
-                {appHubApp && (
-                    <div>
-                        <h2 className={styles.sectionHeader}>
-                            {i18n.t('About this app')}
-                        </h2>
-                        <p>
-                            {appHubApp.description || (
-                                <em>
-                                    {i18n.t(
-                                        'The developer of this application has not provided a description'
-                                    )}
-                                </em>
-                            )}
-                        </p>
-                    </div>
-                )}
+                <div>
+                    <h2 className={styles.sectionHeader}>
+                        {i18n.t('About this app')}
+                    </h2>
+                    <p>
+                        {description || (
+                            <em>
+                                {i18n.t(
+                                    'The developer of this application has not provided a description'
+                                )}
+                            </em>
+                        )}
+                    </p>
+                </div>
                 <div>
                     <ManageInstalledVersion
                         installedApp={installedApp}

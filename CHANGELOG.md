@@ -1,3 +1,31 @@
+## [100.1.3](https://github.com/dhis2/app-management-app/compare/v100.1.2...v100.1.3) (2021-07-22)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([dd6a637](https://github.com/dhis2/app-management-app/commit/dd6a637d5f79d3911d09403f84f7c81950c3ee2e))
+
+## [100.1.2](https://github.com/dhis2/app-management-app/compare/v100.1.1...v100.1.2) (2021-07-21)
+
+
+### Bug Fixes
+
+* use '-:-' instead of null as i18n namespace separator ([8f9389b](https://github.com/dhis2/app-management-app/commit/8f9389b84e7edd122fb1d84ec35cff2a32245f48))
+
+## [100.1.1](https://github.com/dhis2/app-management-app/compare/v100.1.0...v100.1.1) (2021-07-02)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([8492c89](https://github.com/dhis2/app-management-app/commit/8492c89a6018a75ace37f9ce3f4cfd8a4ff41bb4))
+
+# [100.1.0](https://github.com/dhis2/app-management-app/compare/v100.0.1...v100.1.0) (2021-07-02)
+
+
+### Features
+
+* get app description from manifest for non App Hub apps ([05b1f49](https://github.com/dhis2/app-management-app/commit/05b1f49cd4c76eede4e01c268bab180f6026f24a))
+
 ## [100.0.1](https://github.com/dhis2/app-management-app/compare/v100.0.0...v100.0.1) (2021-06-24)
 
 

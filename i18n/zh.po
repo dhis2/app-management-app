@@ -3,13 +3,14 @@
 # 晓东 林 <13981924470@126.com>, 2020
 # phil_dhis2, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
+# easylin <lin_xd@126.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-06-23T11:27:13.375Z\n"
+"POT-Creation-Date: 2021-07-20T14:47:03.677Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2021\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2021\n"
 "Language-Team: Chinese (https://www.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,176 +19,176 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "已安装版本 {{version}}"
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "版本{{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "最后更新 {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "首次发布 {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "来自 {{- developer}}"
 
 msgid "About this app"
-msgstr ""
+msgstr "关于该应用"
 
 msgid "The developer of this application has not provided a description"
-msgstr ""
+msgstr "此应用程序的开发者尚未提供说明"
 
 msgid "Additional information"
-msgstr ""
+msgstr "附加信息"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "截图"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "此应用程序的所有兼容版本"
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "应用更新成功"
 
 msgid "App installed successfully"
 msgstr "App成功安装"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "无法更新应用：{{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "安装应用失败：{{errorMessage}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "应用卸载成功"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "卸载应用失败：{{errorMessage}}"
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "更新到最新版本"
 
 msgid "Install"
 msgstr "安装"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{channel}} 发布 {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "卸载 v{{appVersion}}"
 
 msgid "Channel"
-msgstr ""
+msgstr "通道"
 
 msgid "Version"
 msgstr "版本"
 
 msgid "Upload date"
-msgstr ""
+msgstr "上传日期"
 
 msgid "Installed"
-msgstr ""
+msgstr "已安装"
 
 msgid "Download"
 msgstr "下载"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "没有符合您条件的兼容版本"
 
 msgid "Stable"
-msgstr ""
+msgstr "稳定的"
 
 msgid "Development"
-msgstr ""
+msgstr "开发"
 
 msgid "Canary"
-msgstr ""
+msgstr "金丝雀"
 
 msgid "No apps found"
 msgstr "没有app"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "没有应用符合您的条件"
 
 msgid "Core apps"
-msgstr ""
+msgstr "核心应用"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "自定义应用"
 
 msgid "App Hub"
 msgstr "APP市场"
 
 msgid "Manual install"
-msgstr ""
+msgstr "手动安装"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "搜索 AppHub 应用"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "加载 App Hub 应用程序时出现问题"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "加载应用时出错"
 
 msgid "App not found"
-msgstr ""
+msgstr "未找到应用"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "加载核心应用程序时出现问题"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "具有可用更新的核心应用程序"
 
 msgid "All core apps"
-msgstr ""
+msgstr "所有核心应用"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "搜索核心应用"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr ""
+msgstr "加载您的自定义应用程序时出现问题"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "具有可用更新的自定义应用程序"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "所有已安装的自定义应用程序"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "搜索已安装的自定义应用程序"
 
 msgid "Uploading..."
 msgstr "上传"
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "上传要安装的应用"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "手动安装应用"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
-msgstr ""
+msgstr "已安装的应用程序可以访问您的 DHIS2 数据和元数据。在安装应用程序之前，请确保您信任该应用程序。"
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "来自 {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "通道"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "稳定的"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "开发"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "金丝雀"
