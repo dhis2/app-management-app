@@ -3,7 +3,9 @@ import { PropTypes } from '@dhis2/prop-types'
 import { Card, Divider } from '@dhis2/ui'
 import moment from 'moment'
 import React, { useState } from 'react'
+import { getAppIconSrc } from '../../get-app-icon-src'
 import { getLatestVersion } from '../../get-latest-version'
+import { AppIcon } from '../AppIcon/AppIcon'
 import styles from './AppDetails.module.css'
 import { ManageInstalledVersion } from './ManageInstalledVersion'
 import { Versions } from './Versions'
@@ -92,6 +94,9 @@ export const AppDetails = ({
     const appDeveloper = appHubApp
         ? appHubApp.developer.organisation || appHubApp.developer.name
         : installedApp.developer?.company || installedApp.developer?.name
+    const logo = installedApp
+        ? getAppIconSrc(installedApp)
+        : appHubApp.images.find(i => i.logo)?.imageUrl
     const description = appHubApp
         ? appHubApp.description
         : installedApp.description
@@ -102,15 +107,20 @@ export const AppDetails = ({
     return (
         <Card className={styles.appCard}>
             <header className={styles.header}>
-                <h1 className={styles.headerName}>{appName}</h1>
-                {appDeveloper && (
-                    <span className={styles.headerDeveloper}>
-                        {i18n.t('by {{- developer}}', {
-                            developer: appDeveloper,
-                            context: 'developer of application',
-                        })}
-                    </span>
-                )}
+                <div>
+                    <AppIcon src={logo} />
+                </div>
+                <div>
+                    <h1 className={styles.headerName}>{appName}</h1>
+                    {appDeveloper && (
+                        <span className={styles.headerDeveloper}>
+                            {i18n.t('by {{- developer}}', {
+                                developer: appDeveloper,
+                                context: 'developer of application',
+                            })}
+                        </span>
+                    )}
+                </div>
             </header>
             <Divider />
             <section className={[styles.section, styles.mainSection].join(' ')}>

@@ -1,7 +1,7 @@
 import { PropTypes } from '@dhis2/prop-types'
 import React from 'react'
+import { AppIcon } from '../AppIcon/AppIcon'
 import styles from './AppCard.module.css'
-import { AppIcon } from './AppIcon/AppIcon'
 
 export const AppCard = ({
     iconSrc,

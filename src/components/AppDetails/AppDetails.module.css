@@ -7,6 +7,10 @@
 }
 
 .header {
+    display: grid;
+    grid-template-columns: 72px auto;
+    grid-gap: var(--spacers-dp16);
+    align-items: center;
     line-height: 24px;
 }
 
