@@ -16,7 +16,7 @@ const AppCards = ({ apps }) => {
             return
         }
         history.push(
-            app.version ? `/installed-app/${app.key}` : `/app/${app.appHub.id}`
+            app.appHub ? `/app/${app.appHub.id}` : `/installed-app/${app.key}`
         )
     }
 

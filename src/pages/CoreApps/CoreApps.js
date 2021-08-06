@@ -81,6 +81,7 @@ export const CoreApps = () => {
         if (!(app.short_name in appsByShortName)) {
             appsByShortName[app.short_name] = app
         }
+        appsByShortName[app.short_name].version = app.version
     })
     const apps = Object.values(appsByShortName)
     const appsWithUpdates = apps.filter(
