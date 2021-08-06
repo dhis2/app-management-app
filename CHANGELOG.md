@@ -1,3 +1,10 @@
+## [100.2.1](https://github.com/dhis2/app-management-app/compare/v100.2.0...v100.2.1) (2021-08-06)
+
+
+### Bug Fixes
+
+* use overriden core app versions ([624c077](https://github.com/dhis2/app-management-app/commit/624c077490c5b7f120d8370c85e436ec4397ca7b))
+
 # [100.2.0](https://github.com/dhis2/app-management-app/compare/v100.1.3...v100.2.0) (2021-08-04)
 
 
