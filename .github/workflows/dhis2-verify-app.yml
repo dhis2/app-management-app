@@ -10,7 +10,7 @@ env:
     GIT_COMMITTER_NAME: '@dhis2-bot'
     GIT_COMMITTER_EMAIL: 'apps@dhis2.org'
     GH_TOKEN: ${{secrets.DHIS2_BOT_GITHUB_TOKEN}}
-    CI: true
+    APPHUB_TOKEN: ${{secrets.DHIS2_BOT_APPHUB_TOKEN}}
 
 jobs:
     install:
@@ -82,10 +82,10 @@ jobs:
             - name: Lint
               run: yarn lint
 
-    publish:
+    release:
         runs-on: ubuntu-latest
         needs: [build, lint]
-        if: "!contains(github.event.head_commit.message, '[skip ci]')"
+        if: "!github.event.push.repository.fork && github.actor != 'dependabot[bot]'"
         steps:
             - uses: actions/checkout@v2
               with:
@@ -99,25 +99,18 @@ jobs:
               with:
                   name: app-build
 
+            # ensure that d2-app-scripts is available
+            - uses: c-hive/gha-yarn-cache@v1
+            - run: yarn install --frozen-lockfile
+
+            - uses: dhis2/action-semantic-release@master
+              with:
+                  publish-apphub: true
+                  publish-github: true
+                  github-token: ${{ env.GH_TOKEN }}
+                  apphub-token: ${{ env.APPHUB_TOKEN }}
+
             - uses: dhis2/deploy-build@master
               with:
-                  # uncomment following line for monorepo apps:
-                  #cwd: ./packages/app
                   build-dir: build/app
                   github-token: ${{ env.GH_TOKEN }}
-
-    release:
-        runs-on: ubuntu-latest
-        needs: [publish]
-        if: "github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]')"
-        steps:
-            - uses: actions/checkout@v2
-              with:
-                  token: ${{env.GH_TOKEN}}
-
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: 12.x
-
-            - name: Publish release to GitHub
-              run: npx @dhis2/cli-utils release
