@@ -1,13 +1,13 @@
 # 
 # Translators:
-# trendspotter, 2021
+# trendspotter <jirka.p@volny.cz>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-07-20T14:47:03.677Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: trendspotter, 2021\n"
+"Last-Translator: trendspotter <jirka.p@volny.cz>, 2021\n"
 "Language-Team: Czech (https://www.transifex.com/hisp-uio/teams/100509/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,176 +16,178 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Nainstalována verze {{version}}"
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "Verze {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Poslední aktualizace {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "Poprvé publikováno {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "od: {{- developer}}"
 
 msgid "About this app"
-msgstr ""
+msgstr "O této aplikaci"
 
 msgid "The developer of this application has not provided a description"
-msgstr ""
+msgstr "Vývojář této aplikace neposkytl popis"
 
 msgid "Additional information"
-msgstr ""
+msgstr "Dodatečné informace"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "Snímky obrazovky"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "Všechny kompatibilní verze této aplikace"
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "Aplikace byla úspěšně aktualizována"
 
 msgid "App installed successfully"
 msgstr "Aplikace úspěšně nainstalována"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Aktualizace aplikace se nezdařila: {{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Nepodařilo se nainstalovat aplikaci: {{errorMessage}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "Aplikace úspěšně odinstalována"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "Odinstalování aplikace se nezdařilo: {{errorMessage}}"
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "Aktualizovat na nejnovější verzi"
 
 msgid "Install"
 msgstr "Instalovat"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{channel}} vydání {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "Odinstalovat v {{appVersion}}"
 
 msgid "Channel"
-msgstr ""
+msgstr "Kanál"
 
 msgid "Version"
 msgstr "Verze"
 
 msgid "Upload date"
-msgstr ""
+msgstr "Datum nahrání"
 
 msgid "Installed"
-msgstr ""
+msgstr "Nainstalováno"
 
 msgid "Download"
 msgstr "Stáhnout"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "Vašim kritériím neodpovídají žádné kompatibilní verze"
 
 msgid "Stable"
-msgstr ""
+msgstr "Stabilní"
 
 msgid "Development"
-msgstr ""
+msgstr "Vývojová"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
 
 msgid "No apps found"
 msgstr "Nenalezeny žádné aplikace"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "Vašim kritériím neodpovídají žádné aplikace"
 
 msgid "Core apps"
-msgstr ""
+msgstr "Základní aplikace"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Vlastní aplikace"
 
 msgid "App Hub"
 msgstr "Centrum aplikací"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Ruční instalace"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Prohledat aplikace AppHub"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "Při načítání aplikací App Hub se něco pokazilo"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Chyba při načítání aplikace"
 
 msgid "App not found"
-msgstr ""
+msgstr "Aplikace nenalezena"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "Při načítání základních aplikací se něco pokazilo"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "K dispozici jsou základní aplikace s aktualizacemi"
 
 msgid "All core apps"
-msgstr ""
+msgstr "Všechny základní aplikace"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Hledat základní aplikace"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr ""
+msgstr "Při načítání vlastních aplikací se něco pokazilo"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "K dispozici jsou vlastní aplikace s aktualizacemi"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "Všechny nainstalované vlastní aplikace"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Hledat nainstalované vlastní aplikace"
 
 msgid "Uploading..."
 msgstr "Nahrávání ..."
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Nahrát aplikaci, kterou chcete nainstalovat"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Ručně nainstalovat aplikaci"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"Nainstalované aplikace mají přístup k vašim datům a metadatům DHIS2. Před "
+"instalací se ujistěte, že aplikaci důvěřujete."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "od: {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "Kanál"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "Stabilní"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "Vývojová"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
