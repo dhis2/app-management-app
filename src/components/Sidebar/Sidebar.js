@@ -9,8 +9,12 @@ import styles from './Sidebar.module.css'
 const useIsItemActive = (path, exactMatch) => {
     const routeMatch = useRouteMatch(path)
 
-    if (!routeMatch) return false
-    if (exactMatch) return routeMatch.isExact
+    if (!routeMatch) {
+        return false
+    }
+    if (exactMatch) {
+        return routeMatch.isExact
+    }
     return true
 }
 
