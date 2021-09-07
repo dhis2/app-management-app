@@ -1,3 +1,10 @@
+## [100.2.5](https://github.com/dhis2/app-management-app/compare/v100.2.4...v100.2.5) (2021-09-07)
+
+
+### Bug Fixes
+
+* sort app versions in descending order and remove button text underline ([#315](https://github.com/dhis2/app-management-app/issues/315)) ([946a795](https://github.com/dhis2/app-management-app/commit/946a79529b7ed6f5f505c8a7c6b83f2d74e215ab))
+
 ## [100.2.4](https://github.com/dhis2/app-management-app/compare/v100.2.3...v100.2.4) (2021-09-07)
 
 
