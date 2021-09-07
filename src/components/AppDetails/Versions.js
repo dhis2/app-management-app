@@ -120,7 +120,7 @@ const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => (
                                 ? i18n.t('Installed')
                                 : i18n.t('Install')}
                         </Button>
-                        <a download href={version.downloadUrl}>
+                        <a download href={version.downloadUrl} className={styles.downloadLink}>
                             <Button small secondary>
                                 {i18n.t('Download')}
                             </Button>

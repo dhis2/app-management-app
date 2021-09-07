@@ -122,3 +122,7 @@
 .installBtn {
     margin-right: var(--spacers-dp8);
 }
+
+.downloadLink {
+    text-decoration: none;
+}
