@@ -30,9 +30,7 @@ const Metadata = ({ installedVersion, versions }) => {
             </li>
             <li className={styles.metadataItem}>
                 {i18n.t('Last updated {{relativeTime}}', {
-                    relativeTime: relativeTime(
-                        lastPublishedVersion.created
-                    ),
+                    relativeTime: relativeTime(lastPublishedVersion.created),
                 })}
             </li>
             <li className={styles.metadataItem}>
