@@ -7,6 +7,7 @@ import { getAppIconSrc } from '../../get-app-icon-src'
 import { getLatestVersion } from '../../get-latest-version'
 import { AppIcon } from '../AppIcon/AppIcon'
 import styles from './AppDetails.module.css'
+import { Description } from './Description'
 import { ManageInstalledVersion } from './ManageInstalledVersion'
 import { Versions } from './Versions'
 
@@ -128,15 +129,15 @@ export const AppDetails = ({
                     <h2 className={styles.sectionHeader}>
                         {i18n.t('About this app')}
                     </h2>
-                    <p>
-                        {description || (
-                            <em>
-                                {i18n.t(
-                                    'The developer of this application has not provided a description'
-                                )}
-                            </em>
-                        )}
-                    </p>
+                    {description ? (
+                        <Description description={description} />
+                    ) : (
+                        <em>
+                            {i18n.t(
+                                'The developer of this application has not provided a description'
+                            )}
+                        </em>
+                    )}
                 </div>
                 <div>
                     <ManageInstalledVersion
