@@ -53,26 +53,26 @@ jobs:
             - name: Lint
               run: yarn lint
 
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: 12.x
-
-            - uses: c-hive/gha-yarn-cache@v1
-            - run: yarn install --frozen-lockfile
-
-            - name: Generate translations
-              run: yarn d2-app-scripts i18n generate
-
-            - name: Test
-              run: yarn test
+    #    test:
+    #        runs-on: ubuntu-latest
+    #        steps:
+    #            - uses: actions/checkout@v2
+    #            - uses: actions/setup-node@v1
+    #              with:
+    #                  node-version: 12.x
+    #
+    #            - uses: c-hive/gha-yarn-cache@v1
+    #            - run: yarn install --frozen-lockfile
+    #
+    #            - name: Generate translations
+    #              run: yarn d2-app-scripts i18n generate
+    #
+    #            - name: Test
+    #              run: yarn test
 
     release:
         runs-on: ubuntu-latest
-        needs: [build, lint, test]
+        needs: [build, lint] # add test when we have them
         if: "!github.event.push.repository.fork && github.actor != 'dependabot[bot]'"
         steps:
             - uses: actions/checkout@v2
