@@ -1,8 +1,9 @@
 name: 'dhis2: verify (app)'
 
-on:
-    push:
-        branches:
+on: push
+
+concurrency:
+    group: ${{ github.workflow}}-${{ github.ref }}
 
 env:
     GIT_AUTHOR_NAME: '@dhis2-bot'
@@ -13,41 +14,16 @@ env:
     APPHUB_TOKEN: ${{secrets.DHIS2_BOT_APPHUB_TOKEN}}
 
 jobs:
-    install:
-        runs-on: ubuntu-latest
-        if: "!contains(github.event.head_commit.message, '[skip ci]')"
-
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: 12.x
-
-            - uses: actions/cache@v2
-              id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-              with:
-                  path: '**/node_modules'
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-
-            - name: Install
-              if: steps.yarn-cache.outputs.cache-hit != 'true'
-              run: yarn install --frozen-lockfile
-
     build:
         runs-on: ubuntu-latest
-        needs: install
-        if: "!contains(github.event.head_commit.message, '[skip ci]')"
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
                   node-version: 12.x
 
-            - uses: actions/cache@v2
-              id: yarn-cache
-              with:
-                  path: '**/node_modules'
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            - uses: c-hive/gha-yarn-cache@v1
+            - run: yarn install --frozen-lockfile
 
             - name: Build
               run: yarn build
@@ -62,19 +38,14 @@ jobs:
 
     lint:
         runs-on: ubuntu-latest
-        needs: install
-        if: "!contains(github.event.head_commit.message, '[skip ci]')"
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
                   node-version: 12.x
 
-            - uses: actions/cache@v2
-              id: yarn-cache
-              with:
-                  path: '**/node_modules'
-                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            - uses: c-hive/gha-yarn-cache@v1
+            - run: yarn install --frozen-lockfile
 
             - name: Generate translations
               run: yarn d2-app-scripts i18n generate
@@ -82,9 +53,26 @@ jobs:
             - name: Lint
               run: yarn lint
 
+    #    test:
+    #        runs-on: ubuntu-latest
+    #        steps:
+    #            - uses: actions/checkout@v2
+    #            - uses: actions/setup-node@v1
+    #              with:
+    #                  node-version: 12.x
+    #
+    #            - uses: c-hive/gha-yarn-cache@v1
+    #            - run: yarn install --frozen-lockfile
+    #
+    #            - name: Generate translations
+    #              run: yarn d2-app-scripts i18n generate
+    #
+    #            - name: Test
+    #              run: yarn test
+
     release:
         runs-on: ubuntu-latest
-        needs: [build, lint]
+        needs: [build, lint] # add test when we have them
         if: "!github.event.push.repository.fork && github.actor != 'dependabot[bot]'"
         steps:
             - uses: actions/checkout@v2
@@ -109,6 +97,7 @@ jobs:
                   publish-github: true
                   github-token: ${{ env.GH_TOKEN }}
                   apphub-token: ${{ env.APPHUB_TOKEN }}
+                  debug: true
 
             - uses: dhis2/deploy-build@master
               with:
