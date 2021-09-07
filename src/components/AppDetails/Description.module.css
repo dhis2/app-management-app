@@ -1,0 +1,4 @@
+.paragraph {
+    margin-top: 0;
+    margin-bottom: var(--spacers-dp8);
+}
