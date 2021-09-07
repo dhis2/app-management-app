@@ -1,3 +1,10 @@
+## [100.2.4](https://github.com/dhis2/app-management-app/compare/v100.2.3...v100.2.4) (2021-09-07)
+
+
+### Bug Fixes
+
+* format app descriptions ([dfec7e3](https://github.com/dhis2/app-management-app/commit/dfec7e37ef0722fa81d2803be5d13b16f9400d96))
+
 ## [100.2.3](https://github.com/dhis2/app-management-app/compare/v100.2.2...v100.2.3) (2021-08-31)
 
 
