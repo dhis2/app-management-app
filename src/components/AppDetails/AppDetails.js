@@ -13,8 +13,9 @@ import { Versions } from './Versions'
 
 const Metadata = ({ installedVersion, versions }) => {
     const relativeTime = datetime => moment(datetime).fromNow()
-    versions = versions.sort((a, b) => a.created - b.created)
     const latestVersion = getLatestVersion(versions)?.version
+    const firstPublishedVersion = versions[versions.length - 1]
+    const lastPublishedVersion = versions[0]
 
     return (
         <ul className={styles.metadataList}>
@@ -30,13 +31,13 @@ const Metadata = ({ installedVersion, versions }) => {
             <li className={styles.metadataItem}>
                 {i18n.t('Last updated {{relativeTime}}', {
                     relativeTime: relativeTime(
-                        versions[versions.length - 1].created
+                        lastPublishedVersion.created
                     ),
                 })}
             </li>
             <li className={styles.metadataItem}>
                 {i18n.t('First published {{relativeTime}}', {
-                    relativeTime: relativeTime(versions[0].created),
+                    relativeTime: relativeTime(firstPublishedVersion.created),
                 })}
             </li>
         </ul>
@@ -104,6 +105,7 @@ export const AppDetails = ({
     const screenshots = appHubApp?.images
         .filter(i => !i.logo)
         .map(i => i.imageUrl)
+    const versions = appHubApp?.versions.sort((a, b) => b.created - a.created)
 
     return (
         <Card className={styles.appCard}>
@@ -153,7 +155,7 @@ export const AppDetails = ({
                             </h2>
                             <Metadata
                                 installedVersion={installedApp.version}
-                                versions={appHubApp.versions}
+                                versions={versions}
                             />
                         </div>
                     )}
@@ -181,7 +183,7 @@ export const AppDetails = ({
                         </h2>
                         <Versions
                             installedVersion={installedApp?.version}
-                            versions={appHubApp.versions}
+                            versions={versions}
                             onVersionInstall={onVersionInstall}
                         />
                     </section>
