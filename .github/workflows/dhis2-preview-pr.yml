@@ -42,7 +42,7 @@ jobs:
                   github-deployment-description: 'PR Preview on Netlify'
                   deploy-message: ${{ github.event.pull_request.title }}
                   enable-pull-request-comment: true
-                  enable-commit-comment: false
+                  enable-commit-comment: true
                   enable-commit-status: true
                   alias: pr-${{ github.event.number }}
                   # customize according to project needs
