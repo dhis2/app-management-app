@@ -75,10 +75,11 @@ class AppHub extends React.Component {
             },
             actions: {
                 textAlign: 'right',
+                maxHeight: '150px',
+                overflowY: 'auto',
             },
             button: {
-                marginRight: 0,
-                marginLeft: 8,
+                marginBottom: '0.25em',
             },
             flex: {
                 display: 'flex',
@@ -116,15 +117,16 @@ class AppHub extends React.Component {
                                     version.id
                                 )
                                 return (
-                                    <FlatButton
-                                        key={version.id}
-                                        style={styles.button}
-                                        primary
-                                        onClick={install}
-                                        label={`${i18n.t('Install')} v${
-                                            version.version
-                                        }`}
-                                    />
+                                    <div key={version.id}>
+                                        <FlatButton
+                                            style={styles.button}
+                                            primary
+                                            onClick={install}
+                                            label={`${i18n.t('Install')} v${
+                                                version.version
+                                            }`}
+                                        />
+                                    </div>
                                 )
                             })}
                         </CardActions>
