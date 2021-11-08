@@ -39,7 +39,7 @@
         "query-string": "^6.14.1",
         "react-router-dom": "^5.2.0",
         "semver": "^7.3.4",
-        "use-debounce": "^6.0.0",
+        "use-debounce": "^7.0.1",
         "use-query-params": "^1.2.0"
     }
 }
