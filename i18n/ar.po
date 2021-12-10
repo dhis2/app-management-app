@@ -23,16 +23,16 @@ msgid "Version {{version}}"
 msgstr ""
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "آخر تحديث {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "تم النشر لأول مرة {{relativeTime}}"
 
 msgid "by {{- developer}}"
 msgstr ""
 
 msgid "About this app"
-msgstr ""
+msgstr "حول هذا التطبيق"
 
 msgid "The developer of this application has not provided a description"
 msgstr ""
