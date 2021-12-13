@@ -31,7 +31,7 @@
         "@dhis2/cli-style": "^9.2.0"
     },
     "dependencies": {
-        "@dhis2/app-runtime": "^3.2.0",
+        "@dhis2/app-runtime": "^3.2.7",
         "@dhis2/d2-i18n": "^1.1.0",
         "@dhis2/prop-types": "^2.0.3",
         "@dhis2/ui": "^7.2.0",
