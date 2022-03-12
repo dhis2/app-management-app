@@ -2,13 +2,14 @@
 # Translators:
 # phil_dhis2, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
+# Janeth Cruz, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-09-08T13:42:45.950Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Viktor Varland <viktor@dhis2.org>, 2021\n"
+"Last-Translator: Janeth Cruz, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,176 +18,179 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Versión {{version}} instalada"
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "Versión {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Última actualización {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "Primera publicación {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "por {{- developer}}"
 
 msgid "About this app"
-msgstr ""
+msgstr "Acerca de esta aplicación"
 
 msgid "The developer of this application has not provided a description"
 msgstr ""
+"El desarrollador de esta aplicación no ha proporcionado una descripción"
 
 msgid "Additional information"
-msgstr ""
+msgstr "Información adicional"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "capturas de pantalla"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "Todas las versiones compatibles de esta aplicación"
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "Aplicación actualizada con éxito"
 
 msgid "App installed successfully"
-msgstr ""
+msgstr "Aplicación instalada correctamente"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Error al actualizar la aplicación: {{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Error al instalar la aplicación: {{errorMessage}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "Aplicación desinstalada correctamente"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "Error al desinstalar la aplicación: {{errorMessage}}"
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "Actualizar a la última versión"
 
 msgid "Install"
-msgstr ""
+msgstr "Instalar"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{channel}} lanzamiento {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "Desinstalar v{{appVersion}}"
 
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 msgid "Version"
 msgstr "Versión"
 
 msgid "Upload date"
-msgstr ""
+msgstr "Fecha de subida"
 
 msgid "Installed"
-msgstr ""
+msgstr "Instalado"
 
 msgid "Download"
 msgstr "Descargar"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "No hay versiones compatibles que coincidan con sus criterios"
 
 msgid "Stable"
-msgstr ""
+msgstr "Estable"
 
 msgid "Development"
-msgstr ""
+msgstr "Desarrollo"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
 
 msgid "No apps found"
-msgstr ""
+msgstr "Aplicaciones no encontradas"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "Ninguna aplicación coincide con sus criterios"
 
 msgid "Core apps"
-msgstr ""
+msgstr "Aplicaciones principales"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Aplicaciones personalizadas"
 
 msgid "App Hub"
-msgstr ""
+msgstr "App Hub"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Instalación manual"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Buscar aplicaciones en AppHub"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "Algo salió mal al cargar aplicaciones de App Hub"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Error al cargar la aplicación"
 
 msgid "App not found"
-msgstr ""
+msgstr "Aplicación no encontrada"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "Algo salió mal al cargar sus aplicaciones principales"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "Aplicaciones principales con actualizaciones disponibles"
 
 msgid "All core apps"
-msgstr ""
+msgstr "Todas las aplicaciones principales"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Buscar aplicaciones principales"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr ""
+msgstr "Algo salió mal al cargar sus aplicaciones personalizadas"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "Aplicaciones prersonalizadas con actualizaciones disponibles"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "Todas las aplicaciones personalizadas instaladas"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Buscar aplicaciones personalizadas instaladas"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "Subiendo..."
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Subir una aplicación para instalarla"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Instalar manualmente una aplicación"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"Las aplicaciones instaladas tienen acceso a sus datos y metadatos de DHIS2. "
+"Asegúrese de confiar en una aplicación antes de instalarla."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "por {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "Estable"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "Desarrollo"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
