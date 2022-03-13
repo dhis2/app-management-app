@@ -1,0 +1,64 @@
+# 
+# Translators:
+# Janeth Cruz, 2022
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2020-02-21T13:01:54.731Z\n"
+"PO-Revision-Date: 2020-02-28 15:01+0000\n"
+"Last-Translator: Janeth Cruz, 2022\n"
+"Language-Team: Spanish (https://www.transifex.com/hisp-uio/teams/100509/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "App installed successfully"
+msgstr "Aplicación instalada correctamente"
+
+msgid "Failed to install app"
+msgstr ""
+
+msgid "App removed successfully"
+msgstr ""
+
+msgid "Installing app from the app hub..."
+msgstr ""
+
+msgid "Failed to install an app from the app hub"
+msgstr ""
+
+msgid "Uploading..."
+msgstr "Subiendo..."
+
+msgid "Installing..."
+msgstr ""
+
+msgid "No apps found"
+msgstr "Aplicaciones no encontradas"
+
+msgid "No installed apps matched the search term"
+msgstr ""
+
+msgid "Standard Apps"
+msgstr ""
+
+msgid "Dashboard Apps"
+msgstr ""
+
+msgid "Tracker Dashboard Apps"
+msgstr ""
+
+msgid "Resource Apps"
+msgstr ""
+
+msgid "App Hub"
+msgstr "App Hub"
+
+msgid "By"
+msgstr ""
+
+msgid "Install"
+msgstr "Instalar"
