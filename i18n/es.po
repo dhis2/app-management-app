@@ -19,46 +19,46 @@ msgid "App installed successfully"
 msgstr "Aplicación instalada correctamente"
 
 msgid "Failed to install app"
-msgstr ""
+msgstr "Error al instalar la aplicación"
 
 msgid "App removed successfully"
-msgstr ""
+msgstr "Aplicación eliminada con éxito"
 
 msgid "Installing app from the app hub..."
-msgstr ""
+msgstr "Instalación de la aplicación desde la app hub..."
 
 msgid "Failed to install an app from the app hub"
-msgstr ""
+msgstr "Error al instalar una aplicación desde la app hub"
 
 msgid "Uploading..."
 msgstr "Subiendo..."
 
 msgid "Installing..."
-msgstr ""
+msgstr "Instalando..."
 
 msgid "No apps found"
 msgstr "Aplicaciones no encontradas"
 
 msgid "No installed apps matched the search term"
-msgstr ""
+msgstr "Ninguna aplicación instalada coincidió con el término de búsqueda"
 
 msgid "Standard Apps"
-msgstr ""
+msgstr "Aplicaciones estándar"
 
 msgid "Dashboard Apps"
-msgstr ""
+msgstr "Aplicaciones de tablero"
 
 msgid "Tracker Dashboard Apps"
-msgstr ""
+msgstr "Aplicaciones del tablero Tracker"
 
 msgid "Resource Apps"
-msgstr ""
+msgstr "Aplicaciones de recursos"
 
 msgid "App Hub"
 msgstr "App Hub"
 
 msgid "By"
-msgstr ""
+msgstr "Por"
 
 msgid "Install"
 msgstr "Instalar"
