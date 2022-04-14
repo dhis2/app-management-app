@@ -2,8 +2,8 @@ import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { AppsList } from '../../components/AppsList/AppsList'
-import { useApps } from './useApps'
 import styles from './CoreApps.module.css'
+import { useApps } from './useApps'
 
 export const CoreApps = () => {
     const { loading, error, appHubError, apps, appsWithUpdates } = useApps()

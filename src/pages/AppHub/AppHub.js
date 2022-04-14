@@ -82,6 +82,7 @@ const AppsList = ({ apps, pager, onPageChange }) => {
             </>
         )
     }
+
     return (
         <>
             <AppCards apps={apps} />
@@ -113,11 +114,19 @@ export const AppHub = () => {
         lazy: true,
         variables: {
             dhis_version: systemInfo.version,
+            // This is needed due to request caching - if the user visits the
+            // 'Custom apps' before the App Hub page, then `data.appHub` will
+            // be an array instead of an object as 'Custom apps' disables
+            // pagination. Moving `paging: true` to query params instead does
+            // not seem to resolve the issue.
+            paging: true,
         },
     })
+
     useEffect(() => {
         refetch(queryParams)
     }, [debouncedQuery, queryParams.page])
+
     const handleQueryChange = query => {
         setQueryParams({ query, page: 1 }, 'replace')
     }

@@ -67,6 +67,7 @@ const AllApps = ({ label, apps }) => {
             </>
         )
     }
+
     return (
         <>
             <h1 className={styles.header}>{label}</h1>
