@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-04-14T18:46:02.381Z\n"
-"PO-Revision-Date: 2022-04-14T18:46:02.381Z\n"
+"POT-Creation-Date: 2022-04-14T20:21:45.307Z\n"
+"PO-Revision-Date: 2022-04-14T20:21:45.307Z\n"
 
 msgid "Version {{version}} installed"
 msgstr "Version {{version}} installed"
@@ -127,6 +127,12 @@ msgstr "App not found"
 
 msgid "Something went wrong whilst loading your core apps"
 msgstr "Something went wrong whilst loading your core apps"
+
+msgid "Failed to connect to the App Hub"
+msgstr "Failed to connect to the App Hub"
+
+msgid "You will not see updates for installed apps."
+msgstr "You will not see updates for installed apps."
 
 msgid "Core apps with updates available"
 msgstr "Core apps with updates available"
