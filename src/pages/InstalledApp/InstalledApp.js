@@ -28,10 +28,10 @@ export const InstalledApp = ({ match }) => {
     const appsResponse = useDataQuery(appsQuery)
     const appHubResponse = useDataQuery(appHubQuery, { lazy: true })
 
-    if (appsResponse.error || appHubResponse.error) {
+    if (appsResponse.error) {
         return (
             <NoticeBox error title={i18n.t('Error loading app')}>
-                {(appsResponse.error || appHubResponse.error).message}
+                {appsResponse.error.message}
             </NoticeBox>
         )
     }
@@ -73,12 +73,14 @@ export const InstalledApp = ({ match }) => {
     }
 
     return (
-        <AppDetails
-            installedApp={app}
-            appHubApp={appHubResponse.data?.app}
-            onVersionInstall={appsResponse.refetch}
-            onUninstall={() => history.push('/custom-apps')}
-        />
+        <>
+            <AppDetails
+                installedApp={app}
+                appHubApp={appHubResponse.data?.app}
+                onVersionInstall={appsResponse.refetch}
+                onUninstall={() => history.push('/custom-apps')}
+            />
+        </>
     )
 }
 
