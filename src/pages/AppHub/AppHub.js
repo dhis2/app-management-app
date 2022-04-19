@@ -114,11 +114,11 @@ export const AppHub = () => {
         lazy: true,
         variables: {
             dhis_version: systemInfo.version,
-            // This is needed due to request caching - if the user visits the
-            // 'Custom apps' before the App Hub page, then `data.appHub` will
-            // be an array instead of an object as 'Custom apps' disables
-            // pagination. Moving `paging: true` to query params instead does
-            // not seem to resolve the issue.
+            // Setting `paging: true` here (instead of in the query above) is
+            // needed due to request caching - react-query serialises this query
+            // to the same cache key as the query used by the 'Core apps' and
+            // 'Custom apps' pages. However, those queries have pagination set
+            // to false and so the shape of their response is different.
             paging: true,
         },
     })
