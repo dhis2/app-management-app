@@ -24,7 +24,7 @@ import styles from './AppHub.module.css'
 
 const query = {
     appHub: {
-        resource: 'appHub/v2/apps',
+        resource: 'appHub/v2/apps/',
         params: params => ({
             pageSize: 24,
             ...params,
