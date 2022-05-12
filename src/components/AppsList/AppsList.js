@@ -11,7 +11,7 @@ import styles from './AppsList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
-    const handleAppClick = app => {
+    const handleAppClick = (app) => {
         if (!app.version && !app.appHub) {
             return
         }
@@ -22,7 +22,7 @@ const AppCards = ({ apps }) => {
 
     return (
         <AppCards_>
-            {apps.map(app => (
+            {apps.map((app) => (
                 <AppCard
                     key={app.short_name}
                     iconSrc={getAppIconSrc(app)}
@@ -95,7 +95,7 @@ export const AppsList = ({
         setQuery(value, 'replaceIn')
     }
 
-    const searchFilter = app =>
+    const searchFilter = (app) =>
         !query ||
         app.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     const filteredApps = apps.filter(searchFilter)

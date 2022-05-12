@@ -10,26 +10,26 @@ class Api {
             method,
             body,
             credentials: 'include',
-        }).then(res => {
+        }).then((res) => {
             if (res.status < 200 || res.status >= 300) {
                 throw new Error(res.statusText)
             }
             return res
         })
 
-    installVersion = versionId =>
+    installVersion = (versionId) =>
         this.request({
             url: `appHub/${versionId}`,
             method: 'post',
         })
 
-    uninstallApp = appKey =>
+    uninstallApp = (appKey) =>
         this.request({
             url: `apps/${appKey}`,
             method: 'delete',
         })
 
-    uploadApp = file => {
+    uploadApp = (file) => {
         const data = new FormData()
         data.append('file', file)
         return this.request({

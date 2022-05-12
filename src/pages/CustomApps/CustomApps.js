@@ -54,15 +54,15 @@ export const CustomApps = () => {
     }
 
     const apps = data.customApps
-        .filter(app => !app.bundled)
-        .map(app => ({
+        .filter((app) => !app.bundled)
+        .map((app) => ({
             ...app,
             appHub:
                 app.app_hub_id &&
                 data.appHub.find(({ id }) => id === app.app_hub_id),
         }))
     const appsWithUpdates = apps.filter(
-        app =>
+        (app) =>
             app.appHub &&
             semverGt(
                 getLatestVersion(app.appHub.versions)?.version,

@@ -24,7 +24,7 @@ const UploadButton = () => {
     const handleClick = () => {
         inputEl.current.click()
     }
-    const handleUpload = async event => {
+    const handleUpload = async (event) => {
         setIsUploading(true)
         try {
             await uploadApp(event.target.files[0])

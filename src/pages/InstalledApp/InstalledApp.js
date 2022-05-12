@@ -48,7 +48,7 @@ export const InstalledApp = ({ match }) => {
         modules: { modules },
         installedApps,
     } = appsResponse.data
-    const app = installedApps.find(app => app.key === appKey)
+    const app = installedApps.find((app) => app.key === appKey)
     if (!app) {
         return (
             <NoticeBox error title={i18n.t('Error loading app')}>
@@ -57,7 +57,7 @@ export const InstalledApp = ({ match }) => {
         )
     }
 
-    const module = modules.find(app => app.name === `dhis-web-${appKey}`)
+    const module = modules.find((app) => app.name === `dhis-web-${appKey}`)
     if (module) {
         app.name = module.displayName
     }

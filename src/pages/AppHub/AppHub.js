@@ -25,7 +25,7 @@ import styles from './AppHub.module.css'
 const query = {
     appHub: {
         resource: 'appHub/v2/apps',
-        params: params => ({
+        params: (params) => ({
             pageSize: 24,
             ...params,
         }),
@@ -34,11 +34,11 @@ const query = {
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
-    const getIconSrc = app => app.images.find(i => i.logo)?.imageUrl
+    const getIconSrc = (app) => app.images.find((i) => i.logo)?.imageUrl
 
     return (
         <AppCards_>
-            {apps.map(app => (
+            {apps.map((app) => (
                 <AppCard
                     key={app.id}
                     iconSrc={getIconSrc(app)}
@@ -118,10 +118,10 @@ export const AppHub = () => {
     useEffect(() => {
         refetch(queryParams)
     }, [debouncedQuery, queryParams.page])
-    const handleQueryChange = query => {
+    const handleQueryChange = (query) => {
         setQueryParams({ query, page: 1 }, 'replace')
     }
-    const handlePageChange = page => {
+    const handlePageChange = (page) => {
         setQueryParams({ page })
     }
 

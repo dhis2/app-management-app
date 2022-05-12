@@ -47,7 +47,9 @@ export const AppHubApp = ({ match }) => {
             </NoticeBox>
         )
     }
-    const installedApp = installedApps.find(app => app.app_hub_id === appHubId)
+    const installedApp = installedApps.find(
+        (app) => app.app_hub_id === appHubId
+    )
 
     return (
         <AppDetails
