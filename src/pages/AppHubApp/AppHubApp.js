@@ -4,7 +4,7 @@ import { PropTypes } from '@dhis2/prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { AppDetails } from '../../components/AppDetails/AppDetails'
+import { AppDetails } from '../../components/AppDetails/AppDetails.js'
 
 const query = {
     appHubApp: {

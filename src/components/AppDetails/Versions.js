@@ -15,9 +15,9 @@ import {
 import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
-import { useApi } from '../../api'
+import { useApi } from '../../api.js'
 import styles from './AppDetails.module.css'
-import { channelToDisplayName } from './channel-to-display-name'
+import { channelToDisplayName } from './channel-to-display-name.js'
 
 const ChannelCheckbox = ({
     name,

@@ -2,10 +2,10 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
-import { AppsList } from '../../components/AppsList/AppsList'
-import { coreApps } from '../../core-apps'
-import { getLatestVersion } from '../../get-latest-version'
-import { semverGt } from '../../semver-gt'
+import { AppsList } from '../../components/AppsList/AppsList.js'
+import { coreApps } from '../../core-apps.js'
+import { getLatestVersion } from '../../get-latest-version.js'
+import { semverGt } from '../../semver-gt.js'
 
 const query = {
     overriddenCoreApps: {

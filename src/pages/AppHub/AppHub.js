@@ -17,9 +17,9 @@ import {
     NumberParam,
     withDefault,
 } from 'use-query-params'
-import { AppCard } from '../../components/AppCard/AppCard'
-import { AppCards as AppCards_ } from '../../components/AppCards/AppCards'
-import { getLatestVersion } from '../../get-latest-version'
+import { AppCard } from '../../components/AppCard/AppCard.js'
+import { AppCards as AppCards_ } from '../../components/AppCards/AppCards.js'
+import { getLatestVersion } from '../../get-latest-version.js'
 import styles from './AppHub.module.css'
 
 const query = {
