@@ -79,7 +79,7 @@ msgid "Channel"
 msgstr ""
 
 msgid "Version"
-msgstr ""
+msgstr "Versie"
 
 msgid "Upload date"
 msgstr ""
