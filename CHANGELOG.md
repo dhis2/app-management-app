@@ -1,3 +1,10 @@
+## [100.2.14](https://github.com/dhis2/app-management-app/compare/v100.2.13...v100.2.14) (2022-05-24)
+
+
+### Bug Fixes
+
+* **translations:** sync translations from transifex (master) ([8665980](https://github.com/dhis2/app-management-app/commit/8665980c67f0ceaf00c16373bd8546d701129479))
+
 ## [100.2.13](https://github.com/dhis2/app-management-app/compare/v100.2.12...v100.2.13) (2022-05-19)
 
 
