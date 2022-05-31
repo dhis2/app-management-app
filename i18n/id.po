@@ -2,13 +2,14 @@
 # Translators:
 # Carwoto Sa'an <carwoto@gmail.com>, 2021
 # Untoro Dwi Raharjo <untoro.dwi.raharjo@mail.ugm.ac.id>, 2021
+# Raja Fathurrahim, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-22T15:30:51.849Z\n"
 "PO-Revision-Date: 2019-09-01 18:30+0000\n"
-"Last-Translator: Untoro Dwi Raharjo <untoro.dwi.raharjo@mail.ugm.ac.id>, 2021\n"
+"Last-Translator: Raja Fathurrahim, 2022\n"
 "Language-Team: Indonesian (https://www.transifex.com/hisp-uio/teams/100509/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,22 +18,22 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Install App"
-msgstr ""
+msgstr "Memasang Aplikasi"
 
 msgid "Uninstall App"
-msgstr ""
+msgstr "Mencopot Aplikasi"
 
 msgid "Refresh Apps"
 msgstr "Segarkan apps"
 
 msgid "An app was installed"
-msgstr "Aplikasi telah terinstal"
+msgstr "Aplikasi telah terpasang"
 
 msgid "Load DHIS2 App Hub"
-msgstr "Muat hub aplikasi"
+msgstr "Muat hub aplikasi DHIS2"
 
 msgid "Install App Version from DHIS2 App Hub"
-msgstr "Instal versi aplikasi dari pusat aplikasi DHIS2"
+msgstr "Memasang versi aplikasi dari pusat aplikasi DHIS2"
 
 msgid "Show Snackbar message"
 msgstr "Tampilkan pesan snackbar"
