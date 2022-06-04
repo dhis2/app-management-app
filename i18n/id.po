@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Versi {{versi}} terpasang"
 
 msgid "Version {{version}}"
 msgstr "Versi {{versi}}"
@@ -31,7 +31,7 @@ msgid "First published {{relativeTime}}"
 msgstr ""
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "oleh {{- pengembang}}"
 
 msgid "About this app"
 msgstr "Tentang app ini"
@@ -55,16 +55,16 @@ msgid "App installed successfully"
 msgstr "App berhasil dipasang"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Gagal untuk memperbaharui app: {{Pesan kegagalan}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Gagal untuk memasang app: {{Pesan kegagalan}}"
 
 msgid "App uninstalled successfully"
 msgstr "App berhasil dicopot"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "Gagal untuk mencopot app: {{Pesan kegagalan}}"
 
 msgid "Update to latest version"
 msgstr "Perbaharui ke versi terakhir"
@@ -109,10 +109,10 @@ msgid "No apps found"
 msgstr "Tidak ditemukan apps"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "Tidak ada app sesuai dengan kriteriamu"
 
 msgid "Core apps"
-msgstr ""
+msgstr "App inti"
 
 msgid "Custom apps"
 msgstr ""
@@ -121,7 +121,7 @@ msgid "App Hub"
 msgstr "App Hub"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Pemasangan manual"
 
 msgid "Search AppHub apps"
 msgstr ""
@@ -133,7 +133,7 @@ msgid "Error loading app"
 msgstr ""
 
 msgid "App not found"
-msgstr ""
+msgstr "App tidak ditemukan"
 
 msgid "Something went wrong whilst loading your core apps"
 msgstr ""
@@ -175,7 +175,7 @@ msgstr ""
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "oleh {{- pengembang}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
