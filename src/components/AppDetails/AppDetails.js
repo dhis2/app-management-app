@@ -3,16 +3,16 @@ import { PropTypes } from '@dhis2/prop-types'
 import { Card, Divider } from '@dhis2/ui'
 import moment from 'moment'
 import React, { useState } from 'react'
-import { getAppIconSrc } from '../../get-app-icon-src'
-import { getLatestVersion } from '../../get-latest-version'
-import { AppIcon } from '../AppIcon/AppIcon'
+import { getAppIconSrc } from '../../get-app-icon-src.js'
+import { getLatestVersion } from '../../get-latest-version.js'
+import { AppIcon } from '../AppIcon/AppIcon.js'
 import styles from './AppDetails.module.css'
-import { Description } from './Description'
-import { ManageInstalledVersion } from './ManageInstalledVersion'
-import { Versions } from './Versions'
+import { Description } from './Description.js'
+import { ManageInstalledVersion } from './ManageInstalledVersion.js'
+import { Versions } from './Versions.js'
 
 const Metadata = ({ installedVersion, versions }) => {
-    const relativeTime = datetime => moment(datetime).fromNow()
+    const relativeTime = (datetime) => moment(datetime).fromNow()
     const latestVersion = getLatestVersion(versions)?.version
     const firstPublishedVersion = versions[versions.length - 1]
     const lastPublishedVersion = versions[0]
@@ -96,13 +96,13 @@ export const AppDetails = ({
         : installedApp.developer?.company || installedApp.developer?.name
     const logo = installedApp
         ? getAppIconSrc(installedApp)
-        : appHubApp.images.find(i => i.logo)?.imageUrl
+        : appHubApp.images.find((i) => i.logo)?.imageUrl
     const description = appHubApp
         ? appHubApp.description
         : installedApp.description
     const screenshots = appHubApp?.images
-        .filter(i => !i.logo)
-        .map(i => i.imageUrl)
+        .filter((i) => !i.logo)
+        .map((i) => i.imageUrl)
     const versions = appHubApp?.versions.sort((a, b) => b.created - a.created)
 
     return (

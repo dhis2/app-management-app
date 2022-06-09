@@ -2,9 +2,9 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
-import { AppsList } from '../../components/AppsList/AppsList'
-import { getLatestVersion } from '../../get-latest-version'
-import { semverGt } from '../../semver-gt'
+import { AppsList } from '../../components/AppsList/AppsList.js'
+import { getLatestVersion } from '../../get-latest-version.js'
+import { semverGt } from '../../semver-gt.js'
 
 const query = {
     customApps: {
@@ -54,15 +54,15 @@ export const CustomApps = () => {
     }
 
     const apps = data.customApps
-        .filter(app => !app.bundled)
-        .map(app => ({
+        .filter((app) => !app.bundled)
+        .map((app) => ({
             ...app,
             appHub:
                 app.app_hub_id &&
                 data.appHub.find(({ id }) => id === app.app_hub_id),
         }))
     const appsWithUpdates = apps.filter(
-        app =>
+        (app) =>
             app.appHub &&
             semverGt(
                 getLatestVersion(app.appHub.versions)?.version,

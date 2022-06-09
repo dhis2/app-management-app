@@ -4,14 +4,14 @@ import { InputField } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
-import { getAppIconSrc } from '../../get-app-icon-src'
-import { AppCard } from '../AppCard/AppCard'
-import { AppCards as AppCards_ } from '../AppCards/AppCards'
+import { getAppIconSrc } from '../../get-app-icon-src.js'
+import { AppCard } from '../AppCard/AppCard.js'
+import { AppCards as AppCards_ } from '../AppCards/AppCards.js'
 import styles from './AppsList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
-    const handleAppClick = app => {
+    const handleAppClick = (app) => {
         if (!app.version && !app.appHub) {
             return
         }
@@ -22,7 +22,7 @@ const AppCards = ({ apps }) => {
 
     return (
         <AppCards_>
-            {apps.map(app => (
+            {apps.map((app) => (
                 <AppCard
                     key={app.short_name}
                     iconSrc={getAppIconSrc(app)}
@@ -95,7 +95,7 @@ export const AppsList = ({
         setQuery(value, 'replaceIn')
     }
 
-    const searchFilter = app =>
+    const searchFilter = (app) =>
         !query ||
         app.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     const filteredApps = apps.filter(searchFilter)

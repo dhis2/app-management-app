@@ -3,11 +3,11 @@ import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { Button } from '@dhis2/ui'
 import React from 'react'
-import { useApi } from '../../api'
-import { getLatestVersion } from '../../get-latest-version'
-import { semverGt } from '../../semver-gt'
+import { useApi } from '../../api.js'
+import { getLatestVersion } from '../../get-latest-version.js'
+import { semverGt } from '../../semver-gt.js'
 import styles from './AppDetails.module.css'
-import { channelToDisplayName } from './channel-to-display-name'
+import { channelToDisplayName } from './channel-to-display-name.js'
 
 export const ManageInstalledVersion = ({
     installedApp,

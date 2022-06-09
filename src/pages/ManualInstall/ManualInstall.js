@@ -2,7 +2,7 @@ import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, CircularLoader } from '@dhis2/ui'
 import React, { useState, useRef } from 'react'
-import { useApi } from '../../api'
+import { useApi } from '../../api.js'
 import styles from './ManualInstall.module.css'
 
 const UploadButton = () => {
@@ -24,7 +24,7 @@ const UploadButton = () => {
     const handleClick = () => {
         inputEl.current.click()
     }
-    const handleUpload = async event => {
+    const handleUpload = async (event) => {
         setIsUploading(true)
         try {
             await uploadApp(event.target.files[0])

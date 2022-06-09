@@ -15,9 +15,9 @@ import {
 import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
-import { useApi } from '../../api'
+import { useApi } from '../../api.js'
 import styles from './AppDetails.module.css'
-import { channelToDisplayName } from './channel-to-display-name'
+import { channelToDisplayName } from './channel-to-display-name.js'
 
 const ChannelCheckbox = ({
     name,
@@ -55,7 +55,7 @@ ChannelCheckbox.propTypes = {
 }
 
 const ChannelsFilter = ({ versions, channelsFilter, setChannelsFilter }) => {
-    const hasChannel = channel => versions.some(v => v.channel === channel)
+    const hasChannel = (channel) => versions.some((v) => v.channel === channel)
     const channels = Object.keys(channelToDisplayName).filter(hasChannel)
 
     if (channels.length <= 1) {
@@ -67,7 +67,7 @@ const ChannelsFilter = ({ versions, channelsFilter, setChannelsFilter }) => {
             <h3 className={styles.sectionSubheader}>
                 {i18n.t('Channel', { context: 'AppHub release channel' })}
             </h3>
-            {channels.map(name => (
+            {channels.map((name) => (
                 <ChannelCheckbox
                     key={name}
                     name={name}
@@ -101,7 +101,7 @@ const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => (
             </TableRowHead>
         </TableHead>
         <TableBody>
-            {versions.map(version => (
+            {versions.map((version) => (
                 <TableRow key={version.id}>
                     <TableCell>{version.version}</TableCell>
                     <TableCell>
@@ -160,7 +160,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
     const dhisVersion = semver.coerce(
         `${serverVersion.major}.${serverVersion.minor}`
     )
-    const satisfiesDhisVersion = version => {
+    const satisfiesDhisVersion = (version) => {
         const { minDhisVersion: min, maxDhisVersion: max } = version
         if (!min && !max) {
             return true
@@ -176,9 +176,9 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
         }
     }
     const filteredVersions = versions
-        .filter(version => channelsFilter.has(version.channel))
+        .filter((version) => channelsFilter.has(version.channel))
         .filter(satisfiesDhisVersion)
-    const handleVersionInstall = async version => {
+    const handleVersionInstall = async (version) => {
         try {
             await installVersion(version.id)
             installSuccessAlert.show()

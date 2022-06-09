@@ -4,7 +4,7 @@ import { PropTypes } from '@dhis2/prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { AppDetails } from '../../components/AppDetails/AppDetails'
+import { AppDetails } from '../../components/AppDetails/AppDetails.js'
 
 const query = {
     appHubApp: {
@@ -47,7 +47,9 @@ export const AppHubApp = ({ match }) => {
             </NoticeBox>
         )
     }
-    const installedApp = installedApps.find(app => app.app_hub_id === appHubId)
+    const installedApp = installedApps.find(
+        (app) => app.app_hub_id === appHubId
+    )
 
     return (
         <AppDetails

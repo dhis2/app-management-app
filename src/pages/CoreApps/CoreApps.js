@@ -2,10 +2,10 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
-import { AppsList } from '../../components/AppsList/AppsList'
-import { coreApps } from '../../core-apps'
-import { getLatestVersion } from '../../get-latest-version'
-import { semverGt } from '../../semver-gt'
+import { AppsList } from '../../components/AppsList/AppsList.js'
+import { coreApps } from '../../core-apps.js'
+import { getLatestVersion } from '../../get-latest-version.js'
+import { semverGt } from '../../semver-gt.js'
 
 const query = {
     overriddenCoreApps: {
@@ -57,14 +57,14 @@ export const CoreApps = () => {
     }
 
     const appsByShortName = {}
-    data.availableCoreApps.forEach(app => {
+    data.availableCoreApps.forEach((app) => {
         const coreApp = coreApps.find(({ name }) => name === app.name)
         if (!coreApp) {
             return
         }
         const { shortName } = coreApp
         const module = data.modules.modules.find(
-            m => m.name === `dhis-web-${shortName}`
+            (m) => m.name === `dhis-web-${shortName}`
         )
         const name = module?.displayName || app.name
         const iconUrl = module?.icon
@@ -77,7 +77,7 @@ export const CoreApps = () => {
             icons,
         }
     })
-    data.overriddenCoreApps.forEach(app => {
+    data.overriddenCoreApps.forEach((app) => {
         if (!(app.short_name in appsByShortName)) {
             appsByShortName[app.short_name] = app
         }
@@ -85,7 +85,7 @@ export const CoreApps = () => {
     })
     const apps = Object.values(appsByShortName)
     const appsWithUpdates = apps.filter(
-        app =>
+        (app) =>
             app.appHub &&
             (!app.version ||
                 semverGt(
