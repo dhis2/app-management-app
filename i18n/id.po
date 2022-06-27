@@ -25,10 +25,10 @@ msgid "Version {{version}}"
 msgstr "Versi {{versi}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Terakhir diperbarui {{waktu relatif}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "Pertama kali diterbitkan {{waktu relatif}}"
 
 msgid "by {{- developer}}"
 msgstr "oleh {{- pengembang}}"
@@ -73,10 +73,10 @@ msgid "Install"
 msgstr "Pasang"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{kanal}} rilis {{versi}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "Mencopot v{{Versi aplikasi}}"
 
 msgid "Channel"
 msgstr "Kanal"
@@ -103,7 +103,7 @@ msgid "Development"
 msgstr "Perkembangan"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
 
 msgid "No apps found"
 msgstr "Tidak ditemukan apps"
@@ -115,7 +115,7 @@ msgid "Core apps"
 msgstr "App inti"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Aplikasi khusus"
 
 msgid "App Hub"
 msgstr "App Hub"
@@ -124,54 +124,56 @@ msgid "Manual install"
 msgstr "Pemasangan manual"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Cari aplikasi AppHub"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "Ada yang tidak beres saat memuat aplikasi AppHub"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Kesalahan memuat aplikasi"
 
 msgid "App not found"
 msgstr "App tidak ditemukan"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "Ada yang tidak beres saat memuat aplikasi inti anda"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "Aplikasi inti dengan pembaruan yang tersedia"
 
 msgid "All core apps"
-msgstr ""
+msgstr "Semua aplikasi inti"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Cari aplikasi inti"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr ""
+msgstr "Ada yang tidak beres saat memuat aplikasi khusus anda "
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "Aplikasi khusus dengan pembaruan yang tersedia"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "Semua aplikasi khusus yang telah terpasang"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Cari aplikasi khusus yang telah terpasang"
 
 msgid "Uploading..."
 msgstr "Sedang mengunggah..."
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Unggah sebuah aplikasi untuk di pasang"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Pasang sebuah aplikasi secara manual"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"Aplikasi yang diinstal memiliki akses ke DHIS2 data dan metadata Anda. "
+"Pastikan Anda memercayai aplikasi sebelum memasanganya."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
@@ -191,4 +193,4 @@ msgstr "Perkembangan"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
