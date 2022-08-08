@@ -40,6 +40,6 @@
         "react-router-dom": "^5.2.0",
         "semver": "^7.3.4",
         "use-debounce": "^6.0.0",
-        "use-query-params": "^1.2.0"
+        "use-query-params": "^2.0.0"
     }
 }
