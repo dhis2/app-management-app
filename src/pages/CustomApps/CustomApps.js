@@ -72,11 +72,11 @@ export const CustomApps = () => {
             ...app,
             appHub:
                 app.app_hub_id &&
-                data.appHub.find(({ id }) => id === app.app_hub_id),
+                appHubData?.availableApps.find(({ id }) => id === app.app_hub_id),
         }))
     const appsWithUpdates = apps.filter(
         (app) =>
-            appHubData.appHub &&
+            app.appHub &&
             semverGt(
                 getLatestVersion(app.appHub.versions)?.version,
                 app.version
