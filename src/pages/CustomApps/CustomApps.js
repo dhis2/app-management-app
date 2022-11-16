@@ -35,7 +35,11 @@ export const CustomApps = () => {
             dhis_version: systemInfo.version,
         },
     })
-    const { loading: appHubLoading, error: appHubError, data: appHubData } = useDataQuery(appHubQuery, {
+    const {
+        loading: appHubLoading,
+        error: appHubError,
+        data: appHubData,
+    } = useDataQuery(appHubQuery, {
         variables: {
             dhis_version: systemInfo.version,
         },
@@ -79,15 +83,18 @@ export const CustomApps = () => {
             )
     )
 
-    return (<div>
-        {appHubError && <AppHubErrorNoticeBox />}
-        <AppsList
-            apps={apps}
-            appsWithUpdates={appsWithUpdates}
-            updatesAvailableLabel={i18n.t('Custom apps with updates available')}
-            allAppsLabel={i18n.t('All installed custom apps')}
-            searchLabel={i18n.t('Search installed custom apps')}
-        />
-    </div>
+    return (
+        <div>
+            {appHubError && <AppHubErrorNoticeBox />}
+            <AppsList
+                apps={apps}
+                appsWithUpdates={appsWithUpdates}
+                updatesAvailableLabel={i18n.t(
+                    'Custom apps with updates available'
+                )}
+                allAppsLabel={i18n.t('All installed custom apps')}
+                searchLabel={i18n.t('Search installed custom apps')}
+            />
+        </div>
     )
 }

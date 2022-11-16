@@ -73,15 +73,17 @@ export const InstalledApp = ({ match }) => {
         )
     }
 
-    return (<>
-        {appHubResponse.error && <AppHubErrorNoticeBox />}
-        <AppDetails
-            installedApp={app}
-            appHubApp={appHubResponse.data?.app}
-            onVersionInstall={appsResponse.refetch}
-            onUninstall={() => history.push('/custom-apps')}
-        />
-    </>)
+    return (
+        <>
+            {appHubResponse.error && <AppHubErrorNoticeBox />}
+            <AppDetails
+                installedApp={app}
+                appHubApp={appHubResponse.data?.app}
+                onVersionInstall={appsResponse.refetch}
+                onUninstall={() => history.push('/custom-apps')}
+            />
+        </>
+    )
 }
 
 InstalledApp.propTypes = {
