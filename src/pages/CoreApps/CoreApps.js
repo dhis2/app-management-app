@@ -2,6 +2,7 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
+import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.js'
 import { AppsList } from '../../components/AppsList/AppsList.js'
 import { coreApps } from '../../core-apps.js'
 import { getLatestVersion } from '../../get-latest-version.js'
@@ -14,6 +15,12 @@ const query = {
             filter: 'bundled:eq:true',
         },
     },
+    modules: {
+        resource: 'action::menu/getModules',
+    },
+}
+
+const appHubQuery = {
     availableCoreApps: {
         resource: 'appHub/v2/apps',
         params: ({ dhis_version }) => ({
@@ -22,14 +29,21 @@ const query = {
             dhis_version,
         }),
     },
-    modules: {
-        resource: 'action::menu/getModules',
-    },
 }
 
 export const CoreApps = () => {
     const { baseUrl, systemInfo } = useConfig()
     const { loading, error, data } = useDataQuery(query, {
+        variables: {
+            dhis_version: systemInfo.version,
+        },
+    })
+
+    const {
+        loading: appHubLoading,
+        error: appHubError,
+        data: appHubData,
+    } = useDataQuery(appHubQuery, {
         variables: {
             dhis_version: systemInfo.version,
         },
@@ -48,7 +62,7 @@ export const CoreApps = () => {
         )
     }
 
-    if (loading) {
+    if (loading || appHubLoading) {
         return (
             <CenteredContent>
                 <CircularLoader />
@@ -57,14 +71,14 @@ export const CoreApps = () => {
     }
 
     const appsByShortName = {}
-    data.availableCoreApps.forEach((app) => {
+    appHubData?.availableCoreApps.forEach(app => {
         const coreApp = coreApps.find(({ name }) => name === app.name)
         if (!coreApp) {
             return
         }
         const { shortName } = coreApp
         const module = data.modules.modules.find(
-            (m) => m.name === `dhis-web-${shortName}`
+            m => m.name === `dhis-web-${shortName}`
         )
         const name = module?.displayName || app.name
         const iconUrl = module?.icon
@@ -77,7 +91,7 @@ export const CoreApps = () => {
             icons,
         }
     })
-    data.overriddenCoreApps.forEach((app) => {
+    data.overriddenCoreApps.forEach(app => {
         if (!(app.short_name in appsByShortName)) {
             appsByShortName[app.short_name] = app
         }
@@ -85,7 +99,7 @@ export const CoreApps = () => {
     })
     const apps = Object.values(appsByShortName)
     const appsWithUpdates = apps.filter(
-        (app) =>
+        app =>
             app.appHub &&
             (!app.version ||
                 semverGt(
@@ -95,12 +109,17 @@ export const CoreApps = () => {
     )
 
     return (
-        <AppsList
-            apps={apps}
-            appsWithUpdates={appsWithUpdates}
-            updatesAvailableLabel={i18n.t('Core apps with updates available')}
-            allAppsLabel={i18n.t('All core apps')}
-            searchLabel={i18n.t('Search core apps')}
-        />
+        <>
+            {appHubError && <AppHubErrorNoticeBox />}
+            <AppsList
+                apps={apps}
+                appsWithUpdates={appsWithUpdates}
+                updatesAvailableLabel={i18n.t(
+                    'Core apps with updates available'
+                )}
+                allAppsLabel={i18n.t('All core apps')}
+                searchLabel={i18n.t('Search core apps')}
+            />
+        </>
     )
 }

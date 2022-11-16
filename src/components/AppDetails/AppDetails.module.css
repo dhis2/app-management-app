@@ -1,5 +1,6 @@
 .appCard {
     max-width: 960px;
+    height: auto !important;
 }
 
 .header, .section {

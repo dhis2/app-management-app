@@ -2,6 +2,7 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
+import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.js'
 import { AppsList } from '../../components/AppsList/AppsList.js'
 import { getLatestVersion } from '../../get-latest-version.js'
 import { semverGt } from '../../semver-gt.js'
@@ -13,9 +14,12 @@ const query = {
             bundled: false,
         },
     },
+}
+
+const appHubQuery = {
     // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
     // that instead
-    appHub: {
+    availableApps: {
         resource: 'appHub/v2/apps',
         params: ({ dhis_version }) => ({
             paging: false,
@@ -27,6 +31,11 @@ const query = {
 export const CustomApps = () => {
     const { systemInfo } = useConfig()
     const { loading, error, data } = useDataQuery(query, {
+        variables: {
+            dhis_version: systemInfo.version,
+        },
+    })
+    const { loading: appHubLoading, error: appHubError, data: appHubData } = useDataQuery(appHubQuery, {
         variables: {
             dhis_version: systemInfo.version,
         },
@@ -45,7 +54,7 @@ export const CustomApps = () => {
         )
     }
 
-    if (loading) {
+    if (loading || appHubLoading) {
         return (
             <CenteredContent>
                 <CircularLoader />
@@ -63,14 +72,15 @@ export const CustomApps = () => {
         }))
     const appsWithUpdates = apps.filter(
         (app) =>
-            app.appHub &&
+            appHubData.appHub &&
             semverGt(
                 getLatestVersion(app.appHub.versions)?.version,
                 app.version
             )
     )
 
-    return (
+    return (<div>
+        {appHubError && <AppHubErrorNoticeBox />}
         <AppsList
             apps={apps}
             appsWithUpdates={appsWithUpdates}
@@ -78,5 +88,6 @@ export const CustomApps = () => {
             allAppsLabel={i18n.t('All installed custom apps')}
             searchLabel={i18n.t('Search installed custom apps')}
         />
+    </div>
     )
 }
