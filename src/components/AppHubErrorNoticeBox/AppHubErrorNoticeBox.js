@@ -7,7 +7,7 @@ export const AppHubErrorNoticeBox = () => (
     <NoticeBox
         error
         title={i18n.t('Failed to check App Hub for available updates')}
-        className={styles.NoticeBox}
+        className={styles.noticeBox}
     >
         {i18n.t('Your DHIS2 server might be offline.')}
     </NoticeBox>
