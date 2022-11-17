@@ -2,6 +2,7 @@ import { useDataQuery, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
+import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.js'
 import { AppsList } from '../../components/AppsList/AppsList.js'
 import { getLatestVersion } from '../../get-latest-version.js'
 import { semverGt } from '../../semver-gt.js'
@@ -13,9 +14,12 @@ const query = {
             bundled: false,
         },
     },
+}
+
+const appHubQuery = {
     // TODO: Add ability to request certain app IDs to `/v2/apps` API and use
     // that instead
-    appHub: {
+    availableApps: {
         resource: 'appHub/v2/apps',
         params: ({ dhis_version }) => ({
             paging: false,
@@ -27,6 +31,15 @@ const query = {
 export const CustomApps = () => {
     const { systemInfo } = useConfig()
     const { loading, error, data } = useDataQuery(query, {
+        variables: {
+            dhis_version: systemInfo.version,
+        },
+    })
+    const {
+        loading: appHubLoading,
+        error: appHubError,
+        data: appHubData,
+    } = useDataQuery(appHubQuery, {
         variables: {
             dhis_version: systemInfo.version,
         },
@@ -45,7 +58,7 @@ export const CustomApps = () => {
         )
     }
 
-    if (loading) {
+    if (loading || appHubLoading) {
         return (
             <CenteredContent>
                 <CircularLoader />
@@ -59,7 +72,9 @@ export const CustomApps = () => {
             ...app,
             appHub:
                 app.app_hub_id &&
-                data.appHub.find(({ id }) => id === app.app_hub_id),
+                appHubData?.availableApps.find(
+                    ({ id }) => id === app.app_hub_id
+                ),
         }))
     const appsWithUpdates = apps.filter(
         (app) =>
@@ -71,12 +86,17 @@ export const CustomApps = () => {
     )
 
     return (
-        <AppsList
-            apps={apps}
-            appsWithUpdates={appsWithUpdates}
-            updatesAvailableLabel={i18n.t('Custom apps with updates available')}
-            allAppsLabel={i18n.t('All installed custom apps')}
-            searchLabel={i18n.t('Search installed custom apps')}
-        />
+        <div>
+            {appHubError && <AppHubErrorNoticeBox />}
+            <AppsList
+                apps={apps}
+                appsWithUpdates={appsWithUpdates}
+                updatesAvailableLabel={i18n.t(
+                    'Custom apps with updates available'
+                )}
+                allAppsLabel={i18n.t('All installed custom apps')}
+                searchLabel={i18n.t('Search installed custom apps')}
+            />
+        </div>
     )
 }

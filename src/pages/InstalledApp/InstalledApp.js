@@ -5,6 +5,7 @@ import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails.js'
+import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.js'
 
 const appsQuery = {
     modules: {
@@ -28,10 +29,10 @@ export const InstalledApp = ({ match }) => {
     const appsResponse = useDataQuery(appsQuery)
     const appHubResponse = useDataQuery(appHubQuery, { lazy: true })
 
-    if (appsResponse.error || appHubResponse.error) {
+    if (appsResponse.error) {
         return (
             <NoticeBox error title={i18n.t('Error loading app')}>
-                {(appsResponse.error || appHubResponse.error).message}
+                {appsResponse.error.message}
             </NoticeBox>
         )
     }
@@ -73,12 +74,15 @@ export const InstalledApp = ({ match }) => {
     }
 
     return (
-        <AppDetails
-            installedApp={app}
-            appHubApp={appHubResponse.data?.app}
-            onVersionInstall={appsResponse.refetch}
-            onUninstall={() => history.push('/custom-apps')}
-        />
+        <>
+            {appHubResponse.error && <AppHubErrorNoticeBox />}
+            <AppDetails
+                installedApp={app}
+                appHubApp={appHubResponse.data?.app}
+                onVersionInstall={appsResponse.refetch}
+                onUninstall={() => history.push('/custom-apps')}
+            />
+        </>
     )
 }
 

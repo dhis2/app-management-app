@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2021-09-08T13:42:45.950Z\n"
-"PO-Revision-Date: 2021-09-08T13:42:45.950Z\n"
+"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
+"PO-Revision-Date: 2022-11-16T12:52:56.478Z\n"
 
 msgid "Version {{version}} installed"
 msgstr "Version {{version}} installed"
@@ -94,6 +94,12 @@ msgstr "Development"
 
 msgid "Canary"
 msgstr "Canary"
+
+msgid "Failed to check App Hub for available updates"
+msgstr "Failed to check App Hub for available updates"
+
+msgid "Your DHIS2 server might be offline."
+msgstr "Your DHIS2 server might be offline."
 
 msgid "No apps found"
 msgstr "No apps found"
