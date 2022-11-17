@@ -1,3 +1,10 @@
+## [100.2.19](https://github.com/dhis2/app-management-app/compare/v100.2.18...v100.2.19) (2022-11-17)
+
+
+### Bug Fixes
+
+* support core and custom app management when app hub is not available [DHIS2-13112] ([#485](https://github.com/dhis2/app-management-app/issues/485)) ([8c7ea13](https://github.com/dhis2/app-management-app/commit/8c7ea1397caa95ed8ce0a753cf51a338db888070))
+
 ## [100.2.18](https://github.com/dhis2/app-management-app/compare/v100.2.17...v100.2.18) (2022-08-22)
 
 
