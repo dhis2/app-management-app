@@ -107,7 +107,9 @@ const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => (
                     <TableCell>
                         {channelToDisplayName[version.channel]}
                     </TableCell>
-                    <TableCell>{moment(version.created).format('L')}</TableCell>
+                    <TableCell>
+                        {moment(version.created).format('ll')}
+                    </TableCell>
                     <TableCell>
                         <Button
                             small
