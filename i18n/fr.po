@@ -3,13 +3,14 @@
 # Yayra Gomado <ygomado@hispwca.org>, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
 # Karoline Tufte Lien <karoline@dhis2.org>, 2021
+# Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2022
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-09-08T13:42:45.950Z\n"
+"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2021\n"
+"Last-Translator: Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2022\n"
 "Language-Team: French (https://www.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgid "Version {{version}} installed"
 msgstr ""
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "Version {{version}}"
 
 msgid "Last updated {{relativeTime}}"
 msgstr ""
@@ -30,7 +31,7 @@ msgid "First published {{relativeTime}}"
 msgstr ""
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "par {{- développeur}}"
 
 msgid "About this app"
 msgstr ""
@@ -39,34 +40,34 @@ msgid "The developer of this application has not provided a description"
 msgstr ""
 
 msgid "Additional information"
-msgstr ""
+msgstr "Informations complémentaires"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "Captures d'écran"
 
 msgid "All compatible versions of this application"
 msgstr ""
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "Application mise à jour avec succès"
 
 msgid "App installed successfully"
 msgstr "L'appli a été installée avec succès"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Échec de la mise à jour de l'application : {{Message d'erreur}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Échec de l'installation de l'application : {{Message d'erreur}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "Application désinstallée avec succès"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "Échec de la désinstallation de l'application : {{Message d'erreur}}"
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "Mise à jour vers la dernière version"
 
 msgid "Install"
 msgstr "Installer"
@@ -96,12 +97,18 @@ msgid "There are no compatible versions matching your criteria"
 msgstr ""
 
 msgid "Stable"
-msgstr ""
+msgstr "Stable"
 
 msgid "Development"
 msgstr ""
 
 msgid "Canary"
+msgstr ""
+
+msgid "Failed to check App Hub for available updates"
+msgstr ""
+
+msgid "Your DHIS2 server might be offline."
 msgstr ""
 
 msgid "No apps found"
@@ -174,7 +181,7 @@ msgstr ""
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "par {{- développeur}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
@@ -182,7 +189,7 @@ msgstr ""
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "Stable"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
