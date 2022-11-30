@@ -19,25 +19,25 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Version {{version}} installée"
 
 msgid "Version {{version}}"
 msgstr "Version {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Dernière mise à jour {{Temps relatif}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "Première publication {{Temps relatif}}"
 
 msgid "by {{- developer}}"
 msgstr "par {{- développeur}}"
 
 msgid "About this app"
-msgstr ""
+msgstr "À propos de cette application"
 
 msgid "The developer of this application has not provided a description"
-msgstr ""
+msgstr "Le développeur de cette application n'a pas fourni de description."
 
 msgid "Additional information"
 msgstr "Informations complémentaires"
@@ -46,7 +46,7 @@ msgid "Screenshots"
 msgstr "Captures d'écran"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "Toutes les versions compatibles de cette application"
 
 msgid "App updated successfully"
 msgstr "Application mise à jour avec succès"
@@ -73,111 +73,117 @@ msgid "Install"
 msgstr "Installer"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{canal}} de diffusion de la {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "Désinstaller {{Version de l'app}}"
 
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 msgid "Version"
 msgstr "Version"
 
 msgid "Upload date"
-msgstr ""
+msgstr "Date de téléchargement"
 
 msgid "Installed"
-msgstr ""
+msgstr "Installée"
 
 msgid "Download"
 msgstr "Télécharger"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "Il n'y a pas de versions compatibles correspondant à vos critères"
 
 msgid "Stable"
 msgstr "Stable"
 
 msgid "Development"
-msgstr ""
+msgstr "Développement"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
 
 msgid "Failed to check App Hub for available updates"
-msgstr ""
+msgstr "Échec de la vérification des mises à jour disponibles sur App Hub"
 
 msgid "Your DHIS2 server might be offline."
-msgstr ""
+msgstr "Votre serveur DHIS2 est peut-être hors ligne."
 
 msgid "No apps found"
 msgstr "Aucune appli trouvée"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "Aucune application ne correspond à vos critères"
 
 msgid "Core apps"
-msgstr ""
+msgstr "Applications de base"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Apps personnalisées"
 
 msgid "App Hub"
 msgstr "Hub d'applications"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Installation manuelle"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Rechercher des applications de l'AppHub"
 
 msgid "Something went wrong whilst loading App Hub apps"
 msgstr ""
+"Un problème est survenu lors du chargement des applications de l'App Hub"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Erreur lors du chargement de l'application"
 
 msgid "App not found"
-msgstr ""
+msgstr "Application introuvable"
 
 msgid "Something went wrong whilst loading your core apps"
 msgstr ""
+"Une erreur s'est produite lors du chargement de vos applications de base"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "Applications de base avec des mises à jour disponibles"
 
 msgid "All core apps"
-msgstr ""
+msgstr "Toutes les applications de base"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Rechercher des applis de base"
 
 msgid "Something went wrong whilst loading your custom apps"
 msgstr ""
+"Une erreur s'est produite lors du chargement de vos applications "
+"personnalisées"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "Applications personnalisées avec des mises à jour disponibles"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "Toutes les applications personnalisées installées"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Recherche d'applications personnalisées installées"
 
 msgid "Uploading..."
 msgstr "Téléchargement en cours..."
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Télécharger une application à installer"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Installation manuelle d'une application"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"Les applications installées ont accès à vos données et métadonnées DHIS2. "
+"Assurez-vous de la fiabilité d'une application avant de l'installer."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
@@ -185,7 +191,7 @@ msgstr "par {{- développeur}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
@@ -193,8 +199,8 @@ msgstr "Stable"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "Développement"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
