@@ -1,3 +1,10 @@
+## [100.2.23](https://github.com/dhis2/app-management-app/compare/v100.2.22...v100.2.23) (2022-12-23)
+
+
+### Bug Fixes
+
+* use unambiguous short date [DHIS2-14183] ([00eb198](https://github.com/dhis2/app-management-app/commit/00eb1986eeddd26df51909a65528b180bbfc1b2e))
+
 ## [100.2.22](https://github.com/dhis2/app-management-app/compare/v100.2.21...v100.2.22) (2022-12-01)
 
 
