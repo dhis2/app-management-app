@@ -1,0 +1,197 @@
+# 
+# Translators:
+# Malinda Wijeratne, 2023
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
+"PO-Revision-Date: 2019-08-07 09:45+0000\n"
+"Last-Translator: Malinda Wijeratne, 2023\n"
+"Language-Team: Sinhala (https://app.transifex.com/hisp-uio/teams/100509/si/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: si\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Version {{version}} installed"
+msgstr ""
+
+msgid "Version {{version}}"
+msgstr ""
+
+msgid "Last updated {{relativeTime}}"
+msgstr ""
+
+msgid "First published {{relativeTime}}"
+msgstr ""
+
+msgid "by {{- developer}}"
+msgstr ""
+
+msgid "About this app"
+msgstr ""
+
+msgid "The developer of this application has not provided a description"
+msgstr ""
+
+msgid "Additional information"
+msgstr ""
+
+msgid "Screenshots"
+msgstr ""
+
+msgid "All compatible versions of this application"
+msgstr ""
+
+msgid "App updated successfully"
+msgstr ""
+
+msgid "App installed successfully"
+msgstr ""
+
+msgid "Failed to update app: {{errorMessage}}"
+msgstr ""
+
+msgid "Failed to install app: {{errorMessage}}"
+msgstr ""
+
+msgid "App uninstalled successfully"
+msgstr ""
+
+msgid "Failed to uninstall app: {{errorMessage}}"
+msgstr ""
+
+msgid "Update to latest version"
+msgstr ""
+
+msgid "Install"
+msgstr ""
+
+msgid "{{channel}} release {{version}}"
+msgstr ""
+
+msgid "Uninstall v{{appVersion}}"
+msgstr ""
+
+msgid "Channel"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Upload date"
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Download"
+msgstr "බාගත කරන්න"
+
+msgid "There are no compatible versions matching your criteria"
+msgstr ""
+
+msgid "Stable"
+msgstr ""
+
+msgid "Development"
+msgstr ""
+
+msgid "Canary"
+msgstr ""
+
+msgid "Failed to check App Hub for available updates"
+msgstr ""
+
+msgid "Your DHIS2 server might be offline."
+msgstr ""
+
+msgid "No apps found"
+msgstr ""
+
+msgid "No apps match your criteria"
+msgstr ""
+
+msgid "Core apps"
+msgstr ""
+
+msgid "Custom apps"
+msgstr ""
+
+msgid "App Hub"
+msgstr ""
+
+msgid "Manual install"
+msgstr ""
+
+msgid "Search AppHub apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading App Hub apps"
+msgstr ""
+
+msgid "Error loading app"
+msgstr ""
+
+msgid "App not found"
+msgstr ""
+
+msgid "Something went wrong whilst loading your core apps"
+msgstr ""
+
+msgid "Core apps with updates available"
+msgstr ""
+
+msgid "All core apps"
+msgstr ""
+
+msgid "Search core apps"
+msgstr ""
+
+msgid "Something went wrong whilst loading your custom apps"
+msgstr ""
+
+msgid "Custom apps with updates available"
+msgstr ""
+
+msgid "All installed custom apps"
+msgstr ""
+
+msgid "Search installed custom apps"
+msgstr ""
+
+msgid "Uploading..."
+msgstr ""
+
+msgid "Upload an app to install"
+msgstr ""
+
+msgid "Manually install an app"
+msgstr ""
+
+msgid ""
+"Installed apps have access to your DHIS2 data and metadata. Make sure you "
+"trust an app before installing it."
+msgstr ""
+
+msgctxt "developer of application"
+msgid "by {{- developer}}"
+msgstr ""
+
+msgctxt "AppHub release channel"
+msgid "Channel"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Stable"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Development"
+msgstr ""
+
+msgctxt "Name of AppHub release channel"
+msgid "Canary"
+msgstr ""
