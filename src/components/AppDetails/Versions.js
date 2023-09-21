@@ -150,6 +150,7 @@ const VersionsTable = ({
                                 version={version.version}
                                 onSelect={setUserGroupVersionMap}
                                 versionActiveForUserGroup={versionActiveForUserGroup}
+                                isInstalled={version.version === installedVersion}
                             />
                         </TableCell>
                         <TableCell>
@@ -285,7 +286,7 @@ Versions.propTypes = {
     installedVersion: PropTypes.string,
 }
 
-const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUserGroup }) => {
+const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUserGroup, isInstalled }) => {
     const [userGroup, setUserGroup] = useState('all')
 
     const onChange = ({ selected }) => {
@@ -294,11 +295,12 @@ const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUser
         onSelect({ [selected]: version })
     }
 
-    if (versionActiveForUserGroup) {
-        const { displayName, id } = userGroups.find(group => group.id === versionActiveForUserGroup);
+    if (versionActiveForUserGroup || isInstalled) {
+        const { displayName, id } = versionActiveForUserGroup ?
+            userGroups.find(group => group.id === versionActiveForUserGroup) : { displayName: 'All user groups', id: 'ALL' };
 
         return (
-            <SingleSelect dense selected={versionActiveForUserGroup} disabled>
+            <SingleSelect dense selected={versionActiveForUserGroup || 'ALL'} disabled>
                   <SingleSelectOption
                     dense
                     label={displayName}
