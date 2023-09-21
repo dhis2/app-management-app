@@ -106,7 +106,7 @@ const VersionsTable = ({
         {}
     )
 
-    const { data: { groupVersions: dataStoreGroupVersions } = {}, loading } = useDataQuery(dataStoreQuery);
+    const { data: { groupVersions: dataStoreGroupVersions = {} } = {}, loading } = useDataQuery(dataStoreQuery);
 
     if (loading) {
         return null;
@@ -131,7 +131,7 @@ const VersionsTable = ({
                 {versions.map((version) => {
                     const versionActiveForUserGroup = Object
                     .entries(dataStoreGroupVersions)
-                    .find(([, dataStoreVersion]) => dataStoreVersion === version.version)
+                    ?.find(([, dataStoreVersion]) => dataStoreVersion === version.version)
                     ?.[0];
 
                     return (
