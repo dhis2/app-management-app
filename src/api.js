@@ -17,9 +17,9 @@ class Api {
             return res
         })
 
-    installVersion = (versionId) =>
+    installVersion = (versionId, userGroupId) =>
         this.request({
-            url: `appHub/${versionId}`,
+            url: `appHub/${versionId}?group=${userGroupId}`,
             method: 'post',
         })
 
