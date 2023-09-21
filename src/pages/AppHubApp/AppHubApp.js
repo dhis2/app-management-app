@@ -14,6 +14,9 @@ const query = {
     installedApps: {
         resource: 'apps',
     },
+    userGroups: {
+        resource: 'userGroups',
+    },
 }
 
 export const AppHubApp = ({ match }) => {
@@ -39,7 +42,7 @@ export const AppHubApp = ({ match }) => {
         )
     }
 
-    const { appHubApp, installedApps } = data
+    const { appHubApp, installedApps, userGroups } = data
     if (!appHubApp) {
         return (
             <NoticeBox error title={i18n.t('Error loading app')}>
@@ -55,6 +58,7 @@ export const AppHubApp = ({ match }) => {
         <AppDetails
             installedApp={installedApp}
             appHubApp={appHubApp}
+            userGroups={userGroups.userGroups}
             onVersionInstall={refetch}
             onUninstall={() => history.push('/app-hub')}
         />

@@ -87,6 +87,7 @@ Screenshots.propTypes = {
 export const AppDetails = ({
     installedApp,
     appHubApp,
+    userGroups,
     onVersionInstall,
     onUninstall,
 }) => {
@@ -182,6 +183,7 @@ export const AppDetails = ({
                         <Versions
                             installedVersion={installedApp?.version}
                             versions={versions}
+                            userGroups={userGroups}
                             onVersionInstall={onVersionInstall}
                         />
                     </section>
@@ -195,5 +197,6 @@ AppDetails.propTypes = {
     onVersionInstall: PropTypes.func.isRequired,
     appHubApp: PropTypes.object,
     installedApp: PropTypes.object,
+    userGroups: PropTypes.array,
     onUninstall: PropTypes.func,
 }

@@ -4,6 +4,8 @@ import { PropTypes } from '@dhis2/prop-types'
 import {
     Checkbox,
     Button,
+    SingleSelect,
+    SingleSelectOption,
     Table,
     TableHead,
     TableRowHead,
@@ -13,7 +15,7 @@ import {
     TableCell,
 } from '@dhis2/ui'
 import moment from 'moment'
-import React, { useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api.js'
 import styles from './AppDetails.module.css'
@@ -86,65 +88,101 @@ ChannelsFilter.propTypes = {
     versions: PropTypes.array.isRequired,
 }
 
-const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => (
-    <Table>
-        <TableHead>
-            <TableRowHead>
-                <TableCellHead>{i18n.t('Version')}</TableCellHead>
-                <TableCellHead>
-                    {i18n.t('Channel', {
-                        context: 'AppHub release channel',
-                    })}
-                </TableCellHead>
-                <TableCellHead>{i18n.t('Upload date')}</TableCellHead>
-                <TableCellHead></TableCellHead>
-            </TableRowHead>
-        </TableHead>
-        <TableBody>
-            {versions.map((version) => (
-                <TableRow key={version.id}>
-                    <TableCell>{version.version}</TableCell>
-                    <TableCell>
-                        {channelToDisplayName[version.channel]}
-                    </TableCell>
-                    <TableCell>
-                        {moment(version.created).format('ll')}
-                    </TableCell>
-                    <TableCell>
-                        <Button
-                            small
-                            secondary
-                            className={styles.installBtn}
-                            disabled={version.version === installedVersion}
-                            onClick={() => onVersionInstall(version)}
-                        >
-                            {version.version === installedVersion
-                                ? i18n.t('Installed')
-                                : i18n.t('Install')}
-                        </Button>
-                        <a
-                            download
-                            href={version.downloadUrl}
-                            className={styles.downloadLink}
-                        >
-                            <Button small secondary>
-                                {i18n.t('Download')}
+const VersionsTable = ({
+    installedVersion,
+    versions,
+    onVersionInstall,
+    userGroups,
+}) => {
+    const [userGroupVersionMap, setUserGroupVersionMap] = useReducer(
+        (map, newMap) => ({ ...map, ...newMap }),
+        {}
+    )
+
+    return (
+        <Table>
+            <TableHead>
+                <TableRowHead>
+                    <TableCellHead>{i18n.t('Version')}</TableCellHead>
+                    <TableCellHead>
+                        {i18n.t('Channel', {
+                            context: 'AppHub release channel',
+                        })}
+                    </TableCellHead>
+                    <TableCellHead>{i18n.t('Upload date')}</TableCellHead>
+                    <TableCellHead></TableCellHead>
+                    <TableCellHead></TableCellHead>
+                </TableRowHead>
+            </TableHead>
+            <TableBody>
+                {versions.map((version) => (
+                    <TableRow key={version.id}>
+                        <TableCell>{version.version}</TableCell>
+                        <TableCell>
+                            {channelToDisplayName[version.channel]}
+                        </TableCell>
+                        <TableCell>
+                            {moment(version.created).format('ll')}
+                        </TableCell>
+                        <TableCell>
+                            <UserGroupSelector
+                                userGroups={userGroups}
+                                version={version.version}
+                                onSelect={setUserGroupVersionMap}
+                            />
+                        </TableCell>
+                        <TableCell>
+                            <Button
+                                small
+                                secondary
+                                className={styles.installBtn}
+                                disabled={version.version === installedVersion}
+                                onClick={() =>
+                                    onVersionInstall(
+                                        version,
+                                        Object.keys(userGroupVersionMap).find(
+                                            (userGroupId) =>
+                                                userGroupVersionMap[
+                                                    userGroupId
+                                                ] === version.version
+                                        )
+                                    )
+                                }
+                            >
+                                {version.version === installedVersion
+                                    ? i18n.t('Installed')
+                                    : i18n.t('Install')}
                             </Button>
-                        </a>
-                    </TableCell>
-                </TableRow>
-            ))}
-        </TableBody>
-    </Table>
-)
+                            <a
+                                download
+                                href={version.downloadUrl}
+                                className={styles.downloadLink}
+                            >
+                                <Button small secondary>
+                                    {i18n.t('Download')}
+                                </Button>
+                            </a>
+                        </TableCell>
+                    </TableRow>
+                ))}
+            </TableBody>
+        </Table>
+    )
+}
 
 VersionsTable.propTypes = {
+    userGroups: PropTypes.array.isRequired,
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
 }
 
-export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
+export const Versions = ({
+    installedVersion,
+    versions,
+    onVersionInstall,
+    userGroups,
+}) => {
     const [channelsFilter, setChannelsFilter] = useState(new Set(['stable']))
     const installSuccessAlert = useAlert(i18n.t('App installed successfully'), {
         success: true,
@@ -180,9 +218,9 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
     const filteredVersions = versions
         .filter((version) => channelsFilter.has(version.channel))
         .filter(satisfiesDhisVersion)
-    const handleVersionInstall = async (version) => {
+    const handleVersionInstall = async (version, userGroupId) => {
         try {
-            await installVersion(version.id)
+            await installVersion(version.id, userGroupId)
             installSuccessAlert.show()
             onVersionInstall()
         } catch (error) {
@@ -202,6 +240,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
                     installedVersion={installedVersion}
                     versions={filteredVersions}
                     onVersionInstall={handleVersionInstall}
+                    userGroups={userGroups}
                 />
             ) : (
                 <em>
@@ -215,7 +254,42 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
 }
 
 Versions.propTypes = {
+    userGroups: PropTypes.array.isRequired,
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
+}
+
+const UserGroupSelector = ({ userGroups, version, onSelect }) => {
+    const [userGroup, setUserGroup] = useState('all')
+
+    const onChange = ({ selected }) => {
+        setUserGroup(selected)
+
+        onSelect({ [selected]: version })
+    }
+
+    return (
+        <SingleSelect dense selected={userGroup} onChange={onChange}>
+            <SingleSelectOption
+                dense
+                label={i18n.t('All user groups')}
+                value="all"
+            />
+            {userGroups.map((group) => (
+                <SingleSelectOption
+                    dense
+                    label={group.displayName}
+                    value={group.id}
+                    key={group.id}
+                />
+            ))}
+        </SingleSelect>
+    )
+}
+
+UserGroupSelector.propTypes = {
+    userGroups: PropTypes.array.isRequired,
+    version: PropTypes.string.isRequired,
+    onSelect: PropTypes.func,
 }
