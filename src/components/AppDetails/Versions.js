@@ -1,4 +1,4 @@
-import { useAlert, useConfig } from '@dhis2/app-runtime'
+import { useAlert, useConfig, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import {
@@ -88,6 +88,13 @@ ChannelsFilter.propTypes = {
     versions: PropTypes.array.isRequired,
 }
 
+const dataStoreQuery = {
+    groupVersions: {
+        resource: 'dataStore/app-management/capture',
+        
+    }
+};
+
 const VersionsTable = ({
     installedVersion,
     versions,
@@ -98,6 +105,12 @@ const VersionsTable = ({
         (map, newMap) => ({ ...map, ...newMap }),
         {}
     )
+
+    const { data: { groupVersions: dataStoreGroupVersions } = {}, loading } = useDataQuery(dataStoreQuery);
+
+    if (loading) {
+        return null;
+    }
 
     return (
         <Table>
@@ -115,7 +128,13 @@ const VersionsTable = ({
                 </TableRowHead>
             </TableHead>
             <TableBody>
-                {versions.map((version) => (
+                {versions.map((version) => {
+                    const versionActiveForUserGroup = Object
+                    .entries(dataStoreGroupVersions)
+                    .find(([, dataStoreVersion]) => dataStoreVersion === version.version)
+                    ?.[0];
+
+                    return (
                     <TableRow key={version.id}>
                         <TableCell>{version.version}</TableCell>
                         <TableCell>
@@ -129,6 +148,7 @@ const VersionsTable = ({
                                 userGroups={userGroups}
                                 version={version.version}
                                 onSelect={setUserGroupVersionMap}
+                                versionActiveForUserGroup={versionActiveForUserGroup}
                             />
                         </TableCell>
                         <TableCell>
@@ -136,7 +156,7 @@ const VersionsTable = ({
                                 small
                                 secondary
                                 className={styles.installBtn}
-                                disabled={version.version === installedVersion}
+                                disabled={version.version === installedVersion || versionActiveForUserGroup}
                                 onClick={() =>
                                     onVersionInstall(
                                         version,
@@ -149,7 +169,7 @@ const VersionsTable = ({
                                     )
                                 }
                             >
-                                {version.version === installedVersion
+                                {version.version === installedVersion || versionActiveForUserGroup
                                     ? i18n.t('Installed')
                                     : i18n.t('Install')}
                             </Button>
@@ -164,7 +184,8 @@ const VersionsTable = ({
                             </a>
                         </TableCell>
                     </TableRow>
-                ))}
+                )
+                })}
             </TableBody>
         </Table>
     )
@@ -260,13 +281,27 @@ Versions.propTypes = {
     installedVersion: PropTypes.string,
 }
 
-const UserGroupSelector = ({ userGroups, version, onSelect }) => {
+const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUserGroup }) => {
     const [userGroup, setUserGroup] = useState('all')
 
     const onChange = ({ selected }) => {
         setUserGroup(selected)
 
         onSelect({ [selected]: version })
+    }
+
+    if (versionActiveForUserGroup) {
+        const { displayName, id } = userGroups.find(group => group.id === versionActiveForUserGroup);
+
+        return (
+            <SingleSelect dense selected={versionActiveForUserGroup} disabled>
+                  <SingleSelectOption
+                    dense
+                    label={displayName}
+                    value={id}
+                />
+            </SingleSelect>
+        );
     }
 
     return (
@@ -292,4 +327,5 @@ UserGroupSelector.propTypes = {
     userGroups: PropTypes.array.isRequired,
     version: PropTypes.string.isRequired,
     onSelect: PropTypes.func,
+    versionActiveForUserGroup: PropTypes.string,
 }
