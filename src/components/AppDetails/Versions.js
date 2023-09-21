@@ -88,23 +88,24 @@ ChannelsFilter.propTypes = {
     versions: PropTypes.array.isRequired,
 }
 
-const dataStoreQuery = {
-    groupVersions: {
-        resource: 'dataStore/app-management/capture',
-        
-    }
-};
-
 const VersionsTable = ({
     installedVersion,
     versions,
     onVersionInstall,
     userGroups,
+    appId,
 }) => {
     const [userGroupVersionMap, setUserGroupVersionMap] = useReducer(
         (map, newMap) => ({ ...map, ...newMap }),
         {}
     )
+
+    const dataStoreQuery = {
+        groupVersions: {
+            resource: 'dataStore/app-management/' + appId,
+            
+        }
+    };
 
     const { data: { groupVersions: dataStoreGroupVersions = {} } = {}, loading } = useDataQuery(dataStoreQuery);
 
@@ -196,6 +197,7 @@ VersionsTable.propTypes = {
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
+    appId: PropTypes.string,
 }
 
 export const Versions = ({
@@ -203,6 +205,7 @@ export const Versions = ({
     versions,
     onVersionInstall,
     userGroups,
+    appId,
 }) => {
     const [channelsFilter, setChannelsFilter] = useState(new Set(['stable']))
     const installSuccessAlert = useAlert(i18n.t('App installed successfully'), {
@@ -262,6 +265,7 @@ export const Versions = ({
                     versions={filteredVersions}
                     onVersionInstall={handleVersionInstall}
                     userGroups={userGroups}
+                    appId={appId}
                 />
             ) : (
                 <em>

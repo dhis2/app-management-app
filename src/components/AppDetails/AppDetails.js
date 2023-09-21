@@ -185,6 +185,7 @@ export const AppDetails = ({
                             versions={versions}
                             userGroups={userGroups}
                             onVersionInstall={onVersionInstall}
+                            appId={appHubApp.id}
                         />
                     </section>
                 </>
