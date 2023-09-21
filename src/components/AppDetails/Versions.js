@@ -1,4 +1,5 @@
-import { useAlert, useConfig, useDataQuery } from '@dhis2/app-runtime'
+import { useAlert, useConfig } from '@dhis2/app-runtime'
+import { useSavedObject } from '@dhis2/app-service-datastore'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import {
@@ -93,25 +94,12 @@ const VersionsTable = ({
     versions,
     onVersionInstall,
     userGroups,
-    appId,
+    userGroupVersionMapFromDS,
 }) => {
     const [userGroupVersionMap, setUserGroupVersionMap] = useReducer(
         (map, newMap) => ({ ...map, ...newMap }),
-        {}
+        userGroupVersionMapFromDS
     )
-
-    const dataStoreQuery = {
-        groupVersions: {
-            resource: 'dataStore/app-management/' + appId,
-            
-        }
-    };
-
-    const { data: { groupVersions: dataStoreGroupVersions = {} } = {}, loading } = useDataQuery(dataStoreQuery);
-
-    if (loading) {
-        return null;
-    }
 
     return (
         <Table>
@@ -130,63 +118,75 @@ const VersionsTable = ({
             </TableHead>
             <TableBody>
                 {versions.map((version) => {
-                    const versionActiveForUserGroup = Object
-                    .entries(dataStoreGroupVersions)
-                    ?.find(([, dataStoreVersion]) => dataStoreVersion === version.version)
-                    ?.[0];
+                    const versionActiveForUserGroup = Object.entries(
+                        userGroupVersionMapFromDS || {}
+                    )?.find(
+                        ([, dataStoreVersion]) =>
+                            dataStoreVersion === version.version
+                    )?.[0]
 
                     return (
-                    <TableRow key={version.id}>
-                        <TableCell>{version.version}</TableCell>
-                        <TableCell>
-                            {channelToDisplayName[version.channel]}
-                        </TableCell>
-                        <TableCell>
-                            {moment(version.created).format('ll')}
-                        </TableCell>
-                        <TableCell>
-                            <UserGroupSelector
-                                userGroups={userGroups}
-                                version={version.version}
-                                onSelect={setUserGroupVersionMap}
-                                versionActiveForUserGroup={versionActiveForUserGroup}
-                                isInstalled={version.version === installedVersion}
-                            />
-                        </TableCell>
-                        <TableCell>
-                            <Button
-                                small
-                                secondary
-                                className={styles.installBtn}
-                                disabled={version.version === installedVersion || versionActiveForUserGroup}
-                                onClick={() =>
-                                    onVersionInstall(
-                                        version,
-                                        Object.keys(userGroupVersionMap).find(
-                                            (userGroupId) =>
-                                                userGroupVersionMap[
-                                                    userGroupId
-                                                ] === version.version
+                        <TableRow key={version.id}>
+                            <TableCell>{version.version}</TableCell>
+                            <TableCell>
+                                {channelToDisplayName[version.channel]}
+                            </TableCell>
+                            <TableCell>
+                                {moment(version.created).format('ll')}
+                            </TableCell>
+                            <TableCell>
+                                <UserGroupSelector
+                                    userGroups={userGroups}
+                                    version={version.version}
+                                    onSelect={setUserGroupVersionMap}
+                                    versionActiveForUserGroup={
+                                        versionActiveForUserGroup
+                                    }
+                                    isInstalled={
+                                        version.version === installedVersion
+                                    }
+                                />
+                            </TableCell>
+                            <TableCell>
+                                <Button
+                                    small
+                                    secondary
+                                    className={styles.installBtn}
+                                    disabled={
+                                        version.version === installedVersion ||
+                                        versionActiveForUserGroup
+                                    }
+                                    onClick={() =>
+                                        onVersionInstall(
+                                            version,
+                                            Object.keys(
+                                                userGroupVersionMap
+                                            ).find(
+                                                (userGroupId) =>
+                                                    userGroupVersionMap[
+                                                        userGroupId
+                                                    ] === version.version
+                                            )
                                         )
-                                    )
-                                }
-                            >
-                                {version.version === installedVersion || versionActiveForUserGroup
-                                    ? i18n.t('Installed')
-                                    : i18n.t('Install')}
-                            </Button>
-                            <a
-                                download
-                                href={version.downloadUrl}
-                                className={styles.downloadLink}
-                            >
-                                <Button small secondary>
-                                    {i18n.t('Download')}
+                                    }
+                                >
+                                    {version.version === installedVersion ||
+                                    versionActiveForUserGroup
+                                        ? i18n.t('Installed')
+                                        : i18n.t('Install')}
                                 </Button>
-                            </a>
-                        </TableCell>
-                    </TableRow>
-                )
+                                <a
+                                    download
+                                    href={version.downloadUrl}
+                                    className={styles.downloadLink}
+                                >
+                                    <Button small secondary>
+                                        {i18n.t('Download')}
+                                    </Button>
+                                </a>
+                            </TableCell>
+                        </TableRow>
+                    )
                 })}
             </TableBody>
         </Table>
@@ -198,7 +198,7 @@ VersionsTable.propTypes = {
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
-    appId: PropTypes.string,
+    userGroupVersionMapFromDS: PropTypes.object,
 }
 
 export const Versions = ({
@@ -221,6 +221,9 @@ export const Versions = ({
         { critical: true }
     )
     const { serverVersion } = useConfig()
+    const [userGroupVersionMap, { replace }] = useSavedObject(appId, {
+        global: true,
+    }) // XXX
     const { installVersion } = useApi()
     const dhisVersion = semver.coerce(
         `${serverVersion.major}.${serverVersion.minor}`
@@ -245,8 +248,20 @@ export const Versions = ({
         .filter(satisfiesDhisVersion)
     const handleVersionInstall = async (version, userGroupId) => {
         try {
-            await installVersion(version.id, userGroupId)
+            await installVersion(
+                version.id,
+                userGroupId !== 'all' ? userGroupId : undefined
+            )
             installSuccessAlert.show()
+
+            if (userGroupId !== 'all') {
+                // TODO merge with existing object
+                replace({
+                    ...userGroupVersionMap,
+                    ...{ [userGroupId]: version.version },
+                })
+            }
+
             onVersionInstall()
         } catch (error) {
             installErrorAlert.show({ error })
@@ -266,6 +281,7 @@ export const Versions = ({
                     versions={filteredVersions}
                     onVersionInstall={handleVersionInstall}
                     userGroups={userGroups}
+                    userGroupVersionMapFromDS={userGroupVersionMap}
                     appId={appId}
                 />
             ) : (
@@ -280,14 +296,22 @@ export const Versions = ({
 }
 
 Versions.propTypes = {
+    appId: PropTypes.string.isRequired,
     userGroups: PropTypes.array.isRequired,
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
 }
 
-const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUserGroup, isInstalled }) => {
-    const [userGroup, setUserGroup] = useState('all')
+const UserGroupSelector = ({
+    userGroups,
+    version,
+    onSelect,
+    versionActiveForUserGroup,
+    isInstalled,
+}) => {
+    const DEFAULT_USER_GROUP_ID = 'all'
+    const [userGroup, setUserGroup] = useState(DEFAULT_USER_GROUP_ID)
 
     const onChange = ({ selected }) => {
         setUserGroup(selected)
@@ -296,18 +320,19 @@ const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUser
     }
 
     if (versionActiveForUserGroup || isInstalled) {
-        const { displayName, id } = versionActiveForUserGroup ?
-            userGroups.find(group => group.id === versionActiveForUserGroup) : { displayName: 'All user groups', id: 'ALL' };
+        const { displayName, id } = versionActiveForUserGroup
+            ? userGroups.find((group) => group.id === versionActiveForUserGroup)
+            : { displayName: 'All user groups', id: DEFAULT_USER_GROUP_ID }
 
         return (
-            <SingleSelect dense selected={versionActiveForUserGroup || 'ALL'} disabled>
-                  <SingleSelectOption
-                    dense
-                    label={displayName}
-                    value={id}
-                />
+            <SingleSelect
+                dense
+                selected={versionActiveForUserGroup || DEFAULT_USER_GROUP_ID}
+                disabled
+            >
+                <SingleSelectOption dense label={displayName} value={id} />
             </SingleSelect>
-        );
+        )
     }
 
     return (
@@ -315,7 +340,7 @@ const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUser
             <SingleSelectOption
                 dense
                 label={i18n.t('All user groups')}
-                value="all"
+                value={DEFAULT_USER_GROUP_ID}
             />
             {userGroups.map((group) => (
                 <SingleSelectOption
@@ -332,6 +357,7 @@ const UserGroupSelector = ({ userGroups, version, onSelect, versionActiveForUser
 UserGroupSelector.propTypes = {
     userGroups: PropTypes.array.isRequired,
     version: PropTypes.string.isRequired,
-    onSelect: PropTypes.func,
+    isInstalled: PropTypes.bool,
     versionActiveForUserGroup: PropTypes.string,
+    onSelect: PropTypes.func,
 }

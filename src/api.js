@@ -17,11 +17,18 @@ class Api {
             return res
         })
 
-    installVersion = (versionId, userGroupId) =>
+    installVersion = (versionId, userGroupId) => {
+        let url = `appHub/${versionId}`
+
+        if (userGroupId) {
+            url += `?group=${userGroupId}`
+        }
+
         this.request({
-            url: `appHub/${versionId}?group=${userGroupId}`,
+            url,
             method: 'post',
         })
+    }
 
     uninstallApp = (appKey) =>
         this.request({

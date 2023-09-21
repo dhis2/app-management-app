@@ -1,4 +1,5 @@
 import { useDataQuery } from '@dhis2/app-runtime'
+import { DataStoreProvider } from '@dhis2/app-service-datastore'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
@@ -55,13 +56,15 @@ export const AppHubApp = ({ match }) => {
     )
 
     return (
-        <AppDetails
-            installedApp={installedApp}
-            appHubApp={appHubApp}
-            userGroups={userGroups.userGroups}
-            onVersionInstall={refetch}
-            onUninstall={() => history.push('/app-hub')}
-        />
+        <DataStoreProvider namespace="app-management">
+            <AppDetails
+                installedApp={installedApp}
+                appHubApp={appHubApp}
+                userGroups={userGroups.userGroups}
+                onVersionInstall={refetch}
+                onUninstall={() => history.push('/app-hub')}
+            />
+        </DataStoreProvider>
     )
 }
 
