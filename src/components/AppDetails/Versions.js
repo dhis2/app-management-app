@@ -16,7 +16,7 @@ import {
     TableCell,
 } from '@dhis2/ui'
 import moment from 'moment'
-import React, { useReducer, useState } from 'react'
+import React, { useCallback, useEffect, useReducer, useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api.js'
 import styles from './AppDetails.module.css'
@@ -98,7 +98,7 @@ const VersionsTable = ({
 }) => {
     const [userGroupVersionMap, setUserGroupVersionMap] = useReducer(
         (map, newMap) => ({ ...map, ...newMap }),
-        userGroupVersionMapFromDS
+        userGroupVersionMapFromDS || {}
     )
 
     return (
@@ -112,18 +112,19 @@ const VersionsTable = ({
                         })}
                     </TableCellHead>
                     <TableCellHead>{i18n.t('Upload date')}</TableCellHead>
-                    <TableCellHead></TableCellHead>
+                    <TableCellHead>{i18n.t('User group')}</TableCellHead>
                     <TableCellHead></TableCellHead>
                 </TableRowHead>
             </TableHead>
             <TableBody>
                 {versions.map((version) => {
-                    const versionActiveForUserGroup = Object.entries(
+                    const versionActiveForUserGroup = Object.keys(
                         userGroupVersionMapFromDS || {}
-                    )?.find(
-                        ([, dataStoreVersion]) =>
-                            dataStoreVersion === version.version
-                    )?.[0]
+                    ).find(
+                        (userGroupId) =>
+                            userGroupVersionMapFromDS[userGroupId] ===
+                            version.version
+                    )
 
                     return (
                         <TableRow key={version.id}>
@@ -223,7 +224,7 @@ export const Versions = ({
     const { serverVersion } = useConfig()
     const [userGroupVersionMap, { replace }] = useSavedObject(appId, {
         global: true,
-    }) // XXX
+    })
     const { installVersion } = useApi()
     const dhisVersion = semver.coerce(
         `${serverVersion.major}.${serverVersion.minor}`
@@ -254,8 +255,7 @@ export const Versions = ({
             )
             installSuccessAlert.show()
 
-            if (userGroupId !== 'all') {
-                // TODO merge with existing object
+            if (userGroupId) {
                 replace({
                     ...userGroupVersionMap,
                     ...{ [userGroupId]: version.version },
@@ -311,32 +311,31 @@ const UserGroupSelector = ({
     isInstalled,
 }) => {
     const DEFAULT_USER_GROUP_ID = 'all'
-    const [userGroup, setUserGroup] = useState(DEFAULT_USER_GROUP_ID)
+    const [userGroup, setUserGroup] = useState(versionActiveForUserGroup)
 
-    const onChange = ({ selected }) => {
-        setUserGroup(selected)
+    const onChange = useCallback(
+        ({ selected }) => {
+            setUserGroup(selected)
 
-        onSelect({ [selected]: version })
-    }
+            onSelect({ [selected]: version })
+        },
+        [onSelect, version]
+    )
 
-    if (versionActiveForUserGroup || isInstalled) {
-        const { displayName, id } = versionActiveForUserGroup
-            ? userGroups.find((group) => group.id === versionActiveForUserGroup)
-            : { displayName: 'All user groups', id: DEFAULT_USER_GROUP_ID }
-
-        return (
-            <SingleSelect
-                dense
-                selected={versionActiveForUserGroup || DEFAULT_USER_GROUP_ID}
-                disabled
-            >
-                <SingleSelectOption dense label={displayName} value={id} />
-            </SingleSelect>
-        )
-    }
+    useEffect(() => {
+        if (!versionActiveForUserGroup && isInstalled) {
+            onChange({ selected: DEFAULT_USER_GROUP_ID })
+        }
+    }, [isInstalled, versionActiveForUserGroup, onChange])
 
     return (
-        <SingleSelect dense selected={userGroup} onChange={onChange}>
+        <SingleSelect
+            dense
+            selected={userGroup}
+            onChange={onChange}
+            placeholder={i18n.t('Choose a user group')}
+            disabled={isInstalled || versionActiveForUserGroup}
+        >
             <SingleSelectOption
                 dense
                 label={i18n.t('All user groups')}
