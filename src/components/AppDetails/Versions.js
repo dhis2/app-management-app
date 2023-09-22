@@ -155,7 +155,7 @@ const VersionsTable = ({
                                     className={styles.installBtn}
                                     disabled={
                                         version.version === installedVersion ||
-                                        versionActiveForUserGroup
+                                        Boolean(versionActiveForUserGroup)
                                     }
                                     onClick={() =>
                                         onVersionInstall(
@@ -334,7 +334,7 @@ const UserGroupSelector = ({
             selected={userGroup}
             onChange={onChange}
             placeholder={i18n.t('Choose a user group')}
-            disabled={isInstalled || versionActiveForUserGroup}
+            disabled={isInstalled || Boolean(versionActiveForUserGroup)}
         >
             <SingleSelectOption
                 dense
