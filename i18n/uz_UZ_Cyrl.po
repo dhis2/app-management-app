@@ -1,13 +1,13 @@
 # 
 # Translators:
-# Ibatov <ibatovk@who.int>, 2020
+# Ibatov <ibatovk@who.int>, 2023
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2021-03-22T15:30:51.849Z\n"
 "PO-Revision-Date: 2020-12-22 22:10+0000\n"
-"Last-Translator: Ibatov <ibatovk@who.int>, 2020\n"
+"Last-Translator: Ibatov <ibatovk@who.int>, 2023\n"
 "Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,25 +16,25 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Install App"
-msgstr ""
+msgstr "Иловани ўрнатмоқ"
 
 msgid "Uninstall App"
-msgstr ""
+msgstr "Иловани ўчирмоқ"
 
 msgid "Refresh Apps"
-msgstr ""
+msgstr "Иловаларни янгилаш"
 
 msgid "An app was installed"
-msgstr ""
+msgstr "Илова аввал ўрнатилган "
 
 msgid "Load DHIS2 App Hub"
-msgstr ""
+msgstr "DHIS2 Марказий Hub иловасини юкламоқ"
 
 msgid "Install App Version from DHIS2 App Hub"
-msgstr ""
+msgstr " DHIS2 Марказий Hub варианти иловасини ўрнатиш"
 
 msgid "Show Snackbar message"
-msgstr ""
+msgstr "Жорий хабарларни кўрсатиш"
 
 msgid "App installed successfully"
 msgstr "Илова муваффақиятли ўрнатилди"
@@ -85,28 +85,28 @@ msgid "Install"
 msgstr "Ўрнатиш"
 
 msgid "Installed Standard Apps"
-msgstr ""
+msgstr "Ўрнатилган стандарт иловалар"
 
 msgid "Installed Dashboard Apps"
-msgstr ""
+msgstr "Ўрнатилган бошқарув панели иловалари"
 
 msgid "Installed Tracker Dashboard Apps"
-msgstr ""
+msgstr "Ўрнатилган бошқарув панели кузатув иловалари"
 
 msgid "Installed Resource Apps"
-msgstr ""
+msgstr "Ўрнатилган захира иловалари"
 
 msgid "There are no standard apps installed."
-msgstr ""
+msgstr "Стандарт иловалар ўрнатилмаган"
 
 msgid "There are no dashboard apps installed."
-msgstr ""
+msgstr "бошқарув панели иловалари ўрнатилмаган"
 
 msgid "There are no tracker dashboard apps installed."
-msgstr ""
+msgstr "Бошқарув панели кузатув иловалари ўрнатилмаган"
 
 msgid "There are no resource apps installed"
-msgstr ""
+msgstr "Захира иловалари ўрнатилмаган"
 
 msgid "CORE APP"
 msgstr "CORE APP"
