@@ -10,9 +10,10 @@ class Api {
             method,
             body,
             credentials: 'include',
-        }).then((res) => {
+        }).then(async (res) => {
             if (res.status < 200 || res.status >= 300) {
-                throw new Error(res.statusText)
+                const errorBody = await res.json()
+                throw errorBody
             }
             return res
         })
