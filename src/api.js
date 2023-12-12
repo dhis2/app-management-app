@@ -1,4 +1,5 @@
 import { useConfig } from '@dhis2/app-runtime'
+import i18n from '@dhis2/d2-i18n'
 
 class Api {
     constructor({ baseUrl }) {
@@ -10,7 +11,15 @@ class Api {
             method,
             body,
             credentials: 'include',
+            redirect: 'manual',
         }).then(async (res) => {
+            if (res.type === 'opaqueredirect') {
+                throw {
+                    message: i18n.t(
+                        'Your session has expired. Please refresh the page and login before trying again.'
+                    ),
+                }
+            }
             if (res.status < 200 || res.status >= 300) {
                 const errorBody = await res.json()
                 throw errorBody
