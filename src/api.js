@@ -13,15 +13,22 @@ class Api {
             credentials: 'include',
             redirect: 'manual',
         }).then(async (res) => {
-            if (res.type === 'opaqueredirect') {
-                throw {
-                    message: i18n.t(
-                        'Your session has expired. Please refresh the page and login before trying again.'
-                    ),
+            let errorBody
+            try {
+                if (res.type === 'opaqueredirect') {
+                    errorBody = {
+                        message: i18n.t(
+                            'Your session has expired. Please refresh the page and login before trying again.'
+                        ),
+                    }
+                } else if (res.status < 200 || res.status >= 300) {
+                    errorBody = await res.json()
                 }
+            } catch (err) {
+                throw new Error(i18n.t('An unexpected error occurred'))
             }
-            if (res.status < 200 || res.status >= 300) {
-                const errorBody = await res.json()
+
+            if (errorBody) {
                 throw errorBody
             }
             return res
