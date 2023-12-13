@@ -1,11 +1,12 @@
-import { useAlert } from '@dhis2/app-runtime'
+import { useAlert, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import { Button } from '@dhis2/ui'
 import React from 'react'
+import semver from 'semver'
 import { useApi } from '../../api.js'
 import { getLatestVersion } from '../../get-latest-version.js'
-import { semverGt } from '../../semver-gt.js'
+import { getCompatibleVersions, semverGt } from '../../semver-helpers.js'
 import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name.js'
 
@@ -22,6 +23,16 @@ export const ManageInstalledVersion = ({
     const latestVersion = getLatestVersion(versions)
     const canInstall =
         latestVersion && latestVersion.version !== installedApp?.version
+
+    const { serverVersion } = useConfig()
+
+    const dhisVersion = semver.coerce(
+        `${serverVersion.major}.${serverVersion.minor}`
+    )
+
+    const compatibleVersions = getCompatibleVersions(versions, dhisVersion)
+    const hasCompatibleVersions = compatibleVersions.length > 0
+
     const canUninstall = installedApp && !isBundled
     const canUpdate =
         installedApp &&
@@ -72,7 +83,14 @@ export const ManageInstalledVersion = ({
 
     return (
         <div className={styles.manageInstalledVersion}>
-            {canInstall && (
+            {!hasCompatibleVersions && (
+                <>
+                    <em>
+                        {i18n.t('There are no compatible versions available.')}
+                    </em>
+                </>
+            )}
+            {hasCompatibleVersions && canInstall && (
                 <>
                     <Button primary onClick={handleInstall}>
                         {canUpdate

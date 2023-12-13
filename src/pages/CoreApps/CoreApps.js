@@ -6,7 +6,7 @@ import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppH
 import { AppsList } from '../../components/AppsList/AppsList.js'
 import { coreApps } from '../../core-apps.js'
 import { getLatestVersion } from '../../get-latest-version.js'
-import { semverGt } from '../../semver-gt.js'
+import { semverGt } from '../../semver-helpers.js'
 
 const query = {
     overriddenCoreApps: {

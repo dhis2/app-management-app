@@ -3,6 +3,7 @@ import i18n from '@dhis2/d2-i18n'
 import { PropTypes } from '@dhis2/prop-types'
 import {
     Checkbox,
+    CircularLoader,
     Button,
     Table,
     TableHead,
@@ -16,6 +17,7 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api.js'
+import { getCompatibleVersions } from '../../semver-helpers.js'
 import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name.js'
 
@@ -86,7 +88,12 @@ ChannelsFilter.propTypes = {
     versions: PropTypes.array.isRequired,
 }
 
-const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => (
+const VersionsTable = ({
+    installedVersion,
+    versions,
+    onVersionInstall,
+    versionBeingInstalled,
+}) => (
     <Table>
         <TableHead>
             <TableRowHead>
@@ -101,39 +108,44 @@ const VersionsTable = ({ installedVersion, versions, onVersionInstall }) => (
             </TableRowHead>
         </TableHead>
         <TableBody>
-            {versions.map((version) => (
-                <TableRow key={version.id}>
-                    <TableCell>{version.version}</TableCell>
-                    <TableCell>
-                        {channelToDisplayName[version.channel]}
-                    </TableCell>
-                    <TableCell>
-                        {moment(version.created).format('ll')}
-                    </TableCell>
-                    <TableCell>
-                        <Button
-                            small
-                            secondary
-                            className={styles.installBtn}
-                            disabled={version.version === installedVersion}
-                            onClick={() => onVersionInstall(version)}
-                        >
-                            {version.version === installedVersion
-                                ? i18n.t('Installed')
-                                : i18n.t('Install')}
-                        </Button>
-                        <a
-                            download
-                            href={version.downloadUrl}
-                            className={styles.downloadLink}
-                        >
-                            <Button small secondary>
-                                {i18n.t('Download')}
+            {versions.map((version) => {
+                const isVersionInstalling = versionBeingInstalled === version.id
+                return (
+                    <TableRow key={version.id} dataTest="versions-table-row">
+                        <TableCell>{version.version}</TableCell>
+                        <TableCell>
+                            {channelToDisplayName[version.channel]}
+                        </TableCell>
+                        <TableCell>
+                            {moment(version.created).format('ll')}
+                        </TableCell>
+                        <TableCell>
+                            <Button
+                                small
+                                secondary
+                                className={styles.installBtn}
+                                disabled={
+                                    version.version === installedVersion ||
+                                    versionBeingInstalled
+                                }
+                                onClick={() => onVersionInstall(version)}
+                            >
+                                {isVersionInstalling && (
+                                    <>
+                                        {i18n.t('Installing...')}
+                                        <CircularLoader small />
+                                    </>
+                                )}
+                                {!isVersionInstalling
+                                    ? version.version === installedVersion
+                                        ? i18n.t('Installed')
+                                        : i18n.t('Install')
+                                    : ''}
                             </Button>
-                        </a>
-                    </TableCell>
-                </TableRow>
-            ))}
+                        </TableCell>
+                    </TableRow>
+                )
+            })}
         </TableBody>
     </Table>
 )
@@ -142,6 +154,7 @@ VersionsTable.propTypes = {
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
     installedVersion: PropTypes.string,
+    versionBeingInstalled: PropTypes.string,
 }
 
 export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
@@ -158,28 +171,18 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
         { critical: true }
     )
     const { serverVersion } = useConfig()
+
     const { installVersion } = useApi()
     const dhisVersion = semver.coerce(
         `${serverVersion.major}.${serverVersion.minor}`
     )
-    const satisfiesDhisVersion = (version) => {
-        const { minDhisVersion: min, maxDhisVersion: max } = version
-        if (!min && !max) {
-            return true
-        } else if (min && max) {
-            const range = new semver.Range(`${min} - ${max}`)
-            return semver.satisfies(dhisVersion, range)
-        } else if (!min && max) {
-            const range = new semver.Range(`<=${max}`)
-            return semver.satisfies(dhisVersion, range)
-        } else if (min && !max) {
-            const range = new semver.Range(`>=${min}`)
-            return semver.satisfies(dhisVersion, range)
-        }
-    }
-    const filteredVersions = versions
-        .filter((version) => channelsFilter.has(version.channel))
-        .filter(satisfiesDhisVersion)
+
+    const filteredVersions = getCompatibleVersions(
+        versions,
+        dhisVersion,
+        channelsFilter
+    )
+
     const handleVersionInstall = async (version) => {
         try {
             await installVersion(version.id)

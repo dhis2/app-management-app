@@ -20,7 +20,7 @@ jobs:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12.x
+                  node-version: 14.x
 
             - uses: c-hive/gha-yarn-cache@v1
             - run: yarn install --frozen-lockfile
@@ -42,7 +42,7 @@ jobs:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12.x
+                  node-version: 14.x
 
             - uses: c-hive/gha-yarn-cache@v1
             - run: yarn install --frozen-lockfile
@@ -53,22 +53,25 @@ jobs:
             - name: Lint
               run: yarn lint
 
-    #    test:
-    #        runs-on: ubuntu-latest
-    #        steps:
-    #            - uses: actions/checkout@v2
-    #            - uses: actions/setup-node@v1
-    #              with:
-    #                  node-version: 12.x
-    #
-    #            - uses: c-hive/gha-yarn-cache@v1
-    #            - run: yarn install --frozen-lockfile
-    #
-    #            - name: Generate translations
-    #              run: yarn d2-app-scripts i18n generate
-    #
-    #            - name: Test
-    #              run: yarn test
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 14.x
+
+            - uses: c-hive/gha-yarn-cache@v1
+            - run: yarn install --frozen-lockfile
+
+            # - name: Generate translations
+            #   run: yarn d2-app-scripts i18n generate
+
+            - name: Test
+              run: yarn test --coverage
+
+            - name: Upload coverage to Codecov
+              uses: codecov/codecov-action@v1
 
     release:
         runs-on: ubuntu-latest
@@ -81,7 +84,7 @@ jobs:
 
             - uses: actions/setup-node@v1
               with:
-                  node-version: 12.x
+                  node-version: 14.x
 
             - uses: actions/download-artifact@v2
               with:

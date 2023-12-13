@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/dhis2/app-management-app/graph/badge.svg?token=Z62Z57XE21)](https://codecov.io/gh/dhis2/maintenance-app-beta)
+
 This project was bootstrapped with [DHIS2 Application Platform](https://github.com/dhis2/app-platform).
 
 ## Available Scripts

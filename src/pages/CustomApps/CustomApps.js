@@ -5,7 +5,7 @@ import React from 'react'
 import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.js'
 import { AppsList } from '../../components/AppsList/AppsList.js'
 import { getLatestVersion } from '../../get-latest-version.js'
-import { semverGt } from '../../semver-gt.js'
+import { semverGt } from '../../semver-helpers.js'
 
 const query = {
     customApps: {
