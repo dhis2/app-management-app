@@ -48,11 +48,20 @@ export const AppHubApp = ({ match }) => {
         )
     }
 
-    // ToDo: This check here is the cause of the bug https://dhis2.atlassian.net/browse/DHIS2-15586
-    // custom apps seem to not have an app_hub_id, when these are surfaced then this should be resolved
-    // otherwise we need to find a different way to match the app ( || app.name === appHubApp.name would work but not reliable)
+    // ToDo: This is a workaround to match non-core apps to fix this bug https://dhis2.atlassian.net/browse/DHIS2-15586
+    // we don't have an app ID for these apps, so we can't reliably match them. This is the best we can do for now:
+    // to match with the name + developer email
+    const matchesNonCoreApp = (installedApp, appHubDetails) => {
+        return (
+            !installedApp.app_hub_id &&
+            installedApp.name === appHubDetails.name &&
+            installedApp.developer?.email === appHubDetails.developer?.email
+        )
+    }
+
     const installedApp = installedApps.find(
-        (app) => app.app_hub_id === appHubId
+        (app) =>
+            app.app_hub_id === appHubId || matchesNonCoreApp(app, appHubApp)
     )
 
     return (
