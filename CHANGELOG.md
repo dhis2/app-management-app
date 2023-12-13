@@ -1,3 +1,10 @@
+## [100.2.30](https://github.com/dhis2/app-management-app/compare/v100.2.29...v100.2.30) (2023-12-13)
+
+
+### Bug Fixes
+
+* parse error message properly for manual installs ([#541](https://github.com/dhis2/app-management-app/issues/541)) ([ea2c62f](https://github.com/dhis2/app-management-app/commit/ea2c62f5a30595ebe047122f55adc190eb8760ef))
+
 ## [100.2.29](https://github.com/dhis2/app-management-app/compare/v100.2.28...v100.2.29) (2023-11-19)
 
 
