@@ -1,4 +1,5 @@
 import { useConfig } from '@dhis2/app-runtime'
+import i18n from '@dhis2/d2-i18n'
 
 class Api {
     constructor({ baseUrl }) {
@@ -10,9 +11,25 @@ class Api {
             method,
             body,
             credentials: 'include',
-        }).then((res) => {
-            if (res.status < 200 || res.status >= 300) {
-                throw new Error(res.statusText)
+            redirect: 'manual',
+        }).then(async (res) => {
+            let errorBody
+            try {
+                if (res.type === 'opaqueredirect') {
+                    errorBody = {
+                        message: i18n.t(
+                            'Your session has expired. Please refresh the page and login before trying again.'
+                        ),
+                    }
+                } else if (res.status < 200 || res.status >= 300) {
+                    errorBody = await res.json()
+                }
+            } catch (err) {
+                throw new Error(i18n.t('An unexpected error occurred'))
+            }
+
+            if (errorBody) {
+                throw errorBody
             }
             return res
         })
