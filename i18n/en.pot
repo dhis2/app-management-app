@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
-"PO-Revision-Date: 2022-11-16T12:52:56.478Z\n"
+"POT-Creation-Date: 2023-09-22T08:03:50.812Z\n"
+"PO-Revision-Date: 2023-09-22T08:03:50.812Z\n"
 
 msgid "Version {{version}} installed"
 msgstr "Version {{version}} installed"
@@ -77,6 +77,9 @@ msgstr "Version"
 msgid "Upload date"
 msgstr "Upload date"
 
+msgid "User group"
+msgstr "User group"
+
 msgid "Installed"
 msgstr "Installed"
 
@@ -85,6 +88,12 @@ msgstr "Download"
 
 msgid "There are no compatible versions matching your criteria"
 msgstr "There are no compatible versions matching your criteria"
+
+msgid "Choose a user group"
+msgstr "Choose a user group"
+
+msgid "All user groups"
+msgstr "All user groups"
 
 msgid "Stable"
 msgstr "Stable"
