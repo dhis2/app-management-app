@@ -1,3 +1,10 @@
+## [100.2.31](https://github.com/dhis2/app-management-app/compare/v100.2.30...v100.2.31) (2023-12-14)
+
+
+### Bug Fixes
+
+* **DHIS2-13252:** disable install button when no compatible versions are available ([cee5a9e](https://github.com/dhis2/app-management-app/commit/cee5a9e686a9f6492d59e98a16017186ec78dfea))
+
 ## [100.2.30](https://github.com/dhis2/app-management-app/compare/v100.2.29...v100.2.30) (2023-12-13)
 
 
