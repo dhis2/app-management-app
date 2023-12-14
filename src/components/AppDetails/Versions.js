@@ -1,6 +1,6 @@
 import { useAlert, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { PropTypes } from '@dhis2/prop-types'
+import PropTypes from 'prop-types'
 import {
     Checkbox,
     CircularLoader,
@@ -142,6 +142,15 @@ const VersionsTable = ({
                                         : i18n.t('Install')
                                     : ''}
                             </Button>
+                            <a
+                                download
+                                href={version.downloadUrl}
+                                className={styles.downloadLink}
+                            >
+                                <Button small secondary>
+                                    {i18n.t('Download')}
+                                </Button>
+                            </a>
                         </TableCell>
                     </TableRow>
                 )
@@ -159,6 +168,8 @@ VersionsTable.propTypes = {
 
 export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
     const [channelsFilter, setChannelsFilter] = useState(new Set(['stable']))
+    const [versionBeingInstalled, setVersionBeingInstalled] = useState(null)
+
     const installSuccessAlert = useAlert(i18n.t('App installed successfully'), {
         success: true,
     })
@@ -185,11 +196,14 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
 
     const handleVersionInstall = async (version) => {
         try {
+            setVersionBeingInstalled(version.id)
             await installVersion(version.id)
             installSuccessAlert.show()
             onVersionInstall()
         } catch (error) {
             installErrorAlert.show({ error })
+        } finally {
+            setVersionBeingInstalled(null)
         }
     }
 
@@ -202,6 +216,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
             />
             {filteredVersions.length > 0 ? (
                 <VersionsTable
+                    versionBeingInstalled={versionBeingInstalled}
                     installedVersion={installedVersion}
                     versions={filteredVersions}
                     onVersionInstall={handleVersionInstall}
