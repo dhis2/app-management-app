@@ -1,7 +1,7 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import PropTypes from 'prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails.js'
@@ -47,6 +47,10 @@ export const AppHubApp = ({ match }) => {
             </NoticeBox>
         )
     }
+
+    // ToDo: This check here is the cause of the bug https://dhis2.atlassian.net/browse/DHIS2-15586
+    // custom apps seem to not have an app_hub_id, when these are surfaced then this should be resolved
+    // otherwise we need to find a different way to match the app ( || app.name === appHubApp.name would work but not reliable)
     const installedApp = installedApps.find(
         (app) => app.app_hub_id === appHubId
     )

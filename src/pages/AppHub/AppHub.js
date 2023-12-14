@@ -1,6 +1,5 @@
 import { useConfig, useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import PropTypes from 'prop-types'
 import {
     InputField,
     Pagination,
@@ -8,6 +7,7 @@ import {
     CenteredContent,
     CircularLoader,
 } from '@dhis2/ui'
+import PropTypes from 'prop-types'
 import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDebounce } from 'use-debounce'

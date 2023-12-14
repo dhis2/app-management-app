@@ -1,6 +1,5 @@
 import { useAlert, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import PropTypes from 'prop-types'
 import {
     Checkbox,
     CircularLoader,
@@ -12,8 +11,10 @@ import {
     TableBody,
     TableRow,
     TableCell,
+    ButtonStrip,
 } from '@dhis2/ui'
 import moment from 'moment'
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api.js'
@@ -110,6 +111,11 @@ const VersionsTable = ({
         <TableBody>
             {versions.map((version) => {
                 const isVersionInstalling = versionBeingInstalled === version.id
+                const installButtonText = isVersionInstalling
+                    ? i18n.t('Installing...')
+                    : version.version === installedVersion
+                    ? i18n.t('Installed')
+                    : i18n.t('Install')
                 return (
                     <TableRow key={version.id} dataTest="versions-table-row">
                         <TableCell>{version.version}</TableCell>
@@ -120,37 +126,34 @@ const VersionsTable = ({
                             {moment(version.created).format('ll')}
                         </TableCell>
                         <TableCell>
-                            <Button
-                                small
-                                secondary
-                                className={styles.installBtn}
-                                disabled={
-                                    version.version === installedVersion ||
-                                    versionBeingInstalled
-                                }
-                                onClick={() => onVersionInstall(version)}
-                            >
-                                {isVersionInstalling && (
-                                    <>
-                                        {i18n.t('Installing...')}
-                                        <CircularLoader small />
-                                    </>
-                                )}
-                                {!isVersionInstalling
-                                    ? version.version === installedVersion
-                                        ? i18n.t('Installed')
-                                        : i18n.t('Install')
-                                    : ''}
-                            </Button>
-                            <a
-                                download
-                                href={version.downloadUrl}
-                                className={styles.downloadLink}
-                            >
-                                <Button small secondary>
-                                    {i18n.t('Download')}
+                            <ButtonStrip>
+                                <Button
+                                    small
+                                    secondary
+                                    className={styles.installBtn}
+                                    disabled={
+                                        version.version === installedVersion ||
+                                        !!versionBeingInstalled
+                                    }
+                                    onClick={() => onVersionInstall(version)}
+                                    icon={
+                                        isVersionInstalling ? (
+                                            <CircularLoader small />
+                                        ) : null
+                                    }
+                                >
+                                    {installButtonText}
                                 </Button>
-                            </a>
+                                <a
+                                    download
+                                    href={version.downloadUrl}
+                                    className={styles.downloadLink}
+                                >
+                                    <Button small secondary>
+                                        {i18n.t('Download')}
+                                    </Button>
+                                </a>
+                            </ButtonStrip>
                         </TableCell>
                     </TableRow>
                 )
