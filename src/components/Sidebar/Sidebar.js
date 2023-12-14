@@ -1,7 +1,7 @@
 import { useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import PropTypes from 'prop-types'
 import { Menu, MenuItem } from '@dhis2/ui'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import styles from './Sidebar.module.css'

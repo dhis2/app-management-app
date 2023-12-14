@@ -1,8 +1,8 @@
 import { useAlert, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import PropTypes from 'prop-types'
 import { Button, CircularLoader } from '@dhis2/ui'
-import React from 'react'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import semver from 'semver'
 import { useApi } from '../../api.js'
 import { getLatestVersion } from '../../get-latest-version.js'
@@ -41,8 +41,12 @@ export const ManageInstalledVersion = ({
     const { installVersion, uninstallApp } = useApi()
     const successAlert = useAlert(({ message }) => message, { success: true })
     const errorAlert = useAlert(({ message }) => message, { critical: true })
+
+    const [isInstalling, setIsInstalling] = useState(false)
+
     const handleInstall = async () => {
         try {
+            setIsInstalling(true)
             await installVersion(latestVersion.id)
             successAlert.show({
                 message: canUpdate
@@ -62,6 +66,8 @@ export const ManageInstalledVersion = ({
                           nsSeparator: '-:-',
                       }),
             })
+        } finally {
+            setIsInstalling(false)
         }
     }
     const handleUninstall = async () => {
@@ -81,6 +87,12 @@ export const ManageInstalledVersion = ({
         }
     }
 
+    const installButtonText = isInstalling
+        ? i18n.t('Installing...')
+        : canUpdate
+        ? i18n.t('Update to latest version')
+        : i18n.t('Install')
+
     return (
         <div className={styles.manageInstalledVersion}>
             {!hasCompatibleVersions && (
@@ -92,10 +104,13 @@ export const ManageInstalledVersion = ({
             )}
             {hasCompatibleVersions && canInstall && (
                 <>
-                    <Button primary onClick={handleInstall}>
-                        {canUpdate
-                            ? i18n.t('Update to latest version')
-                            : i18n.t('Install')}
+                    <Button
+                        primary
+                        onClick={handleInstall}
+                        disabled={isInstalling}
+                        icon={isInstalling ? <CircularLoader small /> : null}
+                    >
+                        {installButtonText}
                     </Button>
                     <span className={styles.manageInstalledVersionDescription}>
                         {i18n.t('{{channel}} release {{version}}', {
