@@ -46,5 +46,8 @@
         "semver": "^7.3.4",
         "use-debounce": "^6.0.0",
         "use-query-params": "^1.2.0"
+    },
+    "resolutions": {
+        "@dhis2/ui": "^9.0.1"
     }
 }
