@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { PropTypes } from '@dhis2/prop-types'
+import PropTypes from 'prop-types'
 import { Card, Divider } from '@dhis2/ui'
 import moment from 'moment'
 import React, { useState } from 'react'

@@ -1,6 +1,6 @@
 import { useDataQuery } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import { PropTypes } from '@dhis2/prop-types'
+import PropTypes from 'prop-types'
 import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
