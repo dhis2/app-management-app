@@ -1,3 +1,11 @@
+## [100.2.32](https://github.com/dhis2/app-management-app/compare/v100.2.31...v100.2.32) (2023-12-15)
+
+
+### Bug Fixes
+
+* **DHIS2-13915:** show spinner when an app is being installed ([7e2ae44](https://github.com/dhis2/app-management-app/commit/7e2ae44da1b13b6f5db928aea04ca8e0fc3d139f))
+* **DHIS2-15586:** update installed state for non-core apps ([8a0eff0](https://github.com/dhis2/app-management-app/commit/8a0eff0063dd04b632129e499c86c5f8addc88d1))
+
 ## [100.2.31](https://github.com/dhis2/app-management-app/compare/v100.2.30...v100.2.31) (2023-12-14)
 
 
