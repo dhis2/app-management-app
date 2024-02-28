@@ -5,13 +5,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2021
 # Raja Fathurrahim, 2022
 # Farida Sibuea <farida_sibuea@yahoo.com>, 2023
+# Philip Larsen Donnelly, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Farida Sibuea <farida_sibuea@yahoo.com>, 2023\n"
+"Last-Translator: Philip Larsen Donnelly, 2024\n"
 "Language-Team: Indonesian (https://app.transifex.com/hisp-uio/teams/100509/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,19 +21,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 msgid "Version {{version}} installed"
-msgstr "Versi {{versi}} terpasang"
+msgstr "Versi {{version}} terpasang"
 
 msgid "Version {{version}}"
-msgstr "Versi {{versi}}"
+msgstr "Versi {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr "Terakhir diperbarui {{waktu relatif}}"
+msgstr "Terakhir diperbarui {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr "Pertama kali diterbitkan {{waktu relatif}}"
+msgstr "Pertama kali diterbitkan {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr "oleh {{- pengembang}}"
+msgstr "oleh {{- developer}}"
 
 msgid "About this app"
 msgstr "Tentang app ini"
@@ -56,16 +57,16 @@ msgid "App installed successfully"
 msgstr "App berhasil dipasang"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr "Gagal untuk memperbaharui app: {{Pesan kegagalan}}"
+msgstr "Gagal untuk memperbaharui app: {{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr "Gagal untuk memasang app: {{Pesan kegagalan}}"
+msgstr "Gagal untuk memasang app: {{errorMessage}}"
 
 msgid "App uninstalled successfully"
 msgstr "App berhasil dicopot"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr "Gagal untuk mencopot app: {{Pesan kegagalan}}"
+msgstr "Gagal untuk mencopot app: {{errorMessage}}"
 
 msgid "Update to latest version"
 msgstr "Perbaharui ke versi terakhir"
@@ -74,10 +75,10 @@ msgid "Install"
 msgstr "Pasang"
 
 msgid "{{channel}} release {{version}}"
-msgstr "{{kanal}} rilis {{versi}}"
+msgstr "{{channel}} rilis {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr "Mencopot v{{Versi aplikasi}}"
+msgstr "Mencopot v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Kanal"
@@ -184,7 +185,7 @@ msgstr ""
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr "oleh {{- pengembang}}"
+msgstr "oleh {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
