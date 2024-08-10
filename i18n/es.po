@@ -1,15 +1,16 @@
 # 
 # Translators:
-# phil_dhis2, 2021
+# Philip Larsen Donnelly, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
 # Janeth Cruz, 2023
+# Enzo Nicolas Rossi <enzo@dhis2.org>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Janeth Cruz, 2023\n"
+"Last-Translator: Enzo Nicolas Rossi <enzo@dhis2.org>, 2024\n"
 "Language-Team: Spanish (https://app.transifex.com/hisp-uio/teams/100509/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,9 +108,10 @@ msgstr "Canary"
 
 msgid "Failed to check App Hub for available updates"
 msgstr ""
+"No se ha podido comprobar si hay actualizaciones disponibles en el App Hub"
 
 msgid "Your DHIS2 server might be offline."
-msgstr ""
+msgstr "Su servidor DHIS2 podría estar fuera de línea."
 
 msgid "No apps found"
 msgstr "Aplicaciones no encontradas"
