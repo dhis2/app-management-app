@@ -2,15 +2,30 @@ import { useAlert } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
 import { Button, CircularLoader } from '@dhis2/ui'
 import React, { useState, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 import { useApi } from '../../api.js'
 import styles from './ManualInstall.module.css'
 
 const UploadButton = () => {
+    const history = useHistory()
     const { uploadApp } = useApi()
     const [isUploading, setIsUploading] = useState(false)
-    const successAlert = useAlert(i18n.t('App installed successfully'), {
-        success: true,
-    })
+    const successAlert = useAlert(
+        i18n.t('App installed successfully'),
+        (options) => ({
+            success: true,
+            actions: options?.id
+                ? [
+                      {
+                          label: i18n.t('Go to app'),
+                          onClick: () => {
+                              history.push(`/app/${options.id}`)
+                          },
+                      },
+                  ]
+                : [],
+        })
+    )
     const errorAlert = useAlert(
         ({ error }) =>
             i18n.t('Failed to install app: {{errorMessage}}', {
@@ -27,9 +42,11 @@ const UploadButton = () => {
     const handleUpload = async (event) => {
         setIsUploading(true)
         try {
-            await uploadApp(event.target.files[0])
+            const response = await uploadApp(event.target.files[0])
+            const body = await response.json()
             formEl.current.reset()
-            successAlert.show()
+
+            successAlert.show({ id: body?.app_hub_id })
         } catch (error) {
             errorAlert.show({ error })
         }
