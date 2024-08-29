@@ -29,7 +29,7 @@ const UploadButton = () => {
     const errorAlert = useAlert(
         ({ error }) =>
             i18n.t('Failed to install app: {{errorMessage}}', {
-                errorMessage: error.message,
+                errorMessage: error?.message,
                 nsSeparator: '-:-',
             }),
         { critical: true }
@@ -57,6 +57,7 @@ const UploadButton = () => {
         <>
             <form className={styles.hiddenForm} ref={formEl}>
                 <input
+                    data-test="file-upload"
                     type="file"
                     accept="application/zip"
                     ref={inputEl}
