@@ -54,7 +54,7 @@ describe('Manual Install', () => {
         userEvent.upload(fileInput, 'testfile')
 
         await findByText('App installed successfully')
-        await userEvent.click(getByText('Go to app'))
+        await userEvent.click(getByText('View app details'))
         expect(historyPush).toHaveBeenCalledWith('/app/some_apphub_id')
     })
 
@@ -71,7 +71,7 @@ describe('Manual Install', () => {
         userEvent.upload(fileInput, 'testfile')
 
         await findByText('App installed successfully')
-        expect(queryByText('Go to app')).not.toBeInTheDocument()
+        expect(queryByText('View app details')).not.toBeInTheDocument()
         expect(historyPush).not.toHaveBeenCalled()
     })
 
@@ -86,7 +86,7 @@ describe('Manual Install', () => {
         userEvent.upload(fileInput, 'testfile')
 
         await findByText('Failed to install app:')
-        expect(queryByText('Go to app')).not.toBeInTheDocument()
+        expect(queryByText('View app details')).not.toBeInTheDocument()
         expect(historyPush).not.toHaveBeenCalled()
     })
 })

@@ -17,7 +17,7 @@ const UploadButton = () => {
             actions: options?.id
                 ? [
                       {
-                          label: i18n.t('Go to app'),
+                          label: i18n.t('View app details'),
                           onClick: () => {
                               history.push(`/app/${options.id}`)
                           },
