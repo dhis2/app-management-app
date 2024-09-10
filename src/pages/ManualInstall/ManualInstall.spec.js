@@ -40,7 +40,10 @@ describe('Manual Install', () => {
 
     it('should allow navigating to the app', async () => {
         jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-            json: () => Promise.resolve({ app_hub_id: 'some_apphub_id' }),
+            text: () =>
+                Promise.resolve(
+                    JSON.stringify({ app_hub_id: 'some_apphub_id' })
+                ),
         })
 
         const { getByTestId, getByText, findByText } = renderWithProvider(
@@ -57,7 +60,7 @@ describe('Manual Install', () => {
 
     it('should work with an empty response (pre v41)', async () => {
         jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-            json: () => Promise.resolve(),
+            text: () => null,
         })
 
         const { getByTestId, findByText, queryByText } = renderWithProvider(
@@ -73,11 +76,7 @@ describe('Manual Install', () => {
     })
 
     it('should show an error if it fails', async () => {
-        jest.spyOn(global, 'fetch').mockResolvedValueOnce({
-            json: () => {
-                throw 'upload failed'
-            },
-        })
+        jest.spyOn(global, 'fetch').mockRejectedValue('upload failed')
 
         const { getByTestId, findByText, queryByText } = renderWithProvider(
             <ManualInstall />

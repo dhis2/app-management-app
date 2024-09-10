@@ -43,10 +43,17 @@ const UploadButton = () => {
         setIsUploading(true)
         try {
             const response = await uploadApp(event.target.files[0])
-            const body = await response.json()
+
+            // using response.text() rather .json() to avoid breaking in <v40
+            // where the API returned empty response which throws with .json()
+            const responseText = await response.text()
+            const appHubId = responseText
+                ? JSON.parse(responseText)?.app_hub_id
+                : null
+
             formEl.current.reset()
 
-            successAlert.show({ id: body?.app_hub_id })
+            successAlert.show({ id: appHubId })
         } catch (error) {
             errorAlert.show({ error })
         }
