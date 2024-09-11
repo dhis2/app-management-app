@@ -1,3 +1,10 @@
+## [100.2.36](https://github.com/dhis2/app-management-app/compare/v100.2.35...v100.2.36) (2024-09-11)
+
+
+### Bug Fixes
+
+* **DHIS2-13294:** add link to navigate to app after install ([#555](https://github.com/dhis2/app-management-app/issues/555)) ([27e157a](https://github.com/dhis2/app-management-app/commit/27e157ac3aa82c2e18e262d16703f94d55c035f6))
+
 ## [100.2.35](https://github.com/dhis2/app-management-app/compare/v100.2.34...v100.2.35) (2024-08-11)
 
 
