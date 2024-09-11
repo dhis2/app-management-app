@@ -6,13 +6,13 @@ const config = {
     ],
     coverageThreshold: {
         global: {
-            // TODO: The following should be 50
-            branches: 0,
+            // TODO: The following should be ~50%
+            branches: 10,
 
-            // TODO: The following should be 75
-            functions: 0,
-            lines: 0,
-            statements: 0,
+            // TODO: The following should be ~75%
+            functions: 20,
+            lines: 20,
+            statements: 20,
         },
     },
 }
