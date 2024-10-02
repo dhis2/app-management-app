@@ -5,8 +5,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
-"PO-Revision-Date: 2022-11-16T12:52:56.478Z\n"
+"POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
+"PO-Revision-Date: 2024-09-26T12:27:51.211Z\n"
+
+msgid ""
+"Your session has expired. Please refresh the page and login before trying "
+"again."
+msgstr ""
+"Your session has expired. Please refresh the page and login before trying "
+"again."
+
+msgid "An unexpected error occurred"
+msgstr "An unexpected error occurred"
 
 msgid "Version {{version}} installed"
 msgstr "Version {{version}} installed"
@@ -56,11 +66,17 @@ msgstr "App uninstalled successfully"
 msgid "Failed to uninstall app: {{errorMessage}}"
 msgstr "Failed to uninstall app: {{errorMessage}}"
 
+msgid "Installing..."
+msgstr "Installing..."
+
 msgid "Update to latest version"
 msgstr "Update to latest version"
 
 msgid "Install"
 msgstr "Install"
+
+msgid "There are no compatible versions available."
+msgstr "There are no compatible versions available."
 
 msgid "{{channel}} release {{version}}"
 msgstr "{{channel}} release {{version}}"
@@ -154,6 +170,9 @@ msgstr "All installed custom apps"
 
 msgid "Search installed custom apps"
 msgstr "Search installed custom apps"
+
+msgid "View app details"
+msgstr "View app details"
 
 msgid "Uploading..."
 msgstr "Uploading..."
