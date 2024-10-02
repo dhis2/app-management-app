@@ -1,3 +1,10 @@
+## [100.2.37](https://github.com/dhis2/app-management-app/compare/v100.2.36...v100.2.37) (2024-10-02)
+
+
+### Bug Fixes
+
+* [DHIS2-17322] Ensure app hub id is in the right format ([#559](https://github.com/dhis2/app-management-app/issues/559)) ([8b5b487](https://github.com/dhis2/app-management-app/commit/8b5b48797dec2dda401c2417007a042308ff7e75))
+
 ## [100.2.36](https://github.com/dhis2/app-management-app/compare/v100.2.35...v100.2.36) (2024-09-11)
 
 
