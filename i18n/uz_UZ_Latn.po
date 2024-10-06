@@ -1,19 +1,27 @@
 # 
 # Translators:
-# Yury Rogachev <yury@dhis2.org>, 2021
+# Yury Rogachev <yury@dhis2.org>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
+"POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2021\n"
+"Last-Translator: Yury Rogachev <yury@dhis2.org>, 2024\n"
 "Language-Team: Uzbek (Latin) (https://app.transifex.com/hisp-uio/teams/100509/uz@Latn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uz@Latn\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid ""
+"Your session has expired. Please refresh the page and login before trying "
+"again."
+msgstr ""
+
+msgid "An unexpected error occurred"
+msgstr ""
 
 msgid "Version {{version}} installed"
 msgstr ""
@@ -63,11 +71,17 @@ msgstr ""
 msgid "Failed to uninstall app: {{errorMessage}}"
 msgstr ""
 
+msgid "Installing..."
+msgstr "Oʼrnatilmoqda..."
+
 msgid "Update to latest version"
 msgstr ""
 
 msgid "Install"
 msgstr "Oʼrnatish"
+
+msgid "There are no compatible versions available."
+msgstr ""
 
 msgid "{{channel}} release {{version}}"
 msgstr ""
@@ -160,6 +174,9 @@ msgid "All installed custom apps"
 msgstr ""
 
 msgid "Search installed custom apps"
+msgstr ""
+
+msgid "View app details"
 msgstr ""
 
 msgid "Uploading..."
