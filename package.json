@@ -1,6 +1,6 @@
 {
     "name": "app-management-app",
-    "version": "100.2.37",
+    "version": "100.2.38",
     "description": "The Application Management App provides the ability to upload webapps in .zip files, as well as installing apps directly from the official DHIS 2 App Store",
     "scripts": {
         "start": "d2-app-scripts start",
