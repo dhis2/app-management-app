@@ -2,15 +2,15 @@
 # Translators:
 # Philip Larsen Donnelly, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
-# easylin <lin_xd@126.com>, 2022
 # 晓东 林 <13981924470@126.com>, 2024
+# easylin <lin_xd@126.com>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: 晓东 林 <13981924470@126.com>, 2024\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2024\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,10 +21,10 @@ msgstr ""
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
 "again."
-msgstr ""
+msgstr "您的会话已过期。请刷新页面并登录后再试。"
 
 msgid "An unexpected error occurred"
-msgstr ""
+msgstr "发生意外错误"
 
 msgid "Version {{version}} installed"
 msgstr "已安装版本 {{version}}"
@@ -84,7 +84,7 @@ msgid "Install"
 msgstr "安装"
 
 msgid "There are no compatible versions available."
-msgstr ""
+msgstr "目前没有兼容版本。"
 
 msgid "{{channel}} release {{version}}"
 msgstr "{{channel}} 发布 {{version}}"
@@ -180,7 +180,7 @@ msgid "Search installed custom apps"
 msgstr "搜索已安装的自定义应用程序"
 
 msgid "View app details"
-msgstr ""
+msgstr "查看应用程序详情"
 
 msgid "Uploading..."
 msgstr "上传"
