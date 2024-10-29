@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
-"PO-Revision-Date: 2024-09-26T12:27:51.211Z\n"
+"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"PO-Revision-Date: 2024-10-29T11:22:33.823Z\n"
 
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
@@ -32,6 +32,9 @@ msgstr "First published {{relativeTime}}"
 
 msgid "by {{- developer}}"
 msgstr "by {{- developer}}"
+
+msgid "Open"
+msgstr "Open"
 
 msgid "About this app"
 msgstr "About this app"

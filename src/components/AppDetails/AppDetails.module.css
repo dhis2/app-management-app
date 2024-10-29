@@ -9,7 +9,7 @@
 
 .header {
     display: grid;
-    grid-template-columns: 72px auto;
+    grid-template-columns: min-content auto min-content;
     grid-gap: var(--spacers-dp16);
     align-items: center;
     line-height: 24px;
@@ -44,7 +44,7 @@
 .mainSection {
     display: grid;
     grid-gap: var(--spacers-dp24);
-    grid-template-columns: 60% auto;
+    grid-template-columns: auto max-content;
 }
 
 .manageInstalledVersion {
@@ -126,4 +126,9 @@
 
 .downloadLink {
     text-decoration: none;
+}
+
+.openLink::after {
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+    margin: 0px 3px 0px 5px;
 }
