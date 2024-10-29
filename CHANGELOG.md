@@ -1,3 +1,10 @@
+# [100.3.0](https://github.com/dhis2/app-management-app/compare/v100.2.40...v100.3.0) (2024-10-29)
+
+
+### Features
+
+* add open button to app details page [DHIS2-13885] ([#564](https://github.com/dhis2/app-management-app/issues/564)) ([f9854a2](https://github.com/dhis2/app-management-app/commit/f9854a24f594266bc8fb06afe1f4c0db8ed4cdbc))
+
 ## [100.2.40](https://github.com/dhis2/app-management-app/compare/v100.2.39...v100.2.40) (2024-10-27)
 
 
