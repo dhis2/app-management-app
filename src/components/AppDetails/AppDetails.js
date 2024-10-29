@@ -124,7 +124,11 @@ export const AppDetails = ({
                 </div>
                 <div>
                     {installedApp?.launchUrl && (
-                        <a href={installedApp.launchUrl} target="_blank">
+                        <a
+                            href={installedApp.launchUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             <Button className={styles.openLink}>
                                 {i18n.t('Open')}
                             </Button>
