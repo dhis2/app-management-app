@@ -96,11 +96,11 @@ export const ManageInstalledVersion = ({
     return (
         <div className={styles.manageInstalledVersion}>
             {!hasCompatibleVersions && (
-                <>
+                <div>
                     <em>
                         {i18n.t('There are no compatible versions available.')}
                     </em>
-                </>
+                </div>
             )}
             {hasCompatibleVersions && canInstall && (
                 <>
@@ -122,7 +122,7 @@ export const ManageInstalledVersion = ({
                 </>
             )}
             {canUninstall && (
-                <Button secondary onClick={handleUninstall}>
+                <Button secondary destructive onClick={handleUninstall}>
                     {i18n.t('Uninstall v{{appVersion}}', {
                         appVersion: installedApp.version,
                     })}

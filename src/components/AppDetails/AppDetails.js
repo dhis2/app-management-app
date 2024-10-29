@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { Card, Divider } from '@dhis2/ui'
+import { Button, Card, Divider } from '@dhis2/ui'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
@@ -120,6 +120,15 @@ export const AppDetails = ({
                                 context: 'developer of application',
                             })}
                         </span>
+                    )}
+                </div>
+                <div>
+                    {installedApp?.launchUrl && (
+                        <a href={installedApp.launchUrl} target="_blank">
+                            <Button className={styles.openLink}>
+                                {i18n.t('Open')}
+                            </Button>
+                        </a>
                     )}
                 </div>
             </header>
