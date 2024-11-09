@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
+"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Hamza Assada <7amza.it@gmail.com>, 2024\n"
 "Language-Team: Arabic (https://app.transifex.com/hisp-uio/teams/100509/ar/)\n"
@@ -38,6 +38,9 @@ msgstr "تم النشر لأول مرة {{relativeTime}}"
 
 msgid "by {{- developer}}"
 msgstr ""
+
+msgid "Open"
+msgstr "مفتوح"
 
 msgid "About this app"
 msgstr "حول هذا التطبيق"

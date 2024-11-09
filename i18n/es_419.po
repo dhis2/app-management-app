@@ -1,19 +1,28 @@
 # 
 # Translators:
 # Enzo Nicolas Rossi <enzo@dhis2.org>, 2024
+# Jaime Bosque <jaime.bosque@dhis2.org>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2022-11-16T12:52:56.478Z\n"
+"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Enzo Nicolas Rossi <enzo@dhis2.org>, 2024\n"
+"Last-Translator: Jaime Bosque <jaime.bosque@dhis2.org>, 2024\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/hisp-uio/teams/100509/es_419/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: es_419\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+
+msgid ""
+"Your session has expired. Please refresh the page and login before trying "
+"again."
+msgstr ""
+
+msgid "An unexpected error occurred"
+msgstr ""
 
 msgid "Version {{version}} installed"
 msgstr "Versión {{version}} instalada"
@@ -29,6 +38,9 @@ msgstr "Primera publicación {{relativeTime}}"
 
 msgid "by {{- developer}}"
 msgstr "por {{- desarrollador}}"
+
+msgid "Open"
+msgstr "Abierto"
 
 msgid "About this app"
 msgstr "Acerca de esta aplicación"
@@ -64,11 +76,17 @@ msgstr "Aplicación desinstalada correctamente"
 msgid "Failed to uninstall app: {{errorMessage}}"
 msgstr "No se ha podido desinstalar la aplicación: {{errorMessage}}"
 
+msgid "Installing..."
+msgstr ""
+
 msgid "Update to latest version"
 msgstr "Actualizar a la última versión"
 
 msgid "Install"
 msgstr "Instale"
+
+msgid "There are no compatible versions available."
+msgstr ""
 
 msgid "{{channel}} release {{version}}"
 msgstr "{{channel}} liberar {{version}}"
@@ -163,6 +181,9 @@ msgstr "Todas las aplicaciones personalizadas instaladas"
 
 msgid "Search installed custom apps"
 msgstr "Buscar aplicaciones personalizadas instaladas"
+
+msgid "View app details"
+msgstr ""
 
 msgid "Uploading..."
 msgstr "Cargando..."

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
+"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2024\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -37,6 +37,9 @@ msgstr "Poprvé publikováno {{relativeTime}}"
 
 msgid "by {{- developer}}"
 msgstr "od: {{- developer}}"
+
+msgid "Open"
+msgstr "Otevřít"
 
 msgid "About this app"
 msgstr "O této aplikaci"

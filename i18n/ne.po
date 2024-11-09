@@ -1,19 +1,19 @@
 # 
 # Translators:
-# KRG HIS <antonia.bezenchek@informa.pro>, 2024
+# Saroj Dhakal <lotusnagarkot@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: KRG HIS <antonia.bezenchek@informa.pro>, 2024\n"
-"Language-Team: Arabic (Iraq) (https://app.transifex.com/hisp-uio/teams/100509/ar_IQ/)\n"
+"Last-Translator: Saroj Dhakal <lotusnagarkot@gmail.com>, 2024\n"
+"Language-Team: Nepali (https://app.transifex.com/hisp-uio/teams/100509/ne/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar_IQ\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ne\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
@@ -39,7 +39,7 @@ msgid "by {{- developer}}"
 msgstr ""
 
 msgid "Open"
-msgstr "فتح"
+msgstr "खोल्नुहोस्"
 
 msgid "About this app"
 msgstr ""
@@ -96,7 +96,7 @@ msgid "Channel"
 msgstr ""
 
 msgid "Version"
-msgstr "الإصدار"
+msgstr ""
 
 msgid "Upload date"
 msgstr ""
@@ -105,7 +105,7 @@ msgid "Installed"
 msgstr ""
 
 msgid "Download"
-msgstr "تنزيل"
+msgstr ""
 
 msgid "There are no compatible versions matching your criteria"
 msgstr ""
