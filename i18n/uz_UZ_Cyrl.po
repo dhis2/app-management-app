@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-09-26T12:27:51.211Z\n"
+"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Khurshid Ibatov <Khurshid.Ibatov@tibbiysugurta.uz>, 2024\n"
 "Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
@@ -37,6 +37,9 @@ msgstr "Биринчи марта чоп этилган {{relativeTime}}"
 
 msgid "by {{- developer}}"
 msgstr "{{- developer}} томонидан"
+
+msgid "Open"
+msgstr "Очиқ"
 
 msgid "About this app"
 msgstr "Бу илова ҳақида"
