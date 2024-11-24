@@ -3,13 +3,14 @@
 # Philip Larsen Donnelly, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
 # Shelsea Chumaio, 2024
+# Emílio Luís Mosse <emosse@saudigitus.org>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Shelsea Chumaio, 2024\n"
+"Last-Translator: Emílio Luís Mosse <emosse@saudigitus.org>, 2024\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,30 +22,32 @@ msgid ""
 "Your session has expired. Please refresh the page and login before trying "
 "again."
 msgstr ""
+"A sua sessão expirou. Actualize a página e faça login antes de tentar "
+"novamente."
 
 msgid "An unexpected error occurred"
-msgstr ""
+msgstr "Ocorreu um erro inesperado"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Versão {{version}}instalada"
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "Versão {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Última actualização{{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "Primeira  actualização {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "Por {{- developer}}"
 
 msgid "Open"
 msgstr "Aberto"
 
 msgid "About this app"
-msgstr ""
+msgstr "Acerca deste aplicativo"
 
 msgid "The developer of this application has not provided a description"
 msgstr ""
@@ -200,7 +203,7 @@ msgstr ""
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "Por {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
