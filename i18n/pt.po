@@ -4,13 +4,14 @@
 # Viktor Varland <viktor@dhis2.org>, 2021
 # Shelsea Chumaio, 2024
 # Emílio Luís Mosse <emosse@saudigitus.org>, 2024
+# Helton Dias, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Emílio Luís Mosse <emosse@saudigitus.org>, 2024\n"
+"Last-Translator: Helton Dias, 2024\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgid ""
 "Your session has expired. Please refresh the page and login before trying "
 "again."
 msgstr ""
-"A sua sessão expirou. Actualize a página e faça login antes de tentar "
+"A sua sessão expirou. Actualize a página e inicie sessão antes de tentar "
 "novamente."
 
 msgid "An unexpected error occurred"
@@ -50,156 +51,160 @@ msgid "About this app"
 msgstr "Acerca deste aplicativo"
 
 msgid "The developer of this application has not provided a description"
-msgstr ""
+msgstr "O programador desta aplicação não forneceu uma descrição"
 
 msgid "Additional information"
-msgstr ""
+msgstr "Informações adicionais"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "Capturas de ecrã"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "Todas as versões compatíveis desta aplicação"
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "Aplicação actualizada com sucesso"
 
 msgid "App installed successfully"
-msgstr ""
+msgstr "Aplicação instalada com sucesso"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Falha ao actualizar a aplicação: {{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Falha na instalação da aplicação: {{errorMessage}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "Aplicação desinstalada com sucesso"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "Falha na desinstalação da aplicação: {{errorMessage}}"
 
 msgid "Installing..."
-msgstr ""
+msgstr "Instalar..."
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "Actualizar para a versão mais recente"
 
 msgid "Install"
-msgstr ""
+msgstr "Instalar"
 
 msgid "There are no compatible versions available."
-msgstr ""
+msgstr "Não existem versões compatíveis disponíveis."
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{channel}} Lançamento {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "Desinstalar v{{appVersion}}"
 
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 msgid "Version"
 msgstr "Versão"
 
 msgid "Upload date"
-msgstr ""
+msgstr "Data de carregamento"
 
 msgid "Installed"
-msgstr ""
+msgstr "Instalado"
 
 msgid "Download"
 msgstr "Descarregar"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "Não existem versões compatíveis que correspondam aos seus critérios"
 
 msgid "Stable"
-msgstr ""
+msgstr "Estável"
 
 msgid "Development"
-msgstr ""
+msgstr "Desenvolvimento"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canário"
 
 msgid "Failed to check App Hub for available updates"
 msgstr ""
+"Falha ao verificar se o Centro de Aplicações tem actualizações disponíveis"
 
 msgid "Your DHIS2 server might be offline."
-msgstr ""
+msgstr "O servidor DHIS2 pode estar offline."
 
 msgid "No apps found"
-msgstr ""
+msgstr "Não foram encontradas aplicações"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "Nenhuma aplicação corresponde aos seus critérios"
 
 msgid "Core apps"
-msgstr ""
+msgstr "Aplicações principais"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Aplicações personalizadas"
 
 msgid "App Hub"
-msgstr ""
+msgstr "Centro de aplicações"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Instalação manual"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Pesquisar aplicações AppHub"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "Algo correu mal durante o carregamento de aplicações do App Hub"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Erro ao carregar a aplicação"
 
 msgid "App not found"
-msgstr ""
+msgstr "Aplicação não encontrada"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "Algo correu mal durante o carregamento das suas aplicações principais"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "Aplicações principais com actualizações disponíveis"
 
 msgid "All core apps"
-msgstr ""
+msgstr "Todas as aplicações principais"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Pesquisar aplicações principais"
 
 msgid "Something went wrong whilst loading your custom apps"
 msgstr ""
+"Algo correu mal durante o carregamento das suas aplicações personalizadas"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "Aplicações personalizadas com actualizações disponíveis"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "Todas as aplicações personalizadas instaladas"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Pesquisar aplicações personalizadas instaladas"
 
 msgid "View app details"
-msgstr ""
+msgstr "Ver detalhes da aplicação"
 
 msgid "Uploading..."
-msgstr ""
+msgstr "Carregando..."
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Carregar uma aplicação para instalar"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Instalar manualmente uma aplicação"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"As aplicações instaladas têm acesso aos seus dados e metadados DHIS2. "
+"Certifique-se de que confia numa aplicação antes de a instalar."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
@@ -207,16 +212,16 @@ msgstr "Por {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "Canal"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "Estável"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "Desenvolvimento"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canário"
