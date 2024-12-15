@@ -3,13 +3,14 @@
 # Mai Nguyen <thanhmai.jica@gmail.com>, 2020
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Philip Larsen Donnelly, 2024
+# Em Le <em.hispvietnam@gmail.com>, 2024
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Philip Larsen Donnelly, 2024\n"
+"Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,199 +22,203 @@ msgid ""
 "Your session has expired. Please refresh the page and login before trying "
 "again."
 msgstr ""
+"Phiên của bạn đã hết hạn. Vui lòng làm mới trang và đăng nhập trước khi thử "
+"lại."
 
 msgid "An unexpected error occurred"
-msgstr ""
+msgstr " Đã xảy ra lỗi không mong muốn"
 
 msgid "Version {{version}} installed"
-msgstr ""
+msgstr "Phiên bản {{version}}đã được cài đặt"
 
 msgid "Version {{version}}"
-msgstr ""
+msgstr "Phiên bản {{version}}"
 
 msgid "Last updated {{relativeTime}}"
-msgstr ""
+msgstr "Lần cập nhật cuối {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
+msgstr "Lần đầu tiên xuất bản {{relativeTime}}"
 
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "bởi {{- developer}}"
 
 msgid "Open"
 msgstr "Mở"
 
 msgid "About this app"
-msgstr ""
+msgstr "Về ứng dụng này"
 
 msgid "The developer of this application has not provided a description"
-msgstr ""
+msgstr "Nhà phát triển ứng dụng này chưa cung cấp mô tả"
 
 msgid "Additional information"
-msgstr ""
+msgstr "Thông tin thêm"
 
 msgid "Screenshots"
-msgstr ""
+msgstr "Ảnh chụp màn hình"
 
 msgid "All compatible versions of this application"
-msgstr ""
+msgstr "Tất cả các phiên bản tương thích của ứng dụng này"
 
 msgid "App updated successfully"
-msgstr ""
+msgstr "Ứng dụng đã được cập nhật thành công"
 
 msgid "App installed successfully"
 msgstr "Ứng dụng đã cài đặt THÀNH CÔNG"
 
 msgid "Failed to update app: {{errorMessage}}"
-msgstr ""
+msgstr "Lỗi cập nhật ứng dụng: {{errorMessage}}"
 
 msgid "Failed to install app: {{errorMessage}}"
-msgstr ""
+msgstr "Lỗi cài đặt ứng dụng: {{errorMessage}}"
 
 msgid "App uninstalled successfully"
-msgstr ""
+msgstr "Ứng dụng đã được gỡ cài đặt thành công"
 
 msgid "Failed to uninstall app: {{errorMessage}}"
-msgstr ""
+msgstr "   Không thể gỡ cài đặt ứng dụng: {{errorMessage}}"
 
 msgid "Installing..."
 msgstr "Đang cài đặt..."
 
 msgid "Update to latest version"
-msgstr ""
+msgstr "Cập nhật lên phiên bản mới nhất"
 
 msgid "Install"
 msgstr "Cài đặt"
 
 msgid "There are no compatible versions available."
-msgstr ""
+msgstr "Cập nhật lên phiên bản mới nhất"
 
 msgid "{{channel}} release {{version}}"
-msgstr ""
+msgstr "{{channel}}phát hành {{version}}"
 
 msgid "Uninstall v{{appVersion}}"
-msgstr ""
+msgstr "Gỡ cài đặt v{{appVersion}}"
 
 msgid "Channel"
-msgstr ""
+msgstr "Kênh"
 
 msgid "Version"
 msgstr "Phiên bản"
 
 msgid "Upload date"
-msgstr ""
+msgstr "Ngày tải lên"
 
 msgid "Installed"
-msgstr ""
+msgstr "Đã cài"
 
 msgid "Download"
 msgstr "Tải về"
 
 msgid "There are no compatible versions matching your criteria"
-msgstr ""
+msgstr "Không có phiên bản tương thích nào phù hợp với tiêu chí của bạn"
 
 msgid "Stable"
-msgstr ""
+msgstr "Ổn định"
 
 msgid "Development"
-msgstr ""
+msgstr "Phát triển"
 
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
 
 msgid "Failed to check App Hub for available updates"
-msgstr ""
+msgstr "Không thể kiểm tra App Hub để biết các bản cập nhật khả dụng"
 
 msgid "Your DHIS2 server might be offline."
-msgstr ""
+msgstr "Máy chủ DHIS2 của bạn có thể đang ngoại tuyến."
 
 msgid "No apps found"
 msgstr "Không tìm thấy ứng dụng"
 
 msgid "No apps match your criteria"
-msgstr ""
+msgstr "Không có ứng dụng nào phù hợp với tiêu chí của bạn"
 
 msgid "Core apps"
-msgstr ""
+msgstr "Ứng dụng cốt lõi"
 
 msgid "Custom apps"
-msgstr ""
+msgstr "Ứng dụng tuỳ chỉnh"
 
 msgid "App Hub"
 msgstr "Cổng ứng dụng"
 
 msgid "Manual install"
-msgstr ""
+msgstr "Cài đặt thủ công"
 
 msgid "Search AppHub apps"
-msgstr ""
+msgstr "Tìm ứng dụng trên AppHub"
 
 msgid "Something went wrong whilst loading App Hub apps"
-msgstr ""
+msgstr "Đã xảy ra lỗi khi tải ứng dụng App Hub"
 
 msgid "Error loading app"
-msgstr ""
+msgstr "Lỗi tải ứng dụng"
 
 msgid "App not found"
-msgstr ""
+msgstr "Không tìm thấy ứng dụng"
 
 msgid "Something went wrong whilst loading your core apps"
-msgstr ""
+msgstr "Có gì đó không ổn khi tải các ứng dụng cốt lõi của bạn"
 
 msgid "Core apps with updates available"
-msgstr ""
+msgstr "Các ứng dụng cốt lõi có bản cập nhật khả dụng"
 
 msgid "All core apps"
-msgstr ""
+msgstr "Tất cả ứng dụng cốt lõi"
 
 msgid "Search core apps"
-msgstr ""
+msgstr "Tìm kiếm ứng dụng"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr ""
+msgstr "Có gì đó không ổn khi tải ứng dụng tùy chỉnh của bạn"
 
 msgid "Custom apps with updates available"
-msgstr ""
+msgstr "Ứng dụng tùy chỉnh có sẵn bản cập nhật"
 
 msgid "All installed custom apps"
-msgstr ""
+msgstr "Tất cả các ứng dụng tùy chỉnh đã cài đặt"
 
 msgid "Search installed custom apps"
-msgstr ""
+msgstr "Tìm kiếm các ứng dụng tùy chỉnh đã cài đặt"
 
 msgid "View app details"
-msgstr ""
+msgstr "Xem chi tiết ứng dụng"
 
 msgid "Uploading..."
 msgstr "Đang tải lên"
 
 msgid "Upload an app to install"
-msgstr ""
+msgstr "Tải lên một ứng dụng để cài đặt"
 
 msgid "Manually install an app"
-msgstr ""
+msgstr "Cài đặt một ứng dụng thủ công"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr ""
+"Các ứng dụng đã cài đặt có quyền truy cập vào dữ liệu và siêu dữ liệu DHIS2 "
+"của bạn. Hãy đảm bảo bạn tin tưởng một ứng dụng trước khi cài đặt."
 
 msgctxt "developer of application"
 msgid "by {{- developer}}"
-msgstr ""
+msgstr "bởi {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
-msgstr ""
+msgstr "Kênh"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr ""
+msgstr "Ổn định"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr ""
+msgstr "Phát triển"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
-msgstr ""
+msgstr "Canary"
