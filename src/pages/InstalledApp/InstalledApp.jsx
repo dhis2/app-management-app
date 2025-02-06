@@ -4,8 +4,8 @@ import { NoticeBox, CenteredContent, CircularLoader } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { AppDetails } from '../../components/AppDetails/AppDetails.js'
-import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.js'
+import { AppDetails } from '../../components/AppDetails/AppDetails.jsx'
+import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.jsx'
 
 const appsQuery = {
     modules: {

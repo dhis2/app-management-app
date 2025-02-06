@@ -1,7 +1,7 @@
 .container {
     display: grid;
     height: 100%;
-    grid-template-areas: "sidebar main";
+    grid-template-areas: 'sidebar main';
     grid-template-columns: 224px auto;
     color: var(--colors-grey900);
 }

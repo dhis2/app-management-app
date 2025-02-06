@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { AppIcon } from '../AppIcon/AppIcon.js'
+import { AppIcon } from '../AppIcon/AppIcon.jsx'
 import styles from './AppCard.module.css'
 
 export const AppCard = ({
