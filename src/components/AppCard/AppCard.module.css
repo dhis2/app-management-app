@@ -14,7 +14,8 @@
     color: unset;
 }
 
-.appCard:hover, .appCard:focus {
+.appCard:hover,
+.appCard:focus {
     background: var(--colors-grey300);
 
     /* Reset button styles */
@@ -32,5 +33,5 @@
     display: block;
     margin: var(--spacers-dp4) 0;
     font-size: 14px;
-    color: var(--colors-grey700)
+    color: var(--colors-grey700);
 }
