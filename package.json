@@ -48,7 +48,5 @@
         "use-debounce": "^6.0.0",
         "use-query-params": "^1.2.0"
     },
-    "resolutions": {
-        "@dhis2/ui": "^9.11.3"
-    }
+    "resolutions": {}
 }
