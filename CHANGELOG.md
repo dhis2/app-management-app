@@ -1,3 +1,10 @@
+## [100.3.6](https://github.com/dhis2/app-management-app/compare/v100.3.5...v100.3.6) (2025-02-06)
+
+
+### Bug Fixes
+
+* **app-platform:** upgrade platform tools to use vite and react 18 ([#577](https://github.com/dhis2/app-management-app/issues/577)) ([8f69d6e](https://github.com/dhis2/app-management-app/commit/8f69d6e260bfa780d979d8364d4b4db4316c795f))
+
 ## [100.3.5](https://github.com/dhis2/app-management-app/compare/v100.3.4...v100.3.5) (2025-02-04)
 
 
