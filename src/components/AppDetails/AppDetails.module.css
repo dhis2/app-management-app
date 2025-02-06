@@ -8,10 +8,10 @@
 }
 
 .header {
-    display: grid;
-    grid-template-columns: min-content auto min-content;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
     grid-gap: var(--spacers-dp16);
-    align-items: center;
     line-height: 24px;
 }
 
