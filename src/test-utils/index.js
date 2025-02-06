@@ -1,1 +1,1 @@
-export * from './MockAlertStack.js'
+export * from './MockAlertStack.jsx'

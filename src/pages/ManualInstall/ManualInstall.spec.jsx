@@ -5,7 +5,7 @@ import React from 'react'
 import '@testing-library/jest-dom'
 import { useHistory } from 'react-router-dom'
 import { MockAlertStack } from '../../test-utils/index.js'
-import { ManualInstall } from './ManualInstall.js'
+import { ManualInstall } from './ManualInstall.jsx'
 
 jest.mock('react-router-dom', () => ({
     useHistory: jest.fn(() => ({

@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import { getAppIconSrc } from '../../get-app-icon-src.js'
 import { getLatestVersion } from '../../get-latest-version.js'
-import { AppIcon } from '../AppIcon/AppIcon.js'
+import { AppIcon } from '../AppIcon/AppIcon.jsx'
 import styles from './AppDetails.module.css'
-import { Description } from './Description.js'
-import { ManageInstalledVersion } from './ManageInstalledVersion.js'
-import { Versions } from './Versions.js'
+import { Description } from './Description.jsx'
+import { ManageInstalledVersion } from './ManageInstalledVersion.jsx'
+import { Versions } from './Versions.jsx'
 
 const Metadata = ({ installedVersion, versions }) => {
     const relativeTime = (datetime) => moment(datetime).fromNow()

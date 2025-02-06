@@ -1,7 +1,7 @@
 import { useConfig } from '@dhis2/app-runtime'
 import { queryAllByRole, render } from '@testing-library/react'
 import React from 'react'
-import { Versions } from './Versions.js'
+import { Versions } from './Versions.jsx'
 
 jest.mock('@dhis2/app-runtime', () => ({
     ...jest.requireActual('@dhis2/app-runtime'),
