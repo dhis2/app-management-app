@@ -1,5 +1,5 @@
 import { useConfig } from '@dhis2/app-runtime'
-import { queryAllByRole, render } from '@testing-library/react'
+import { render, within } from '@testing-library/react'
 import React from 'react'
 import { Versions } from './Versions.jsx'
 
@@ -92,16 +92,11 @@ describe('Versions table', () => {
         const [firstRow, secondRow, thirdRow] =
             getAllByTestId('versions-table-row')
 
-        expect(queryAllByRole(firstRow, 'button')[0]).toHaveTextContent(
-            'Install'
-        )
-        expect(queryAllByRole(secondRow, 'button')[0]).toHaveTextContent(
-            'Install'
-        )
+        within(firstRow).getByText('Install')
+        within(secondRow).getByText('Install')
 
-        const thirdInstalledButton = queryAllByRole(thirdRow, 'button')[0]
-        expect(thirdInstalledButton).toHaveTextContent('Installed')
-        expect(thirdInstalledButton).toHaveAttribute('disabled')
+        const button = within(thirdRow).getByText('Installed')
+        expect(button).toHaveAttribute('disabled')
     })
 
     it('should display empty table when no compatible versions', () => {

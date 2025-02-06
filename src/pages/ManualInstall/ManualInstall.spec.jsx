@@ -50,8 +50,13 @@ describe('Manual Install', () => {
             <ManualInstall />
         )
 
+        const user = userEvent.setup()
+        const file = new File(['hello'], 'hello.zip', {
+            type: 'application/zip',
+        })
+
         const fileInput = getByTestId('file-upload')
-        userEvent.upload(fileInput, 'testfile')
+        user.upload(fileInput, file)
 
         await findByText('App installed successfully')
         await userEvent.click(getByText('View app details'))
@@ -67,8 +72,13 @@ describe('Manual Install', () => {
             <ManualInstall />
         )
 
+        const user = userEvent.setup()
+        const file = new File(['hello'], 'hello.zip', {
+            type: 'application/zip',
+        })
+
         const fileInput = getByTestId('file-upload')
-        userEvent.upload(fileInput, 'testfile')
+        user.upload(fileInput, file)
 
         await findByText('App installed successfully')
         expect(queryByText('View app details')).not.toBeInTheDocument()
@@ -82,8 +92,13 @@ describe('Manual Install', () => {
             <ManualInstall />
         )
 
+        const user = userEvent.setup()
+        const file = new File(['hello'], 'hello.zip', {
+            type: 'application/zip',
+        })
+
         const fileInput = getByTestId('file-upload')
-        userEvent.upload(fileInput, 'testfile')
+        user.upload(fileInput, file)
 
         await findByText('Failed to install app:')
         expect(queryByText('View app details')).not.toBeInTheDocument()
