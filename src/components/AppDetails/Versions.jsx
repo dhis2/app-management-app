@@ -179,6 +179,7 @@ export const Versions = ({
     const installSuccessAlert = useAlert(i18n.t('App installed successfully'), {
         success: true,
     })
+
     const installErrorAlert = useAlert(
         ({ error }) =>
             i18n.t('Failed to install app: {{errorMessage}}', {

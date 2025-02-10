@@ -1,5 +1,13 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button, Card, Divider, Tab, TabBar } from '@dhis2/ui'
+import {
+    Button,
+    Card,
+    Divider,
+    IconTerminalWindow16,
+    IconUser16,
+    Tab,
+    TabBar,
+} from '@dhis2/ui'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
@@ -8,10 +16,12 @@ import { getAppIconSrc } from '../../get-app-icon-src.js'
 import { getLatestVersion } from '../../get-latest-version.js'
 import { AppIcon } from '../AppIcon/AppIcon.jsx'
 import styles from './AppDetails.module.css'
+import { appTypeToDisplayName } from './appDisplayConfig.js'
 import { Description } from './Description.jsx'
+import { LatestUpdates } from './LatestUpdates.jsx'
 import { ManageInstalledVersion } from './ManageInstalledVersion.jsx'
-import { Versions } from './Versions.jsx'
 import PluginTag from './PluginTag.jsx'
+import { Versions } from './Versions.jsx'
 
 const Metadata = ({ installedVersion, versions }) => {
     const relativeTime = (datetime) => moment(datetime).fromNow()
@@ -119,6 +129,8 @@ export const AppDetails = ({
         history.push('?tab=' + tabName)
     }
 
+    const hasChangelog = !!changelog && Object.keys(changelog)?.length > 0
+
     return (
         <Card className={styles.appCard}>
             <header className={styles.header}>
@@ -129,13 +141,20 @@ export const AppDetails = ({
                     <h1 className={styles.headerName}>{appName}</h1>
                     <div className={styles.appTags}>
                         {appDeveloper && (
-                            <span className={styles.headerDeveloper}>
-                                {i18n.t('by {{- developer}}', {
-                                    developer: appDeveloper,
-                                    context: 'developer of application',
-                                })}
-                            </span>
+                            <div className={styles.tagWithIcon}>
+                                <IconUser16 />
+
+                                {appDeveloper}
+                            </div>
                         )}
+                        <div
+                            data-test="app-type"
+                            className={styles.tagWithIcon}
+                        >
+                            <IconTerminalWindow16 />
+                            {appTypeToDisplayName[appHubApp?.appType] ??
+                                appHubApp?.appType}
+                        </div>
                         {appHubApp?.hasPlugin && (
                             <PluginTag
                                 hasPlugin={appHubApp.hasPlugin}
@@ -194,6 +213,13 @@ export const AppDetails = ({
                                     )}
                                 </em>
                             )}
+                            {hasChangelog && (
+                                <LatestUpdates
+                                    installedVersion={installedApp?.version}
+                                    versions={versions}
+                                    changelog={changelog}
+                                />
+                            )}
                         </div>
                         <div>
                             <ManageInstalledVersion
@@ -207,6 +233,7 @@ export const AppDetails = ({
                                     <h2 className={styles.sectionHeader}>
                                         {i18n.t('Additional information')}
                                     </h2>
+
                                     <Metadata
                                         installedVersion={installedApp.version}
                                         versions={versions}
@@ -215,7 +242,7 @@ export const AppDetails = ({
                             )}
                         </div>
                         {screenshots?.length > 0 && (
-                            <>
+                            <div>
                                 <Divider />
                                 <section className={styles.section}>
                                     <h2 className={styles.sectionHeader}>
@@ -223,22 +250,7 @@ export const AppDetails = ({
                                     </h2>
                                     <Screenshots screenshots={screenshots} />
                                 </section>
-                                {screenshots?.length > 0 && (
-                                    <>
-                                        <Divider />
-                                        <section className={styles.section}>
-                                            <h2
-                                                className={styles.sectionHeader}
-                                            >
-                                                {i18n.t('Screenshots')}
-                                            </h2>
-                                            <Screenshots
-                                                screenshots={screenshots}
-                                            />
-                                        </section>
-                                    </>
-                                )}
-                            </>
+                            </div>
                         )}
                     </section>
                 </>

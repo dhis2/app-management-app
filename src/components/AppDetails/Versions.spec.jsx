@@ -70,7 +70,7 @@ describe('Versions table', () => {
             />
         )
 
-        const rows = getAllByTestId('versions-table-row')
+        const rows = getAllByTestId('version-list-item')
         expect(rows.length).toEqual(versions.length)
 
         rows.forEach((row, i) => {
@@ -90,7 +90,7 @@ describe('Versions table', () => {
         )
 
         const [firstRow, secondRow, thirdRow] =
-            getAllByTestId('versions-table-row')
+            getAllByTestId('version-list-item')
 
         within(firstRow).getByText('Install')
         within(secondRow).getByText('Install')
@@ -138,5 +138,29 @@ describe('Versions table', () => {
         expect(
             getByText('There are no compatible versions matching your criteria')
         ).toBeInTheDocument()
+    })
+
+    it('should display the version changes next to the version', () => {
+        const onVersionInstall = jest.fn()
+        const changelog = {
+            '100.2.29': 'first change in this version',
+            '100.2.28': 'another change',
+            '99.2.28': 'another change',
+        }
+
+        const { getAllByTestId } = render(
+            <Versions
+                installedVersion={installedVersion}
+                versions={versions}
+                onVersionInstall={onVersionInstall}
+                changelog={changelog}
+            />
+        )
+
+        const [firstVersion, secondVersion] =
+            getAllByTestId('version-list-item')
+
+        expect(firstVersion).toHaveTextContent(changelog['100.2.29'])
+        expect(secondVersion).toHaveTextContent(changelog['100.2.28'])
     })
 })

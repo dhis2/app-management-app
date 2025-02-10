@@ -24,6 +24,9 @@ const AppCards = ({ apps }) => {
         <AppCards_>
             {apps.map((app) => (
                 <AppCard
+                    hasPlugin={app.hasPlugin}
+                    pluginType={app.pluginType}
+                    appType={app.appType}
                     key={app.short_name}
                     iconSrc={getAppIconSrc(app)}
                     appName={app.name}
