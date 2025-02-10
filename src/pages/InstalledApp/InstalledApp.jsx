@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails.jsx'
+import useChangelog from '../../components/AppDetails/useChangelog.js'
 import { AppHubErrorNoticeBox } from '../../components/AppHubErrorNoticeBox/AppHubErrorNoticeBox.jsx'
 
 const appsQuery = {
@@ -28,6 +29,11 @@ export const InstalledApp = ({ match }) => {
     const history = useHistory()
     const appsResponse = useDataQuery(appsQuery)
     const appHubResponse = useDataQuery(appHubQuery, { lazy: true })
+
+    const changelog = useChangelog({
+        appId: appHubResponse?.data?.app?.id,
+        hasChangelog: appHubResponse?.data?.app?.hasChangelog,
+    })
 
     if (appsResponse.error) {
         return (
@@ -81,6 +87,7 @@ export const InstalledApp = ({ match }) => {
                 appHubApp={appHubResponse.data?.app}
                 onVersionInstall={appsResponse.refetch}
                 onUninstall={() => history.push('/custom-apps')}
+                changelog={changelog}
             />
         </>
     )

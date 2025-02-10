@@ -1,8 +1,9 @@
 import i18n from '@dhis2/d2-i18n'
-import { Button, Card, Divider } from '@dhis2/ui'
+import { Button, Card, Divider, Tab, TabBar } from '@dhis2/ui'
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import { getAppIconSrc } from '../../get-app-icon-src.js'
 import { getLatestVersion } from '../../get-latest-version.js'
 import { AppIcon } from '../AppIcon/AppIcon.jsx'
@@ -10,6 +11,7 @@ import styles from './AppDetails.module.css'
 import { Description } from './Description.jsx'
 import { ManageInstalledVersion } from './ManageInstalledVersion.jsx'
 import { Versions } from './Versions.jsx'
+import PluginTag from './PluginTag.jsx'
 
 const Metadata = ({ installedVersion, versions }) => {
     const relativeTime = (datetime) => moment(datetime).fromNow()
@@ -89,6 +91,7 @@ export const AppDetails = ({
     appHubApp,
     onVersionInstall,
     onUninstall,
+    changelog,
 }) => {
     const appName = installedApp ? installedApp.name : appHubApp.name
     const appDeveloper = appHubApp
@@ -105,6 +108,17 @@ export const AppDetails = ({
         .map((i) => i.imageUrl)
     const versions = appHubApp?.versions.sort((a, b) => b.created - a.created)
 
+    const history = useHistory()
+
+    const location = useLocation()
+
+    const selectedTab =
+        new URLSearchParams(location.search).get('tab') ?? 'about'
+
+    const selectTab = (tabName) => () => {
+        history.push('?tab=' + tabName)
+    }
+
     return (
         <Card className={styles.appCard}>
             <header className={styles.header}>
@@ -113,14 +127,22 @@ export const AppDetails = ({
                 </div>
                 <div>
                     <h1 className={styles.headerName}>{appName}</h1>
-                    {appDeveloper && (
-                        <span className={styles.headerDeveloper}>
-                            {i18n.t('by {{- developer}}', {
-                                developer: appDeveloper,
-                                context: 'developer of application',
-                            })}
-                        </span>
-                    )}
+                    <div className={styles.appTags}>
+                        {appDeveloper && (
+                            <span className={styles.headerDeveloper}>
+                                {i18n.t('by {{- developer}}', {
+                                    developer: appDeveloper,
+                                    context: 'developer of application',
+                                })}
+                            </span>
+                        )}
+                        {appHubApp?.hasPlugin && (
+                            <PluginTag
+                                hasPlugin={appHubApp.hasPlugin}
+                                pluginType={appHubApp.pluginType}
+                            />
+                        )}
+                    </div>
                 </div>
                 <div>
                     {installedApp?.launchUrl && (
@@ -137,55 +159,93 @@ export const AppDetails = ({
                 </div>
             </header>
             <Divider />
-            <section className={[styles.section, styles.mainSection].join(' ')}>
-                <div>
-                    <h2 className={styles.sectionHeader}>
-                        {i18n.t('About this app')}
-                    </h2>
-                    {description ? (
-                        <Description description={description} />
-                    ) : (
-                        <em>
-                            {i18n.t(
-                                'The developer of this application has not provided a description'
-                            )}
-                        </em>
-                    )}
-                </div>
-                <div>
-                    <ManageInstalledVersion
-                        installedApp={installedApp}
-                        versions={appHubApp?.versions}
-                        onVersionInstall={onVersionInstall}
-                        onUninstall={onUninstall}
-                    />
-                    {installedApp && appHubApp && (
+            <TabBar dataTest="tabbar-appview">
+                <Tab
+                    onClick={selectTab('about')}
+                    selected={selectedTab == 'about'}
+                >
+                    About
+                </Tab>
+                <Tab
+                    onClick={selectTab('previous-releases')}
+                    selected={selectedTab == 'previous-releases'}
+                >
+                    Previous releases
+                </Tab>
+            </TabBar>
+
+            {selectedTab == 'about' && (
+                <>
+                    <section
+                        className={[styles.section, styles.mainSection].join(
+                            ' '
+                        )}
+                    >
                         <div>
                             <h2 className={styles.sectionHeader}>
-                                {i18n.t('Additional information')}
+                                {i18n.t('About this app')}
                             </h2>
-                            <Metadata
-                                installedVersion={installedApp.version}
-                                versions={versions}
-                            />
+                            {description ? (
+                                <Description description={description} />
+                            ) : (
+                                <em>
+                                    {i18n.t(
+                                        'The developer of this application has not provided a description'
+                                    )}
+                                </em>
+                            )}
                         </div>
-                    )}
-                </div>
-            </section>
-            {screenshots?.length > 0 && (
-                <>
-                    <Divider />
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionHeader}>
-                            {i18n.t('Screenshots')}
-                        </h2>
-                        <Screenshots screenshots={screenshots} />
+                        <div>
+                            <ManageInstalledVersion
+                                installedApp={installedApp}
+                                versions={appHubApp?.versions}
+                                onVersionInstall={onVersionInstall}
+                                onUninstall={onUninstall}
+                            />
+                            {installedApp && appHubApp && (
+                                <div>
+                                    <h2 className={styles.sectionHeader}>
+                                        {i18n.t('Additional information')}
+                                    </h2>
+                                    <Metadata
+                                        installedVersion={installedApp.version}
+                                        versions={versions}
+                                    />
+                                </div>
+                            )}
+                        </div>
+                        {screenshots?.length > 0 && (
+                            <>
+                                <Divider />
+                                <section className={styles.section}>
+                                    <h2 className={styles.sectionHeader}>
+                                        {i18n.t('Screenshots')}
+                                    </h2>
+                                    <Screenshots screenshots={screenshots} />
+                                </section>
+                                {screenshots?.length > 0 && (
+                                    <>
+                                        <Divider />
+                                        <section className={styles.section}>
+                                            <h2
+                                                className={styles.sectionHeader}
+                                            >
+                                                {i18n.t('Screenshots')}
+                                            </h2>
+                                            <Screenshots
+                                                screenshots={screenshots}
+                                            />
+                                        </section>
+                                    </>
+                                )}
+                            </>
+                        )}
                     </section>
                 </>
             )}
-            {appHubApp && (
+
+            {appHubApp && selectedTab === 'previous-releases' && (
                 <>
-                    <Divider />
                     <section className={styles.section}>
                         <h2 className={styles.sectionHeader}>
                             {i18n.t(
@@ -196,6 +256,7 @@ export const AppDetails = ({
                             installedVersion={installedApp?.version}
                             versions={versions}
                             onVersionInstall={onVersionInstall}
+                            changelog={changelog}
                         />
                     </section>
                 </>
@@ -207,6 +268,7 @@ export const AppDetails = ({
 AppDetails.propTypes = {
     onVersionInstall: PropTypes.func.isRequired,
     appHubApp: PropTypes.object,
+    changelog: PropTypes.object,
     installedApp: PropTypes.object,
     onUninstall: PropTypes.func,
 }

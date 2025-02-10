@@ -1,26 +1,15 @@
 import { useAlert, useConfig } from '@dhis2/app-runtime'
 import i18n from '@dhis2/d2-i18n'
-import {
-    Checkbox,
-    CircularLoader,
-    Button,
-    Table,
-    TableHead,
-    TableRowHead,
-    TableCellHead,
-    TableBody,
-    TableRow,
-    TableCell,
-    ButtonStrip,
-} from '@dhis2/ui'
-import moment from 'moment'
+import { Checkbox, CircularLoader, Button, Divider } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 import semver from 'semver'
 import { useApi } from '../../api.js'
 import { getCompatibleVersions } from '../../semver-helpers.js'
 import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name.js'
+import versionsStyles from './Versions.module.css'
 
 const ChannelCheckbox = ({
     name,
@@ -94,21 +83,10 @@ const VersionsTable = ({
     versions,
     onVersionInstall,
     versionBeingInstalled,
-}) => (
-    <Table>
-        <TableHead>
-            <TableRowHead>
-                <TableCellHead>{i18n.t('Version')}</TableCellHead>
-                <TableCellHead>
-                    {i18n.t('Channel', {
-                        context: 'AppHub release channel',
-                    })}
-                </TableCellHead>
-                <TableCellHead>{i18n.t('Upload date')}</TableCellHead>
-                <TableCellHead></TableCellHead>
-            </TableRowHead>
-        </TableHead>
-        <TableBody>
+    changelog,
+}) => {
+    return (
+        <ol className={versionsStyles.versionList}>
             {versions.map((version) => {
                 const isVersionInstalling = versionBeingInstalled === version.id
                 const installButtonText = isVersionInstalling
@@ -116,21 +94,30 @@ const VersionsTable = ({
                     : version.version === installedVersion
                     ? i18n.t('Installed')
                     : i18n.t('Install')
+
+                const changes = changelog?.[version.version] ?? ''
+
                 return (
-                    <TableRow key={version.id} dataTest="versions-table-row">
-                        <TableCell>{version.version}</TableCell>
-                        <TableCell>
-                            {channelToDisplayName[version.channel]}
-                        </TableCell>
-                        <TableCell>
-                            {moment(version.created).format('ll')}
-                        </TableCell>
-                        <TableCell>
-                            <ButtonStrip>
+                    <li data-test="version-list-item" key={version.version}>
+                        <h2 className={versionsStyles.versionHeading}>
+                            {version.version}
+                        </h2>
+
+                        <div className={versionsStyles.versionSubheading}>
+                            <div>
+                                {new Date(version.created).toLocaleDateString(
+                                    undefined,
+                                    { dateStyle: 'long' }
+                                )}
+                            </div>
+
+                            <div>{channelToDisplayName[version.channel]}</div>
+
+                            <div>
                                 <Button
                                     small
                                     secondary
-                                    className={styles.installBtn}
+                                    className={versionsStyles.installBtn}
                                     disabled={
                                         version.version === installedVersion ||
                                         !!versionBeingInstalled
@@ -144,32 +131,48 @@ const VersionsTable = ({
                                 >
                                     {installButtonText}
                                 </Button>
+                            </div>
+                            <div>
+                                {' '}
                                 <a
                                     download
                                     href={version.downloadUrl}
-                                    className={styles.downloadLink}
+                                    className={versionsStyles.downloadLink}
                                 >
                                     <Button small secondary>
                                         {i18n.t('Download')}
                                     </Button>
                                 </a>
-                            </ButtonStrip>
-                        </TableCell>
-                    </TableRow>
+                            </div>
+                        </div>
+
+                        <div className={versionsStyles.changeSummary}>
+                            {changes && (
+                                <ReactMarkdown>{changes}</ReactMarkdown>
+                            )}
+                        </div>
+                        <Divider className={versionsStyles.versionDivider} />
+                    </li>
                 )
             })}
-        </TableBody>
-    </Table>
-)
+        </ol>
+    )
+}
 
 VersionsTable.propTypes = {
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
+    changelog: PropTypes.object,
     installedVersion: PropTypes.string,
     versionBeingInstalled: PropTypes.string,
 }
 
-export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
+export const Versions = ({
+    installedVersion,
+    versions,
+    onVersionInstall,
+    changelog,
+}) => {
     const [channelsFilter, setChannelsFilter] = useState(new Set(['stable']))
     const [versionBeingInstalled, setVersionBeingInstalled] = useState(null)
 
@@ -211,7 +214,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
     }
 
     return (
-        <div className={styles.versionsContainer}>
+        <div>
             <ChannelsFilter
                 versions={versions}
                 channelsFilter={channelsFilter}
@@ -223,6 +226,7 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
                     installedVersion={installedVersion}
                     versions={filteredVersions}
                     onVersionInstall={handleVersionInstall}
+                    changelog={changelog}
                 />
             ) : (
                 <em>
@@ -238,5 +242,6 @@ export const Versions = ({ installedVersion, versions, onVersionInstall }) => {
 Versions.propTypes = {
     versions: PropTypes.array.isRequired,
     onVersionInstall: PropTypes.func.isRequired,
+    changelog: PropTypes.object,
     installedVersion: PropTypes.string,
 }
