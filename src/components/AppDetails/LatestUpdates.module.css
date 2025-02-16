@@ -1,0 +1,43 @@
+.latestUpdatesWrapper {
+    font-size: 0.8em;
+}
+
+.latestUpdates {
+    padding: var(--spacers-dp16);
+    background-color: var(--colors-blue100);
+}
+
+.latestUpdatesHeader {
+    margin: 0;
+}
+
+.showAllLink {
+    margin-top: var(--spacers-dp8);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.showAllLink:hover,
+.showAllLink:focus {
+    text-decoration: none;
+}
+
+.versionList {
+    list-style: none;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.latestUpdatesVersionHeading {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.changeSummary :global(ul) {
+    list-style: disc;
+    padding-inline-start: var(--spacers-dp24);
+}
+
+.changeSummary :global(h3) {
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+}
