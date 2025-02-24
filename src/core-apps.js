@@ -5,7 +5,7 @@ export const coreApps = [
     { name: 'Dashboard', shortName: 'dashboard' },
     { name: 'Data Administration', shortName: 'data-administration' },
     { name: 'Data Approval', shortName: 'approval' },
-    { name: 'Data Entry', shortName: 'dataentry' },
+    { name: 'Data Entry', shortName: 'aggregate-data-entry' },
     { name: 'Data Quality', shortName: 'data-quality' },
     { name: 'Data Visualizer', shortName: 'data-visualizer' },
     { name: 'Datastore', shortName: 'datastore' },
