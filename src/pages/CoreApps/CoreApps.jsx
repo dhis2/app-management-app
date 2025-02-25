@@ -80,7 +80,7 @@ export const CoreApps = () => {
         const module = data.modules.modules.find(
             (m) => m.name === `dhis-web-${shortName}`
         )
-        const name = module?.displayName || app.name
+        const name = app.name
         const iconUrl = module?.icon
         const icons = iconUrl ? { 48: iconUrl } : {}
         appsByShortName[shortName] = {
