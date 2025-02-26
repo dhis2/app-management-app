@@ -1,3 +1,10 @@
+## [100.3.9](https://github.com/dhis2/app-management-app/compare/v100.3.8...v100.3.9) (2025-02-26)
+
+
+### Bug Fixes
+
+* data entry renaming mapping issue [DHIS2-19053] ([#582](https://github.com/dhis2/app-management-app/issues/582)) ([ceaa341](https://github.com/dhis2/app-management-app/commit/ceaa341d830a9ffae56796b410cbe24fbc51dd4e))
+
 ## [100.3.8](https://github.com/dhis2/app-management-app/compare/v100.3.7...v100.3.8) (2025-02-23)
 
 
