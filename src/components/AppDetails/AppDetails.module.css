@@ -28,6 +28,20 @@
     color: var(--colors-grey700);
 }
 
+.appTags {
+    display: flex;
+    gap: 10px;
+    font-size: 1rem;
+    color: var(--colors-grey800);
+}
+
+.tagWithIcon {
+    display: flex;
+    gap: var(--spacers-dp4);
+    color: var(--colors-grey800);
+    align-items: center;
+}
+
 .sectionHeader {
     margin: 0;
     margin-bottom: var(--spacers-dp16);
@@ -108,10 +122,6 @@
 
 .otherScreenshotCurrent:focus-visible {
     box-shadow: 0 0 0 3px #2196f37d;
-}
-
-.versionsContainer {
-    border: 1px solid var(--colors-grey300);
 }
 
 .versionsFilters {

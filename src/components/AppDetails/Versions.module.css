@@ -1,0 +1,46 @@
+.changeSummary :global(a),
+a.link {
+    text-decoration: underline;
+}
+
+a.link:hover,
+.changeSummary :global(a):hover,
+a.link:focus,
+.changeSummary :global(a):focus {
+    text-decoration: none;
+}
+
+.versionList {
+    list-style: none;
+    padding: 0;
+}
+
+.versionHeading {
+    font-size: 1rem;
+    font-weight: bold;
+
+    margin-top: var(--spacers-dp8);
+    margin-bottom: var(--spacers-dp4);
+}
+.versionSubheading {
+    display: flex;
+    gap: var(--spacers-dp12);
+    color: var(--colors-grey700);
+    font-size: 0.8rem;
+    align-items: center;
+}
+
+.versionDivider {
+    margin-top: var(--spacers-dp16) !important;
+}
+
+.changeSummary :global(ul) {
+    list-style: disc;
+    padding-inline-start: var(--spacers-dp24);
+    font-size: 0.8rem;
+}
+.changeSummary :global(h3) {
+    margin-top: var(--spacers-dp4);
+    font-size: 0.9rem;
+    margin-bottom: 0.5em;
+}

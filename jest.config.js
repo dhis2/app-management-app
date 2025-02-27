@@ -4,6 +4,10 @@ const config = {
         'src/**/*.{js,jsx,ts,tsx}',
         '!<rootDir>/node_modules/',
     ],
+    moduleNameMapper: {
+        'react-markdown': '<rootDir>/src/test-utils/react-markdown-mock.jsx',
+        '\\.(css|scss)$': 'identity-obj-proxy',
+    },
     coverageThreshold: {
         global: {
             // TODO: The following should be ~50%
