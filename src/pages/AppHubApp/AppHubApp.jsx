@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { AppDetails } from '../../components/AppDetails/AppDetails.jsx'
+import useChangelog from '../../components/AppDetails/useChangelog.js'
 
 const query = {
     appHubApp: {
@@ -21,6 +22,11 @@ export const AppHubApp = ({ match }) => {
     const history = useHistory()
     const { loading, error, data, refetch } = useDataQuery(query, {
         variables: { appHubId },
+    })
+
+    const changelog = useChangelog({
+        appId: appHubId,
+        hasChangelog: data?.appHubApp?.hasChangelog,
     })
 
     if (error) {
@@ -70,6 +76,7 @@ export const AppHubApp = ({ match }) => {
             appHubApp={appHubApp}
             onVersionInstall={refetch}
             onUninstall={() => history.push('/app-hub')}
+            changelog={changelog}
         />
     )
 }
