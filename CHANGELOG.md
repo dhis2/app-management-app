@@ -1,3 +1,10 @@
+# [100.4.0](https://github.com/dhis2/app-management-app/compare/v100.3.10...v100.4.0) (2025-03-12)
+
+
+### Features
+
+* show changelog and plugin tag for apps ([#580](https://github.com/dhis2/app-management-app/issues/580)) ([d47b950](https://github.com/dhis2/app-management-app/commit/d47b950bf13325beb4e59ecb30ae00149e5cba18))
+
 ## [100.3.10](https://github.com/dhis2/app-management-app/compare/v100.3.9...v100.3.10) (2025-03-02)
 
 
