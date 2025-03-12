@@ -35,3 +35,10 @@
     font-size: 14px;
     color: var(--colors-grey700);
 }
+
+.tags {
+    composes: appCardMetadata;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
