@@ -1,4 +1,14 @@
-.paragraph {
+.description {
     margin-top: 0;
     margin-bottom: var(--spacers-dp8);
+    line-height: 1.6rem;
+}
+
+.description :global(h1) {
+    font-size: 1.1rem;
+}
+.description :global(h2),
+.description :global(h3),
+.description :global(h4) {
+    font-size: 1rem;
 }
