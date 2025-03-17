@@ -1,3 +1,10 @@
+## [100.4.1](https://github.com/dhis2/app-management-app/compare/v100.4.0...v100.4.1) (2025-03-17)
+
+
+### Bug Fixes
+
+* **DHIS2-19023:** use react-markdown for rendering descriptions ([#584](https://github.com/dhis2/app-management-app/issues/584)) ([53e9f96](https://github.com/dhis2/app-management-app/commit/53e9f961ca701f731d6e2edd785d69d587b577eb))
+
 # [100.4.0](https://github.com/dhis2/app-management-app/compare/v100.3.10...v100.4.0) (2025-03-12)
 
 
