@@ -1,3 +1,10 @@
+## [100.4.2](https://github.com/dhis2/app-management-app/compare/v100.4.1...v100.4.2) (2025-03-18)
+
+
+### Bug Fixes
+
+* don't treat absolute URLs as relative ([#585](https://github.com/dhis2/app-management-app/issues/585)) ([5eb2b25](https://github.com/dhis2/app-management-app/commit/5eb2b253c23f0b5acf9c683cf2c23153913a637b))
+
 ## [100.4.1](https://github.com/dhis2/app-management-app/compare/v100.4.0...v100.4.1) (2025-03-17)
 
 
