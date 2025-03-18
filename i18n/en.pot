@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2025-02-25T12:57:55.704Z\n"
-"PO-Revision-Date: 2025-02-25T12:57:55.704Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
+"PO-Revision-Date: 2025-03-14T20:01:56.340Z\n"
 
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
@@ -29,9 +29,6 @@ msgstr "Last updated {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "First published {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "by {{- developer}}"
 
 msgid "Open"
 msgstr "Open"
@@ -89,12 +86,6 @@ msgstr "Uninstall v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Channel"
-
-msgid "Version"
-msgstr "Version"
-
-msgid "Upload date"
-msgstr "Upload date"
 
 msgid "Installed"
 msgstr "Installed"
@@ -192,10 +183,6 @@ msgid ""
 msgstr ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "by {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
