@@ -1,4 +1,5 @@
 import { useDataQuery } from '@dhis2/app-runtime'
+import { useEffect, useState } from 'react'
 
 const changelogQuery = {
     changelog: {
@@ -8,30 +9,35 @@ const changelogQuery = {
 }
 
 const useChangelog = ({ appId, hasChangelog }) => {
-    const { data, refetch: fetchChangelog } = useDataQuery(changelogQuery, {
+    const [changelog, setChangelog] = useState({})
+
+    const { refetch: fetchChangelog } = useDataQuery(changelogQuery, {
         lazy: true,
-        variables: {
-            id: appId,
+        onComplete: (data) => {
+            const changelog = new Changelog(data?.changelog?.changelog)
+
+            const changelogByVersion = changelog?.data?.reduce?.(
+                (acc, item) => {
+                    acc[item.version] = item.rawChangeSummary
+
+                    return acc
+                },
+                {}
+            )
+
+            setChangelog(changelogByVersion)
         },
     })
 
-    if (data) {
-        const changelog = new Changelog(data?.changelog?.changelog)
+    useEffect(() => {
+        if (appId && hasChangelog) {
+            fetchChangelog({
+                id: appId,
+            })
+        }
+    }, [appId, fetchChangelog, hasChangelog])
 
-        const changelogByVersion = changelog?.data?.reduce?.((acc, item) => {
-            acc[item.version] = item.rawChangeSummary
-
-            return acc
-        }, {})
-
-        return changelogByVersion
-    }
-
-    if (!hasChangelog) {
-        return {}
-    } else {
-        fetchChangelog()
-    }
+    return changelog
 }
 
 class Changelog {
