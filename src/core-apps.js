@@ -13,6 +13,7 @@ export const coreApps = [
     { name: 'Event Visualizer', shortName: 'event-visualizer' },
     { name: 'Import/Export', shortName: 'import-export' },
     { name: 'Interpretations', shortName: 'interpretation' },
+    { name: 'Line Listing', shortName: 'line-listing' },
     { name: 'Maintenance', shortName: 'maintenance' },
     { name: 'Maps', shortName: 'maps' },
     { name: 'Menu Management', shortName: 'menu-management' },
