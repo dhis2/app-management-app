@@ -1,6 +1,5 @@
 # 
 # Translators:
-# Philip Larsen Donnelly, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
 # Shelsea Chumaio, 2024
 # Emílio Luís Mosse <emosse@saudigitus.org>, 2024
@@ -9,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2025-02-25T12:57:55.704Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Helton Dias, 2024\n"
 "Language-Team: Portuguese (https://app.transifex.com/hisp-uio/teams/100509/pt/)\n"
@@ -40,9 +39,6 @@ msgstr "Última actualização{{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Primeira  actualização {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "Por {{- developer}}"
 
 msgid "Open"
 msgstr "Aberto"
@@ -100,12 +96,6 @@ msgstr "Desinstalar v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Canal"
-
-msgid "Version"
-msgstr "Versão"
-
-msgid "Upload date"
-msgstr "Data de carregamento"
 
 msgid "Installed"
 msgstr "Instalado"
@@ -205,10 +195,6 @@ msgid ""
 msgstr ""
 "As aplicações instaladas têm acesso aos seus dados e metadados DHIS2. "
 "Certifique-se de que confia numa aplicação antes de a instalar."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "Por {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"

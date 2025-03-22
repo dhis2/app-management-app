@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Karoline Tufte Lien <karoline@dhis2.org>, 2025\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/hisp-uio/teams/100509/nb/)\n"
@@ -34,9 +34,6 @@ msgid "Last updated {{relativeTime}}"
 msgstr "Sist oppdatert {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
-msgstr ""
-
-msgid "by {{- developer}}"
 msgstr ""
 
 msgid "Open"
@@ -94,12 +91,6 @@ msgid "Uninstall v{{appVersion}}"
 msgstr ""
 
 msgid "Channel"
-msgstr ""
-
-msgid "Version"
-msgstr "Versjon"
-
-msgid "Upload date"
 msgstr ""
 
 msgid "Installed"
@@ -195,10 +186,6 @@ msgstr ""
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
-msgstr ""
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
 msgstr ""
 
 msgctxt "AppHub release channel"

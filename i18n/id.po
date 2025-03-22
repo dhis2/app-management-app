@@ -1,6 +1,5 @@
 # 
 # Translators:
-# Viktor Varland <viktor@dhis2.org>, 2021
 # Raja Fathurrahim, 2022
 # Farida Sibuea <farida_sibuea@yahoo.com>, 2023
 # Philip Larsen Donnelly, 2024
@@ -10,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Aprisa Chrysantina <aprisa.chrysantina@gmail.com>, 2024\n"
 "Language-Team: Indonesian (https://app.transifex.com/hisp-uio/teams/100509/id/)\n"
@@ -39,9 +38,6 @@ msgstr "Terakhir diperbarui {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Pertama kali diterbitkan {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "oleh {{- developer}}"
 
 msgid "Open"
 msgstr "Buka"
@@ -99,12 +95,6 @@ msgstr "Mencopot v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Kanal"
-
-msgid "Version"
-msgstr "Versi"
-
-msgid "Upload date"
-msgstr "Tanggal unggah"
 
 msgid "Installed"
 msgstr "Terpasang"
@@ -202,10 +192,6 @@ msgid ""
 msgstr ""
 "Aplikasi yang diinstal memiliki akses ke DHIS2 data dan metadata Anda. "
 "Pastikan Anda memercayai aplikasi sebelum memasanganya."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "oleh {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"

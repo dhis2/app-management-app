@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Em Le <em.hispvietnam@gmail.com>, 2024\n"
 "Language-Team: Vietnamese (https://app.transifex.com/hisp-uio/teams/100509/vi/)\n"
@@ -39,9 +39,6 @@ msgstr "Lần cập nhật cuối {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Lần đầu tiên xuất bản {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "bởi {{- developer}}"
 
 msgid "Open"
 msgstr "Mở"
@@ -99,12 +96,6 @@ msgstr "Gỡ cài đặt v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Kênh"
-
-msgid "Version"
-msgstr "Phiên bản"
-
-msgid "Upload date"
-msgstr "Ngày tải lên"
 
 msgid "Installed"
 msgstr "Đã cài"
@@ -202,10 +193,6 @@ msgid ""
 msgstr ""
 "Các ứng dụng đã cài đặt có quyền truy cập vào dữ liệu và siêu dữ liệu DHIS2 "
 "của bạn. Hãy đảm bảo bạn tin tưởng một ứng dụng trước khi cài đặt."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "bởi {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
