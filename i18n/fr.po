@@ -1,7 +1,6 @@
 # 
 # Translators:
 # Yayra Gomado <ygomado@hispwca.org>, 2021
-# Karoline Tufte Lien <karoline@dhis2.org>, 2021
 # Viktor Varland <viktor@dhis2.org>, 2024
 # Philip Larsen Donnelly, 2024
 # Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2025
@@ -9,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2025\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
@@ -40,9 +39,6 @@ msgstr "Dernière mise à jour {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Première publication {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "par {{- developer}}"
 
 msgid "Open"
 msgstr "Ouvrir"
@@ -100,12 +96,6 @@ msgstr "Désinstaller {{appVersion}}"
 
 msgid "Channel"
 msgstr "Canal"
-
-msgid "Version"
-msgstr "Version"
-
-msgid "Upload date"
-msgstr "Date de téléchargement"
 
 msgid "Installed"
 msgstr "Installée"
@@ -207,10 +197,6 @@ msgid ""
 msgstr ""
 "Les applications installées ont accès à vos données et métadonnées DHIS2. "
 "Assurez-vous de la fiabilité d'une application avant de l'installer."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "par {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"

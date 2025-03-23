@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Jiří Podhorecký <jirka.p@volny.cz>, 2024\n"
 "Language-Team: Czech (https://app.transifex.com/hisp-uio/teams/100509/cs/)\n"
@@ -34,9 +34,6 @@ msgstr "Poslední aktualizace {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Poprvé publikováno {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "od: {{- developer}}"
 
 msgid "Open"
 msgstr "Otevřít"
@@ -94,12 +91,6 @@ msgstr "Odinstalovat v {{appVersion}}"
 
 msgid "Channel"
 msgstr "Kanál"
-
-msgid "Version"
-msgstr "Verze"
-
-msgid "Upload date"
-msgstr "Datum nahrání"
 
 msgid "Installed"
 msgstr "Nainstalováno"
@@ -197,10 +188,6 @@ msgid ""
 msgstr ""
 "Nainstalované aplikace mají přístup k vašim datům a metadatům DHIS2. Před "
 "instalací se ujistěte, že aplikaci důvěřujete."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "od: {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
