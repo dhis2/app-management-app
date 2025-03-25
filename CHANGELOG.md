@@ -1,3 +1,10 @@
+## [100.4.4](https://github.com/dhis2/app-management-app/compare/v100.4.3...v100.4.4) (2025-03-25)
+
+
+### Bug Fixes
+
+* **DHIS2-19253:** fix issue with changelog going into infinite loop for line listing ([60d5cdd](https://github.com/dhis2/app-management-app/commit/60d5cdda8e846e72b59f2c146bef9484ad2a70f9))
+
 ## [100.4.3](https://github.com/dhis2/app-management-app/compare/v100.4.2...v100.4.3) (2025-03-23)
 
 
