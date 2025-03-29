@@ -1,20 +1,27 @@
 # 
 # Translators:
-# phil_dhis2, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2021-09-08T13:42:45.950Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Viktor Varland <viktor@dhis2.org>, 2021\n"
-"Language-Team: Tetum (Tetun) (https://www.transifex.com/hisp-uio/teams/100509/tet/)\n"
+"Language-Team: Tetum (Tetun) (https://app.transifex.com/hisp-uio/teams/100509/tet/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tet\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid ""
+"Your session has expired. Please refresh the page and login before trying "
+"again."
+msgstr ""
+
+msgid "An unexpected error occurred"
+msgstr ""
 
 msgid "Version {{version}} installed"
 msgstr ""
@@ -28,7 +35,7 @@ msgstr ""
 msgid "First published {{relativeTime}}"
 msgstr ""
 
-msgid "by {{- developer}}"
+msgid "Open"
 msgstr ""
 
 msgid "About this app"
@@ -64,10 +71,16 @@ msgstr ""
 msgid "Failed to uninstall app: {{errorMessage}}"
 msgstr ""
 
+msgid "Installing..."
+msgstr ""
+
 msgid "Update to latest version"
 msgstr ""
 
 msgid "Install"
+msgstr ""
+
+msgid "There are no compatible versions available."
 msgstr ""
 
 msgid "{{channel}} release {{version}}"
@@ -77,12 +90,6 @@ msgid "Uninstall v{{appVersion}}"
 msgstr ""
 
 msgid "Channel"
-msgstr ""
-
-msgid "Version"
-msgstr "Versaun"
-
-msgid "Upload date"
 msgstr ""
 
 msgid "Installed"
@@ -101,6 +108,12 @@ msgid "Development"
 msgstr ""
 
 msgid "Canary"
+msgstr ""
+
+msgid "Failed to check App Hub for available updates"
+msgstr ""
+
+msgid "Your DHIS2 server might be offline."
 msgstr ""
 
 msgid "No apps found"
@@ -157,6 +170,9 @@ msgstr ""
 msgid "Search installed custom apps"
 msgstr ""
 
+msgid "View app details"
+msgstr ""
+
 msgid "Uploading..."
 msgstr ""
 
@@ -169,10 +185,6 @@ msgstr ""
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
-msgstr ""
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
 msgstr ""
 
 msgctxt "AppHub release channel"
