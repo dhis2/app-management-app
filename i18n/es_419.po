@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Jaime Bosque <jaime.bosque@dhis2.org>, 2024\n"
 "Language-Team: Spanish (Latin America) (https://app.transifex.com/hisp-uio/teams/100509/es_419/)\n"
@@ -35,9 +35,6 @@ msgstr "Última actualización {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Primera publicación {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "por {{- desarrollador}}"
 
 msgid "Open"
 msgstr "Abierto"
@@ -96,12 +93,6 @@ msgstr "Desinstalar v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Canal"
-
-msgid "Version"
-msgstr "Versión"
-
-msgid "Upload date"
-msgstr "Fecha de carga"
 
 msgid "Installed"
 msgstr "Instalado"
@@ -200,10 +191,6 @@ msgid ""
 msgstr ""
 "Las aplicaciones instaladas tienen acceso a tus datos y metadatos de DHIS2. "
 "Asegúrate de que confías en una aplicación antes de instalarla."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "por {{- desarrollador}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"

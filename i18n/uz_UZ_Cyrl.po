@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: Khurshid Ibatov <Khurshid.Ibatov@tibbiysugurta.uz>, 2024\n"
 "Language-Team: Uzbek (Cyrillic) (https://app.transifex.com/hisp-uio/teams/100509/uz@Cyrl/)\n"
@@ -34,9 +34,6 @@ msgstr "Охирги марта янгиланган {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "Биринчи марта чоп этилган {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "{{- developer}} томонидан"
 
 msgid "Open"
 msgstr "Очиқ"
@@ -94,12 +91,6 @@ msgstr "Ўчириш v{{appVersion}}"
 
 msgid "Channel"
 msgstr "Канал"
-
-msgid "Version"
-msgstr "Вариант"
-
-msgid "Upload date"
-msgstr "Санани юклаш"
 
 msgid "Installed"
 msgstr "Ўрнатилган"
@@ -198,10 +189,6 @@ msgstr ""
 "Ўрнатилган иловалар Сизнинг маълумотларингиз ва мета-маълумотларингизга "
 "кириш ҳуқуқи мавжуд. Иловани ўрнатишдан аввал унинг ишончлилигига ишонч "
 "ҳосил қилинг."
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "{{- developer}} томонидан"
 
 msgctxt "AppHub release channel"
 msgid "Channel"

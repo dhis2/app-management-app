@@ -1,6 +1,5 @@
 # 
 # Translators:
-# Philip Larsen Donnelly, 2021
 # Viktor Varland <viktor@dhis2.org>, 2021
 # 晓东 林 <13981924470@126.com>, 2024
 # easylin <lin_xd@126.com>, 2024
@@ -8,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
-"POT-Creation-Date: 2024-10-29T11:22:33.823Z\n"
+"POT-Creation-Date: 2025-03-14T20:01:56.339Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
 "Last-Translator: easylin <lin_xd@126.com>, 2024\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
@@ -37,9 +36,6 @@ msgstr "最后更新 {{relativeTime}}"
 
 msgid "First published {{relativeTime}}"
 msgstr "首次发布 {{relativeTime}}"
-
-msgid "by {{- developer}}"
-msgstr "来自 {{- developer}}"
 
 msgid "Open"
 msgstr "打开"
@@ -97,12 +93,6 @@ msgstr "卸载 v{{appVersion}}"
 
 msgid "Channel"
 msgstr "通道"
-
-msgid "Version"
-msgstr "版本"
-
-msgid "Upload date"
-msgstr "上传日期"
 
 msgid "Installed"
 msgstr "已安装"
@@ -198,10 +188,6 @@ msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
 "trust an app before installing it."
 msgstr "已安装的应用程序可以访问您的 DHIS2 数据和元数据。在安装应用程序之前，请确保您信任该应用程序。"
-
-msgctxt "developer of application"
-msgid "by {{- developer}}"
-msgstr "来自 {{- developer}}"
 
 msgctxt "AppHub release channel"
 msgid "Channel"
