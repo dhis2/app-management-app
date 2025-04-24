@@ -78,15 +78,17 @@ export const CoreApps = () => {
         }
         const { shortName } = coreApp
         const module = data.modules.modules.find(
-            (m) => m.name === `dhis-web-${shortName}`
+            (m) => m.name === shortName || m.name === `dhis-web-${shortName}`
         )
         const name = app.name
         const iconUrl = module?.icon
-        const icons = iconUrl ? { 48: iconUrl } : {}
+        const iconBaseUrl = iconUrl?.startsWith('/apps')
+            ? `${baseUrl}/api`
+            : `${baseUrl}/dhis-web-${shortName}/`
+        const icons = iconUrl ? { 48: iconBaseUrl + iconUrl } : {}
         appsByShortName[shortName] = {
             short_name: shortName,
             appHub: app,
-            baseUrl: `${baseUrl}/dhis-web-${shortName}`,
             name,
             icons,
         }

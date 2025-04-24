@@ -3,10 +3,7 @@ export const getAppIconSrc = (app) => {
         (iconSize) => iconSize in app.icons
     )
     if (iconSize) {
-        if (/^https?:\/\//.test(app.icons[iconSize])) {
-            return app.icons[iconSize]
-        }
-        return `${app.baseUrl}/${app.icons[iconSize]}`
+        return app.icons[iconSize]
     }
     return null
 }

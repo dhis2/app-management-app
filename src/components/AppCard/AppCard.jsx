@@ -15,7 +15,11 @@ export const AppCard = ({
     appVersion,
     onClick,
 }) => (
-    <button className={styles.appCard} onClick={onClick}>
+    <button
+        data-test={`appcard-${appName}`}
+        className={styles.appCard}
+        onClick={onClick}
+    >
         <AppIcon src={iconSrc} />
         <div>
             <h2 className={styles.appCardName}>{appName}</h2>
