@@ -148,7 +148,23 @@ const VersionsTable = ({
 
                         <div className={versionsStyles.changeSummary}>
                             {changes && (
-                                <ReactMarkdown>{changes}</ReactMarkdown>
+                                <ReactMarkdown
+                                    components={{
+                                        a(props) {
+                                            // eslint-disable-next-line react/prop-types, no-unused-vars
+                                            const { node, ...rest } = props
+                                            return (
+                                                <a
+                                                    {...rest}
+                                                    rel="noopener noreferrer"
+                                                    target="_blank"
+                                                />
+                                            )
+                                        },
+                                    }}
+                                >
+                                    {changes}
+                                </ReactMarkdown>
                             )}
                         </div>
                         <Divider className={versionsStyles.versionDivider} />
