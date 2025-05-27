@@ -33,7 +33,21 @@ export const LatestUpdates = ({ changelog, installedVersion, versions }) => {
                                     {version.version}
                                 </h3>
                                 <div className={styles.changeSummary}>
-                                    <ReactMarkdown>
+                                    <ReactMarkdown
+                                        components={{
+                                            a(props) {
+                                                // eslint-disable-next-line react/prop-types, no-unused-vars
+                                                const { node, ...rest } = props
+                                                return (
+                                                    <a
+                                                        {...rest}
+                                                        rel="noopener noreferrer"
+                                                        target="_blank"
+                                                    />
+                                                )
+                                            },
+                                        }}
+                                    >
                                         {changelog[version.version]}
                                     </ReactMarkdown>
                                 </div>
