@@ -33,6 +33,11 @@ export const LatestUpdates = ({ changelog, installedVersion, versions }) => {
                                     {version.version}
                                 </h3>
                                 <div className={styles.changeSummary}>
+                                    {!!version.changeSummary && (
+                                        <ReactMarkdown>
+                                            {version.changeSummary}
+                                        </ReactMarkdown>
+                                    )}
                                     <ReactMarkdown
                                         components={{
                                             a(props) {

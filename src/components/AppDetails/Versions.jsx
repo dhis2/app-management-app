@@ -147,6 +147,11 @@ const VersionsTable = ({
                         </div>
 
                         <div className={versionsStyles.changeSummary}>
+                            {!!version.changeSummary && (
+                                <ReactMarkdown>
+                                    {version.changeSummary}
+                                </ReactMarkdown>
+                            )}
                             {changes && (
                                 <ReactMarkdown
                                     components={{
