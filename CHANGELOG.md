@@ -1,3 +1,10 @@
+## [100.4.6](https://github.com/dhis2/app-management-app/compare/v100.4.5...v100.4.6) (2025-06-04)
+
+
+### Bug Fixes
+
+* **DHIS2-19677:** open markdown links in new page ([36dc7f9](https://github.com/dhis2/app-management-app/commit/36dc7f90bb3ddf4999fee1a67178e1ea02d2fa84))
+
 ## [100.4.5](https://github.com/dhis2/app-management-app/compare/v100.4.4...v100.4.5) (2025-03-30)
 
 
