@@ -1,3 +1,10 @@
+## [100.4.7](https://github.com/dhis2/app-management-app/compare/v100.4.6...v100.4.7) (2025-06-05)
+
+
+### Bug Fixes
+
+* display changelog manual entry if it exists ([84f97e1](https://github.com/dhis2/app-management-app/commit/84f97e13c8bc460f403e9747a6bbe55f24d48e6f))
+
 ## [100.4.6](https://github.com/dhis2/app-management-app/compare/v100.4.5...v100.4.6) (2025-06-04)
 
 
