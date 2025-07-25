@@ -20,7 +20,9 @@ export const ManageInstalledVersion = ({
     // apps their `version` field has a value
     const isBundled =
         installedApp && installedApp.bundled && !installedApp.version
-    const latestVersion = getLatestVersion(versions)
+    const stableVersions = versions.filter((v) => v.channel === 'stable')
+    const latestVersion = getLatestVersion(stableVersions)
+
     const canInstall =
         latestVersion && latestVersion.version !== installedApp?.version
 
