@@ -118,9 +118,6 @@ export const AppDetails = ({
         .filter((i) => !i.logo)
         .map((i) => i.imageUrl)
     const versions = appHubApp?.versions.sort((a, b) => b.created - a.created)
-    const stableVersions = appHubApp?.versions.filter(
-        (v) => v.channel === 'stable'
-    )
 
     const history = useHistory()
 
@@ -220,7 +217,7 @@ export const AppDetails = ({
                             {hasChangelog && (
                                 <LatestUpdates
                                     installedVersion={installedApp?.version}
-                                    versions={stableVersions}
+                                    versions={versions}
                                     changelog={changelog}
                                 />
                             )}
