@@ -38,21 +38,26 @@ const AppCards = ({ apps }) => {
 
     return (
         <AppCards_>
-            {apps.map((app) => (
-                <AppCard
-                    key={app.id}
-                    hasPlugin={app.hasPlugin}
-                    pluginType={app.pluginType}
-                    appType={app.appType}
-                    iconSrc={getIconSrc(app)}
-                    appName={app.name}
-                    appDeveloper={
-                        app.developer.organisation || app.developer.name
-                    }
-                    appVersion={getLatestVersion(app.versions).version}
-                    onClick={() => history.push(`/app/${app.id}`)}
-                />
-            ))}
+            {apps.map((app) => {
+                const stableVersions = app?.versions.filter(
+                    (v) => v.channel === 'stable'
+                )
+                return (
+                    <AppCard
+                        key={app.id}
+                        hasPlugin={app.hasPlugin}
+                        pluginType={app.pluginType}
+                        appType={app.appType}
+                        iconSrc={getIconSrc(app)}
+                        appName={app.name}
+                        appDeveloper={
+                            app.developer.organisation || app.developer.name
+                        }
+                        appVersion={getLatestVersion(stableVersions).version}
+                        onClick={() => history.push(`/app/${app.id}`)}
+                    />
+                )
+            })}
         </AppCards_>
     )
 }

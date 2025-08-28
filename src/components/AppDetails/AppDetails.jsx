@@ -27,7 +27,8 @@ const Metadata = ({ installedVersion, versions }) => {
     const relativeTime = (datetime) => moment(datetime).fromNow()
     const latestVersion = getLatestVersion(versions)?.version
     const firstPublishedVersion = versions[versions.length - 1]
-    const lastPublishedVersion = versions[0]
+    const stableVersions = versions.filter((v) => v.channel === 'stable')
+    const lastPublishedVersion = stableVersions[0]
 
     return (
         <ul className={styles.metadataList}>
