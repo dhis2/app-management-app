@@ -1,3 +1,10 @@
+## [100.4.8](https://github.com/dhis2/app-management-app/compare/v100.4.7...v100.4.8) (2025-08-28)
+
+
+### Bug Fixes
+
+* **DHIS2-19851:** ensure that stable versions are shown as latest version ([#593](https://github.com/dhis2/app-management-app/issues/593)) ([f1b7982](https://github.com/dhis2/app-management-app/commit/f1b79822f5083a4f62160d442acb3ef6f1c28900))
+
 ## [100.4.7](https://github.com/dhis2/app-management-app/compare/v100.4.6...v100.4.7) (2025-06-05)
 
 
