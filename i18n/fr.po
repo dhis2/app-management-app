@@ -189,7 +189,7 @@ msgid "Upload an app to install"
 msgstr "Télécharger une application à installer"
 
 msgid "Manually install an app"
-msgstr "Installation manuelle d'une application"
+msgstr "Installer manuellement une application"
 
 msgid ""
 "Installed apps have access to your DHIS2 data and metadata. Make sure you "
