@@ -1,4 +1,3 @@
-# 
 # Translators:
 # Yayra Gomado <ygomado@hispwca.org>, 2021
 # Viktor Varland <viktor@dhis2.org>, 2024
