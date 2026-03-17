@@ -1,3 +1,10 @@
+# [100.5.0](https://github.com/dhis2/app-management-app/compare/v100.4.13...v100.5.0) (2026-03-17)
+
+
+### Features
+
+* add shortcuts for command palette ([#613](https://github.com/dhis2/app-management-app/issues/613)) ([974faa7](https://github.com/dhis2/app-management-app/commit/974faa78ebdfba8abbce7fd7ae270f399a92225b))
+
 ## [100.4.13](https://github.com/dhis2/app-management-app/compare/v100.4.12...v100.4.13) (2026-03-08)
 
 
