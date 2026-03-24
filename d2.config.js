@@ -15,7 +15,7 @@ const config = {
     shortcuts: [
         { url: '#/', name: 'Core apps' },
         { url: '#/custom-apps', name: 'Custom apps' },
-        { url: '#/app-hub', name: 'App hub' },
+        { url: '#/app-hub', name: 'App Hub' },
         { url: '#/manual-install', name: 'Manual install' },
     ],
 }
