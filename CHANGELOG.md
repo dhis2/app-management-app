@@ -1,3 +1,10 @@
+## [100.5.1](https://github.com/dhis2/app-management-app/compare/v100.5.0...v100.5.1) (2026-03-25)
+
+
+### Bug Fixes
+
+* **shortcut:** capitalization on App Hub shortcut ([#614](https://github.com/dhis2/app-management-app/issues/614)) ([5974825](https://github.com/dhis2/app-management-app/commit/5974825e1d2370949a41c07d906a41d211c912fe))
+
 # [100.5.0](https://github.com/dhis2/app-management-app/compare/v100.4.13...v100.5.0) (2026-03-17)
 
 
