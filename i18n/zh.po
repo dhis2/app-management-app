@@ -1,14 +1,14 @@
 # Translators:
 # Viktor Varland <viktor@dhis2.org>, 2021
-# easylin <lin_xd@126.com>, 2024
 # 晓东 林 <13981924470@126.com>, 2026
+# easylin <lin_xd@126.com>, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T19:21:33.977Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: 晓东 林 <13981924470@126.com>, 2026\n"
+"Last-Translator: easylin <lin_xd@126.com>, 2026\n"
 "Language-Team: Chinese (https://app.transifex.com/hisp-uio/teams/100509/zh/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -194,11 +194,11 @@ msgstr "通道"
 
 msgctxt "Name of AppHub release channel"
 msgid "Stable"
-msgstr "稳定的"
+msgstr "稳定版"
 
 msgctxt "Name of AppHub release channel"
 msgid "Development"
-msgstr "开发"
+msgstr "开发版"
 
 msgctxt "Name of AppHub release channel"
 msgid "Canary"
@@ -210,20 +210,20 @@ msgstr "应用管理"
 
 msgctxt "Application description"
 msgid "__MANIFEST_APP_DESCRIPTION"
-msgstr ""
+msgstr "应用程序管理应用程序可上传 .zip 文件中的网络应用程序，也可直接从 DHIS 2 官方应用程序商店安装应用程序。"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_Core apps"
-msgstr ""
+msgstr "核心应用程序"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_Custom apps"
-msgstr ""
+msgstr "自定义应用程序"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_App hub"
-msgstr ""
+msgstr "应用程序中心"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_Manual install"
-msgstr ""
+msgstr "手动安装"
