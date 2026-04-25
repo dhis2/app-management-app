@@ -1,15 +1,16 @@
 # Translators:
 # Yayra Gomado <ygomado@hispwca.org>, 2021
 # Viktor Varland <viktor@dhis2.org>, 2024
-# Philip Larsen Donnelly, 2026
+# Philip Larsen Donnelly, 2024
 # Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2026
+# Cyrille Kabrane, 2026
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: i18next-conv\n"
 "POT-Creation-Date: 2026-03-16T19:21:33.977Z\n"
 "PO-Revision-Date: 2019-08-07 09:45+0000\n"
-"Last-Translator: Yao Selom SAKA (HISP WCA) <ysaka@hispwca.org>, 2026\n"
+"Last-Translator: Cyrille Kabrane, 2026\n"
 "Language-Team: French (https://app.transifex.com/hisp-uio/teams/100509/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -215,11 +216,14 @@ msgstr "Canary"
 
 msgctxt "Application title"
 msgid "__MANIFEST_APP_TITLE"
-msgstr "Gestionnaire d'Applications"
+msgstr "Gestionnaire d'applications"
 
 msgctxt "Application description"
 msgid "__MANIFEST_APP_DESCRIPTION"
 msgstr ""
+"L'application Gestionnaire des applications permet de télécharger des "
+"applications Web sous forme de fichiers .zip, ainsi que d'installer des "
+"applications directement depuis l'App Store officiel de DHIS2."
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_Core apps"
@@ -231,7 +235,7 @@ msgstr "Apps personnalisées"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_App hub"
-msgstr ""
+msgstr "App hub"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_Manual install"
