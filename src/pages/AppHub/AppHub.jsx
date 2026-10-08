@@ -39,9 +39,8 @@ const AppCards = ({ apps }) => {
     return (
         <AppCards_>
             {apps.map((app) => {
-                const stableVersions = app?.versions.filter(
-                    (v) => v.channel === 'stable'
-                )
+                const stableVersions =
+                    app.versions?.filter((v) => v.channel === 'stable') ?? []
                 return (
                     <AppCard
                         key={app.id}
@@ -53,7 +52,7 @@ const AppCards = ({ apps }) => {
                         appDeveloper={
                             app.developer.organisation || app.developer.name
                         }
-                        appVersion={getLatestVersion(stableVersions).version}
+                        appVersion={getLatestVersion(stableVersions)?.version}
                         onClick={() => history.push(`/app/${app.id}`)}
                     />
                 )
