@@ -1,3 +1,10 @@
+## [100.5.2](https://github.com/dhis2/app-management-app/compare/v100.5.1...v100.5.2) (2026-10-08)
+
+
+### Bug Fixes
+
+* make version display logic more defensive ([#619](https://github.com/dhis2/app-management-app/issues/619)) ([eb39cd2](https://github.com/dhis2/app-management-app/commit/eb39cd25af15678e5b3b1fc34732d5d039a86f9f))
+
 ## [100.5.1](https://github.com/dhis2/app-management-app/compare/v100.5.0...v100.5.1) (2026-03-25)
 
 
