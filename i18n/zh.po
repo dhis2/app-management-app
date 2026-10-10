@@ -127,10 +127,10 @@ msgid "Core apps"
 msgstr "核心应用"
 
 msgid "Custom apps"
-msgstr "自定义应用"
+msgstr "定制应用"
 
 msgid "App Hub"
-msgstr "APP市场"
+msgstr "应用中心"
 
 msgid "Manual install"
 msgstr "手动安装"
@@ -160,22 +160,22 @@ msgid "Search core apps"
 msgstr "搜索核心应用"
 
 msgid "Something went wrong whilst loading your custom apps"
-msgstr "加载您的自定义应用程序时出现问题"
+msgstr "加载您的定制应用程序时出现问题"
 
 msgid "Custom apps with updates available"
-msgstr "具有可用更新的自定义应用程序"
+msgstr "具有可用更新的扩展定制应用程序"
 
 msgid "All installed custom apps"
-msgstr "所有已安装的自定义应用程序"
+msgstr "所有已安装的定制应用"
 
 msgid "Search installed custom apps"
-msgstr "搜索已安装的自定义应用程序"
+msgstr "搜索已安装的定制应用程序"
 
 msgid "View app details"
 msgstr "查看应用程序详情"
 
 msgid "Uploading..."
-msgstr "上传"
+msgstr "上传中。。。"
 
 msgid "Upload an app to install"
 msgstr "上传要安装的应用"
@@ -218,7 +218,7 @@ msgstr "核心应用程序"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_Custom apps"
-msgstr "自定义应用程序"
+msgstr "定制应用程序"
 
 msgctxt "Title for shortcut used by command palette"
 msgid "__MANIFEST_SHORTCUT_App hub"
