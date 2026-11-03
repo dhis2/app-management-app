@@ -3,10 +3,13 @@ import i18n from '@dhis2/d2-i18n'
 import { Button, CircularLoader } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
-import semver from 'semver'
 import { useApi } from '../../api.js'
 import { getLatestVersion } from '../../get-latest-version.js'
-import { getCompatibleVersions, semverGt } from '../../semver-helpers.js'
+import {
+    getCompatibleVersions,
+    semverGt,
+    toDhisVersion,
+} from '../../semver-helpers.js'
 import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name.js'
 
@@ -28,9 +31,7 @@ export const ManageInstalledVersion = ({
 
     const { serverVersion } = useConfig()
 
-    const dhisVersion = semver.coerce(
-        `${serverVersion.major}.${serverVersion.minor}`
-    )
+    const dhisVersion = toDhisVersion(serverVersion)
 
     const compatibleVersions = getCompatibleVersions(versions, dhisVersion)
     const hasCompatibleVersions = compatibleVersions.length > 0
