@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useQueryParam, StringParam, withDefault } from 'use-query-params'
+import { useCspSummaries } from '../../csp/useCspSummaries.js'
 import { getAppIconSrc } from '../../get-app-icon-src.js'
 import { AppCard } from '../AppCard/AppCard.jsx'
 import { AppCards as AppCards_ } from '../AppCards/AppCards.jsx'
@@ -11,6 +12,7 @@ import styles from './AppsList.module.css'
 
 const AppCards = ({ apps }) => {
     const history = useHistory()
+    const cspSummaries = useCspSummaries()
     const handleAppClick = (app) => {
         if (!app.version && !app.appHub) {
             return
@@ -32,6 +34,7 @@ const AppCards = ({ apps }) => {
                     appName={app.name}
                     appDeveloper={app.developer?.company || app.developer?.name}
                     appVersion={app.version}
+                    cspSummary={cspSummaries[app.key || app.short_name]}
                     onClick={() => handleAppClick(app)}
                 />
             ))}

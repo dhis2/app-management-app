@@ -3,6 +3,7 @@ import React from 'react'
 import { appTypeToDisplayName } from '../AppDetails/appDisplayConfig.js'
 import PluginTag from '../AppDetails/PluginTag.jsx'
 import { AppIcon } from '../AppIcon/AppIcon.jsx'
+import { CspBadges } from '../CspBadges/CspBadges.jsx'
 import styles from './AppCard.module.css'
 
 export const AppCard = ({
@@ -14,6 +15,7 @@ export const AppCard = ({
     appDeveloper,
     appVersion,
     onClick,
+    cspSummary,
 }) => (
     <button className={styles.appCard} onClick={onClick}>
         <AppIcon src={iconSrc} />
@@ -33,6 +35,7 @@ export const AppCard = ({
             <span className={styles.appCardMetadata}>
                 {appVersion && `Version ${appVersion}`}
             </span>
+            <CspBadges summary={cspSummary} />
         </div>
     </button>
 )
@@ -43,6 +46,7 @@ AppCard.propTypes = {
     appDeveloper: PropTypes.string,
     appType: PropTypes.string,
     appVersion: PropTypes.string,
+    cspSummary: PropTypes.object,
     hasPlugin: PropTypes.bool,
     iconSrc: PropTypes.string,
     pluginType: PropTypes.string,

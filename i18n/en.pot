@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-03-16T19:21:33.977Z\n"
-"PO-Revision-Date: 2026-03-16T19:21:33.977Z\n"
+"POT-Creation-Date: 2026-11-11T15:23:09.955Z\n"
+"PO-Revision-Date: 2026-11-11T15:23:09.955Z\n"
 
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
@@ -32,6 +32,9 @@ msgstr "First published {{relativeTime}}"
 
 msgid "Open"
 msgstr "Open"
+
+msgid "Content Security Policy"
+msgstr "Content Security Policy"
 
 msgid "About this app"
 msgstr "About this app"
@@ -117,6 +120,486 @@ msgstr "No apps found"
 msgid "No apps match your criteria"
 msgstr "No apps match your criteria"
 
+msgid ""
+"At least one entrypoint of this app is exempt from CSP enforcement and only "
+"reports violations"
+msgstr ""
+"At least one entrypoint of this app is exempt from CSP enforcement and only "
+"reports violations"
+
+msgid "CSP Exempt (Report-Only)"
+msgstr "CSP Exempt (Report-Only)"
+
+msgid "Unsafe CSP override"
+msgstr "Unsafe CSP override"
+
+msgid "{{blocked}} blocked, {{reported}} report-only in the last 24 hours"
+msgstr "{{blocked}} blocked, {{reported}} report-only in the last 24 hours"
+
+msgid "1 CSP violation"
+msgstr "1 CSP violation"
+
+msgid "{{count}} CSP violations"
+msgid_plural "{{count}} CSP violations"
+msgstr[0] "{{count}} CSP violations"
+msgstr[1] "{{count}} CSP violations"
+
+msgid "CSP draft running"
+msgstr "CSP draft running"
+
+msgid "CSP override"
+msgstr "CSP override"
+
+msgid "No base sources"
+msgstr "No base sources"
+
+msgid "baseline"
+msgstr "baseline"
+
+msgid "default, removed for all entrypoints"
+msgstr "default, removed for all entrypoints"
+
+msgid "default"
+msgstr "default"
+
+msgid "Draft test running until {{time}} ({{relative}})"
+msgstr "Draft test running until {{time}} ({{relative}})"
+
+msgid "Report-only audit running"
+msgstr "Report-only audit running"
+
+msgid ""
+"The draft sources are enforced now for {{eps}}, without a restart. Reload "
+"the app in another tab and watch the violations below, then Apply & Save or "
+"stop the draft. After expiry the draft only reports."
+msgstr ""
+"The draft sources are enforced now for {{eps}}, without a restart. Reload "
+"the app in another tab and watch the violations below, then Apply & Save or "
+"stop the draft. After expiry the draft only reports."
+
+msgid ""
+"The candidate policy for {{eps}} is sent as "
+"Content-Security-Policy-Report-Only next to the enforced policy. Violations "
+"it would cause show with disposition Report-only."
+msgstr ""
+"The candidate policy for {{eps}} is sent as "
+"Content-Security-Policy-Report-Only next to the enforced policy. Violations "
+"it would cause show with disposition Report-only."
+
+msgid "Stop draft"
+msgstr "Stop draft"
+
+msgid "Could not save the CSP override: {{message}}"
+msgstr "Could not save the CSP override: {{message}}"
+
+msgid "CSP override saved. It applies on the next page load, no restart needed."
+msgstr "CSP override saved. It applies on the next page load, no restart needed."
+
+msgid ""
+"Draft is live for {{minutes}} minutes. Reload the app in another tab to try "
+"it."
+msgstr ""
+"Draft is live for {{minutes}} minutes. Reload the app in another tab to try "
+"it."
+
+msgid ""
+"Report-only audit started. Violations of the candidate policy show as "
+"Report-only."
+msgstr ""
+"Report-only audit started. Violations of the candidate policy show as "
+"Report-only."
+
+msgid "Draft stopped. Your changes are still unsaved."
+msgstr "Draft stopped. Your changes are still unsaved."
+
+msgid "{{app}} uses the default policy again"
+msgstr "{{app}} uses the default policy again"
+
+msgid "Could not reset the CSP override: {{message}}"
+msgstr "Could not reset the CSP override: {{message}}"
+
+msgid "CSP is enforced again for {{entrypoint}}"
+msgstr "CSP is enforced again for {{entrypoint}}"
+
+msgid "{{entrypoint}} is now exempt (report-only)"
+msgstr "{{entrypoint}} is now exempt (report-only)"
+
+msgid ""
+"Staged {{source}} in {{directive}} for {{entrypoint}}. Test Draft or Apply "
+"& Save to use it."
+msgstr ""
+"Staged {{source}} in {{directive}} for {{entrypoint}}. Test Draft or Apply "
+"& Save to use it."
+
+msgid "Could not clear the log: {{message}}"
+msgstr "Could not clear the log: {{message}}"
+
+msgid "Override saved by {{user}} {{time}}"
+msgstr "Override saved by {{user}} {{time}}"
+
+msgid "No override, {{app}} uses the default policy"
+msgstr "No override, {{app}} uses the default policy"
+
+msgid "Override active"
+msgstr "Override active"
+
+msgid "Off keeps the override but uses the default policy"
+msgstr "Off keeps the override but uses the default policy"
+
+msgid ""
+"CSP violation reporting is disabled on this server, so no new violations "
+"will show up."
+msgstr ""
+"CSP violation reporting is disabled on this server, so no new violations "
+"will show up."
+
+msgid "Entrypoint"
+msgstr "Entrypoint"
+
+msgid "exempt"
+msgstr "exempt"
+
+msgid "Settings for one entrypoint add to the settings for all entrypoints (*)."
+msgstr "Settings for one entrypoint add to the settings for all entrypoints (*)."
+
+msgid ""
+"This app has a service worker. Requests the worker makes, and pages it "
+"serves from its cache, follow the Service worker entrypoint and the policy "
+"cached with the page. Add origins to All entrypoints (*) to cover both; "
+"open tabs may need a hard reload to pick up a change."
+msgstr ""
+"This app has a service worker. Requests the worker makes, and pages it "
+"serves from its cache, follow the Service worker entrypoint and the policy "
+"cached with the page. Add origins to All entrypoints (*) to cover both; "
+"open tabs may need a hard reload to pick up a change."
+
+msgid "{{entrypoint}} is exempt from CSP enforcement"
+msgstr "{{entrypoint}} is exempt from CSP enforcement"
+
+msgid ""
+"Only frame-ancestors is enforced. The full policy runs report-only. Turn "
+"the exemption off in the danger zone below."
+msgstr ""
+"Only frame-ancestors is enforced. The full policy runs report-only. Turn "
+"the exemption off in the danger zone below."
+
+msgid "Recent violations"
+msgstr "Recent violations"
+
+msgid "Reported by browsers for {{app}} in the last 24 hours, all entrypoints."
+msgstr "Reported by browsers for {{app}} in the last 24 hours, all entrypoints."
+
+msgid "Suggested origins"
+msgstr "Suggested origins"
+
+msgid ""
+"Origins the server found in this app configuration, for example external "
+"map layers. Adding stages them for {{entrypoint}}."
+msgstr ""
+"Origins the server found in this app configuration, for example external "
+"map layers. Adding stages them for {{entrypoint}}."
+
+msgid "All {{count}} suggested origins are already allowed."
+msgid_plural "All {{count}} suggested origins are already allowed."
+msgstr[0] "All {{count}} suggested origins are already allowed."
+msgstr[1] "All {{count}} suggested origins are already allowed."
+
+msgid "Already allowed"
+msgstr "Already allowed"
+
+msgid "Staged"
+msgstr "Staged"
+
+msgid "+ Add"
+msgstr "+ Add"
+
+msgid "Hide already allowed"
+msgstr "Hide already allowed"
+
+msgid "Show {{count}} already allowed"
+msgid_plural "Show {{count}} already allowed"
+msgstr[0] "Show {{count}} already allowed"
+msgstr[1] "Show {{count}} already allowed"
+
+msgid "Allowed sources for {{entrypoint}}"
+msgstr "Allowed sources for {{entrypoint}}"
+
+msgid ""
+"Bare origins only (https://host[:port]). Wildcards like "
+"https://*.example.org only in img-src and connect-src. script-src accepts "
+"every value, unsafe ones need confirmation."
+msgstr ""
+"Bare origins only (https://host[:port]). Wildcards like "
+"https://*.example.org only in img-src and connect-src. script-src accepts "
+"every value, unsafe ones need confirmation."
+
+msgid "Base and default sources"
+msgstr "Base and default sources"
+
+msgid ""
+"Baseline sources are always on. Uncheck a default source to remove it for "
+"{{entrypoint}}."
+msgstr ""
+"Baseline sources are always on. Uncheck a default source to remove it for "
+"{{entrypoint}}."
+
+msgid "Mandatory hardening"
+msgstr "Mandatory hardening"
+
+msgid "Always enforced for every app; overrides cannot change these."
+msgstr "Always enforced for every app; overrides cannot change these."
+
+msgid "Danger zone (last resort)"
+msgstr "Danger zone (last resort)"
+
+msgid ""
+"Some apps cannot work with any allowed source. Exempting an entrypoint "
+"turns enforcement off for it, and the browser only reports violations. "
+"Prefer allowed sources whenever possible."
+msgstr ""
+"Some apps cannot work with any allowed source. Exempting an entrypoint "
+"turns enforcement off for it, and the browser only reports violations. "
+"Prefer allowed sources whenever possible."
+
+msgid "Report-only exemption for {{entrypoint}}"
+msgstr "Report-only exemption for {{entrypoint}}"
+
+msgid "The server rejected this policy"
+msgstr "The server rejected this policy"
+
+msgid "Change note (optional)"
+msgstr "Change note (optional)"
+
+msgid "Unsaved changes: {{eps}}"
+msgstr "Unsaved changes: {{eps}}"
+
+msgid "settings"
+msgstr "settings"
+
+msgid "No unsaved changes"
+msgstr "No unsaved changes"
+
+msgid ""
+"Test Draft and the audit cover added sources and removed defaults only; "
+"other changes apply on Apply & Save."
+msgstr ""
+"Test Draft and the audit cover added sources and removed defaults only; "
+"other changes apply on Apply & Save."
+
+msgid "Test Draft ({{minutes}} min)"
+msgstr "Test Draft ({{minutes}} min)"
+
+msgid "Run Report-Only Audit"
+msgstr "Run Report-Only Audit"
+
+msgid "Apply & Save"
+msgstr "Apply & Save"
+
+msgid "Discard changes"
+msgstr "Discard changes"
+
+msgid "Reset to Default"
+msgstr "Reset to Default"
+
+msgid "No access to CSP settings"
+msgstr "No access to CSP settings"
+
+msgid "CSP settings are not available"
+msgstr "CSP settings are not available"
+
+msgid "from *"
+msgstr "from *"
+
+msgid "No added sources"
+msgstr "No added sources"
+
+msgid "Unsafe, {{risk}}"
+msgstr "Unsafe, {{risk}}"
+
+msgid "Add"
+msgstr "Add"
+
+msgid "Add keyword or scheme"
+msgstr "Add keyword or scheme"
+
+msgid "{{option}} (unsafe)"
+msgstr "{{option}} (unsafe)"
+
+msgid "Unsafe script sources"
+msgstr "Unsafe script sources"
+
+msgid ""
+"Saving needs an explicit confirmation, and the app gets an \"Unsafe CSP "
+"override\" badge."
+msgstr ""
+"Saving needs an explicit confirmation, and the app gets an \"Unsafe CSP "
+"override\" badge."
+
+msgid "View / paste effective CSP header"
+msgstr "View / paste effective CSP header"
+
+msgid "Composed headers for {{entrypoint}}"
+msgstr "Composed headers for {{entrypoint}}"
+
+msgid "(none)"
+msgstr "(none)"
+
+msgid "Preview with your unsaved changes (server dry run)"
+msgstr "Preview with your unsaved changes (server dry run)"
+
+msgid "Paste a CSP header"
+msgstr "Paste a CSP header"
+
+msgid ""
+"For example the policy an app vendor documents. Sources missing from the "
+"current policy can be staged into this entrypoint."
+msgstr ""
+"For example the policy an app vendor documents. Sources missing from the "
+"current policy can be staged into this entrypoint."
+
+msgid "Find missing sources"
+msgstr "Find missing sources"
+
+msgid ""
+"The current policy already allows every editable source in the pasted "
+"header."
+msgstr ""
+"The current policy already allows every editable source in the pasted "
+"header."
+
+msgid "Ignored, not editable per app: {{directives}}"
+msgstr "Ignored, not editable per app: {{directives}}"
+
+msgid "Stage {{count}} sources"
+msgid_plural "Stage {{count}} sources"
+msgstr[0] "Stage {{count}} sources"
+msgstr[1] "Stage {{count}} sources"
+
+msgid "Confirm unsafe CSP sources"
+msgstr "Confirm unsafe CSP sources"
+
+msgid "This weakens XSS protection"
+msgstr "This weakens XSS protection"
+
+msgid ""
+"These sources let injected or third-party code run in the app. Only "
+"continue if the app cannot work without them and you trust every allowed "
+"source."
+msgstr ""
+"These sources let injected or third-party code run in the app. Only "
+"continue if the app cannot work without them and you trust every allowed "
+"source."
+
+msgid ""
+"The change is audited and the app shows an \"Unsafe CSP override\" badge in "
+"the app list."
+msgstr ""
+"The change is audited and the app shows an \"Unsafe CSP override\" badge in "
+"the app list."
+
+msgid "I understand the risk and want to allow these sources"
+msgstr "I understand the risk and want to allow these sources"
+
+msgid "Cancel"
+msgstr "Cancel"
+
+msgid "Save with unsafe sources"
+msgstr "Save with unsafe sources"
+
+msgid "Exempt {{app}} from CSP enforcement?"
+msgstr "Exempt {{app}} from CSP enforcement?"
+
+msgid "Last resort, CSP stops protecting {{entrypoint}}"
+msgstr "Last resort, CSP stops protecting {{entrypoint}}"
+
+msgid ""
+"The browser no longer enforces the policy for this entrypoint; only "
+"frame-ancestors stays enforced. The full policy is sent as "
+"Content-Security-Policy-Report-Only, so violations still show up here. Use "
+"this only when no allowed source makes the app work."
+msgstr ""
+"The browser no longer enforces the policy for this entrypoint; only "
+"frame-ancestors stays enforced. The full policy is sent as "
+"Content-Security-Policy-Report-Only, so violations still show up here. Use "
+"this only when no allowed source makes the app work."
+
+msgid "Reason (approval note)"
+msgstr "Reason (approval note)"
+
+msgid ""
+"Stored with the override and in the audit log. The server requires it for "
+"an exemption."
+msgstr ""
+"Stored with the override and in the audit log. The server requires it for "
+"an exemption."
+
+msgid "I understand that CSP no longer blocks attacks on this entrypoint"
+msgstr "I understand that CSP no longer blocks attacks on this entrypoint"
+
+msgid "Exempt and save"
+msgstr "Exempt and save"
+
+msgid "Reset {{app}} to the default policy?"
+msgstr "Reset {{app}} to the default policy?"
+
+msgid ""
+"This removes every admin override for all entrypoints and ends any running "
+"draft. The built-in default sources stay."
+msgstr ""
+"This removes every admin override for all entrypoints and ends any running "
+"draft. The built-in default sources stay."
+
+msgid "Reset to default"
+msgstr "Reset to default"
+
+msgid "Unsafe source"
+msgstr "Unsafe source"
+
+msgid "Remove {{value}}"
+msgstr "Remove {{value}}"
+
+msgid "Loading..."
+msgstr "Loading..."
+
+msgid "Refreshes every 5 seconds"
+msgstr "Refreshes every 5 seconds"
+
+msgid "Clear log"
+msgstr "Clear log"
+
+msgid "Could not load violation reports: {{message}}"
+msgstr "Could not load violation reports: {{message}}"
+
+msgid "No CSP violations reported in the last 24 hours"
+msgstr "No CSP violations reported in the last 24 hours"
+
+msgid "Last seen"
+msgstr "Last seen"
+
+msgid "Directive"
+msgstr "Directive"
+
+msgid "Blocked"
+msgstr "Blocked"
+
+msgid "Count"
+msgstr "Count"
+
+msgid "Disposition"
+msgstr "Disposition"
+
+msgid "First seen {{firstSeen}}"
+msgstr "First seen {{firstSeen}}"
+
+msgid "Report-only"
+msgstr "Report-only"
+
+msgid "Allowed now"
+msgstr "Allowed now"
+
+msgid "+ Allow origin"
+msgstr "+ Allow origin"
+
 msgid "Core apps"
 msgstr "Core apps"
 
@@ -128,6 +611,111 @@ msgstr "App Hub"
 
 msgid "Manual install"
 msgstr "Manual install"
+
+msgid "All entrypoints (*)"
+msgstr "All entrypoints (*)"
+
+msgid "App (index.html)"
+msgstr "App (index.html)"
+
+msgid "Plugin (plugin.html)"
+msgstr "Plugin (plugin.html)"
+
+msgid "Service worker"
+msgstr "Service worker"
+
+msgid "The port is not valid"
+msgstr "The port is not valid"
+
+msgid ""
+"Wildcard hosts (https://*.domain) are only allowed in img-src and "
+"connect-src"
+msgstr ""
+"Wildcard hosts (https://*.domain) are only allowed in img-src and "
+"connect-src"
+
+msgid ""
+"A wildcard needs at least two labels after *., for example "
+"https://*.example.org"
+msgstr ""
+"A wildcard needs at least two labels after *., for example "
+"https://*.example.org"
+
+msgid "A wildcard is only allowed as the first label (*.)"
+msgstr "A wildcard is only allowed as the first label (*.)"
+
+msgid "The host name is not valid"
+msgstr "The host name is not valid"
+
+msgid "Use a bare origin such as https://tiles.example.org (scheme://host[:port])"
+msgstr "Use a bare origin such as https://tiles.example.org (scheme://host[:port])"
+
+msgid "Only https, http, wss and ws origins are allowed"
+msgstr "Only https, http, wss and ws origins are allowed"
+
+msgid "User names or passwords are not allowed in a source"
+msgstr "User names or passwords are not allowed in a source"
+
+msgid "Only bare origins (scheme://host[:port]) are allowed, remove the path"
+msgstr "Only bare origins (scheme://host[:port]) are allowed, remove the path"
+
+msgid "The host name is missing"
+msgstr "The host name is missing"
+
+msgid "This server uses HTTPS, so http:// and ws:// are blocked"
+msgstr "This server uses HTTPS, so http:// and ws:// are blocked"
+
+msgid "Nonces are not supported, the server does not issue one"
+msgstr "Nonces are not supported, the server does not issue one"
+
+msgid "Unknown keyword {{value}}"
+msgstr "Unknown keyword {{value}}"
+
+msgid "Enter a source"
+msgstr "Enter a source"
+
+msgid "Enter one source at a time, without spaces, ; or ,"
+msgstr "Enter one source at a time, without spaces, ; or ,"
+
+msgid "Keywords are only allowed in script-src"
+msgstr "Keywords are only allowed in script-src"
+
+msgid "A bare * allows every host and is not allowed here"
+msgstr "A bare * allows every host and is not allowed here"
+
+msgid "This server uses HTTPS, so http: is blocked"
+msgstr "This server uses HTTPS, so http: is blocked"
+
+msgid "Bare schemes such as https: allow every host and are not allowed here"
+msgstr "Bare schemes such as https: allow every host and are not allowed here"
+
+msgid "Runs any inline script, so an injected <script> tag (XSS) executes."
+msgstr "Runs any inline script, so an injected <script> tag (XSS) executes."
+
+msgid ""
+"Allows eval() and new Function(), which turns string injection into code "
+"execution."
+msgstr ""
+"Allows eval() and new Function(), which turns string injection into code "
+"execution."
+
+msgid "Allows compiling and running WebAssembly code."
+msgstr "Allows compiling and running WebAssembly code."
+
+msgid "Allows inline event handlers (onclick=...) that match a hash."
+msgstr "Allows inline event handlers (onclick=...) that match a hash."
+
+msgid "Allows loading from any host on the internet."
+msgstr "Allows loading from any host on the internet."
+
+msgid "Allows data: URLs, which attackers can use to smuggle content."
+msgstr "Allows data: URLs, which attackers can use to smuggle content."
+
+msgid "Allows plain HTTP from any host, which can be tampered with in transit."
+msgstr "Allows plain HTTP from any host, which can be tampered with in transit."
+
+msgid "Plain HTTP can be tampered with in transit; prefer https://."
+msgstr "Plain HTTP can be tampered with in transit; prefer https://."
 
 msgid "Search AppHub apps"
 msgstr "Search AppHub apps"
@@ -200,29 +788,10 @@ msgctxt "Name of AppHub release channel"
 msgid "Canary"
 msgstr "Canary"
 
-msgctxt "Application title"
-msgid "__MANIFEST_APP_TITLE"
-msgstr "App Management"
-
-msgctxt "Application description"
-msgid "__MANIFEST_APP_DESCRIPTION"
+msgctxt "SETTING."
+msgid ""
+"Viewing needs the App Management app or the system settings authority; "
+"changing needs F_SYSTEM"
 msgstr ""
-"The Application Management App provides the ability to upload webapps in "
-".zip files, as well as installing apps directly from the official DHIS 2 "
-"App Store"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Core apps"
-msgstr "Core apps"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Custom apps"
-msgstr "Custom apps"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_App hub"
-msgstr "App hub"
-
-msgctxt "Title for shortcut used by command palette"
-msgid "__MANIFEST_SHORTCUT_Manual install"
-msgstr "Manual install"
+"Viewing needs the App Management app or the system settings authority; "
+"changing needs F_SYSTEM_SETTING."
