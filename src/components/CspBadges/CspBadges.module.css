@@ -1,0 +1,6 @@
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacers-dp4);
+    margin: var(--spacers-dp4) 0;
+}
