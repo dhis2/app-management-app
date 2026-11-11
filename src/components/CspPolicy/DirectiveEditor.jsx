@@ -39,6 +39,7 @@ export const DirectiveEditor = ({
     errors,
     httpsOnly,
     disabled,
+    pairedWith,
     onAdd,
     onRemove,
 }) => {
@@ -171,6 +172,14 @@ export const DirectiveEditor = ({
                         )}
                     </div>
                 )}
+                {!disabled && pairedWith && (
+                    <div className={styles.muted} data-test="csp-paired-note">
+                        {i18n.t('Also written to {{entrypoints}}', {
+                            interpolation: { escapeValue: false },
+                            entrypoints: pairedWith,
+                        })}
+                    </div>
+                )}
                 {rowErrors.map((error, index) => (
                     <div key={index} className={styles.errorText}>
                         {error.value ? `${error.value}: ` : ''}
@@ -215,4 +224,5 @@ DirectiveEditor.propTypes = {
     onRemove: PropTypes.func.isRequired,
     disabled: PropTypes.bool,
     httpsOnly: PropTypes.bool,
+    pairedWith: PropTypes.string,
 }

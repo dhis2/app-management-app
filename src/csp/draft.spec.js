@@ -1,5 +1,8 @@
 import {
     addSource,
+    addSourceTo,
+    pairedEntrypoints,
+    removeSourceFrom,
     buildDraftBody,
     buildSaveBody,
     diffEntrypoints,
@@ -166,5 +169,30 @@ describe('unsafeTokensOf', () => {
             "* script-src 'unsafe-eval'",
             '* script-src https://*.cdn.org',
         ])
+    })
+})
+
+describe('paired app and worker entrypoints', () => {
+    it('pairs app and worker only when asked, never "*" or plugin', () => {
+        expect(pairedEntrypoints('app', true)).toEqual(['app', 'worker'])
+        expect(pairedEntrypoints('worker', true)).toEqual(['app', 'worker'])
+        expect(pairedEntrypoints('app', false)).toEqual(['app'])
+        expect(pairedEntrypoints('*', true)).toEqual(['*'])
+        expect(pairedEntrypoints('plugin', true)).toEqual(['plugin'])
+    })
+
+    it('writes one explicit entry per entrypoint and removes from both', () => {
+        const source = { directive: 'connect-src', source: 'https://x.org' }
+        let editable = addSourceTo(toEditable(null), ['app', 'worker'], source)
+        const body = buildSaveBody(editable)
+        expect(body.entrypoints.app.enforced.add).toEqual({
+            'connect-src': ['https://x.org'],
+        })
+        expect(body.entrypoints.worker.enforced.add).toEqual({
+            'connect-src': ['https://x.org'],
+        })
+
+        editable = removeSourceFrom(editable, ['app', 'worker'], source)
+        expect(buildSaveBody(editable).entrypoints).toEqual({})
     })
 })

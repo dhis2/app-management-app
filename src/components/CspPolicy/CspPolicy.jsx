@@ -4,6 +4,7 @@ import {
     Button,
     ButtonStrip,
     CenteredContent,
+    Checkbox,
     CircularLoader,
     InputField,
     NoticeBox,
@@ -28,7 +29,7 @@ import {
     entrypointLabel,
 } from '../../csp/constants.js'
 import {
-    addSource,
+    addSourceTo,
     buildDraftBody,
     buildSaveBody,
     buildStopDraftBody,
@@ -41,7 +42,8 @@ import {
     isBaseSourceDisabled,
     isDirty,
     parseToken,
-    removeSource,
+    pairedEntrypoints,
+    removeSourceFrom,
     setBaseSourceEnabled,
     setEnforcementMode,
     toEditable,
@@ -182,6 +184,10 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
             stored.entrypoints[ep]
     )
     const [entrypoint, setEntrypoint] = useState(ENTRYPOINT_ALL)
+    // The worker entrypoint is only listed for apps that ship service-worker.js.
+    const hasWorker = !!detail.entrypoints?.worker
+    const [pairWorker, setPairWorker] = useState(hasWorker)
+    const targetsFor = (ep) => pairedEntrypoints(ep, hasWorker && pairWorker)
 
     const overridable = detail.overridableDirectives || EDITOR_DIRECTIVES
     const lockedDirectives = detail.lockedDirectives || HARDENING_DIRECTIVES
@@ -445,12 +451,13 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
 
     // A fix is "allowed now" when its value is already in the saved effective
     // policy of its entrypoint (the server only marks external origins).
-    const isFixAllowed = ({ entrypoint: ep, directive, value }) => {
-        const header =
-            detail.effective?.[ep]?.contentSecurityPolicy ||
-            detail.effective?.[ENTRYPOINT_ALL]?.contentSecurityPolicy
-        return (parseCspHeader(header)[directive] || []).includes(value)
-    }
+    const isFixAllowed = ({ entrypoint: ep, directive, value }) =>
+        targetsFor(ep).every((target) => {
+            const header =
+                detail.effective?.[target]?.contentSecurityPolicy ||
+                detail.effective?.[ENTRYPOINT_ALL]?.contentSecurityPolicy
+            return (parseCspHeader(header)[directive] || []).includes(value)
+        })
 
     const fixFor = (violation) => {
         const result = fixForViolation(violation, {
@@ -459,12 +466,21 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
             entrypoints: availableEntrypoints,
             httpsOnly,
         })
-        return { ...result, allowed: !!result.fix && isFixAllowed(result.fix) }
+        if (!result.fix) {
+            return { ...result, allowed: false }
+        }
+        const fix = {
+            ...result.fix,
+            targets: targetsFor(result.fix.entrypoint),
+        }
+        return { ...result, fix, allowed: isFixAllowed(fix) }
     }
 
     const isFixStaged = ({ entrypoint: ep, directive, value }) =>
-        hasSource(editable, ep, { directive, source: value }) ||
-        hasSource(editable, ENTRYPOINT_ALL, { directive, source: value })
+        hasSource(editable, ENTRYPOINT_ALL, { directive, source: value }) ||
+        targetsFor(ep).every((target) =>
+            hasSource(editable, target, { directive, source: value })
+        )
 
     const applyFixes = (fixes) => {
         const fresh = fixes.filter((fix) => !isFixStaged(fix))
@@ -474,7 +490,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
         update(
             fresh.reduce(
                 (doc, fix) =>
-                    addSource(doc, fix.entrypoint, {
+                    addSourceTo(doc, targetsFor(fix.entrypoint), {
                         directive: fix.directive,
                         source: fix.value,
                     }),
@@ -489,9 +505,11 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                 fixes: fresh
                     .map(
                         (fix) =>
-                            `${fix.directive} ${fix.value} (${entrypointLabel(
+                            `${fix.directive} ${fix.value} (${targetsFor(
                                 fix.entrypoint
-                            )})`
+                            )
+                                .map(entrypointLabel)
+                                .join(' + ')})`
                     )
                     .join(', '),
                 next: unsafe
@@ -533,10 +551,10 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
     }, [])
 
     const stage = (ep, { directive, source }) => {
-        if (hasSource(editable, ep, { directive, source })) {
+        if (isFixStaged({ entrypoint: ep, directive, value: source })) {
             return
         }
-        update(addSource(editable, ep, { directive, source }))
+        update(addSourceTo(editable, targetsFor(ep), { directive, source }))
     }
 
     const handleClearLog = async () => {
@@ -667,12 +685,23 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     )}
                 </p>
             )}
-            {entrypoint === 'app' && detail.entrypoints?.worker && (
-                <p className={styles.muted} data-test="csp-worker-hint">
-                    {i18n.t(
-                        'This app has a service worker. Requests the worker makes, and pages it serves from its cache, follow the Service worker entrypoint and the policy cached with the page. Add origins to All entrypoints (*) to cover both; open tabs may need a hard reload to pick up a change.'
-                    )}
-                </p>
+            {hasWorker && (
+                <div className={styles.pairWorker}>
+                    <Checkbox
+                        dense
+                        checked={pairWorker}
+                        onChange={({ checked }) => setPairWorker(checked)}
+                        label={i18n.t(
+                            'Apply changes for App (index.html) and Service worker to both'
+                        )}
+                        dataTest="csp-pair-worker"
+                    />
+                    <p className={styles.muted} data-test="csp-worker-hint">
+                        {i18n.t(
+                            'This app has a service worker: requests it makes follow the Service worker policy, not the App one. With this on, an origin or token you add to or remove from one of them, or allow from a violation, is written to both entrypoints. Open tabs may need a hard reload to pick up a change.'
+                        )}
+                    </p>
+                </div>
             )}
 
             {isExempt && (
@@ -828,7 +857,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                         disabled={busy}
                         onAdd={(value) =>
                             update(
-                                addSource(editable, entrypoint, {
+                                addSourceTo(editable, targetsFor(entrypoint), {
                                     directive,
                                     source: value,
                                 })
@@ -836,11 +865,20 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                         }
                         onRemove={(value) =>
                             update(
-                                removeSource(editable, entrypoint, {
-                                    directive,
-                                    source: value,
-                                })
+                                removeSourceFrom(
+                                    editable,
+                                    targetsFor(entrypoint),
+                                    { directive, source: value }
+                                )
                             )
+                        }
+                        pairedWith={
+                            targetsFor(entrypoint).length > 1
+                                ? targetsFor(entrypoint)
+                                      .filter((ep) => ep !== entrypoint)
+                                      .map(entrypointLabel)
+                                      .join(', ')
+                                : null
                         }
                     />
                 ))}
@@ -967,7 +1005,11 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     update(
                         candidates.reduce(
                             (doc, candidate) =>
-                                addSource(doc, entrypoint, candidate),
+                                addSourceTo(
+                                    doc,
+                                    targetsFor(entrypoint),
+                                    candidate
+                                ),
                             editable
                         )
                     )

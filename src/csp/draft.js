@@ -320,6 +320,22 @@ export const unsafeTokensOf = (body) => {
     return unique(tokens)
 }
 
+// A service worker's requests run under the `worker` entrypoint policy, so
+// changes for the app page can be applied to both, as two explicit entries.
+export const WORKER_PAIR = ['app', 'worker']
+
+/** Entrypoints a change for `ep` is written to. */
+export const pairedEntrypoints = (ep, pairWorker) =>
+    pairWorker && WORKER_PAIR.includes(ep) ? WORKER_PAIR : [ep]
+
+/** Adds a source to every entrypoint in `eps`. */
+export const addSourceTo = (doc, eps, source) =>
+    eps.reduce((next, ep) => addSource(next, ep, source), doc)
+
+/** Removes a source from every entrypoint in `eps` that has it. */
+export const removeSourceFrom = (doc, eps, source) =>
+    eps.reduce((next, ep) => removeSource(next, ep, source), doc)
+
 /** Splits "<entrypoint> <directive> <token>" (unsafeTokens, baseUnsafeTokens). */
 export const parseToken = (token) => {
     const [entrypoint, directive, ...rest] = (token || '').split(' ')

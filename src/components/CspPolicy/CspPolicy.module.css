@@ -300,3 +300,14 @@
 .shippedList li {
     padding: var(--spacers-dp4) 0;
 }
+
+.pairWorker {
+    margin-top: var(--spacers-dp8);
+    padding: var(--spacers-dp8) var(--spacers-dp12);
+    border-left: 3px solid var(--colors-blue500);
+    background: var(--colors-blue050);
+}
+
+.pairWorker p {
+    margin: var(--spacers-dp4) 0 0;
+}

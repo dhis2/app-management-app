@@ -36,18 +36,25 @@ const FixAction = ({ violation, fixFor, isStaged, onFix }) => {
     if (isStaged(fix)) {
         return <Tag neutral>{i18n.t('Staged')}</Tag>
     }
+    const label = violation.suggestable
+        ? i18n.t('+ Allow origin')
+        : i18n.t('+ Allow {{value}}', {
+              interpolation: { escapeValue: false },
+              value: fix.value,
+          })
+    const targets = fix.targets || [fix.entrypoint]
     return (
         <Button
             small
             onClick={() => onFix(fix)}
             dataTest={fix.unsafe ? 'csp-allow-unsafe' : 'csp-allow-origin'}
         >
-            {violation.suggestable
-                ? i18n.t('+ Allow origin')
-                : i18n.t('+ Allow {{value}}', {
+            {targets.length > 1
+                ? i18n.t('{{label}} (App + Service worker)', {
                       interpolation: { escapeValue: false },
-                      value: fix.value,
-                  })}
+                      label,
+                  })
+                : label}
         </Button>
     )
 }

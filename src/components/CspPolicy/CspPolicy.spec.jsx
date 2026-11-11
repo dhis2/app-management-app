@@ -318,4 +318,83 @@ describe('CspPolicy', () => {
             "script-src 'wasm-unsafe-eval'",
         ])
     })
+
+    describe('app with a service worker', () => {
+        const withWorker = {
+            entrypoints: {
+                app: '/api/apps/maps/index.html',
+                worker: '/api/apps/maps/service-worker.js',
+            },
+        }
+        const workerRow = {
+            ...violations[0],
+            id: 'w1',
+            entrypoint: 'worker',
+            effectiveDirective: 'connect-src',
+            suggestedDirective: 'connect-src',
+            suggestedSource: 'https://ows.terrestris.de',
+            blocked: 'https://ows.terrestris.de',
+        }
+
+        it('allows an origin reported by the worker on both App and Service worker, as two entries', async () => {
+            const user = userEvent.setup()
+            const { findByTestId, getByTestId, puts } = renderPolicy({
+                detailPatch: withWorker,
+                rows: [workerRow],
+            })
+
+            const allow = await findByTestId('csp-allow-origin')
+            expect(allow.textContent).toContain('App + Service worker')
+            await user.click(allow)
+            await user.click(getByTestId('csp-apply'))
+
+            await waitFor(() => expect(puts).toHaveLength(1))
+            expect(puts[0].entrypoints.app.enforced.add).toEqual({
+                'connect-src': ['https://ows.terrestris.de'],
+            })
+            expect(puts[0].entrypoints.worker.enforced.add).toEqual({
+                'connect-src': ['https://ows.terrestris.de'],
+            })
+            expect(puts[0].entrypoints['*']).toBeUndefined()
+        })
+
+        it('writes editor changes on App to the worker too, unless the admin turns pairing off', async () => {
+            const user = userEvent.setup()
+            const { findByText, getByTestId, puts } = renderPolicy({
+                detailPatch: withWorker,
+                rows: [],
+            })
+
+            await user.click(await findByText('App (index.html)'))
+            const field = inputIn(getByTestId('csp-add-input-img-src'))
+            await user.type(field, 'https://tiles.example.org{enter}')
+            expect(
+                within(getByTestId('csp-directive-img-src')).getByTestId(
+                    'csp-paired-note'
+                ).textContent
+            ).toContain('Service worker')
+
+            await user.click(inputIn(getByTestId('csp-pair-worker')))
+            await user.type(
+                inputIn(getByTestId('csp-add-input-connect-src')),
+                'https://api.example.org{enter}'
+            )
+            await user.click(getByTestId('csp-apply'))
+
+            await waitFor(() => expect(puts).toHaveLength(1))
+            expect(puts[0].entrypoints.app.enforced.add).toEqual({
+                'img-src': ['https://tiles.example.org'],
+                'connect-src': ['https://api.example.org'],
+            })
+            expect(puts[0].entrypoints.worker.enforced.add).toEqual({
+                'img-src': ['https://tiles.example.org'],
+            })
+        })
+
+        it('does not offer pairing for apps without a service worker', async () => {
+            const { findByTestId, queryByTestId } = renderPolicy({ rows: [] })
+            await findByTestId('csp-policy')
+            expect(queryByTestId('csp-pair-worker')).toBeNull()
+        })
+    })
 })
