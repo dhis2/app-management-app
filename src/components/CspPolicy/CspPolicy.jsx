@@ -418,14 +418,14 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
         }
     }
 
-    const handleExemptToggle = ({ checked }) => {
+    const handleExemptToggle = async ({ checked }) => {
         if (checked) {
             setExemptPrompt(entrypoint)
             return
         }
         const next = setEnforcementMode(editable, entrypoint, ENFORCE)
         update(next)
-        submit(buildSaveBody(next), {
+        await submit(buildSaveBody(next), {
             success: i18n.t('CSP is enforced again for {{entrypoint}}', {
                 interpolation: { escapeValue: false },
                 entrypoint: entrypointLabel(entrypoint),
@@ -433,14 +433,14 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
         })
     }
 
-    const handleExemptConfirm = (note) => {
+    const handleExemptConfirm = async (note) => {
         const ep = exemptPrompt
         const next = {
             ...setEnforcementMode(editable, ep, REPORT_ONLY_EXEMPT),
             approvalNote: note,
         }
         update(next)
-        submit(buildSaveBody(next, { confirmExempt: true }), {
+        await submit(buildSaveBody(next, { confirmExempt: true }), {
             success: i18n.t('{{entrypoint}} is now exempt (report-only)', {
                 interpolation: { escapeValue: false },
                 entrypoint: entrypointLabel(ep),
