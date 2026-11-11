@@ -88,6 +88,14 @@ export const BaseSources = ({
                                 const shipped = shippedUnsafe.includes(
                                     `${entrypoint} ${directive} ${source}`
                                 )
+                                let note = i18n.t('default')
+                                if (removedForAll) {
+                                    note = i18n.t(
+                                        'default, removed for all entrypoints'
+                                    )
+                                } else if (shipped) {
+                                    note = i18n.t('unsafe, shipped by core')
+                                }
                                 return (
                                     <Checkbox
                                         key={`default-${source}`}
@@ -114,15 +122,7 @@ export const BaseSources = ({
                                                     {source}
                                                 </code>{' '}
                                                 <span className={styles.muted}>
-                                                    {removedForAll
-                                                        ? i18n.t(
-                                                              'default, removed for all entrypoints'
-                                                          )
-                                                        : shipped
-                                                        ? i18n.t(
-                                                              'unsafe, shipped by core'
-                                                          )
-                                                        : i18n.t('default')}
+                                                    {note}
                                                 </span>
                                             </span>
                                         }

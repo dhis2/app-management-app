@@ -3,7 +3,6 @@
 // server rejects are never proposed.
 import i18n from '@dhis2/d2-i18n'
 import { ENTRYPOINT_ALL } from './constants.js'
-import { parseToken } from './draft.js'
 import { isUnsafeSource, validateSource } from './validation.js'
 
 // Server defaults, used when no app detail (with its own lists) is at hand.
@@ -148,4 +147,4 @@ export const groupFixes = (rows, options = {}) => {
 /** URL query value for prefilling fixes in the CSP tab (?fix=...). */
 export const encodeFix = (fix) => fixKey(fix)
 
-export const decodeFix = parseToken
+export { parseToken as decodeFix } from './draft.js'

@@ -3,7 +3,7 @@
 // give fast feedback while typing.
 import i18n from '@dhis2/d2-i18n'
 
-const SCRIPT_KEYWORDS = [
+const SCRIPT_KEYWORDS = new Set([
     "'self'",
     "'unsafe-inline'",
     "'unsafe-eval'",
@@ -11,21 +11,30 @@ const SCRIPT_KEYWORDS = [
     "'unsafe-hashes'",
     "'strict-dynamic'",
     "'report-sample'",
-]
-const UNSAFE_KEYWORDS = [
+])
+const UNSAFE_KEYWORDS = new Set([
     "'unsafe-inline'",
     "'unsafe-eval'",
     "'wasm-unsafe-eval'",
     "'unsafe-hashes'",
-]
+])
 // Scheme-only and wildcard sources that are unsafe in script-src (the only directive that accepts them).
-const UNSAFE_SCHEME_SOURCES = ['*', 'data:', 'blob:', 'http:', 'https:']
-const WILDCARD_DIRECTIVES = ['img-src', 'connect-src', 'script-src']
-const WEBSOCKET_DIRECTIVES = ['connect-src']
-const ORIGIN_SCHEMES = ['https', 'http', 'wss', 'ws']
-const INSECURE_SCHEMES = ['http', 'ws']
+const UNSAFE_SCHEME_SOURCES = new Set([
+    '*',
+    'data:',
+    'blob:',
+    'http:',
+    'https:',
+])
+const WILDCARD_DIRECTIVES = new Set(['img-src', 'connect-src', 'script-src'])
+const WEBSOCKET_DIRECTIVES = new Set(['connect-src'])
+const ORIGIN_SCHEMES = new Set(['https', 'http', 'wss', 'ws'])
+const INSECURE_SCHEMES = new Set(['http', 'ws'])
 
 const HASH_PATTERN = /^'sha(256|384|512)-[A-Za-z0-9+/_-]+={0,2}'$/
+// Whitespace, ; , quotes and control characters. \s already covers tab to carriage return.
+// eslint-disable-next-line no-control-regex
+const INVALID_CHARACTER_PATTERN = /[\s;,'"\u0000-\u0008\u000e-\u001f]/
 const SCHEME_ONLY_PATTERN = /^[a-z][a-z0-9+.-]*:$/i
 const ORIGIN_PATTERN = /^([a-z][a-z0-9+.-]*):\/\/(.*)$/i
 const HOST_LABEL_PATTERN = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/i
@@ -45,7 +54,7 @@ const validateHost = (directive, hostAndPort) => {
 
     let labels = host.split('.')
     if (host.startsWith('*.')) {
-        if (!WILDCARD_DIRECTIVES.includes(directive)) {
+        if (!WILDCARD_DIRECTIVES.has(directive)) {
             return error(
                 'WILDCARD_NOT_ALLOWED',
                 i18n.t(
@@ -98,7 +107,7 @@ const validateOrigin = (directive, value, { httpsOnly }) => {
     const scheme = match[1].toLowerCase()
     const rest = match[2]
 
-    if (!ORIGIN_SCHEMES.includes(scheme)) {
+    if (!ORIGIN_SCHEMES.has(scheme)) {
         return error(
             'INVALID_SOURCE',
             i18n.t('Only https, http, wss and ws origins are allowed')
@@ -106,7 +115,7 @@ const validateOrigin = (directive, value, { httpsOnly }) => {
     }
     if (
         (scheme === 'ws' || scheme === 'wss') &&
-        !WEBSOCKET_DIRECTIVES.includes(directive)
+        !WEBSOCKET_DIRECTIVES.has(directive)
     ) {
         return error(
             'INVALID_SOURCE',
@@ -131,7 +140,7 @@ const validateOrigin = (directive, value, { httpsOnly }) => {
     if (rest === '') {
         return error('INVALID_SOURCE', i18n.t('The host name is missing'))
     }
-    if (httpsOnly && INSECURE_SCHEMES.includes(scheme)) {
+    if (httpsOnly && INSECURE_SCHEMES.has(scheme)) {
         return error(
             'INSECURE_SCHEME',
             i18n.t('This server uses HTTPS, so http:// and ws:// are blocked', {
@@ -150,7 +159,7 @@ const validateScriptKeyword = (value) => {
             i18n.t('Nonces are not supported, the server does not issue one')
         )
     }
-    if (SCRIPT_KEYWORDS.includes(value.toLowerCase())) {
+    if (SCRIPT_KEYWORDS.has(value.toLowerCase())) {
         return null
     }
     if (HASH_PATTERN.test(value)) {
@@ -165,6 +174,42 @@ const validateScriptKeyword = (value) => {
     )
 }
 
+const validateKeyword = (value, isScript) => {
+    if (isScript) {
+        return validateScriptKeyword(value)
+    }
+    // 'self' is already in every baseline; the server accepts it as a no-op.
+    if (value.toLowerCase() === "'self'") {
+        return null
+    }
+    return error(
+        'KEYWORD_NOT_ALLOWED',
+        i18n.t('Keywords are only allowed in script-src')
+    )
+}
+
+const validateSchemeOnly = (value, isScript, httpsOnly) => {
+    if (!isScript) {
+        return error(
+            'WILDCARD_NOT_ALLOWED',
+            i18n.t(
+                'Bare schemes such as https: allow every host and are not allowed here',
+                { interpolation: { escapeValue: false }, nsSeparator: '-:-' }
+            )
+        )
+    }
+    if (httpsOnly && value.toLowerCase() === 'http:') {
+        return error(
+            'INSECURE_SCHEME',
+            i18n.t('This server uses HTTPS, so http: is blocked', {
+                interpolation: { escapeValue: false },
+                nsSeparator: '-:-',
+            })
+        )
+    }
+    return null
+}
+
 /**
  * Returns null when the value looks acceptable for the directive, or
  * { code, message } using the server's error codes.
@@ -174,8 +219,7 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
     if (!value) {
         return error('EMPTY', i18n.t('Enter a source'))
     }
-    // eslint-disable-next-line no-control-regex
-    if (/[\s;,'"\u0000-\u001f]/.test(value.replace(/^'.*'$/, 'x'))) {
+    if (INVALID_CHARACTER_PATTERN.test(value.replace(/^'.*'$/, 'x'))) {
         return error(
             'INVALID_CHARACTERS',
             i18n.t('Enter one source at a time, without spaces, ; or ,')
@@ -185,17 +229,7 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
     const isScript = directive === 'script-src'
 
     if (value.startsWith("'")) {
-        if (!isScript) {
-            // 'self' is already in every baseline; the server accepts it as a no-op.
-            if (value.toLowerCase() === "'self'") {
-                return null
-            }
-            return error(
-                'KEYWORD_NOT_ALLOWED',
-                i18n.t('Keywords are only allowed in script-src')
-            )
-        }
-        return validateScriptKeyword(value)
+        return validateKeyword(value, isScript)
     }
 
     if (value === '*') {
@@ -208,26 +242,7 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
     }
 
     if (SCHEME_ONLY_PATTERN.test(value)) {
-        const scheme = value.toLowerCase()
-        if (isScript) {
-            if (httpsOnly && scheme === 'http:') {
-                return error(
-                    'INSECURE_SCHEME',
-                    i18n.t('This server uses HTTPS, so http: is blocked', {
-                        interpolation: { escapeValue: false },
-                        nsSeparator: '-:-',
-                    })
-                )
-            }
-            return null
-        }
-        return error(
-            'WILDCARD_NOT_ALLOWED',
-            i18n.t(
-                'Bare schemes such as https: allow every host and are not allowed here',
-                { interpolation: { escapeValue: false }, nsSeparator: '-:-' }
-            )
-        )
+        return validateSchemeOnly(value, isScript, httpsOnly)
     }
 
     return validateOrigin(directive, value, { httpsOnly })
@@ -243,8 +258,8 @@ export const isUnsafeSource = (value, directive = 'script-src') => {
     }
     const normalized = (value || '').trim().toLowerCase()
     return (
-        UNSAFE_KEYWORDS.includes(normalized) ||
-        UNSAFE_SCHEME_SOURCES.includes(normalized) ||
+        UNSAFE_KEYWORDS.has(normalized) ||
+        UNSAFE_SCHEME_SOURCES.has(normalized) ||
         normalized.startsWith('http://') ||
         normalized.startsWith('https://*.')
     )

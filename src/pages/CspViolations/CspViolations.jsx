@@ -47,7 +47,10 @@ export const buildViolationOverview = (
 ) => {
     const rowsByApp = {}
     violations.forEach((row) => {
-        ;(rowsByApp[row.appKey] = rowsByApp[row.appKey] || []).push(row)
+        if (!rowsByApp[row.appKey]) {
+            rowsByApp[row.appKey] = []
+        }
+        rowsByApp[row.appKey].push(row)
     })
     return (summary?.apps || [])
         .map((app) => {

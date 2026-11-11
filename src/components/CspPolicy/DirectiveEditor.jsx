@@ -54,6 +54,15 @@ export const DirectiveEditor = ({
         isUnsafeSource(value, directive)
     )
     const rowErrors = errors.filter((error) => !values.includes(error.value))
+    let inputValidationText
+    if (hint) {
+        inputValidationText = hint.message
+    } else if (inputUnsafe) {
+        inputValidationText = i18n.t('Unsafe, {{risk}}', {
+            interpolation: { escapeValue: false },
+            risk: unsafeTokenRisk(trimmed),
+        })
+    }
 
     const submit = (value) => {
         const source = (value || '').trim()
@@ -118,16 +127,7 @@ export const DirectiveEditor = ({
                             }}
                             error={!!hint}
                             warning={!!inputUnsafe}
-                            validationText={
-                                hint
-                                    ? hint.message
-                                    : inputUnsafe
-                                    ? i18n.t('Unsafe, {{risk}}', {
-                                          interpolation: { escapeValue: false },
-                                          risk: unsafeTokenRisk(trimmed),
-                                      })
-                                    : undefined
-                            }
+                            validationText={inputValidationText}
                             dataTest={`csp-add-input-${directive}`}
                         />
                         <Button
@@ -180,8 +180,11 @@ export const DirectiveEditor = ({
                         })}
                     </div>
                 )}
-                {rowErrors.map((error, index) => (
-                    <div key={index} className={styles.errorText}>
+                {rowErrors.map((error) => (
+                    <div
+                        key={`${error.code}|${error.value}|${error.message}`}
+                        className={styles.errorText}
+                    >
                         {error.value ? `${error.value}: ` : ''}
                         {error.message}
                     </div>

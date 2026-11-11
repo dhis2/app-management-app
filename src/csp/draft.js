@@ -56,7 +56,7 @@ const normalizeEntrypoint = (entry = {}) => ({
     },
     reportOnlyDraft: {
         ...emptyDraft(),
-        ...(entry.reportOnlyDraft || {}),
+        ...entry.reportOnlyDraft,
         add: normalizeAdd(entry.reportOnlyDraft?.add),
         disabledBaseSources: unique(
             entry.reportOnlyDraft?.disabledBaseSources || []

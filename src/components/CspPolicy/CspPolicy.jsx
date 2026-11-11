@@ -324,7 +324,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
         }
     }
 
-    const submit = (body, options) => {
+    const submit = async (body, options) => {
         const tokens = unsafeTokensOf(body)
         const known = override?.unsafeTokens || []
         const fresh = tokens.filter((token) => !known.includes(token))
@@ -338,7 +338,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
             setUnsafePrompt({ tokens, body: finalBody, options })
             return
         }
-        put(finalBody, options)
+        await put(finalBody, options)
     }
 
     const update = (next) => {
@@ -643,7 +643,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                 )}
             </div>
 
-            {settings && settings.reportingEnabled === false && (
+            {settings?.reportingEnabled === false && (
                 <NoticeBox warning className={styles.notice}>
                     {i18n.t(
                         'CSP violation reporting is disabled on this server, so no new violations will show up.'
@@ -769,6 +769,12 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                                 (
                                     inherited[suggestion.directive] || []
                                 ).includes(suggestion.source)
+                            let status = null
+                            if (suggestion.alreadyAllowed) {
+                                status = i18n.t('Already allowed')
+                            } else if (staged) {
+                                status = i18n.t('Staged')
+                            }
                             return (
                                 <li
                                     key={`${suggestion.directive} ${suggestion.source}`}
@@ -784,13 +790,9 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                                                 suggestion.reason}
                                         </div>
                                     </div>
-                                    {suggestion.alreadyAllowed ? (
+                                    {status ? (
                                         <span className={styles.muted}>
-                                            {i18n.t('Already allowed')}
-                                        </span>
-                                    ) : staged ? (
-                                        <span className={styles.muted}>
-                                            {i18n.t('Staged')}
+                                            {status}
                                         </span>
                                     ) : (
                                         <Button
@@ -1045,8 +1047,16 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     dataTest="csp-server-errors"
                 >
                     <ul className={styles.riskList}>
-                        {generalErrors.map((error, index) => (
-                            <li key={index}>
+                        {generalErrors.map((error) => (
+                            <li
+                                key={[
+                                    error.entrypoint,
+                                    error.directive,
+                                    error.value,
+                                    error.code,
+                                    error.message,
+                                ].join('|')}
+                            >
                                 {[
                                     error.entrypoint &&
                                         entrypointLabel(error.entrypoint),
