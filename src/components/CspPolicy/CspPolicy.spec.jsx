@@ -2,6 +2,7 @@ import { CustomDataProvider, Provider } from '@dhis2/app-runtime'
 import { render, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import { MockAlertStack } from '../../test-utils/index.js'
 import { CspPolicy } from './CspPolicy.jsx'
 
@@ -73,7 +74,11 @@ const violations = [
     },
 ]
 
-const renderPolicy = () => {
+const renderPolicy = ({
+    path = '/installed-app/maps?tab=csp',
+    detailPatch = {},
+    rows = violations,
+} = {}) => {
     const puts = []
     const data = {
         'security/csp/apps': {
@@ -86,7 +91,7 @@ const renderPolicy = () => {
                 puts.push(query.data)
                 return { ...query.data, schemaVersion: 1, appKey: 'maps' }
             }
-            return detail
+            return { ...detail, ...detailPatch }
         },
         'security/csp/apps/maps/validate': {
             valid: true,
@@ -94,16 +99,18 @@ const renderPolicy = () => {
             warnings: [],
             effective: {},
         },
-        'security/csp/apps/maps/reports': { violations },
+        'security/csp/apps/maps/reports': { violations: rows },
     }
     const result = render(<CspPolicy appKey="maps" appName="Maps" />, {
         wrapper: ({ children }) => (
-            <Provider config={{ baseUrl: 'http://dhis2', apiVersion: 43 }}>
-                <CustomDataProvider data={data}>
-                    {children}
-                    <MockAlertStack />
-                </CustomDataProvider>
-            </Provider>
+            <MemoryRouter initialEntries={[path]}>
+                <Provider config={{ baseUrl: 'http://dhis2', apiVersion: 43 }}>
+                    <CustomDataProvider data={data}>
+                        {children}
+                        <MockAlertStack />
+                    </CustomDataProvider>
+                </Provider>
+            </MemoryRouter>
         ),
     })
     return { ...result, puts }
@@ -204,5 +211,111 @@ describe('CspPolicy', () => {
         expect(puts[0].entrypoints['*'].enforcementMode).toBe(
             'REPORT_ONLY_EXEMPT'
         )
+    })
+
+    it('stages the value an eval report calls for and saves it only after the unsafe confirmation', async () => {
+        const user = userEvent.setup()
+        const evalRow = {
+            id: '2',
+            appKey: 'maps',
+            entrypoint: 'app',
+            disposition: 'enforce',
+            effectiveDirective: 'script-src',
+            blocked: 'eval',
+            violationKind: 'EVAL',
+            suggestable: false,
+            count: 3,
+            firstSeen: '2026-11-11T15:01:00.000Z',
+            lastSeen: '2026-11-11T15:04:00.000Z',
+            status: 'NEW',
+        }
+        const { findByTestId, getByTestId, findByText, puts } = renderPolicy({
+            rows: [evalRow],
+        })
+
+        await user.click(await findByTestId('csp-allow-unsafe'))
+        const chipValues = () =>
+            within(getByTestId('csp-directive-script-src'))
+                .queryAllByTestId('csp-source-chip')
+                .map((chip) => chip.textContent)
+        expect(chipValues()).toEqual(["'unsafe-eval'"])
+        expect(await findByText('Staged')).toBeTruthy()
+
+        await user.click(getByTestId('csp-apply'))
+        const modal = await findByTestId('csp-unsafe-modal')
+        expect(puts).toHaveLength(0)
+        await user.click(
+            inputIn(within(modal).getByTestId('csp-unsafe-understood'))
+        )
+        await user.click(within(modal).getByTestId('csp-unsafe-confirm'))
+
+        await waitFor(() => expect(puts).toHaveLength(1))
+        expect(puts[0].confirmUnsafe).toBe(true)
+        expect(puts[0].entrypoints.app.enforced.add).toEqual({
+            'script-src': ["'unsafe-eval'"],
+        })
+    })
+
+    it('prefills fixes passed in the URL and drops ones that touch locked directives', async () => {
+        const fix = (text) => `fix=${encodeURIComponent(text)}`
+        const { findByTestId, getByTestId } = renderPolicy({
+            rows: [],
+            path: `/installed-app/maps?tab=csp&${fix(
+                "app script-src 'unsafe-inline'"
+            )}&${fix('* frame-ancestors https://evil.example.org')}&${fix(
+                '* img-src *'
+            )}`,
+        })
+
+        await findByTestId('csp-directive-script-src')
+        // The row remounts when the editor switches to the fix's entrypoint.
+        await waitFor(() =>
+            expect(
+                within(getByTestId('csp-directive-script-src'))
+                    .queryAllByTestId('csp-source-chip')
+                    .map((chip) => chip.textContent)
+            ).toEqual(["'unsafe-inline'"])
+        )
+        expect(getByTestId('csp-dirty-state').textContent).toContain(
+            'App (index.html)'
+        )
+        expect(getByTestId('csp-dirty-state').textContent).not.toContain(
+            'All entrypoints'
+        )
+    })
+
+    it('switches a token shipped by core off for one entrypoint and back on', async () => {
+        const user = userEvent.setup()
+        const { findByTestId, getByTestId, puts } = renderPolicy({
+            rows: [],
+            detailPatch: {
+                baseOverrides: {
+                    app: { 'script-src': ["'wasm-unsafe-eval'"] },
+                },
+                baseUnsafeTokens: ["app script-src 'wasm-unsafe-eval'"],
+            },
+        })
+
+        const toggle = inputIn(await findByTestId('csp-shipped-switch-app'))
+        expect(toggle).toBeChecked()
+        await user.click(toggle)
+        expect(toggle).not.toBeChecked()
+        expect(getByTestId('csp-dirty-state').textContent).toContain(
+            'App (index.html)'
+        )
+        // Switching it back on is no change at all.
+        await user.click(toggle)
+        expect(toggle).toBeChecked()
+        expect(getByTestId('csp-dirty-state').textContent).toBe(
+            'No unsaved changes'
+        )
+
+        await user.click(toggle)
+        await user.click(getByTestId('csp-apply'))
+        await waitFor(() => expect(puts).toHaveLength(1))
+        expect(puts[0].confirmUnsafe).toBe(false)
+        expect(puts[0].entrypoints.app.enforced.disabledBaseSources).toEqual([
+            "script-src 'wasm-unsafe-eval'",
+        ])
     })
 })

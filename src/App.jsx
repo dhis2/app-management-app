@@ -7,6 +7,7 @@ import { Sidebar } from './components/Sidebar/Sidebar.jsx'
 import { AppHub } from './pages/AppHub/AppHub.jsx'
 import { AppHubApp } from './pages/AppHubApp/AppHubApp.jsx'
 import { CoreApps } from './pages/CoreApps/CoreApps.jsx'
+import { CspViolations } from './pages/CspViolations/CspViolations.jsx'
 import { CustomApps } from './pages/CustomApps/CustomApps.jsx'
 import { InstalledApp } from './pages/InstalledApp/InstalledApp.jsx'
 import { ManualInstall } from './pages/ManualInstall/ManualInstall.jsx'
@@ -48,6 +49,10 @@ const App = () => (
                         <Route
                             path="/manual-install"
                             component={ManualInstall}
+                        />
+                        <Route
+                            path="/csp-violations"
+                            component={CspViolations}
                         />
                         <Redirect from="*" to="/" />
                     </Switch>

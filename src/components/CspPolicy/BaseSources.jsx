@@ -18,6 +18,7 @@ export const BaseSources = ({
     editable,
     entrypoint,
     lockedDirectives,
+    shippedUnsafe = [],
     onToggle,
 }) => {
     const baseline = detail.baseline || {}
@@ -84,6 +85,9 @@ export const BaseSources = ({
                                     entrypoint,
                                     { directive, source }
                                 )
+                                const shipped = shippedUnsafe.includes(
+                                    `${entrypoint} ${directive} ${source}`
+                                )
                                 return (
                                     <Checkbox
                                         key={`default-${source}`}
@@ -100,11 +104,23 @@ export const BaseSources = ({
                                         }
                                         label={
                                             <span>
-                                                <code>{source}</code>{' '}
+                                                <code
+                                                    className={
+                                                        shipped
+                                                            ? styles.unsafeText
+                                                            : undefined
+                                                    }
+                                                >
+                                                    {source}
+                                                </code>{' '}
                                                 <span className={styles.muted}>
                                                     {removedForAll
                                                         ? i18n.t(
                                                               'default, removed for all entrypoints'
+                                                          )
+                                                        : shipped
+                                                        ? i18n.t(
+                                                              'unsafe, shipped by core'
                                                           )
                                                         : i18n.t('default')}
                                                 </span>
@@ -127,6 +143,7 @@ BaseSources.propTypes = {
     entrypoint: PropTypes.string.isRequired,
     lockedDirectives: PropTypes.arrayOf(PropTypes.string).isRequired,
     onToggle: PropTypes.func.isRequired,
+    shippedUnsafe: PropTypes.arrayOf(PropTypes.string),
 }
 
 /** Mandatory hardening directives as they are in the effective header. */

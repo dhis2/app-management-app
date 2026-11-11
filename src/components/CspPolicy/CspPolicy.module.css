@@ -286,3 +286,17 @@
 .breakAll {
     word-break: break-all;
 }
+
+.unsafeText {
+    color: var(--colors-red800);
+}
+
+.shippedList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.shippedList li {
+    padding: var(--spacers-dp4) 0;
+}

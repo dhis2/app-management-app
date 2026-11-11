@@ -22,24 +22,29 @@ describe('validateSource', () => {
         expect(code('frame-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
     })
 
-    it('allows data: and blob: only where the baseline uses them', () => {
-        expect(code('img-src', 'data:')).toBeNull()
-        expect(code('font-src', 'data:')).toBeNull()
-        expect(code('media-src', 'blob:')).toBeNull()
-        expect(code('style-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
+    it('rejects data: and blob: outside script-src', () => {
+        expect(code('img-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
+        expect(code('font-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
+        expect(code('media-src', 'blob:')).toBe('WILDCARD_NOT_ALLOWED')
     })
 
-    it('allows host wildcards only in img-src and connect-src with two labels', () => {
+    it('allows host wildcards with two labels only in img-src, connect-src and script-src', () => {
         expect(code('img-src', 'https://*.example.org')).toBeNull()
         expect(code('connect-src', 'https://*.example.org')).toBeNull()
+        expect(code('script-src', 'https://*.example.org')).toBeNull()
         expect(code('frame-src', 'https://*.example.org')).toBe(
             'WILDCARD_NOT_ALLOWED'
         )
-        expect(code('script-src', 'https://*.example.org')).toBe(
+        expect(code('form-action', 'https://*.example.org')).toBe(
             'WILDCARD_NOT_ALLOWED'
         )
         expect(code('img-src', 'https://*.org')).toBe('WILDCARD_NOT_ALLOWED')
         expect(code('img-src', 'https://a.*.org')).toBe('WILDCARD_NOT_ALLOWED')
+    })
+
+    it('allows websocket origins only in connect-src', () => {
+        expect(code('connect-src', 'wss://live.example.org')).toBeNull()
+        expect(code('img-src', 'wss://live.example.org')).toBe('INVALID_SOURCE')
     })
 
     it('accepts every script-src keyword except nonces', () => {
@@ -55,14 +60,17 @@ describe('validateSource', () => {
             'https:',
             'data:',
             'blob:',
+            "'report-sample'",
         ].forEach((value) => expect(code('script-src', value)).toBeNull())
         expect(code('script-src', "'nonce-abc'")).toBe('KEYWORD_NOT_ALLOWED')
         expect(code('script-src', "'bogus'")).toBe('KEYWORD_NOT_ALLOWED')
+        expect(code('script-src', "'none'")).toBe('KEYWORD_NOT_ALLOWED')
     })
 
-    it('rejects keywords outside script-src', () => {
-        expect(code('img-src', "'self'")).toBe('KEYWORD_NOT_ALLOWED')
+    it("rejects keywords outside script-src, except the no-op 'self'", () => {
+        expect(code('img-src', "'self'")).toBeNull()
         expect(code('style-src', "'unsafe-inline'")).toBe('KEYWORD_NOT_ALLOWED')
+        expect(code('img-src', "'unsafe-eval'")).toBe('KEYWORD_NOT_ALLOWED')
     })
 
     it('rejects plain http and ws only when the server runs on https', () => {
@@ -91,7 +99,7 @@ describe('validateSource', () => {
 })
 
 describe('isUnsafeSource', () => {
-    it('flags the server unsafe token list', () => {
+    it('flags the server unsafe token list in script-src', () => {
         ;[
             "'unsafe-inline'",
             "'unsafe-eval'",
@@ -99,14 +107,22 @@ describe('isUnsafeSource', () => {
             "'unsafe-hashes'",
             '*',
             'data:',
+            'blob:',
             'http:',
+            'https:',
             'http://legacy.example.org',
-        ].forEach((value) => expect(isUnsafeSource(value)).toBe(true))
+            'https://*.example.org',
+        ].forEach((value) =>
+            expect(isUnsafeSource(value, 'script-src')).toBe(true)
+        )
     })
 
-    it('does not flag https origins or safe keywords', () => {
-        ;["'self'", "'strict-dynamic'", 'https://x.org', 'blob:'].forEach(
-            (value) => expect(isUnsafeSource(value)).toBe(false)
+    it('does not flag https origins, safe keywords or other directives', () => {
+        ;["'self'", "'strict-dynamic'", 'https://x.org'].forEach((value) =>
+            expect(isUnsafeSource(value, 'script-src')).toBe(false)
+        )
+        expect(isUnsafeSource('http://legacy.example.org', 'img-src')).toBe(
+            false
         )
     })
 })

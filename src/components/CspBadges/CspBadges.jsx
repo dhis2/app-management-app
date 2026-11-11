@@ -42,6 +42,22 @@ export const CspBadges = ({ summary, showOverride }) => {
             </Tooltip>
         )
     }
+    if (summary.baseUnsafeTokens?.length > 0) {
+        badges.push(
+            <Tooltip
+                key="shipped"
+                content={i18n.t('Shipped by DHIS2 core: {{tokens}}', {
+                    interpolation: { escapeValue: false },
+                    nsSeparator: '-:-',
+                    tokens: summary.baseUnsafeTokens.join(', '),
+                })}
+            >
+                <Tag neutral dataTest="csp-badge-shipped">
+                    {i18n.t('Unsafe CSP shipped by core')}
+                </Tag>
+            </Tooltip>
+        )
+    }
     if (violations > 0) {
         badges.push(
             <Tooltip
@@ -98,6 +114,7 @@ export const CspBadges = ({ summary, showOverride }) => {
 CspBadges.propTypes = {
     showOverride: PropTypes.bool,
     summary: PropTypes.shape({
+        baseUnsafeTokens: PropTypes.arrayOf(PropTypes.string),
         hasActiveDraft: PropTypes.bool,
         hasExemptEntrypoint: PropTypes.bool,
         hasOverride: PropTypes.bool,

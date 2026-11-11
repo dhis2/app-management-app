@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-11-11T15:23:09.955Z\n"
-"PO-Revision-Date: 2026-11-11T15:23:09.955Z\n"
+"POT-Creation-Date: 2026-11-11T16:56:20.660Z\n"
+"PO-Revision-Date: 2026-11-11T16:56:20.660Z\n"
 
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
@@ -120,6 +120,11 @@ msgstr "No apps found"
 msgid "No apps match your criteria"
 msgstr "No apps match your criteria"
 
+msgid "Only apps with blocked CSP violations ({{count}})"
+msgid_plural "Only apps with blocked CSP violations ({{count}})"
+msgstr[0] "Only apps with blocked CSP violations ({{count}})"
+msgstr[1] "Only apps with blocked CSP violations ({{count}})"
+
 msgid ""
 "At least one entrypoint of this app is exempt from CSP enforcement and only "
 "reports violations"
@@ -132,6 +137,12 @@ msgstr "CSP Exempt (Report-Only)"
 
 msgid "Unsafe CSP override"
 msgstr "Unsafe CSP override"
+
+msgid "Shipped by DHIS2 core: {{tokens}}"
+msgstr "Shipped by DHIS2 core: {{tokens}}"
+
+msgid "Unsafe CSP shipped by core"
+msgstr "Unsafe CSP shipped by core"
 
 msgid "{{blocked}} blocked, {{reported}} report-only in the last 24 hours"
 msgstr "{{blocked}} blocked, {{reported}} report-only in the last 24 hours"
@@ -158,6 +169,9 @@ msgstr "baseline"
 
 msgid "default, removed for all entrypoints"
 msgstr "default, removed for all entrypoints"
+
+msgid "unsafe, shipped by core"
+msgstr "unsafe, shipped by core"
 
 msgid "default"
 msgstr "default"
@@ -224,12 +238,14 @@ msgstr "CSP is enforced again for {{entrypoint}}"
 msgid "{{entrypoint}} is now exempt (report-only)"
 msgstr "{{entrypoint}} is now exempt (report-only)"
 
-msgid ""
-"Staged {{source}} in {{directive}} for {{entrypoint}}. Test Draft or Apply "
-"& Save to use it."
-msgstr ""
-"Staged {{source}} in {{directive}} for {{entrypoint}}. Test Draft or Apply "
-"& Save to use it."
+msgid "Staged {{fixes}}. {{next}}"
+msgstr "Staged {{fixes}}. {{next}}"
+
+msgid "Unsafe values need your confirmation on Apply & Save."
+msgstr "Unsafe values need your confirmation on Apply & Save."
+
+msgid "Test Draft or Apply & Save to use it."
+msgstr "Test Draft or Apply & Save to use it."
 
 msgid "Could not clear the log: {{message}}"
 msgstr "Could not clear the log: {{message}}"
@@ -325,13 +341,33 @@ msgid "Allowed sources for {{entrypoint}}"
 msgstr "Allowed sources for {{entrypoint}}"
 
 msgid ""
-"Bare origins only (https://host[:port]). Wildcards like "
+"Bare origins only (https://host[:port]). Host wildcards like "
 "https://*.example.org only in img-src and connect-src. script-src accepts "
-"every value, unsafe ones need confirmation."
+"every value; unsafe ones (keywords, schemes, wildcards, http) need "
+"confirmation."
 msgstr ""
-"Bare origins only (https://host[:port]). Wildcards like "
+"Bare origins only (https://host[:port]). Host wildcards like "
 "https://*.example.org only in img-src and connect-src. script-src accepts "
-"every value, unsafe ones need confirmation."
+"every value; unsafe ones (keywords, schemes, wildcards, http) need "
+"confirmation."
+
+msgid "Unsafe sources shipped by core"
+msgstr "Unsafe sources shipped by core"
+
+msgid ""
+"DHIS2 core adds these for this app because it does not work without them. "
+"They are not admin overrides. Switch one off to remove it for that "
+"entrypoint, then Apply & Save."
+msgstr ""
+"DHIS2 core adds these for this app because it does not work without them. "
+"They are not admin overrides. Switch one off to remove it for that "
+"entrypoint, then Apply & Save."
+
+msgid "Removed for all entrypoints"
+msgstr "Removed for all entrypoints"
+
+msgid "Shipped by core"
+msgstr "Shipped by core"
 
 msgid "Base and default sources"
 msgstr "Base and default sources"
@@ -558,11 +594,25 @@ msgstr "Unsafe source"
 msgid "Remove {{value}}"
 msgstr "Remove {{value}}"
 
+msgid "Allowed now"
+msgstr "Allowed now"
+
+msgid "+ Allow origin"
+msgstr "+ Allow origin"
+
+msgid "+ Allow {{value}}"
+msgstr "+ Allow {{value}}"
+
 msgid "Loading..."
 msgstr "Loading..."
 
 msgid "Refreshes every 5 seconds"
 msgstr "Refreshes every 5 seconds"
+
+msgid "Stage fixes for all blocked ({{count}})"
+msgid_plural "Stage fixes for all blocked ({{count}})"
+msgstr[0] "Stage fixes for all blocked ({{count}})"
+msgstr[1] "Stage fixes for all blocked ({{count}})"
 
 msgid "Clear log"
 msgstr "Clear log"
@@ -594,11 +644,13 @@ msgstr "First seen {{firstSeen}}"
 msgid "Report-only"
 msgstr "Report-only"
 
-msgid "Allowed now"
-msgstr "Allowed now"
+msgid "CSP violations ({{count}} apps)"
+msgid_plural "CSP violations ({{count}} apps)"
+msgstr[0] "CSP violations ({{count}} apps)"
+msgstr[1] "CSP violations ({{count}} apps)"
 
-msgid "+ Allow origin"
-msgstr "+ Allow origin"
+msgid "CSP violations"
+msgstr "CSP violations"
 
 msgid "Core apps"
 msgstr "Core apps"
@@ -624,15 +676,27 @@ msgstr "Plugin (plugin.html)"
 msgid "Service worker"
 msgstr "Service worker"
 
+msgid "{{directive}} is locked"
+msgstr "{{directive}} is locked"
+
+msgid "Not an app page"
+msgstr "Not an app page"
+
+msgid "Only script-src takes keywords such as {{value}}"
+msgstr "Only script-src takes keywords such as {{value}}"
+
+msgid "No override can allow this"
+msgstr "No override can allow this"
+
 msgid "The port is not valid"
 msgstr "The port is not valid"
 
 msgid ""
-"Wildcard hosts (https://*.domain) are only allowed in img-src and "
-"connect-src"
+"Wildcard hosts (https://*.domain) are only allowed in img-src, connect-src "
+"and script-src"
 msgstr ""
-"Wildcard hosts (https://*.domain) are only allowed in img-src and "
-"connect-src"
+"Wildcard hosts (https://*.domain) are only allowed in img-src, connect-src "
+"and script-src"
 
 msgid ""
 "A wildcard needs at least two labels after *., for example "
@@ -652,6 +716,9 @@ msgstr "Use a bare origin such as https://tiles.example.org (scheme://host[:port
 
 msgid "Only https, http, wss and ws origins are allowed"
 msgstr "Only https, http, wss and ws origins are allowed"
+
+msgid "WebSocket origins are only allowed in connect-src"
+msgstr "WebSocket origins are only allowed in connect-src"
 
 msgid "User names or passwords are not allowed in a source"
 msgstr "User names or passwords are not allowed in a source"
@@ -711,8 +778,17 @@ msgstr "Allows loading from any host on the internet."
 msgid "Allows data: URLs, which attackers can use to smuggle content."
 msgstr "Allows data: URLs, which attackers can use to smuggle content."
 
+msgid "Allows blob: URLs, so script built at runtime can execute."
+msgstr "Allows blob: URLs, so script built at runtime can execute."
+
+msgid "Allows scripts from any HTTPS host on the internet."
+msgstr "Allows scripts from any HTTPS host on the internet."
+
 msgid "Allows plain HTTP from any host, which can be tampered with in transit."
 msgstr "Allows plain HTTP from any host, which can be tampered with in transit."
+
+msgid "Allows scripts from every subdomain of this host."
+msgstr "Allows scripts from every subdomain of this host."
 
 msgid "Plain HTTP can be tampered with in transit; prefer https://."
 msgstr "Plain HTTP can be tampered with in transit; prefer https://."
@@ -740,6 +816,76 @@ msgstr "All core apps"
 
 msgid "Search core apps"
 msgstr "Search core apps"
+
+msgid "Could not load CSP violations"
+msgstr "Could not load CSP violations"
+
+msgid ""
+"Apps whose pages the browser blocked in the last 24 hours, worst first. "
+"\"Review fix\" opens the app with the override the reports call for already "
+"staged; unsafe values still need your confirmation on Apply & Save."
+msgstr ""
+"Apps whose pages the browser blocked in the last 24 hours, worst first. "
+"\"Review fix\" opens the app with the override the reports call for already "
+"staged; unsafe values still need your confirmation on Apply & Save."
+
+msgid "Also show apps with report-only violations"
+msgstr "Also show apps with report-only violations"
+
+msgid ""
+"No app has blocked CSP violations in the last 24 hours. Open an app to "
+"produce reports."
+msgstr ""
+"No app has blocked CSP violations in the last 24 hours. Open an app to "
+"produce reports."
+
+msgid "App"
+msgstr "App"
+
+msgid "Fix the reports call for"
+msgstr "Fix the reports call for"
+
+msgid "{{entrypoint}}, count {{count}}"
+msgid_plural "{{entrypoint}}, count {{count}}"
+msgstr[0] "{{entrypoint}}, count {{count}}"
+msgstr[1] "{{entrypoint}}, count {{count}}"
+
+msgid "unsafe"
+msgstr "unsafe"
+
+msgid "{{count}} blocked reports have no override fix"
+msgid_plural "{{count}} blocked reports have no override fix"
+msgstr[0] "{{count}} blocked reports have no override fix"
+msgstr[1] "{{count}} blocked reports have no override fix"
+
+msgid ""
+"{{count}} reports are older than the last policy change ({{changed}}); open "
+"the app again to check"
+msgid_plural ""
+"{{count}} reports are older than the last policy change ({{changed}}); open "
+"the app again to check"
+msgstr[0] ""
+"{{count}} reports are older than the last policy change ({{changed}}); open "
+"the app again to check"
+msgstr[1] ""
+"{{count}} reports are older than the last policy change ({{changed}}); open "
+"the app again to check"
+
+msgid "Review fix"
+msgstr "Review fix"
+
+msgid "Open CSP settings"
+msgstr "Open CSP settings"
+
+msgid "Apps with a relaxed policy"
+msgstr "Apps with a relaxed policy"
+
+msgid ""
+"Unsafe sources or report-only exemptions, set by an admin or shipped by "
+"core."
+msgstr ""
+"Unsafe sources or report-only exemptions, set by an admin or shipped by "
+"core."
 
 msgid "Something went wrong whilst loading your custom apps"
 msgstr "Something went wrong whilst loading your custom apps"

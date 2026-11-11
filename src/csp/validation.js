@@ -10,6 +10,7 @@ const SCRIPT_KEYWORDS = [
     "'wasm-unsafe-eval'",
     "'unsafe-hashes'",
     "'strict-dynamic'",
+    "'report-sample'",
 ]
 const UNSAFE_KEYWORDS = [
     "'unsafe-inline'",
@@ -17,9 +18,10 @@ const UNSAFE_KEYWORDS = [
     "'wasm-unsafe-eval'",
     "'unsafe-hashes'",
 ]
-const UNSAFE_SCHEME_SOURCES = ['*', 'data:', 'http:']
-const DATA_BLOB_DIRECTIVES = ['img-src', 'font-src', 'media-src', 'worker-src']
-const WILDCARD_DIRECTIVES = ['img-src', 'connect-src']
+// Scheme-only and wildcard sources that are unsafe in script-src (the only directive that accepts them).
+const UNSAFE_SCHEME_SOURCES = ['*', 'data:', 'blob:', 'http:', 'https:']
+const WILDCARD_DIRECTIVES = ['img-src', 'connect-src', 'script-src']
+const WEBSOCKET_DIRECTIVES = ['connect-src']
 const ORIGIN_SCHEMES = ['https', 'http', 'wss', 'ws']
 const INSECURE_SCHEMES = ['http', 'ws']
 
@@ -47,7 +49,7 @@ const validateHost = (directive, hostAndPort) => {
             return error(
                 'WILDCARD_NOT_ALLOWED',
                 i18n.t(
-                    'Wildcard hosts (https://*.domain) are only allowed in img-src and connect-src',
+                    'Wildcard hosts (https://*.domain) are only allowed in img-src, connect-src and script-src',
                     {
                         interpolation: { escapeValue: false },
                         nsSeparator: '-:-',
@@ -100,6 +102,15 @@ const validateOrigin = (directive, value, { httpsOnly }) => {
         return error(
             'INVALID_SOURCE',
             i18n.t('Only https, http, wss and ws origins are allowed')
+        )
+    }
+    if (
+        (scheme === 'ws' || scheme === 'wss') &&
+        !WEBSOCKET_DIRECTIVES.includes(directive)
+    ) {
+        return error(
+            'INVALID_SOURCE',
+            i18n.t('WebSocket origins are only allowed in connect-src')
         )
     }
     if (rest.includes('@')) {
@@ -175,6 +186,10 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
 
     if (value.startsWith("'")) {
         if (!isScript) {
+            // 'self' is already in every baseline; the server accepts it as a no-op.
+            if (value.toLowerCase() === "'self'") {
+                return null
+            }
             return error(
                 'KEYWORD_NOT_ALLOWED',
                 i18n.t('Keywords are only allowed in script-src')
@@ -206,12 +221,6 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
             }
             return null
         }
-        if (
-            (scheme === 'data:' || scheme === 'blob:') &&
-            DATA_BLOB_DIRECTIVES.includes(directive)
-        ) {
-            return null
-        }
         return error(
             'WILDCARD_NOT_ALLOWED',
             i18n.t(
@@ -224,13 +233,20 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
     return validateOrigin(directive, value, { httpsOnly })
 }
 
-/** True for sources that need an explicit confirmUnsafe on save. */
-export const isUnsafeSource = (value) => {
+/**
+ * True for sources that need an explicit confirmUnsafe on save. Only script-src
+ * takes unsafe values; other directives reject them instead.
+ */
+export const isUnsafeSource = (value, directive = 'script-src') => {
+    if (directive !== 'script-src') {
+        return false
+    }
     const normalized = (value || '').trim().toLowerCase()
     return (
         UNSAFE_KEYWORDS.includes(normalized) ||
         UNSAFE_SCHEME_SOURCES.includes(normalized) ||
-        normalized.startsWith('http://')
+        normalized.startsWith('http://') ||
+        normalized.startsWith('https://*.')
     )
 }
 
@@ -259,11 +275,26 @@ export const unsafeTokenRisk = (value) => {
                 'Allows data: URLs, which attackers can use to smuggle content.',
                 { interpolation: { escapeValue: false }, nsSeparator: '-:-' }
             )
+        case 'blob:':
+            return i18n.t(
+                'Allows blob: URLs, so script built at runtime can execute.',
+                { interpolation: { escapeValue: false }, nsSeparator: '-:-' }
+            )
+        case 'https:':
+            return i18n.t(
+                'Allows scripts from any HTTPS host on the internet.',
+                { interpolation: { escapeValue: false }, nsSeparator: '-:-' }
+            )
         case 'http:':
             return i18n.t(
                 'Allows plain HTTP from any host, which can be tampered with in transit.'
             )
         default:
+            if (normalized.startsWith('https://*.')) {
+                return i18n.t(
+                    'Allows scripts from every subdomain of this host.'
+                )
+            }
             if (normalized.startsWith('http://')) {
                 return i18n.t(
                     'Plain HTTP can be tampered with in transit; prefer https://.',

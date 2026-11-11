@@ -310,7 +310,7 @@ export const unsafeTokensOf = (body) => {
         adds.forEach((add) =>
             Object.entries(add || {}).forEach(([directive, values]) =>
                 values
-                    .filter(isUnsafeSource)
+                    .filter((value) => isUnsafeSource(value, directive))
                     .forEach((value) =>
                         tokens.push(`${ep} ${directive} ${value}`)
                     )
@@ -318,6 +318,15 @@ export const unsafeTokensOf = (body) => {
         )
     })
     return unique(tokens)
+}
+
+/** Splits "<entrypoint> <directive> <token>" (unsafeTokens, baseUnsafeTokens). */
+export const parseToken = (token) => {
+    const [entrypoint, directive, ...rest] = (token || '').split(' ')
+    const value = rest.join(' ')
+    return entrypoint && directive && value
+        ? { entrypoint, directive, value }
+        : null
 }
 
 export const exemptEntrypointsOf = (body) =>

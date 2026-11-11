@@ -146,22 +146,25 @@ describe('buildDraftBody', () => {
 })
 
 describe('unsafeTokensOf', () => {
-    it('lists unsafe tokens in enforced and draft additions per entrypoint', () => {
+    it('lists unsafe script-src tokens in enforced and draft additions per entrypoint', () => {
         const body = {
             entrypoints: {
                 '*': {
                     enforced: {
                         add: {
                             'script-src': ["'unsafe-eval'", 'https://cdn.org'],
+                            'img-src': ['http://old.org'],
                         },
                     },
-                    reportOnlyDraft: { add: { 'img-src': ['http://old.org'] } },
+                    reportOnlyDraft: {
+                        add: { 'script-src': ['https://*.cdn.org'] },
+                    },
                 },
             },
         }
         expect(unsafeTokensOf(body)).toEqual([
             "* script-src 'unsafe-eval'",
-            '* img-src http://old.org',
+            '* script-src https://*.cdn.org',
         ])
     })
 })

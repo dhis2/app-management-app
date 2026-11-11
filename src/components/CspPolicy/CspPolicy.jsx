@@ -13,6 +13,7 @@ import {
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import React, { useEffect, useMemo, useRef, useState } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import { useDebounce } from 'use-debounce'
 import {
     CSP_API,
@@ -37,7 +38,9 @@ import {
     hasDraftableChanges,
     hasSource,
     inheritedAdd,
+    isBaseSourceDisabled,
     isDirty,
+    parseToken,
     removeSource,
     setBaseSourceEnabled,
     setEnforcementMode,
@@ -46,6 +49,9 @@ import {
     undraftableChanges,
     unsafeTokensOf,
 } from '../../csp/draft.js'
+import { checkFix, decodeFix, fixForViolation } from '../../csp/fixes.js'
+import { parseCspHeader } from '../../csp/header.js'
+import { unsafeTokenRisk } from '../../csp/validation.js'
 import { CspBadges } from '../CspBadges/CspBadges.jsx'
 import { BaseSources, Hardening } from './BaseSources.jsx'
 import styles from './CspPolicy.module.css'
@@ -437,44 +443,100 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
         })
     }
 
+    // A fix is "allowed now" when its value is already in the saved effective
+    // policy of its entrypoint (the server only marks external origins).
+    const isFixAllowed = ({ entrypoint: ep, directive, value }) => {
+        const header =
+            detail.effective?.[ep]?.contentSecurityPolicy ||
+            detail.effective?.[ENTRYPOINT_ALL]?.contentSecurityPolicy
+        return (parseCspHeader(header)[directive] || []).includes(value)
+    }
+
+    const fixFor = (violation) => {
+        const result = fixForViolation(violation, {
+            overridable,
+            locked: lockedDirectives,
+            entrypoints: availableEntrypoints,
+            httpsOnly,
+        })
+        return { ...result, allowed: !!result.fix && isFixAllowed(result.fix) }
+    }
+
+    const isFixStaged = ({ entrypoint: ep, directive, value }) =>
+        hasSource(editable, ep, { directive, source: value }) ||
+        hasSource(editable, ENTRYPOINT_ALL, { directive, source: value })
+
+    const applyFixes = (fixes) => {
+        const fresh = fixes.filter((fix) => !isFixStaged(fix))
+        if (fresh.length === 0) {
+            return
+        }
+        update(
+            fresh.reduce(
+                (doc, fix) =>
+                    addSource(doc, fix.entrypoint, {
+                        directive: fix.directive,
+                        source: fix.value,
+                    }),
+                editable
+            )
+        )
+        setEntrypoint(fresh[0].entrypoint)
+        const unsafe = fresh.some((fix) => fix.unsafe)
+        successAlert.show({
+            message: i18n.t('Staged {{fixes}}. {{next}}', {
+                interpolation: { escapeValue: false },
+                fixes: fresh
+                    .map(
+                        (fix) =>
+                            `${fix.directive} ${fix.value} (${entrypointLabel(
+                                fix.entrypoint
+                            )})`
+                    )
+                    .join(', '),
+                next: unsafe
+                    ? i18n.t(
+                          'Unsafe values need your confirmation on Apply & Save.'
+                      )
+                    : i18n.t('Test Draft or Apply & Save to use it.'),
+            }),
+        })
+    }
+
+    // Fixes passed in the URL (?fix=<entrypoint> <directive> <value>), e.g. from the
+    // CSP violations overview. Re-checked here: locked directives and values the
+    // server rejects are dropped.
+    const location = useLocation()
+    const history = useHistory()
+    useEffect(() => {
+        const params = new URLSearchParams(location.search)
+        const requested = params.getAll('fix').map(decodeFix).filter(Boolean)
+        if (requested.length === 0) {
+            return
+        }
+        const fixes = requested
+            .map(
+                (fix) =>
+                    checkFix(fix, {
+                        overridable,
+                        locked: lockedDirectives,
+                        entrypoints: availableEntrypoints,
+                        httpsOnly,
+                    }).fix
+            )
+            .filter((fix) => fix && !isFixAllowed(fix))
+        params.delete('fix')
+        history.replace({ search: `?${params.toString()}` })
+        applyFixes(fixes)
+        // Runs once per mount; the URL is cleared right away.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     const stage = (ep, { directive, source }) => {
         if (hasSource(editable, ep, { directive, source })) {
             return
         }
         update(addSource(editable, ep, { directive, source }))
-    }
-
-    const handleAllowViolation = (violation) => {
-        const ep = availableEntrypoints.includes(violation.entrypoint)
-            ? violation.entrypoint
-            : ENTRYPOINT_ALL
-        stage(ep, {
-            directive: violation.suggestedDirective,
-            source: violation.suggestedSource,
-        })
-        setEntrypoint(ep)
-        successAlert.show({
-            message: i18n.t(
-                'Staged {{source}} in {{directive}} for {{entrypoint}}. Test Draft or Apply & Save to use it.',
-                {
-                    interpolation: { escapeValue: false },
-                    source: violation.suggestedSource,
-                    directive: violation.suggestedDirective,
-                    entrypoint: entrypointLabel(ep),
-                }
-            ),
-        })
-    }
-
-    const isViolationStaged = (violation) => {
-        const source = {
-            directive: violation.suggestedDirective,
-            source: violation.suggestedSource,
-        }
-        return (
-            hasSource(editable, violation.entrypoint, source) ||
-            hasSource(editable, ENTRYPOINT_ALL, source)
-        )
     }
 
     const handleClearLog = async () => {
@@ -506,14 +568,20 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
     const visibleSuggestions = showAllowedSuggestions
         ? suggestions
         : suggestions.filter((item) => !item.alreadyAllowed)
-    const summaryFlags = override
-        ? {
-              hasExemptEntrypoint: override.hasExemptEntrypoint,
-              hasUnsafeDirectives: override.hasUnsafeDirectives,
-              unsafeTokens: override.unsafeTokens,
-              hasOverride: true,
-          }
-        : null
+    const summaryFlags = {
+        ...(override
+            ? {
+                  hasExemptEntrypoint: override.hasExemptEntrypoint,
+                  hasUnsafeDirectives: override.hasUnsafeDirectives,
+                  unsafeTokens: override.unsafeTokens,
+                  hasOverride: true,
+              }
+            : {}),
+        baseUnsafeTokens: detail.baseUnsafeTokens,
+    }
+    const shippedTokens = (detail.baseUnsafeTokens || [])
+        .map(parseToken)
+        .filter(Boolean)
 
     return (
         <div className={styles.csp} data-test="csp-policy">
@@ -637,8 +705,10 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     violations={violations}
                     loading={reports.loading && !reports.data}
                     error={reports.error}
-                    isStaged={isViolationStaged}
-                    onAllow={handleAllowViolation}
+                    fixFor={fixFor}
+                    isStaged={isFixStaged}
+                    onFix={(fix) => applyFixes([fix])}
+                    onFixAll={applyFixes}
                     onClear={handleClearLog}
                 />
             </Section>
@@ -734,7 +804,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     entrypoint: entrypointLabel(entrypoint),
                 })}
                 description={i18n.t(
-                    'Bare origins only (https://host[:port]). Wildcards like https://*.example.org only in img-src and connect-src. script-src accepts every value, unsafe ones need confirmation.',
+                    'Bare origins only (https://host[:port]). Host wildcards like https://*.example.org only in img-src and connect-src. script-src accepts every value; unsafe ones (keywords, schemes, wildcards, http) need confirmation.',
                     {
                         interpolation: { escapeValue: false },
                         nsSeparator: '-:-',
@@ -776,6 +846,78 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                 ))}
             </Section>
 
+            {shippedTokens.length > 0 && (
+                <Section
+                    title={i18n.t('Unsafe sources shipped by core')}
+                    description={i18n.t(
+                        'DHIS2 core adds these for this app because it does not work without them. They are not admin overrides. Switch one off to remove it for that entrypoint, then Apply & Save.'
+                    )}
+                    dataTest="csp-section-shipped"
+                >
+                    <ul className={styles.shippedList}>
+                        {shippedTokens.map((token) => {
+                            const source = {
+                                directive: token.directive,
+                                source: token.value,
+                            }
+                            const removedForAll =
+                                token.entrypoint !== ENTRYPOINT_ALL &&
+                                isBaseSourceDisabled(
+                                    editable,
+                                    ENTRYPOINT_ALL,
+                                    source
+                                )
+                            const on =
+                                !removedForAll &&
+                                !isBaseSourceDisabled(
+                                    editable,
+                                    token.entrypoint,
+                                    source
+                                )
+                            return (
+                                <li
+                                    key={`${token.entrypoint} ${token.directive} ${token.value}`}
+                                    data-test="csp-shipped-token"
+                                >
+                                    <SwitchField
+                                        dense
+                                        checked={on}
+                                        disabled={busy || removedForAll}
+                                        onChange={({ checked }) =>
+                                            update(
+                                                setBaseSourceEnabled(
+                                                    editable,
+                                                    token.entrypoint,
+                                                    {
+                                                        ...source,
+                                                        enabled: checked,
+                                                    }
+                                                )
+                                            )
+                                        }
+                                        label={`${entrypointLabel(
+                                            token.entrypoint
+                                        )}: ${token.directive} ${token.value}`}
+                                        helpText={
+                                            removedForAll
+                                                ? i18n.t(
+                                                      'Removed for all entrypoints'
+                                                  )
+                                                : `${i18n.t(
+                                                      'Shipped by core'
+                                                  )}. ${unsafeTokenRisk(
+                                                      token.value
+                                                  )}`
+                                        }
+                                        dataTest={`csp-shipped-switch-${token.entrypoint}`}
+                                    />
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </Section>
+            )}
+
             <Section
                 title={i18n.t('Base and default sources')}
                 description={i18n.t(
@@ -792,6 +934,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     editable={editable}
                     entrypoint={entrypoint}
                     lockedDirectives={lockedDirectives}
+                    shippedUnsafe={detail.baseUnsafeTokens || []}
                     onToggle={(change) =>
                         update(
                             setBaseSourceEnabled(editable, entrypoint, change)

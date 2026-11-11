@@ -1,5 +1,5 @@
 import i18n from '@dhis2/d2-i18n'
-import { InputField } from '@dhis2/ui'
+import { Checkbox, InputField } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
@@ -100,10 +100,20 @@ export const AppsList = ({
     const handleQueryChange = ({ value }) => {
         setQuery(value, 'replaceIn')
     }
+    const cspSummaries = useCspSummaries()
+    const [cspFilter, setCspFilter] = useQueryParam(
+        'csp',
+        withDefault(StringParam, '')
+    )
+    const hasBlockedViolations = (app) =>
+        (cspSummaries[app.key || app.short_name]?.violations24h?.enforce || 0) >
+        0
+    const blockedCount = apps.filter(hasBlockedViolations).length
 
     const searchFilter = (app) =>
-        !query ||
-        app.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+        (!query ||
+            app.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())) &&
+        (cspFilter !== 'blocked' || hasBlockedViolations(app))
     const filteredApps = apps.filter(searchFilter)
     const filteredAppsWithUpdates = (appsWithUpdates || []).filter(searchFilter)
 
@@ -116,6 +126,20 @@ export const AppsList = ({
                 onChange={handleQueryChange}
                 type="search"
             />
+            {(blockedCount > 0 || cspFilter === 'blocked') && (
+                <Checkbox
+                    className={styles.cspFilter}
+                    checked={cspFilter === 'blocked'}
+                    onChange={({ checked }) =>
+                        setCspFilter(checked ? 'blocked' : '', 'replaceIn')
+                    }
+                    label={i18n.t(
+                        'Only apps with blocked CSP violations ({{count}})',
+                        { count: blockedCount }
+                    )}
+                    dataTest="csp-filter-blocked"
+                />
+            )}
             <AppsWithUpdates
                 apps={filteredAppsWithUpdates}
                 label={updatesAvailableLabel}

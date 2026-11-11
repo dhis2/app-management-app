@@ -47,9 +47,11 @@ export const DirectiveEditor = ({
     const hint = trimmed
         ? validateSource(directive, trimmed, { httpsOnly })
         : null
-    const inputUnsafe = trimmed && !hint && isUnsafeSource(trimmed)
+    const inputUnsafe = trimmed && !hint && isUnsafeSource(trimmed, directive)
     const isScript = directive === 'script-src'
-    const unsafeValues = values.filter(isUnsafeSource)
+    const unsafeValues = values.filter((value) =>
+        isUnsafeSource(value, directive)
+    )
     const rowErrors = errors.filter((error) => !values.includes(error.value))
 
     const submit = (value) => {
@@ -75,7 +77,7 @@ export const DirectiveEditor = ({
                         <SourceChip
                             key={`inherited-${value}`}
                             value={value}
-                            unsafe={isUnsafeSource(value)}
+                            unsafe={isUnsafeSource(value, directive)}
                             note={i18n.t('from *')}
                         />
                     ))}
@@ -83,7 +85,7 @@ export const DirectiveEditor = ({
                         <SourceChip
                             key={value}
                             value={value}
-                            unsafe={isUnsafeSource(value)}
+                            unsafe={isUnsafeSource(value, directive)}
                             error={errorFor(errors, value)}
                             onRemove={
                                 disabled ? undefined : () => onRemove(value)
@@ -151,7 +153,7 @@ export const DirectiveEditor = ({
                                         key={option}
                                         value={option}
                                         label={
-                                            isUnsafeSource(option)
+                                            isUnsafeSource(option, directive)
                                                 ? i18n.t(
                                                       '{{option}} (unsafe)',
                                                       {
