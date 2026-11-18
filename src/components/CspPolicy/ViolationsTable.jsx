@@ -36,12 +36,13 @@ const FixAction = ({ violation, fixFor, isStaged, onFix }) => {
     if (isStaged(fix)) {
         return <Tag neutral>{i18n.t('Staged')}</Tag>
     }
-    const label = violation.suggestable
-        ? i18n.t('+ Allow origin')
-        : i18n.t('+ Allow {{value}}', {
-              interpolation: { escapeValue: false },
-              value: fix.value,
-          })
+    const label =
+        violation.violationKind === 'EXTERNAL'
+            ? i18n.t('+ Allow origin')
+            : i18n.t('+ Allow {{value}}', {
+                  interpolation: { escapeValue: false },
+                  value: fix.value,
+              })
     const targets = fix.targets || [fix.entrypoint]
     return (
         <Button

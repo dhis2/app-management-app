@@ -8,7 +8,8 @@ settings are not available.
 ## What it adds
 
 -   **App lists** (core and custom apps): badges for CSP violations in the last
-    24 hours, "Unsafe CSP override" (unsafe `script-src` tokens saved), "CSP
+    24 hours, "Unsafe CSP override" (unsafe tokens saved: `script-src` ones or
+    `data:` in `font-src`), "CSP
     Exempt (Report-Only)" (an entrypoint runs report-only) and "Unsafe CSP
     shipped by core" (`baseUnsafeTokens`), plus a filter "Only apps with blocked
     CSP violations" (`?csp=blocked`).
@@ -30,7 +31,8 @@ settings are not available.
     -   recent violations, polled every 5 seconds. Each row offers the fix the
         report calls for: "+ Allow origin" for external origins, "+ Allow
         'unsafe-eval'" (eval), "'unsafe-inline'" (inline script) or
-        "'wasm-unsafe-eval'" (WebAssembly) in `script-src`, staged for the row's
+        "'wasm-unsafe-eval'" (WebAssembly) in `script-src`, "+ Allow data:" for
+        a blocked embedded font in `font-src`, staged for the row's
         entrypoint; "Stage fixes for all blocked" stages them all. Locked
         directives and values the server rejects are never proposed (`src/csp/fixes.js`),
         and unsafe values still need the confirmation on save. "Clear log" empties it;
@@ -49,7 +51,8 @@ settings are not available.
     -   danger zone: per-entrypoint `REPORT_ONLY_EXEMPT` behind a confirmation
         dialog with a required reason;
     -   actions: Test Draft (15 min), Run Report-Only Audit, Apply & Save,
-        Reset to Default. Unsafe `script-src` tokens need an explicit confirmation.
+        Reset to Default. Unsafe tokens (unsafe `script-src` values, `data:` in
+        `font-src`) need an explicit confirmation.
 
 Code: `src/csp/` (API constants, validation hints, draft model, fixes, header
 parser), `src/components/CspPolicy/`, `src/components/CspBadges/` and

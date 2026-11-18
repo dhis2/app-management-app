@@ -3,7 +3,11 @@
 // server rejects are never proposed.
 import i18n from '@dhis2/d2-i18n'
 import { ENTRYPOINT_ALL } from './constants.js'
-import { isUnsafeSource, validateSource } from './validation.js'
+import {
+    acceptsUnsafeScheme,
+    isUnsafeSource,
+    validateSource,
+} from './validation.js'
 
 // Server defaults, used when no app detail (with its own lists) is at hand.
 export const DEFAULT_OVERRIDABLE_DIRECTIVES = [
@@ -90,25 +94,32 @@ export const fixForViolation = (violation, options = {}) => {
     if (!violation || violation.appKey === '_platform') {
         return notFixable(i18n.t('Not an app page'))
     }
-    const reported = baseDirective(
+    const directive = baseDirective(
         violation.suggestedDirective || violation.effectiveDirective
     )
-    let directive = reported
     let value = null
 
     if (violation.suggestable && violation.suggestedSource) {
         value = violation.suggestedSource
     } else if (KIND_TO_SCRIPT_VALUE[violation.violationKind]) {
-        if (reported !== 'script-src') {
+        value = KIND_TO_SCRIPT_VALUE[violation.violationKind]
+        if (
+            directive !== 'script-src' &&
+            !acceptsUnsafeScheme(directive, value)
+        ) {
+            const params = { interpolation: { escapeValue: false }, value }
             return notFixable(
-                i18n.t('Only script-src takes keywords such as {{value}}', {
-                    interpolation: { escapeValue: false },
-                    value: KIND_TO_SCRIPT_VALUE[violation.violationKind],
-                })
+                violation.violationKind === 'DATA'
+                    ? i18n.t(
+                          'Only script-src and font-src take {{value}}',
+                          params
+                      )
+                    : i18n.t(
+                          'Only script-src takes keywords such as {{value}}',
+                          params
+                      )
             )
         }
-        directive = 'script-src'
-        value = KIND_TO_SCRIPT_VALUE[violation.violationKind]
     } else {
         return notFixable(i18n.t('No override can allow this'))
     }

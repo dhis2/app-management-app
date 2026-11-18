@@ -835,7 +835,7 @@ const CspEditor = ({ appKey, appName, detail, settings, refetchDetail }) => {
                     entrypoint: entrypointLabel(entrypoint),
                 })}
                 description={i18n.t(
-                    'Bare origins only (https://host[:port]). Host wildcards like https://*.example.org only in img-src and connect-src. script-src accepts every value; unsafe ones (keywords, schemes, wildcards, http) need confirmation.',
+                    'Bare origins only (https://host[:port]). Host wildcards like https://*.example.org only in img-src and connect-src. font-src also takes data: for embedded fonts, with confirmation. script-src accepts every value; unsafe ones (keywords, schemes, wildcards, http) need confirmation.',
                     {
                         interpolation: { escapeValue: false },
                         nsSeparator: '-:-',

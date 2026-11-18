@@ -182,6 +182,46 @@ describe('CspPolicy', () => {
         ])
     })
 
+    it('accepts data: in font-src and saves it only after the unsafe confirmation', async () => {
+        const user = userEvent.setup()
+        const { findByTestId, getByTestId, puts } = renderPolicy({ rows: [] })
+
+        const field = await findByTestId('csp-add-input-font-src')
+        await user.type(inputIn(field), 'data:')
+        expect(getByTestId('csp-add-button-font-src')).toBeEnabled()
+        await user.type(inputIn(field), '{enter}')
+        expect(
+            within(getByTestId('csp-directive-font-src')).getByText(
+                'Unsafe sources'
+            )
+        ).toBeTruthy()
+
+        await user.click(getByTestId('csp-apply'))
+        const modal = await findByTestId('csp-unsafe-modal')
+        expect(puts).toHaveLength(0)
+        await user.click(
+            inputIn(within(modal).getByTestId('csp-unsafe-understood'))
+        )
+        await user.click(within(modal).getByTestId('csp-unsafe-confirm'))
+
+        await waitFor(() => expect(puts).toHaveLength(1))
+        expect(puts[0].confirmUnsafe).toBe(true)
+        expect(puts[0].entrypoints['*'].enforced.add['font-src']).toEqual([
+            'data:',
+        ])
+    })
+
+    it('keeps data: out of other directives', async () => {
+        const user = userEvent.setup()
+        const { findByTestId, getByTestId } = renderPolicy({ rows: [] })
+
+        await user.type(
+            inputIn(await findByTestId('csp-add-input-media-src')),
+            'data:'
+        )
+        expect(getByTestId('csp-add-button-media-src')).toBeDisabled()
+    })
+
     it('exempts an entrypoint only after a reason and confirmation', async () => {
         const user = userEvent.setup()
         const { findByTestId, puts } = renderPolicy()
@@ -395,6 +435,51 @@ describe('CspPolicy', () => {
             const { findByTestId, queryByTestId } = renderPolicy({ rows: [] })
             await findByTestId('csp-policy')
             expect(queryByTestId('csp-pair-worker')).toBeNull()
+        })
+
+        it('stages a blocked data: font for App and Service worker and saves it after the unsafe confirmation', async () => {
+            const user = userEvent.setup()
+            const fontRow = {
+                ...violations[0],
+                id: 'f1',
+                appKey: 'maps',
+                effectiveDirective: 'font-src',
+                blocked: 'data',
+                violationKind: 'DATA',
+                suggestable: true,
+                suggestedDirective: 'font-src',
+                suggestedSource: 'data:',
+                count: 3,
+            }
+            const { findByTestId, getByTestId, puts } = renderPolicy({
+                detailPatch: withWorker,
+                rows: [fontRow],
+            })
+
+            const allow = await findByTestId('csp-allow-unsafe')
+            expect(allow.textContent).toBe(
+                '+ Allow data: (App + Service worker)'
+            )
+            expect(getByTestId('csp-fix-all').textContent).toBe(
+                'Stage fixes for all blocked (1)'
+            )
+            await user.click(allow)
+            await user.click(getByTestId('csp-apply'))
+            const modal = await findByTestId('csp-unsafe-modal')
+            expect(puts).toHaveLength(0)
+            await user.click(
+                inputIn(within(modal).getByTestId('csp-unsafe-understood'))
+            )
+            await user.click(within(modal).getByTestId('csp-unsafe-confirm'))
+
+            await waitFor(() => expect(puts).toHaveLength(1))
+            expect(puts[0].confirmUnsafe).toBe(true)
+            expect(puts[0].entrypoints.app.enforced.add).toEqual({
+                'font-src': ['data:'],
+            })
+            expect(puts[0].entrypoints.worker.enforced.add).toEqual({
+                'font-src': ['data:'],
+            })
         })
     })
 })

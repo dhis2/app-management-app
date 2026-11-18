@@ -189,10 +189,14 @@ export const DirectiveEditor = ({
                         {error.message}
                     </div>
                 ))}
-                {isScript && unsafeValues.length > 0 && (
+                {unsafeValues.length > 0 && (
                     <NoticeBox
                         error
-                        title={i18n.t('Unsafe script sources')}
+                        title={
+                            isScript
+                                ? i18n.t('Unsafe script sources')
+                                : i18n.t('Unsafe sources')
+                        }
                         className={styles.rowNotice}
                     >
                         <ul className={styles.riskList}>

@@ -5,8 +5,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2026-11-11T18:25:30.632Z\n"
-"PO-Revision-Date: 2026-11-11T18:25:30.632Z\n"
+"POT-Creation-Date: 2026-11-18T15:15:15.554Z\n"
+"PO-Revision-Date: 2026-11-18T15:15:15.554Z\n"
 
 msgid ""
 "Your session has expired. Please refresh the page and login before trying "
@@ -167,14 +167,14 @@ msgstr "No base sources"
 msgid "baseline"
 msgstr "baseline"
 
+msgid "default"
+msgstr "default"
+
 msgid "default, removed for all entrypoints"
 msgstr "default, removed for all entrypoints"
 
 msgid "unsafe, shipped by core"
 msgstr "unsafe, shipped by core"
-
-msgid "default"
-msgstr "default"
 
 msgid "Draft test running until {{time}} ({{relative}})"
 msgstr "Draft test running until {{time}} ({{relative}})"
@@ -334,14 +334,14 @@ msgstr "Allowed sources for {{entrypoint}}"
 
 msgid ""
 "Bare origins only (https://host[:port]). Host wildcards like "
-"https://*.example.org only in img-src and connect-src. script-src accepts "
-"every value; unsafe ones (keywords, schemes, wildcards, http) need "
-"confirmation."
+"https://*.example.org only in img-src and connect-src. font-src also takes "
+"data: for embedded fonts, with confirmation. script-src accepts every "
+"value; unsafe ones (keywords, schemes, wildcards, http) need confirmation."
 msgstr ""
 "Bare origins only (https://host[:port]). Host wildcards like "
-"https://*.example.org only in img-src and connect-src. script-src accepts "
-"every value; unsafe ones (keywords, schemes, wildcards, http) need "
-"confirmation."
+"https://*.example.org only in img-src and connect-src. font-src also takes "
+"data: for embedded fonts, with confirmation. script-src accepts every "
+"value; unsafe ones (keywords, schemes, wildcards, http) need confirmation."
 
 msgid "Unsafe sources shipped by core"
 msgstr "Unsafe sources shipped by core"
@@ -435,14 +435,14 @@ msgstr "No access to CSP settings"
 msgid "CSP settings are not available"
 msgstr "CSP settings are not available"
 
+msgid "Unsafe, {{risk}}"
+msgstr "Unsafe, {{risk}}"
+
 msgid "from *"
 msgstr "from *"
 
 msgid "No added sources"
 msgstr "No added sources"
-
-msgid "Unsafe, {{risk}}"
-msgstr "Unsafe, {{risk}}"
 
 msgid "Add"
 msgstr "Add"
@@ -458,6 +458,9 @@ msgstr "Also written to {{entrypoints}}"
 
 msgid "Unsafe script sources"
 msgstr "Unsafe script sources"
+
+msgid "Unsafe sources"
+msgstr "Unsafe sources"
 
 msgid ""
 "Saving needs an explicit confirmation, and the app gets an \"Unsafe CSP "
@@ -680,6 +683,9 @@ msgstr "{{directive}} is locked"
 msgid "Not an app page"
 msgstr "Not an app page"
 
+msgid "Only script-src and font-src take {{value}}"
+msgstr "Only script-src and font-src take {{value}}"
+
 msgid "Only script-src takes keywords such as {{value}}"
 msgstr "Only script-src takes keywords such as {{value}}"
 
@@ -736,23 +742,23 @@ msgstr "Nonces are not supported, the server does not issue one"
 msgid "Unknown keyword {{value}}"
 msgstr "Unknown keyword {{value}}"
 
+msgid "Keywords are only allowed in script-src"
+msgstr "Keywords are only allowed in script-src"
+
+msgid "Bare schemes such as https: allow every host and are not allowed here"
+msgstr "Bare schemes such as https: allow every host and are not allowed here"
+
+msgid "This server uses HTTPS, so http: is blocked"
+msgstr "This server uses HTTPS, so http: is blocked"
+
 msgid "Enter a source"
 msgstr "Enter a source"
 
 msgid "Enter one source at a time, without spaces, ; or ,"
 msgstr "Enter one source at a time, without spaces, ; or ,"
 
-msgid "Keywords are only allowed in script-src"
-msgstr "Keywords are only allowed in script-src"
-
 msgid "A bare * allows every host and is not allowed here"
 msgstr "A bare * allows every host and is not allowed here"
-
-msgid "This server uses HTTPS, so http: is blocked"
-msgstr "This server uses HTTPS, so http: is blocked"
-
-msgid "Bare schemes such as https: allow every host and are not allowed here"
-msgstr "Bare schemes such as https: allow every host and are not allowed here"
 
 msgid "Runs any inline script, so an injected <script> tag (XSS) executes."
 msgstr "Runs any inline script, so an injected <script> tag (XSS) executes."

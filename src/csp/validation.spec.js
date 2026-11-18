@@ -22,10 +22,25 @@ describe('validateSource', () => {
         expect(code('frame-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
     })
 
-    it('rejects data: and blob: outside script-src', () => {
-        expect(code('img-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
-        expect(code('font-src', 'data:')).toBe('WILDCARD_NOT_ALLOWED')
+    it('rejects data: and blob: outside script-src, except data: in font-src', () => {
+        ;[
+            'img-src',
+            'media-src',
+            'connect-src',
+            'frame-src',
+            'style-src',
+            'form-action',
+        ].forEach((directive) =>
+            expect(code(directive, 'data:')).toBe('WILDCARD_NOT_ALLOWED')
+        )
         expect(code('media-src', 'blob:')).toBe('WILDCARD_NOT_ALLOWED')
+        expect(code('font-src', 'blob:')).toBe('WILDCARD_NOT_ALLOWED')
+        expect(code('font-src', 'https:')).toBe('WILDCARD_NOT_ALLOWED')
+    })
+
+    it('accepts data: in font-src, on http and https servers', () => {
+        expect(code('font-src', 'data:')).toBeNull()
+        expect(code('font-src', 'DATA:', { httpsOnly: true })).toBeNull()
     })
 
     it('allows host wildcards with two labels only in img-src, connect-src and script-src', () => {
@@ -124,5 +139,15 @@ describe('isUnsafeSource', () => {
         expect(isUnsafeSource('http://legacy.example.org', 'img-src')).toBe(
             false
         )
+        expect(isUnsafeSource('https://fonts.example.org', 'font-src')).toBe(
+            false
+        )
+    })
+
+    it('flags data: in font-src as unsafe, so saving needs confirmation', () => {
+        expect(isUnsafeSource('data:', 'font-src')).toBe(true)
+        expect(isUnsafeSource(' Data: ', 'font-src')).toBe(true)
+        expect(isUnsafeSource('data:', 'img-src')).toBe(false)
+        expect(isUnsafeSource('blob:', 'font-src')).toBe(false)
     })
 })

@@ -98,6 +98,47 @@ describe('fixForViolation', () => {
             ).fix.entrypoint
         ).toBe('*')
     })
+
+    const fontData = (patch) =>
+        row({
+            appKey: 'arcgis-connector',
+            violationKind: 'DATA',
+            effectiveDirective: 'font-src',
+            blocked: 'data',
+            count: 3,
+            ...patch,
+        })
+    const fontDataFix = {
+        entrypoint: 'app',
+        directive: 'font-src',
+        value: 'data:',
+        unsafe: true,
+    }
+
+    it('allows a blocked data: font in font-src, marked unsafe', () => {
+        expect(
+            fixForViolation(
+                fontData({
+                    suggestable: true,
+                    suggestedDirective: 'font-src',
+                    suggestedSource: 'data:',
+                })
+            ).fix
+        ).toEqual(fontDataFix)
+        // a server that does not mark the row suggestable gets the same fix
+        expect(fixForViolation(fontData()).fix).toEqual(fontDataFix)
+    })
+
+    it('has no fix for data: outside script-src and font-src', () => {
+        const result = fixForViolation(
+            fontData({ effectiveDirective: 'media-src' })
+        )
+        expect(result.fix).toBeNull()
+        expect(result.reason).toBe('Only script-src and font-src take data:')
+        expect(
+            fixForViolation(fontData({ violationKind: 'BLOB' })).fix
+        ).toBeNull()
+    })
 })
 
 describe('checkFix', () => {
@@ -130,6 +171,27 @@ describe('groupFixes', () => {
         expect(groups.map((g) => [g.value, g.count, g.rows])).toEqual([
             ["'unsafe-inline'", 9, 1],
             ["'unsafe-eval'", 6, 2],
+        ])
+    })
+
+    it('counts a blocked data: font among the fixes', () => {
+        const groups = groupFixes([
+            row({
+                appKey: 'arcgis-connector',
+                violationKind: 'DATA',
+                effectiveDirective: 'font-src',
+                count: 3,
+            }),
+        ])
+        expect(groups).toEqual([
+            {
+                entrypoint: 'app',
+                directive: 'font-src',
+                value: 'data:',
+                unsafe: true,
+                count: 3,
+                rows: 1,
+            },
         ])
     })
 })

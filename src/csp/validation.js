@@ -18,7 +18,7 @@ const UNSAFE_KEYWORDS = new Set([
     "'wasm-unsafe-eval'",
     "'unsafe-hashes'",
 ])
-// Scheme-only and wildcard sources that are unsafe in script-src (the only directive that accepts them).
+// Scheme-only and wildcard sources that are unsafe in script-src, which accepts them all.
 const UNSAFE_SCHEME_SOURCES = new Set([
     '*',
     'data:',
@@ -26,6 +26,20 @@ const UNSAFE_SCHEME_SOURCES = new Set([
     'http:',
     'https:',
 ])
+// The only scheme sources other directives accept, always as unsafe values that
+// need confirmation: font-src takes data: for fonts embedded in an app bundle.
+const UNSAFE_SCHEMES_OUTSIDE_SCRIPT = {
+    'font-src': new Set(['data:']),
+}
+
+/** True when a directive other than script-src accepts this scheme source (data: in font-src). */
+export const acceptsUnsafeScheme = (directive, value) =>
+    Boolean(
+        UNSAFE_SCHEMES_OUTSIDE_SCRIPT[directive]?.has(
+            (value || '').trim().toLowerCase()
+        )
+    )
+
 const WILDCARD_DIRECTIVES = new Set(['img-src', 'connect-src', 'script-src'])
 const WEBSOCKET_DIRECTIVES = new Set(['connect-src'])
 const ORIGIN_SCHEMES = new Set(['https', 'http', 'wss', 'ws'])
@@ -188,8 +202,11 @@ const validateKeyword = (value, isScript) => {
     )
 }
 
-const validateSchemeOnly = (value, isScript, httpsOnly) => {
-    if (!isScript) {
+const validateSchemeOnly = (directive, value, httpsOnly) => {
+    if (directive !== 'script-src') {
+        if (acceptsUnsafeScheme(directive, value)) {
+            return null
+        }
         return error(
             'WILDCARD_NOT_ALLOWED',
             i18n.t(
@@ -242,19 +259,20 @@ export const validateSource = (directive, rawValue, { httpsOnly } = {}) => {
     }
 
     if (SCHEME_ONLY_PATTERN.test(value)) {
-        return validateSchemeOnly(value, isScript, httpsOnly)
+        return validateSchemeOnly(directive, value, httpsOnly)
     }
 
     return validateOrigin(directive, value, { httpsOnly })
 }
 
 /**
- * True for sources that need an explicit confirmUnsafe on save. Only script-src
- * takes unsafe values; other directives reject them instead.
+ * True for sources that need an explicit confirmUnsafe on save. script-src takes
+ * every unsafe value; outside script-src only data: in font-src is accepted (and
+ * unsafe), other directives reject unsafe values instead.
  */
 export const isUnsafeSource = (value, directive = 'script-src') => {
     if (directive !== 'script-src') {
-        return false
+        return acceptsUnsafeScheme(directive, value)
     }
     const normalized = (value || '').trim().toLowerCase()
     return (
