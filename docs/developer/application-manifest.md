@@ -65,7 +65,7 @@ example of the _manifest.webapp_ is shown below:
              "MY_APP_ADD_NEW",
              "MY_APP_UPDATE",
              "MY_APP_DELETE"
-        }
+        ]
     }
 
 The _manifest.webapp_ file must be located at the root of the project.
