@@ -9,6 +9,9 @@ export const semverGt = (a, b) => {
     return semver.gt(parseVersion(a), parseVersion(b))
 }
 
+export const toDhisVersion = ({ major, minor, patch = 0 }) =>
+    semver.coerce(`${major}.${minor}.${patch}`)
+
 const satisfiesDhisVersion = (version, dhisVersion) => {
     const { minDhisVersion: min, maxDhisVersion: max } = version
     if (!min && !max) {

@@ -140,6 +140,29 @@ describe('Versions table', () => {
         ).toBeInTheDocument()
     })
 
+    it('should compare patch-level minimum versions with the server patch', () => {
+        const onVersionInstall = jest.fn()
+        const versionsWithPatchMinimum = [
+            { ...versions[0], minDhisVersion: '2.37.12' },
+            { ...versions[1], minDhisVersion: '2.37.11' },
+            versions[2],
+        ]
+
+        const { getAllByTestId } = render(
+            <Versions
+                installedVersion={installedVersion}
+                versions={versionsWithPatchMinimum}
+                onVersionInstall={onVersionInstall}
+            />
+        )
+
+        const rows = getAllByTestId('version-list-item')
+        expect(rows.map((row) => row.textContent)).toEqual([
+            expect.stringContaining(versions[1].version),
+            expect.stringContaining(versions[2].version),
+        ])
+    })
+
     it('should display the version changes next to the version', () => {
         const onVersionInstall = jest.fn()
         const changelog = {

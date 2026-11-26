@@ -4,9 +4,8 @@ import { Checkbox, CircularLoader, Button, Divider } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
-import semver from 'semver'
 import { useApi } from '../../api.js'
-import { getCompatibleVersions } from '../../semver-helpers.js'
+import { getCompatibleVersions, toDhisVersion } from '../../semver-helpers.js'
 import styles from './AppDetails.module.css'
 import { channelToDisplayName } from './channel-to-display-name.js'
 import versionsStyles from './Versions.module.css'
@@ -212,9 +211,7 @@ export const Versions = ({
     const { serverVersion } = useConfig()
 
     const { installVersion } = useApi()
-    const dhisVersion = semver.coerce(
-        `${serverVersion.major}.${serverVersion.minor}`
-    )
+    const dhisVersion = toDhisVersion(serverVersion)
 
     const filteredVersions = getCompatibleVersions(
         versions,
