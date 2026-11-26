@@ -12,3 +12,7 @@
 .appsWithUpdates {
     margin-bottom: var(--spacers-dp64);
 }
+
+.cspFilter {
+    margin-top: var(--spacers-dp8);
+}

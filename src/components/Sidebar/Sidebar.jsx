@@ -4,6 +4,7 @@ import { Menu, MenuItem } from '@dhis2/ui'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
+import { useCspSummaries } from '../../csp/useCspSummaries.js'
 import styles from './Sidebar.module.css'
 
 const useIsItemActive = (path, exactMatch) => {
@@ -43,6 +44,25 @@ SidebarItem.propTypes = {
 const showCoreApps = ({ minor, patch }) =>
     minor > 35 || (minor == 35 && patch >= 2)
 
+const CspViolationsItem = () => {
+    const summaries = Object.values(useCspSummaries())
+    const blockedApps = summaries.filter(
+        (app) => (app.violations24h?.enforce || 0) > 0
+    ).length
+    return (
+        <SidebarItem
+            label={
+                blockedApps > 0
+                    ? i18n.t('CSP violations ({{count}} apps)', {
+                          count: blockedApps,
+                      })
+                    : i18n.t('CSP violations')
+            }
+            path="/csp-violations"
+        />
+    )
+}
+
 export const Sidebar = () => (
     <Menu>
         {showCoreApps(useConfig().serverVersion) ? (
@@ -55,5 +75,6 @@ export const Sidebar = () => (
         <SidebarItem label={i18n.t('Custom apps')} path="/custom-apps" />
         <SidebarItem label={i18n.t('App Hub')} path="/app-hub" />
         <SidebarItem label={i18n.t('Manual install')} path="/manual-install" />
+        <CspViolationsItem />
     </Menu>
 )

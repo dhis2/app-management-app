@@ -15,6 +15,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import { getAppIconSrc } from '../../get-app-icon-src.js'
 import { getLatestVersion } from '../../get-latest-version.js'
 import { AppIcon } from '../AppIcon/AppIcon.jsx'
+import { CspPolicy } from '../CspPolicy/CspPolicy.jsx'
 import styles from './AppDetails.module.css'
 import { appTypeToDisplayName } from './appDisplayConfig.js'
 import { Description } from './Description.jsx'
@@ -192,6 +193,15 @@ export const AppDetails = ({
                 >
                     Previous releases
                 </Tab>
+                {installedApp?.key && (
+                    <Tab
+                        onClick={selectTab('csp')}
+                        selected={selectedTab == 'csp'}
+                        dataTest="tab-csp"
+                    >
+                        {i18n.t('Content Security Policy')}
+                    </Tab>
+                )}
             </TabBar>
 
             {selectedTab == 'about' && (
@@ -255,6 +265,12 @@ export const AppDetails = ({
                         )}
                     </section>
                 </>
+            )}
+
+            {installedApp?.key && selectedTab === 'csp' && (
+                <section className={styles.section}>
+                    <CspPolicy appKey={installedApp.key} appName={appName} />
+                </section>
             )}
 
             {appHubApp && selectedTab === 'previous-releases' && (
