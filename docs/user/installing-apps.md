@@ -65,7 +65,7 @@ This section shows information only if the developer provides it, either automat
 
 ### Updating and uninstalling apps
 
-On the right of the **About** tab, there are buttons to update and to uninstall the app. If you do not use the latest version, click **Update to latest version**. To remove the app completely, click **Uninstall**. The uninstall button shows the installed version, for example **Uninstall v1.2.3**.
+On the right of the **About** tab, there are buttons to update and to uninstall the app. If you are note not using the latest version and would like to update, click **Update to latest version**. To remove the app completely, click **Uninstall**. The uninstall button shows the installed version, for example **Uninstall v1.2.3**.
 
 ![Updating and uninstalling apps](resources/images/app-management-manage.png){ width=50% }
 
